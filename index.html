@@ -38,7 +38,7 @@ body{
 }
 
 /* =========================
-   ANIMATED BACKGROUND
+ANIMATED BACKGROUND
 ========================= */
 
 #bgCanvas{
@@ -67,7 +67,7 @@ body{
 }
 
 /* =========================
-   NAVBAR
+NAVBAR
 ========================= */
 
 nav{
@@ -148,7 +148,7 @@ nav a:hover{
 }
 
 /* =========================
-   HERO
+HERO
 ========================= */
 
 .hero{
@@ -213,7 +213,7 @@ nav a:hover{
 }
 
 /* ==========================================
-   NEW ROUTER + WIFI 3D NETWORK ANIMATION
+NEW ROUTER + WIFI 3D NETWORK ANIMATION
 ========================================== */
 
 .visual{
@@ -235,8 +235,6 @@ nav a:hover{
     cursor:pointer;
 }
 
-/* MAIN GLOW */
-
 .scene-glow{
     position:absolute;
     width:380px;
@@ -254,8 +252,6 @@ nav a:hover{
     transition:.4s;
 }
 
-/* CITY GLOW */
-
 .city-glow{
     position:absolute;
     bottom:65px;
@@ -272,8 +268,6 @@ nav a:hover{
     mask-image:linear-gradient(to top,#000,transparent);
     -webkit-mask-image:linear-gradient(to top,#000,transparent);
 }
-
-/* WIFI ICON */
 
 .wifi-symbol{
     position:absolute;
@@ -332,8 +326,6 @@ nav a:hover{
         0 0 35px var(--cyan);
 }
 
-/* ORBITS */
-
 .orbit{
     position:absolute;
     border-radius:50%;
@@ -366,8 +358,6 @@ nav a:hover{
     animation:orbitRotate 13s linear infinite;
 }
 
-/* ORBIT DOTS */
-
 .network-dot{
     position:absolute;
     width:12px;
@@ -381,13 +371,11 @@ nav a:hover{
     animation:dotPulse 1.8s infinite alternate;
 }
 
-.nd1{ top:110px; left:60px; }
-.nd2{ top:75px; right:80px; background:#ffb347; box-shadow:0 0 15px #ff9f43; }
-.nd3{ bottom:115px; left:50px; }
-.nd4{ bottom:85px; right:55px; background:#8b5cf6; box-shadow:0 0 15px #8b5cf6; }
-.nd5{ top:190px; right:20px; }
-
-/* CONNECTION LINES */
+.nd1{top:110px;left:60px;}
+.nd2{top:75px;right:80px;background:#ffb347;box-shadow:0 0 15px #ff9f43;}
+.nd3{bottom:115px;left:50px;}
+.nd4{bottom:85px;right:55px;background:#8b5cf6;box-shadow:0 0 15px #8b5cf6;}
+.nd5{top:190px;right:20px;}
 
 .connection-line{
     position:absolute;
@@ -433,8 +421,6 @@ nav a:hover{
     transform:rotate(205deg);
 }
 
-/* ROUTER */
-
 .router{
     position:relative;
     width:245px;
@@ -442,12 +428,8 @@ nav a:hover{
     z-index:20;
     margin-top:80px;
     transform:rotateX(10deg) rotateY(-8deg);
-    transition:
-        transform .4s ease,
-        filter .4s ease;
+    transition:transform .4s ease,filter .4s ease;
 }
-
-/* ROUTER BODY */
 
 .router-body{
     position:absolute;
@@ -470,8 +452,6 @@ nav a:hover{
     overflow:hidden;
 }
 
-/* TOP OF ROUTER */
-
 .router-top{
     position:absolute;
     width:210px;
@@ -490,8 +470,6 @@ nav a:hover{
         inset 0 0 20px rgba(71,231,255,.08);
 }
 
-/* ROUTER LIGHT STRIP */
-
 .router-light{
     position:absolute;
     left:28px;
@@ -509,12 +487,10 @@ nav a:hover{
     animation:routerLight 1.5s infinite alternate;
 }
 
-.router-light span:nth-child(2){ animation-delay:.2s; }
-.router-light span:nth-child(3){ animation-delay:.4s; }
-.router-light span:nth-child(4){ animation-delay:.6s; }
-.router-light span:nth-child(5){ animation-delay:.8s; }
-
-/* ANTENNAS */
+.router-light span:nth-child(2){animation-delay:.2s;}
+.router-light span:nth-child(3){animation-delay:.4s;}
+.router-light span:nth-child(4){animation-delay:.6s;}
+.router-light span:nth-child(5){animation-delay:.8s;}
 
 .antenna{
     position:absolute;
@@ -545,8 +521,6 @@ nav a:hover{
     transform:rotate(10deg);
 }
 
-/* ANTENNA TIPS */
-
 .antenna::after{
     content:"";
     position:absolute;
@@ -558,8 +532,6 @@ nav a:hover{
     background:#1b2630;
     box-shadow:0 0 8px rgba(71,231,255,.35);
 }
-
-/* DATA WAVES UNDER ROUTER */
 
 .data-wave{
     position:absolute;
@@ -589,8 +561,6 @@ nav a:hover{
     animation-delay:1.6s;
     border-color:rgba(139,92,246,.45);
 }
-
-/* HOVER EFFECT */
 
 .router-scene:hover .scene-glow{
     transform:scale(1.35);
@@ -622,28 +592,8 @@ nav a:hover{
         drop-shadow(0 0 35px var(--cyan));
 }
 
-.router-scene:hover .orbit{
-    border-color:rgba(71,231,255,.9);
-    box-shadow:
-        0 0 22px rgba(71,231,255,.65),
-        inset 0 0 18px rgba(71,231,255,.16);
-}
-
-.router-scene:hover .network-dot{
-    box-shadow:
-        0 0 18px #fff,
-        0 0 45px var(--cyan);
-}
-
-.router-scene:hover .connection-line{
-    opacity:1;
-    box-shadow:
-        0 0 20px var(--cyan),
-        0 0 40px rgba(71,231,255,.5);
-}
-
 /* =========================
-   LIVE NETWORK MONITOR
+LIVE NETWORK MONITOR
 ========================= */
 
 .realtime-monitor{
@@ -659,14 +609,6 @@ nav a:hover{
         0 10px 35px rgba(71,231,255,.2),
         inset 0 0 20px rgba(71,231,255,.03);
     z-index:30;
-    transition:.3s;
-}
-
-.realtime-monitor:hover{
-    box-shadow:
-        0 15px 50px rgba(71,231,255,.4),
-        0 0 20px rgba(139,92,246,.15);
-    border-color:#ffffff;
 }
 
 .monitor-header{
@@ -741,7 +683,7 @@ nav a:hover{
 }
 
 /* =========================
-   ANIMATIONS
+ANIMATIONS
 ========================= */
 
 @keyframes scenePulse{
@@ -749,7 +691,6 @@ nav a:hover{
         transform:scale(.9);
         opacity:.6;
     }
-
     50%{
         transform:scale(1.08);
         opacity:1;
@@ -760,7 +701,6 @@ nav a:hover{
     from{
         transform:rotateX(70deg) rotateZ(0deg);
     }
-
     to{
         transform:rotateX(70deg) rotateZ(360deg);
     }
@@ -770,7 +710,6 @@ nav a:hover{
     from{
         transform:rotateX(68deg) rotateZ(360deg);
     }
-
     to{
         transform:rotateX(68deg) rotateZ(0deg);
     }
@@ -781,7 +720,6 @@ nav a:hover{
         transform:scale(.8);
         opacity:.65;
     }
-
     to{
         transform:scale(1.5);
         opacity:1;
@@ -793,7 +731,6 @@ nav a:hover{
         transform:translateX(-50%) rotateX(70deg) scale(.65);
         opacity:.9;
     }
-
     100%{
         transform:translateX(-50%) rotateX(70deg) scale(1.25);
         opacity:0;
@@ -805,7 +742,6 @@ nav a:hover{
         opacity:.35;
         transform:scale(.8);
     }
-
     to{
         opacity:1;
         transform:scale(1.4);
@@ -817,7 +753,6 @@ nav a:hover{
         opacity:.4;
         transform:scale(.8);
     }
-
     50%{
         opacity:1;
         transform:scale(1.2);
@@ -825,7 +760,7 @@ nav a:hover{
 }
 
 /* =========================
-   SECTIONS
+SECTIONS
 ========================= */
 
 section{
@@ -844,10 +779,6 @@ section{
     margin:0 auto 40px;
     max-width:650px;
 }
-
-/* =========================
-   PACKAGES
-========================= */
 
 .grid{
     display:grid;
@@ -890,7 +821,7 @@ section{
 }
 
 /* =========================
-   COVERAGE
+COVERAGE
 ========================= */
 
 .coverage{
@@ -924,7 +855,7 @@ section{
 }
 
 /* =========================
-   FORM
+FORM
 ========================= */
 
 .form{
@@ -957,7 +888,7 @@ section{
 }
 
 /* =========================
-   FOOTER
+FOOTER
 ========================= */
 
 footer{
@@ -968,7 +899,7 @@ footer{
 }
 
 /* =========================
-   POPUPS
+POPUPS
 ========================= */
 
 .popup-overlay{
@@ -1027,7 +958,7 @@ footer{
 }
 
 /* =========================
-   CALL BOX
+CALL BOX
 ========================= */
 
 .call-box{
@@ -1050,7 +981,7 @@ footer{
 }
 
 /* =========================
-   RESPONSIVE
+RESPONSIVE
 ========================= */
 
 @media(max-width:950px){
@@ -1071,6 +1002,7 @@ footer{
     .visual{
         min-height:570px;
     }
+
 }
 
 @media(max-width:850px){
@@ -1107,6 +1039,7 @@ footer{
     .nav-buttons{
         margin-top:10px;
     }
+
 }
 
 @media(max-width:520px){
@@ -1164,8 +1097,8 @@ footer{
     .coverage-search .btn{
         width:100%;
     }
-}
 
+}
 </style>
 </head>
 
@@ -1260,32 +1193,23 @@ footer{
 
     </div>
 
-    <!-- ROUTER WIFI ANIMATION -->
-
     <div class="visual">
 
         <div class="router-scene">
 
             <div class="scene-glow"></div>
-
             <div class="city-glow"></div>
-
-            <!-- CONNECTION LINES -->
 
             <div class="connection-line cl1"></div>
             <div class="connection-line cl2"></div>
             <div class="connection-line cl3"></div>
             <div class="connection-line cl4"></div>
 
-            <!-- NETWORK DOTS -->
-
             <div class="network-dot nd1"></div>
             <div class="network-dot nd2"></div>
             <div class="network-dot nd3"></div>
             <div class="network-dot nd4"></div>
             <div class="network-dot nd5"></div>
-
-            <!-- WIFI -->
 
             <div class="wifi-symbol">
 
@@ -1296,19 +1220,13 @@ footer{
 
             </div>
 
-            <!-- ORBITS -->
-
             <div class="orbit orbit-1"></div>
             <div class="orbit orbit-2"></div>
             <div class="orbit orbit-3"></div>
 
-            <!-- DATA WAVES -->
-
             <div class="data-wave"></div>
             <div class="data-wave wave2"></div>
             <div class="data-wave wave3"></div>
-
-            <!-- ROUTER -->
 
             <div class="router">
 
@@ -1320,13 +1238,11 @@ footer{
                     <div class="router-top"></div>
 
                     <div class="router-light">
-
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
                         <span></span>
-
                     </div>
 
                 </div>
@@ -1334,8 +1250,6 @@ footer{
             </div>
 
         </div>
-
-        <!-- LIVE MONITOR -->
 
         <div class="realtime-monitor">
 
@@ -1480,10 +1394,7 @@ footer{
 
         <select id="mainPackage" required>
 
-            <option value="">
-                পছন্দের প্যাকেজ নির্বাচন করুন
-            </option>
-
+            <option value="">পছন্দের প্যাকেজ নির্বাচন করুন</option>
             <option>20 Mbps - 500 টাকা</option>
             <option>30 Mbps - 600 টাকা</option>
             <option>50 Mbps - 800 টাকা</option>
@@ -1550,12 +1461,7 @@ footer{
 
     <div class="popup-card">
 
-        <span
-            class="close-popup"
-            onclick="closeBkash()"
-        >
-            ×
-        </span>
+        <span class="close-popup" onclick="closeBkash()">×</span>
 
         <h2 style="text-align:center">
             💳 bKash Payment
@@ -1565,13 +1471,7 @@ footer{
             <b>bKash Merchant Number</b>
         </p>
 
-        <h1
-            style="
-                color:#e2136e;
-                text-align:center;
-                margin:10px 0
-            "
-        >
+        <h1 style="color:#e2136e;text-align:center;margin:10px 0">
             01827700022
         </h1>
 
@@ -1607,12 +1507,7 @@ footer{
 
     <div class="popup-card">
 
-        <span
-            class="close-popup"
-            onclick="closeLogin()"
-        >
-            ×
-        </span>
+        <span class="close-popup" onclick="closeLogin()">×</span>
 
         <h2 style="text-align:center">
             👤 Customer Login
@@ -1652,12 +1547,7 @@ footer{
 
     <div class="popup-card">
 
-        <span
-            class="close-popup"
-            onclick="logoutCustomer()"
-        >
-            ×
-        </span>
+        <span class="close-popup" onclick="logoutCustomer()">×</span>
 
         <h2 style="text-align:center">
             👋 Welcome
@@ -1739,7 +1629,10 @@ footer{
 const GOOGLE_SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbxCvlO7ymkYzbWfs9pEChgSNSIMqvFJXRvp9NLMPzb01a2YDe-0-AUVlo_oQ0XkZ3Bt/exec";
 
-/* BACKGROUND CANVAS */
+
+/* =========================
+BACKGROUND CANVAS + MOUSE MAGNET
+========================= */
 
 const canvas = document.getElementById("bgCanvas");
 const ctx = canvas.getContext("2d");
@@ -1750,7 +1643,7 @@ const particleCount = 75;
 const mouse = {
     x:null,
     y:null,
-    radius:180
+    radius:220
 };
 
 window.addEventListener("mousemove",function(e){
@@ -1778,6 +1671,7 @@ window.addEventListener("resize",resizeCanvas);
 
 resizeCanvas();
 
+
 class Particle{
 
     constructor(){
@@ -1785,27 +1679,112 @@ class Particle{
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
 
-        this.vx = (Math.random() - 0.5) * 1.2;
-        this.vy = (Math.random() - 0.5) * 1.2;
+        this.vx = (Math.random() - 0.5) * 0.8;
+        this.vy = (Math.random() - 0.5) * 0.8;
 
         this.radius = Math.random() * 2 + 1;
+
+        this.density = Math.random() * 20 + 10;
 
     }
 
     update(){
 
+        /* NORMAL MOVEMENT */
+
         this.x += this.vx;
         this.y += this.vy;
 
-        if(this.x < 0 || this.x > canvas.width){
-            this.vx *= -1;
+
+        /* MAGNET EFFECT */
+
+        if(
+            mouse.x !== null &&
+            mouse.y !== null
+        ){
+
+            const dx = mouse.x - this.x;
+            const dy = mouse.y - this.y;
+
+            const distance =
+                Math.sqrt(dx * dx + dy * dy);
+
+            if(
+                distance < mouse.radius &&
+                distance > 1
+            ){
+
+                const force =
+                    (mouse.radius - distance) /
+                    mouse.radius;
+
+                const pull =
+                    force * 2.2;
+
+                this.x +=
+                    (dx / distance) *
+                    pull *
+                    this.density *
+                    0.08;
+
+                this.y +=
+                    (dy / distance) *
+                    pull *
+                    this.density *
+                    0.08;
+
+
+                /* CLOSE TO MOUSE = CIRCULAR MAGNET MOTION */
+
+                if(distance < 70){
+
+                    this.x +=
+                        (-dy / distance) *
+                        1.2;
+
+                    this.y +=
+                        (dx / distance) *
+                        1.2;
+
+                }
+
+            }
+
         }
 
-        if(this.y < 0 || this.y > canvas.height){
+
+        /* SCREEN EDGE */
+
+        if(this.x < 0){
+
+            this.x = 0;
+            this.vx *= -1;
+
+        }
+
+        if(this.x > canvas.width){
+
+            this.x = canvas.width;
+            this.vx *= -1;
+
+        }
+
+        if(this.y < 0){
+
+            this.y = 0;
             this.vy *= -1;
+
+        }
+
+        if(this.y > canvas.height){
+
+            this.y = canvas.height;
+            this.vy *= -1;
+
         }
 
     }
+
 
     draw(){
 
@@ -1820,7 +1799,8 @@ class Particle{
         );
 
         ctx.fillStyle = "#47e7ff";
-        ctx.shadowBlur = 8;
+
+        ctx.shadowBlur = 10;
         ctx.shadowColor = "#47e7ff";
 
         ctx.fill();
@@ -1831,11 +1811,15 @@ class Particle{
 
 }
 
-for(let i=0;i<particleCount;i++){
 
-    particles.push(new Particle());
+for(let i = 0;i < particleCount;i++){
+
+    particles.push(
+        new Particle()
+    );
 
 }
+
 
 function animateBackground(){
 
@@ -1846,12 +1830,73 @@ function animateBackground(){
         canvas.height
     );
 
-    for(let i=0;i<particles.length;i++){
+
+    /* MOUSE GLOW */
+
+    if(
+        mouse.x !== null &&
+        mouse.y !== null
+    ){
+
+        const gradient =
+            ctx.createRadialGradient(
+                mouse.x,
+                mouse.y,
+                0,
+                mouse.x,
+                mouse.y,
+                mouse.radius
+            );
+
+        gradient.addColorStop(
+            0,
+            "rgba(71,231,255,.16)"
+        );
+
+        gradient.addColorStop(
+            .4,
+            "rgba(22,135,255,.07)"
+        );
+
+        gradient.addColorStop(
+            1,
+            "rgba(0,0,0,0)"
+        );
+
+        ctx.fillStyle = gradient;
+
+        ctx.beginPath();
+
+        ctx.arc(
+            mouse.x,
+            mouse.y,
+            mouse.radius,
+            0,
+            Math.PI * 2
+        );
+
+        ctx.fill();
+
+    }
+
+
+    for(
+        let i = 0;
+        i < particles.length;
+        i++
+    ){
 
         particles[i].update();
         particles[i].draw();
 
-        for(let j=i+1;j<particles.length;j++){
+
+        /* PARTICLE CONNECTION */
+
+        for(
+            let j = i + 1;
+            j < particles.length;
+            j++
+        ){
 
             const dx =
                 particles[i].x -
@@ -1862,7 +1907,10 @@ function animateBackground(){
                 particles[j].y;
 
             const dist =
-                Math.sqrt(dx*dx + dy*dy);
+                Math.sqrt(
+                    dx * dx +
+                    dy * dy
+                );
 
             if(dist < 130){
 
@@ -1879,7 +1927,7 @@ function animateBackground(){
                 );
 
                 ctx.strokeStyle =
-                    `rgba(71,231,255,${0.8-dist/130})`;
+                    `rgba(71,231,255,${0.8 - dist / 160})`;
 
                 ctx.lineWidth = .7;
 
@@ -1889,13 +1937,64 @@ function animateBackground(){
 
         }
 
+
+        /* MOUSE CONNECTION */
+
+        if(
+            mouse.x !== null &&
+            mouse.y !== null
+        ){
+
+            const dx =
+                mouse.x -
+                particles[i].x;
+
+            const dy =
+                mouse.y -
+                particles[i].y;
+
+            const dist =
+                Math.sqrt(
+                    dx * dx +
+                    dy * dy
+                );
+
+            if(dist < 170){
+
+                ctx.beginPath();
+
+                ctx.moveTo(
+                    mouse.x,
+                    mouse.y
+                );
+
+                ctx.lineTo(
+                    particles[i].x,
+                    particles[i].y
+                );
+
+                ctx.strokeStyle =
+                    `rgba(71,231,255,${(170 - dist) / 300})`;
+
+                ctx.lineWidth = 1;
+
+                ctx.stroke();
+
+            }
+
+        }
+
     }
 
-    requestAnimationFrame(animateBackground);
+
+    requestAnimationFrame(
+        animateBackground
+    );
 
 }
 
 animateBackground();
+
 
 /* CLOCK */
 
@@ -1913,6 +2012,7 @@ function updateClock(){
 setInterval(updateClock,1000);
 
 updateClock();
+
 
 /* NETWORK SIMULATOR */
 
@@ -1933,20 +2033,22 @@ setInterval(function(){
     ).textContent =
         pings[
             Math.floor(
-                Math.random()*pings.length
+                Math.random() * pings.length
             )
         ] + " ms";
+
 
     document.getElementById(
         "speedVal"
     ).textContent =
         speeds[
             Math.floor(
-                Math.random()*speeds.length
+                Math.random() * speeds.length
             )
         ];
 
 },2000);
+
 
 /* MOBILE MENU */
 
@@ -1960,6 +2062,7 @@ function toggleMenu(){
     links.classList.toggle("active");
 
 }
+
 
 /* PACKAGES */
 
@@ -1977,12 +2080,13 @@ const packs = [
 
 ];
 
+
 document.getElementById(
     "packageGrid"
 ).innerHTML =
-    packs.map(function(p){
+packs.map(function(p){
 
-        return `
+    return `
 
         <div class="card">
 
@@ -2023,9 +2127,10 @@ document.getElementById(
 
         </div>
 
-        `;
+    `;
 
-    }).join("");
+}).join("");
+
 
 /* COVERAGE */
 
@@ -2056,6 +2161,7 @@ function checkCoverage(){
         " এলাকায় আমাদের কভারেজ নিশ্চিত করতে প্রতিনিধি শীঘ্রই যোগাযোগ করবে।";
 
 }
+
 
 /* BKASH */
 
@@ -2099,6 +2205,7 @@ function copyBkash(){
         });
 
 }
+
 
 /* LOGIN */
 
@@ -2218,6 +2325,7 @@ async function customerLogin(){
 
 }
 
+
 /* LOGOUT */
 
 function logoutCustomer(){
@@ -2239,6 +2347,7 @@ function logoutCustomer(){
     ).innerHTML = "";
 
 }
+
 
 /* CONNECTION FORM */
 
@@ -2333,6 +2442,7 @@ async function submitMainForm(event){
     }
 
 }
+
 
 /* CLICK OUTSIDE */
 
