@@ -1,12 +1,10 @@
-আপনার সম্পূর্ণ এবং একদম প্রস্তুত কোডটি নিচে দেওয়া হলো। কোনো ঝামেলা ছাড়াই এটি কপি করে আপনার `index.html` ফাইলে পেস্ট (Paste) করে সেভ করতে পারবেন। এতে সব পপআপ, অ্যানিমেশন এবং কার্যকারিতা একদম ঠিকমতো কাজ করবে:
-
-```html
 <!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MAPS INTERNET | নতুন গতি, নতুন অভিজ্ঞতা</title>
+
 <style>
 :root{
 --bg:#060817;
@@ -21,12 +19,15 @@
 --muted:#aab1d6;
 --line:rgba(255,255,255,.12);
 }
+
 *{
 box-sizing:border-box;
 }
+
 html{
 scroll-behavior:smooth;
 }
+
 body{
 margin:0;
 font-family:Arial,"Noto Sans Bengali",sans-serif;
@@ -34,9 +35,11 @@ background:var(--bg);
 color:var(--text);
 overflow-x:hidden;
 }
+
 /* =========================
 CANVAS BACKGROUND
 ========================= */
+
 #bgCanvas{
 position:fixed;
 top:0;
@@ -44,12 +47,14 @@ left:0;
 width:100vw;
 height:100vh;
 z-index:-1;
-background:linear-gradient(135deg, #050814 0%, #0b1126 100%);
+background:linear-gradient(135deg,#050814 0%,#0b1126 100%);
 pointer-events:none;
 }
+
 /* =========================
 NAVBAR
 ========================= */
+
 nav{
 position:fixed;
 z-index:1000;
@@ -63,19 +68,23 @@ background:rgba(6,8,23,.90);
 backdrop-filter:blur(18px);
 border-bottom:1px solid var(--line);
 }
+
 .logo{
 font-weight:900;
 letter-spacing:1px;
 white-space:nowrap;
 font-size:20px;
 }
+
 .logo b{
 color:var(--cyan);
 }
+
 .links{
 display:flex;
 align-items:center;
 }
+
 nav a{
 color:#dfe5ff;
 text-decoration:none;
@@ -83,20 +92,24 @@ margin-left:18px;
 font-size:14px;
 transition:.3s;
 }
+
 nav a:hover{
 color:var(--cyan);
 }
+
 .menu-toggle{
 display:none;
 font-size:24px;
 cursor:pointer;
 color:var(--cyan);
 }
+
 .nav-buttons{
 display:flex;
 gap:10px;
 align-items:center;
 }
+
 .btn{
 display:inline-block;
 padding:12px 22px;
@@ -111,15 +124,18 @@ box-shadow:0 0 25px rgba(71,231,255,.30);
 transition:.3s;
 white-space:nowrap;
 }
+
 .btn:hover{
 transform:translateY(-2px) scale(1.03);
 box-shadow:
 0 0 20px rgba(71,231,255,.70),
 0 0 50px rgba(22,135,255,.35);
 }
+
 /* =========================
 HERO
 ========================= */
+
 .hero{
 min-height:100vh;
 padding:145px 7% 70px;
@@ -128,35 +144,41 @@ grid-template-columns:1.05fr .95fr;
 gap:30px;
 align-items:center;
 }
+
 .tag{
 color:var(--yellow);
 font-weight:800;
 letter-spacing:2px;
 font-size:14px;
 }
+
 .hero h1{
 font-size:clamp(36px,5vw,72px);
 line-height:1.1;
 margin:14px 0;
 }
+
 .hero h1 span{
 background:linear-gradient(90deg,var(--yellow),#fff0a0);
 -webkit-background-clip:text;
 background-clip:text;
 color:transparent;
 }
+
 .hero p{
 font-size:17px;
 line-height:1.7;
 color:var(--muted);
 max-width:600px;
 }
+
 .actions{
 display:flex;
 gap:12px;
 flex-wrap:wrap;
 margin-top:28px;
 }
+
 .ghost{
 display:inline-block;
 padding:12px 22px;
@@ -168,14 +190,17 @@ cursor:pointer;
 background:rgba(255,255,255,.03);
 transition:.3s;
 }
+
 .ghost:hover{
 border-color:var(--cyan);
 color:var(--cyan);
 box-shadow:0 0 25px rgba(71,231,255,.18);
 }
+
 /* ==========================================
 ROUTER + WIFI 3D NETWORK ANIMATION
 ========================================== */
+
 .visual{
 min-height:600px;
 display:flex;
@@ -183,6 +208,7 @@ justify-content:center;
 align-items:center;
 position:relative;
 }
+
 .router-scene{
 width:480px;
 height:480px;
@@ -193,6 +219,7 @@ align-items:center;
 perspective:1000px;
 cursor:pointer;
 }
+
 .scene-glow{
 position:absolute;
 width:380px;
@@ -209,6 +236,7 @@ filter:blur(30px);
 animation:scenePulse 3s ease-in-out infinite;
 transition:.4s;
 }
+
 .city-glow{
 position:absolute;
 bottom:65px;
@@ -225,6 +253,7 @@ transparent 18px 30px
 mask-image:linear-gradient(to top,#000,transparent);
 -webkit-mask-image:linear-gradient(to top,#000,transparent);
 }
+
 .wifi-symbol{
 position:absolute;
 top:38px;
@@ -235,6 +264,7 @@ height:130px;
 z-index:12;
 transition:.4s;
 }
+
 .wifi-arc{
 position:absolute;
 left:50%;
@@ -248,21 +278,25 @@ filter:
 drop-shadow(0 0 8px var(--cyan))
 drop-shadow(0 0 20px rgba(71,231,255,.7));
 }
+
 .arc-1{
 width:145px;
 height:110px;
 top:0;
 }
+
 .arc-2{
 width:105px;
 height:80px;
 top:30px;
 }
+
 .arc-3{
 width:65px;
 height:50px;
 top:58px;
 }
+
 .wifi-dot{
 position:absolute;
 width:20px;
@@ -276,6 +310,7 @@ box-shadow:
 0 0 15px var(--cyan),
 0 0 35px var(--cyan);
 }
+
 .orbit{
 position:absolute;
 border-radius:50%;
@@ -285,18 +320,21 @@ box-shadow:
 inset 0 0 15px rgba(71,231,255,.06);
 pointer-events:none;
 }
+
 .orbit-1{
 width:400px;
 height:180px;
 transform:rotateX(70deg);
 animation:orbitRotate 9s linear infinite;
 }
+
 .orbit-2{
 width:330px;
 height:145px;
 transform:rotateX(68deg);
 animation:orbitReverse 7s linear infinite;
 }
+
 .orbit-3{
 width:440px;
 height:215px;
@@ -304,6 +342,7 @@ transform:rotateX(74deg);
 border-color:rgba(22,135,255,.35);
 animation:orbitRotate 13s linear infinite;
 }
+
 .network-dot{
 position:absolute;
 width:12px;
@@ -316,11 +355,23 @@ box-shadow:
 z-index:8;
 animation:dotPulse 1.8s infinite alternate;
 }
+
 .nd1{top:110px;left:60px;}
-.nd2{top:75px;right:80px;background:#ffb347;box-shadow:0 0 15px #ff9f43;}
+.nd2{
+top:75px;
+right:80px;
+background:#ffb347;
+box-shadow:0 0 15px #ff9f43;
+}
 .nd3{bottom:115px;left:50px;}
-.nd4{bottom:85px;right:55px;background:#8b5cf6;box-shadow:0 0 15px #8b5cf6;}
+.nd4{
+bottom:85px;
+right:55px;
+background:#8b5cf6;
+box-shadow:0 0 15px #8b5cf6;
+}
 .nd5{top:190px;right:20px;}
+
 .connection-line{
 position:absolute;
 height:2px;
@@ -336,10 +387,35 @@ box-shadow:0 0 12px var(--cyan);
 transform-origin:left center;
 opacity:.8;
 }
-.cl1{width:180px;top:150px;left:105px;transform:rotate(28deg);}
-.cl2{width:165px;top:145px;right:75px;transform:rotate(150deg);}
-.cl3{width:140px;bottom:135px;left:90px;transform:rotate(-30deg);}
-.cl4{width:150px;bottom:135px;right:85px;transform:rotate(205deg);}
+
+.cl1{
+width:180px;
+top:150px;
+left:105px;
+transform:rotate(28deg);
+}
+
+.cl2{
+width:165px;
+top:145px;
+right:75px;
+transform:rotate(150deg);
+}
+
+.cl3{
+width:140px;
+bottom:135px;
+left:90px;
+transform:rotate(-30deg);
+}
+
+.cl4{
+width:150px;
+bottom:135px;
+right:85px;
+transform:rotate(205deg);
+}
+
 .router{
 position:relative;
 width:245px;
@@ -349,6 +425,7 @@ margin-top:80px;
 transform:rotateX(10deg) rotateY(-8deg);
 transition:transform .4s ease,filter .4s ease;
 }
+
 .router-body{
 position:absolute;
 width:100%;
@@ -369,6 +446,7 @@ box-shadow:
 inset 0 2px 8px rgba(255,255,255,.08);
 overflow:hidden;
 }
+
 .router-top{
 position:absolute;
 width:210px;
@@ -385,6 +463,7 @@ ellipse at center,
 border:1px solid rgba(71,231,255,.25);
 box-shadow:inset 0 0 20px rgba(71,231,255,.08);
 }
+
 .router-light{
 position:absolute;
 left:28px;
@@ -392,6 +471,7 @@ bottom:18px;
 display:flex;
 gap:9px;
 }
+
 .router-light span{
 width:6px;
 height:6px;
@@ -400,10 +480,12 @@ background:var(--cyan);
 box-shadow:0 0 9px var(--cyan);
 animation:routerLight 1.5s infinite alternate;
 }
+
 .router-light span:nth-child(2){animation-delay:.2s;}
 .router-light span:nth-child(3){animation-delay:.4s;}
 .router-light span:nth-child(4){animation-delay:.6s;}
 .router-light span:nth-child(5){animation-delay:.8s;}
+
 .antenna{
 position:absolute;
 width:9px;
@@ -421,8 +503,17 @@ border:1px solid rgba(255,255,255,.12);
 box-shadow:0 0 12px rgba(71,231,255,.16);
 transform-origin:bottom;
 }
-.ant1{left:45px;transform:rotate(-10deg);}
-.ant2{right:48px;transform:rotate(10deg);}
+
+.ant1{
+left:45px;
+transform:rotate(-10deg);
+}
+
+.ant2{
+right:48px;
+transform:rotate(10deg);
+}
+
 .antenna::after{
 content:"";
 position:absolute;
@@ -434,6 +525,7 @@ left:-2px;
 background:#1b2630;
 box-shadow:0 0 8px rgba(71,231,255,.35);
 }
+
 .data-wave{
 position:absolute;
 width:270px;
@@ -448,18 +540,21 @@ box-shadow:
 inset 0 0 12px rgba(71,231,255,.4);
 animation:dataWave 2.5s ease-out infinite;
 }
+
 .data-wave.wave2{
 width:340px;
 height:110px;
 animation-delay:.8s;
 border-color:rgba(22,135,255,.65);
 }
+
 .data-wave.wave3{
 width:420px;
 height:145px;
 animation-delay:1.6s;
 border-color:rgba(139,92,246,.45);
 }
+
 .router-scene:hover .scene-glow{
 transform:scale(1.35);
 filter:blur(38px);
@@ -471,6 +566,7 @@ rgba(0,120,255,.35) 35%,
 transparent 72%
 );
 }
+
 .router-scene:hover .router{
 transform:
 translateY(-12px)
@@ -481,15 +577,18 @@ filter:
 drop-shadow(0 0 20px rgba(71,231,255,.9))
 drop-shadow(0 0 45px rgba(22,135,255,.5));
 }
+
 .router-scene:hover .wifi-symbol{
 transform:translateX(-50%) scale(1.12);
 filter:
 drop-shadow(0 0 12px var(--cyan))
 drop-shadow(0 0 35px var(--cyan));
 }
+
 /* =========================
 LIVE NETWORK MONITOR
 ========================= */
+
 .realtime-monitor{
 position:absolute;
 bottom:5px;
@@ -504,6 +603,7 @@ box-shadow:
 inset 0 0 20px rgba(71,231,255,.03);
 z-index:30;
 }
+
 .monitor-header{
 display:flex;
 justify-content:space-between;
@@ -512,12 +612,14 @@ font-size:13px;
 margin-bottom:10px;
 font-weight:bold;
 }
+
 .live-badge{
 display:flex;
 align-items:center;
 gap:6px;
 color:var(--green);
 }
+
 .live-dot{
 width:8px;
 height:8px;
@@ -526,6 +628,7 @@ border-radius:50%;
 box-shadow:0 0 10px var(--green);
 animation:greenPulse 1s infinite;
 }
+
 .monitor-stats{
 display:flex;
 justify-content:space-between;
@@ -535,9 +638,11 @@ color:var(--muted);
 border-top:1px solid var(--line);
 padding-top:10px;
 }
+
 .monitor-stats span b{
 color:var(--text);
 }
+
 .monitor-clock{
 margin-top:12px;
 padding:16px 22px;
@@ -550,191 +655,280 @@ rgba(139,92,246,.22)
 );
 border:1.5px solid rgba(71,231,255,.5);
 text-align:center;
-box-shadow: 0 0 20px rgba(71,231,255,.2), inset 0 0 12px rgba(71,231,255,.15);
-transition: all 0.4s ease;
-cursor: pointer;
+box-shadow:
+0 0 20px rgba(71,231,255,.2),
+inset 0 0 12px rgba(71,231,255,.15);
+transition:all .4s ease;
+cursor:pointer;
 }
-.monitor-clock:hover {
-border-color: var(--cyan);
-background: 
+
+.monitor-clock:hover{
+border-color:var(--cyan);
+background:
 linear-gradient(
 135deg,
 rgba(71,231,255,.28),
 rgba(139,92,246,.38)
 );
-box-shadow: 
+box-shadow:
 0 0 30px rgba(71,231,255,.6),
 0 0 60px rgba(71,231,255,.3),
 inset 0 0 20px rgba(71,231,255,.5);
-transform: translateY(-2px);
+transform:translateY(-2px);
 }
+
 .clock-label{
 display:block;
 color:var(--muted);
 font-size:12px;
 margin-bottom:5px;
 }
+
 #liveClock{
 display:block;
 font-size:20px;
 font-weight:900;
 letter-spacing:1px;
 color:var(--cyan);
-text-shadow: 
-    0 0 12px rgba(71,231,255,0.9),
-    0 0 24px rgba(71,231,255,0.7),
-    0 0 36px rgba(71,231,255,0.5);
+text-shadow:
+0 0 12px rgba(71,231,255,.9),
+0 0 24px rgba(71,231,255,.7),
+0 0 36px rgba(71,231,255,.5);
 }
 
 /* =========================
 ANIMATIONS
 ========================= */
+
 @keyframes scenePulse{
-0%,100%{transform:scale(.9);opacity:.6;}
-50%{transform:scale(1.08);opacity:1;}
+0%,100%{
+transform:scale(.9);
+opacity:.6;
 }
+50%{
+transform:scale(1.08);
+opacity:1;
+}
+}
+
 @keyframes orbitRotate{
-from{transform:rotateX(70deg) rotateZ(0deg);}
-to{transform:rotateX(70deg) rotateZ(360deg);}
+from{
+transform:rotateX(70deg) rotateZ(0deg);
 }
+to{
+transform:rotateX(70deg) rotateZ(360deg);
+}
+}
+
 @keyframes orbitReverse{
-from{transform:rotateX(68deg) rotateZ(360deg);}
-to{transform:rotateX(68deg) rotateZ(0deg);}
+from{
+transform:rotateX(68deg) rotateZ(360deg);
 }
+to{
+transform:rotateX(68deg) rotateZ(0deg);
+}
+}
+
 @keyframes dotPulse{
-from{transform:scale(.8);opacity:.65;}
-to{transform:scale(1.5);opacity:1;}
+from{
+transform:scale(.8);
+opacity:.65;
 }
+to{
+transform:scale(1.5);
+opacity:1;
+}
+}
+
 @keyframes dataWave{
-0%{transform:translateX(-50%) rotateX(70deg) scale(.65);opacity:.9;}
-100%{transform:translateX(-50%) rotateX(70deg) scale(1.25);opacity:0;}
+0%{
+transform:translateX(-50%) rotateX(70deg) scale(.65);
+opacity:.9;
 }
+100%{
+transform:translateX(-50%) rotateX(70deg) scale(1.25);
+opacity:0;
+}
+}
+
 @keyframes routerLight{
-from{opacity:.35;transform:scale(.8);}
-to{opacity:1;transform:scale(1.4);}
+from{
+opacity:.35;
+transform:scale(.8);
 }
+to{
+opacity:1;
+transform:scale(1.4);
+}
+}
+
 @keyframes greenPulse{
-0%,100%{opacity:.4;transform:scale(.8);}
-50%{opacity:1;transform:scale(1.2);}
+0%,100%{
+opacity:.4;
+transform:scale(.8);
+}
+50%{
+opacity:1;
+transform:scale(1.2);
+}
 }
 
 /* =========================
-SECTIONS & PREMIUM PACKAGE CARDS
+SECTIONS & PACKAGE CARDS
 ========================= */
+
 section{
 padding:80px 7%;
 }
+
 .title{
 text-align:center;
 font-size:34px;
 margin:0 0 12px;
 }
+
 .sub{
 text-align:center;
 color:var(--muted);
 margin:0 auto 40px;
 max-width:650px;
 }
+
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:25px;
 }
+
 .card{
-background: linear-gradient(145deg, rgba(18,22,55,0.85), rgba(10,14,35,0.95));
-border: 1.5px solid rgba(71,231,255,0.25);
+background:
+linear-gradient(
+145deg,
+rgba(18,22,55,.85),
+rgba(10,14,35,.95)
+);
+border:1.5px solid rgba(71,231,255,.25);
 border-radius:24px;
 padding:28px;
 backdrop-filter:blur(16px);
-position: relative;
-overflow: hidden;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+position:relative;
+overflow:hidden;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+transition:all .4s cubic-bezier(.165,.84,.44,1);
+box-shadow:0 10px 30px rgba(0,0,0,.4);
 }
-.card::before {
-content: '';
-position: absolute;
-top: 0; left: 0; width: 100%; height: 100%;
-background: radial-gradient(circle at top right, rgba(71,231,255,0.18), transparent 60%);
-opacity: 0;
-transition: opacity 0.4s ease;
-pointer-events: none;
+
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+radial-gradient(
+circle at top right,
+rgba(71,231,255,.18),
+transparent 60%
+);
+opacity:0;
+transition:opacity .4s ease;
+pointer-events:none;
 }
+
 .card:hover{
-transform: translateY(-8px) scale(1.02);
-border-color: var(--cyan);
-box-shadow: 
-    0 0 35px rgba(71,231,255,0.4),
-    0 0 70px rgba(22,135,255,0.2),
-    inset 0 0 20px rgba(71,231,255,0.15);
+transform:translateY(-8px) scale(1.02);
+border-color:var(--cyan);
+box-shadow:
+0 0 35px rgba(71,231,255,.4),
+0 0 70px rgba(22,135,255,.2),
+inset 0 0 20px rgba(71,231,255,.15);
 }
-.card:hover::before {
-opacity: 1;
+
+.card:hover::before{
+opacity:1;
 }
+
 .price{
 font-size:32px;
 font-weight:900;
 color:var(--cyan);
 margin:8px 0 15px;
-text-shadow: 0 0 15px rgba(71,231,255,0.4);
+text-shadow:0 0 15px rgba(71,231,255,.4);
 }
+
 .speed{
 font-size:24px;
 font-weight:800;
-color: #ffffff;
-letter-spacing: .5px;
+color:#fff;
+letter-spacing:.5px;
 }
+
 .features{
 color:var(--muted);
 line-height:1.9;
 font-size:14px;
 margin-bottom:24px;
-list-style: none;
-padding: 0;
-border-top: 1px solid var(--line);
-border-bottom: 1px solid var(--line);
-padding: 15px 0;
+list-style:none;
+padding:15px 0;
+border-top:1px solid var(--line);
+border-bottom:1px solid var(--line);
 }
-.features li {
-position: relative;
-padding-left: 20px;
-margin-bottom: 8px;
+
+.features li{
+position:relative;
+padding-left:20px;
+margin-bottom:8px;
 }
-.features li::before {
-content: '✦';
-position: absolute;
-left: 0;
-color: var(--cyan);
-font-size: 11px;
+
+.features li::before{
+content:"✦";
+position:absolute;
+left:0;
+color:var(--cyan);
+font-size:11px;
 }
-.card-btn {
-width: 100%;
-padding: 13px;
-border-radius: 12px;
-background: linear-gradient(135deg, rgba(71,231,255,0.15), rgba(22,135,255,0.25));
-border: 1px solid rgba(71,231,255,0.5);
-color: #fff;
-font-weight: 700;
-cursor: pointer;
-transition: all 0.3s ease;
-text-align: center;
-text-decoration: none;
-display: block;
-box-shadow: 0 0 10px rgba(71,231,255,0.1);
+
+.card-btn{
+width:100%;
+padding:13px;
+border-radius:12px;
+background:
+linear-gradient(
+135deg,
+rgba(71,231,255,.15),
+rgba(22,135,255,.25)
+);
+border:1px solid rgba(71,231,255,.5);
+color:#fff;
+font-weight:700;
+cursor:pointer;
+transition:all .3s ease;
+text-align:center;
+text-decoration:none;
+display:block;
+box-shadow:0 0 10px rgba(71,231,255,.1);
 }
-.card:hover .card-btn {
-background: linear-gradient(135deg, var(--cyan), var(--blue));
-color: #07101d;
-border-color: transparent;
-box-shadow: 0 0 25px rgba(71,231,255,0.7);
-transform: translateY(-2px);
+
+.card:hover .card-btn{
+background:
+linear-gradient(
+135deg,
+var(--cyan),
+var(--blue)
+);
+color:#07101d;
+border-color:transparent;
+box-shadow:0 0 25px rgba(71,231,255,.7);
+transform:translateY(-2px);
 }
+
 /* =========================
 COVERAGE
 ========================= */
+
 .coverage{
 background:
 linear-gradient(
@@ -747,24 +941,28 @@ padding:40px 20px;
 text-align:center;
 border:1px solid var(--line);
 }
+
 .coverage-search{
 display:flex;
 max-width:550px;
 margin:auto;
 gap:10px;
 }
+
 .coverage-search input{
 flex:1;
 padding:14px;
 border-radius:12px;
 border:1px solid var(--line);
 background:#0a0e27;
-color:white;
+color:#fff;
 outline:none;
 }
+
 /* =========================
 FORM
 ========================= */
+
 .form{
 display:grid;
 grid-template-columns:1fr 1fr;
@@ -772,6 +970,7 @@ gap:14px;
 max-width:850px;
 margin:auto;
 }
+
 .form input,
 .form select,
 .form textarea{
@@ -780,28 +979,34 @@ padding:14px;
 border-radius:12px;
 border:1px solid var(--line);
 background:#0a0e27;
-color:white;
+color:#fff;
 outline:none;
 }
+
 .form textarea{
 grid-column:1/-1;
 min-height:100px;
 }
+
 .form button{
 grid-column:1/-1;
 }
+
 /* =========================
 FOOTER
 ========================= */
+
 footer{
 padding:35px 7%;
 border-top:1px solid var(--line);
 color:var(--muted);
 text-align:center;
 }
+
 /* =========================
 POPUPS
 ========================= */
+
 .popup-overlay{
 display:none;
 position:fixed;
@@ -812,9 +1017,10 @@ justify-content:center;
 align-items:center;
 padding:20px;
 }
+
 .popup-card{
 background:#161b2d;
-color:white;
+color:#fff;
 width:100%;
 max-width:420px;
 max-height:90vh;
@@ -825,6 +1031,7 @@ position:relative;
 border:1px solid var(--line);
 box-shadow:0 20px 80px rgba(0,0,0,.6);
 }
+
 .close-popup{
 position:absolute;
 right:18px;
@@ -833,16 +1040,25 @@ font-size:26px;
 cursor:pointer;
 color:var(--muted);
 }
-.popup-card input{
+
+.popup-card input,
+.popup-card select,
+.popup-card textarea{
 width:100%;
 padding:13px;
 margin:8px 0;
 border-radius:8px;
 border:1px solid var(--line);
 background:#0a0e27;
-color:white;
-outline: none;
+color:#fff;
+outline:none;
 }
+
+.popup-card textarea{
+min-height:90px;
+resize:vertical;
+}
+
 .popup-button{
 width:100%;
 padding:14px;
@@ -853,37 +1069,306 @@ font-size:16px;
 font-weight:bold;
 cursor:pointer;
 }
-/* =========================
-CALL BOX
-========================= */
-.call-box{
+
+/* =================================================
+NEW FLOATING SERVICE BUTTON
+================================================= */
+
+.service-float{
 position:fixed;
-bottom:20px;
 right:20px;
+bottom:20px;
+z-index:8900;
+}
+
+.service-main-btn{
+border:none;
+cursor:pointer;
+padding:14px 20px;
+border-radius:999px;
+font-size:14px;
+font-weight:900;
+color:#07101d;
+background:
+linear-gradient(
+135deg,
+var(--cyan),
+var(--blue),
+var(--violet)
+);
+box-shadow:
+0 0 10px rgba(71,231,255,.55),
+0 0 25px rgba(71,231,255,.35),
+0 0 50px rgba(22,135,255,.25);
+animation:serviceGlow 2s ease-in-out infinite;
+transition:.3s;
+}
+
+.service-main-btn:hover{
+transform:scale(1.05) translateY(-2px);
+box-shadow:
+0 0 20px rgba(71,231,255,.9),
+0 0 45px rgba(71,231,255,.65),
+0 0 80px rgba(22,135,255,.4);
+}
+
+@keyframes serviceGlow{
+0%,100%{
+box-shadow:
+0 0 10px rgba(71,231,255,.55),
+0 0 25px rgba(71,231,255,.35),
+0 0 50px rgba(22,135,255,.25);
+transform:scale(1);
+}
+50%{
+box-shadow:
+0 0 18px rgba(71,231,255,.95),
+0 0 40px rgba(71,231,255,.65),
+0 0 75px rgba(22,135,255,.45);
+transform:scale(1.035);
+}
+}
+
+/* =================================================
+RIGHT SIDE SUPPORT PANEL
+================================================= */
+
+.support-panel{
+position:fixed;
+top:0;
+right:-420px;
+width:400px;
+max-width:92vw;
+height:100vh;
+background:
+linear-gradient(
+180deg,
+#07122d 0%,
+#0a1025 50%,
+#070b1c 100%
+);
+z-index:9998;
+box-shadow:-15px 0 60px rgba(0,0,0,.65);
+border-left:1px solid rgba(71,231,255,.25);
+transition:right .45s cubic-bezier(.77,0,.18,1);
+overflow-y:auto;
+}
+
+.support-panel.active{
+right:0;
+}
+
+.support-overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.60);
+z-index:9997;
+display:none;
+backdrop-filter:blur(3px);
+}
+
+.support-overlay.active{
+display:block;
+}
+
+.support-header{
+padding:22px 20px;
+background:
+linear-gradient(
+135deg,
+#063d8f,
+#124fd0,
+#06338a
+);
+position:relative;
+}
+
+.support-online{
+display:inline-flex;
+align-items:center;
+gap:7px;
 background:#16a34a;
-color:white;
-padding:12px 18px;
+padding:5px 11px;
+border-radius:999px;
+font-size:11px;
+font-weight:800;
+margin-bottom:10px;
+box-shadow:0 0 15px rgba(22,211,106,.35);
+}
+
+.support-online-dot{
+width:8px;
+height:8px;
+background:#fff;
+border-radius:50%;
+animation:greenPulse 1s infinite;
+}
+
+.support-header h2{
+font-size:18px;
+margin:0;
+}
+
+.support-close{
+position:absolute;
+right:16px;
+top:16px;
+width:34px;
+height:34px;
+border-radius:50%;
+border:1px solid rgba(255,255,255,.25);
+background:rgba(255,255,255,.08);
+color:#fff;
+font-size:24px;
+cursor:pointer;
+line-height:28px;
+}
+
+.support-content{
+padding:18px;
+}
+
+/* SUPPORT BOX */
+
+.support-box{
+background:rgba(255,255,255,.96);
+color:#172033;
 border-radius:15px;
-z-index:900;
-text-align:center;
-box-shadow:0 10px 25px rgba(0,0,0,.4);
+padding:16px;
+margin-bottom:14px;
+box-shadow:0 8px 25px rgba(0,0,0,.25);
 }
-.call-box a{
-color:white;
-font-weight:bold;
+
+.support-box-title{
+font-size:13px;
+font-weight:900;
+margin-bottom:10px;
+}
+
+.direct-btn{
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+gap:7px;
+padding:11px;
+border-radius:999px;
 text-decoration:none;
+font-size:13px;
+font-weight:800;
+margin-top:7px;
+transition:.3s;
 }
+
+.whatsapp-btn{
+background:#198754;
+color:#fff;
+box-shadow:0 0 12px rgba(25,135,84,.25);
+}
+
+.whatsapp-btn:hover{
+background:#157347;
+transform:translateY(-2px);
+box-shadow:0 0 20px rgba(25,135,84,.45);
+}
+
+.call-btn{
+background:#fff;
+color:#1687ff;
+border:1px solid #1687ff;
+}
+
+.call-btn:hover{
+background:#1687ff;
+color:#fff;
+transform:translateY(-2px);
+}
+
+/* TICKET FORM */
+
+.support-form input,
+.support-form select,
+.support-form textarea{
+width:100%;
+padding:10px 11px;
+margin-bottom:9px;
+border:1px solid #d7dce8;
+border-radius:8px;
+background:#fff;
+color:#172033;
+font-size:12px;
+outline:none;
+}
+
+.support-form input:focus,
+.support-form select:focus,
+.support-form textarea:focus{
+border-color:#1687ff;
+box-shadow:0 0 0 2px rgba(22,135,255,.12);
+}
+
+.support-form textarea{
+min-height:90px;
+resize:vertical;
+}
+
+.support-submit{
+width:100%;
+border:none;
+padding:11px;
+border-radius:999px;
+background:#1687ff;
+color:#fff;
+font-size:13px;
+font-weight:800;
+cursor:pointer;
+box-shadow:0 5px 15px rgba(22,135,255,.3);
+transition:.3s;
+}
+
+.support-submit:hover{
+background:#0869d4;
+transform:translateY(-2px);
+}
+
+.ticket-result{
+text-align:center;
+font-size:12px;
+font-weight:700;
+margin-top:10px;
+}
+
 /* =========================
 RESPONSIVE
 ========================= */
+
 @media(max-width:950px){
-.hero{grid-template-columns:1fr;text-align:center;}
-.hero p{margin:auto;}
-.actions{justify-content:center;}
-.visual{min-height:570px;}
+
+.hero{
+grid-template-columns:1fr;
+text-align:center;
 }
+
+.hero p{
+margin:auto;
+}
+
+.actions{
+justify-content:center;
+}
+
+.visual{
+min-height:570px;
+}
+
+}
+
 @media(max-width:850px){
-.menu-toggle{display:block;}
+
+.menu-toggle{
+display:block;
+}
+
 nav .links{
 display:none;
 position:absolute;
@@ -895,497 +1380,2103 @@ flex-direction:column;
 padding:20px 0;
 border-bottom:1px solid var(--line);
 }
-nav .links.active{display:flex;}
-nav a{margin:10px 0;font-size:16px;}
-.form{grid-template-columns:1fr;}
-.nav-buttons{margin-top:10px;}
+
+nav .links.active{
+display:flex;
 }
+
+nav a{
+margin:10px 0;
+font-size:16px;
+}
+
+.form{
+grid-template-columns:1fr;
+}
+
+.nav-buttons{
+margin-top:10px;
+}
+
+}
+
 @media(max-width:520px){
-nav{padding:15px 4%;}
-.logo{font-size:16px;}
-.nav-buttons{gap:5px;}
-.nav-buttons .btn{padding:10px 12px;font-size:11px;}
-.router-scene{width:340px;height:400px;transform:scale(.88);}
-.visual{min-height:500px;}
-.realtime-monitor{width:min(92vw,390px);}
-#liveClock{font-size:18px;}
-.call-box{bottom:10px;right:10px;padding:8px 12px;font-size:12px;}
-.coverage-search{flex-direction:column;}
-.coverage-search .btn{width:100%;}
+
+nav{
+padding:15px 4%;
+}
+
+.logo{
+font-size:16px;
+}
+
+.nav-buttons{
+gap:5px;
+}
+
+.nav-buttons .btn{
+padding:10px 12px;
+font-size:11px;
+}
+
+.router-scene{
+width:340px;
+height:400px;
+transform:scale(.88);
+}
+
+.visual{
+min-height:500px;
+}
+
+.realtime-monitor{
+width:min(92vw,390px);
+}
+
+#liveClock{
+font-size:18px;
+}
+
+.service-float{
+right:10px;
+bottom:10px;
+left:10px;
+}
+
+.service-main-btn{
+width:100%;
+font-size:13px;
+padding:13px 10px;
+}
+
+.support-panel{
+width:100%;
+max-width:100%;
+right:-100%;
+}
+
+.coverage-search{
+flex-direction:column;
+}
+
+.coverage-search .btn{
+width:100%;
+}
+
+}
+
+/* =========================
+ACCESSIBILITY
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+*,
+*::before,
+*::after{
+animation-duration:.001ms !important;
+animation-iteration-count:1 !important;
+transition-duration:.001ms !important;
+scroll-behavior:auto !important;
+}
+
 }
 </style>
 </head>
+
 <body>
 
 <canvas id="bgCanvas"></canvas>
 
+<!-- =========================
+NAVBAR
+========================= -->
+
 <nav>
-    <div class="logo"><b>MAPS</b> INTERNET</div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <div class="links" id="navLinks">
-        <a href="#packages" onclick="toggleMenu()">প্যাকেজ</a>
-        <a href="#coverage" onclick="toggleMenu()">Coverage</a>
-        <a href="#connection" onclick="toggleMenu()">নতুন সংযোগ</a>
-        <a href="#" onclick="openBkash();toggleMenu();return false;">💳 bKash Payment</a>
-        <a href="#" onclick="openLogin();toggleMenu();return false;">👤 Customer Login</a>
-    </div>
-    <div class="nav-buttons">
-        <a class="btn" href="http://192.168.100.100/" target="_blank">🎬 FTP Server</a>
-        <a class="btn" href="#connection">সংযোগ নিন</a>
-        <a class="btn" href="#" onclick="openAuthLogin(); return false;" style="background: linear-gradient(135deg, #ffd21f, #ff9f43, #e2136e);">🔐 Authorized Login</a>
-    </div>
+
+<div class="logo">
+<b>MAPS</b> INTERNET
+</div>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<div class="links" id="navLinks">
+
+<a href="#packages" onclick="toggleMenu()">প্যাকেজ</a>
+
+<a href="#coverage" onclick="toggleMenu()">Coverage</a>
+
+<a href="#connection" onclick="toggleMenu()">নতুন সংযোগ</a>
+
+<a href="#" onclick="openBkash();toggleMenu();return false;">
+💳 bKash Payment
+</a>
+
+<a href="#" onclick="openLogin();toggleMenu();return false;">
+👤 Customer Login
+</a>
+
+</div>
+
+<div class="nav-buttons">
+
+<a
+class="btn"
+href="http://192.168.100.100/"
+target="_blank">
+🎬 FTP Server
+</a>
+
+<a class="btn" href="#connection">
+সংযোগ নিন
+</a>
+
+<a
+class="btn"
+href="#"
+onclick="openAuthLogin();return false;"
+style="background:linear-gradient(135deg,#ffd21f,#ff9f43,#e2136e);">
+🔐 Authorized Login
+</a>
+
+</div>
+
 </nav>
 
+
+<!-- =========================
+HERO
+========================= -->
+
 <header class="hero">
-    <div>
-        <div class="tag">NEXT GENERATION BROADBAND</div>
-        <h1>ইন্টারনেটের <span>নতুন গতি</span><br>নতুন অভিজ্ঞতা</h1>
-        <p>MAPS INTERNET-এর সাথে উপভোগ করুন দ্রুত, নির্ভরযোগ্য ও স্মার্ট ইন্টারনেট। Gaming, Streaming এবং Office-এর জন্য একটি শক্তিশালী ডিজিটাল সংযোগ।</p>
-        <div class="actions">
-            <a class="btn" href="#packages">প্যাকেজ দেখুন</a>
-            <a class="ghost" href="#connection">নতুন সংযোগ নিন</a>
-        </div>
-    </div>
-    <div class="visual">
-        <div class="router-scene">
-            <div class="scene-glow"></div>
-            <div class="city-glow"></div>
-            <div class="connection-line cl1"></div>
-            <div class="connection-line cl2"></div>
-            <div class="connection-line cl3"></div>
-            <div class="connection-line cl4"></div>
-            <div class="network-dot nd1"></div>
-            <div class="network-dot nd2"></div>
-            <div class="network-dot nd3"></div>
-            <div class="network-dot nd4"></div>
-            <div class="network-dot nd5"></div>
-            <div class="wifi-symbol">
-                <div class="wifi-arc arc-1"></div>
-                <div class="wifi-arc arc-2"></div>
-                <div class="wifi-arc arc-3"></div>
-                <div class="wifi-dot"></div>
-            </div>
-            <div class="orbit orbit-1"></div>
-            <div class="orbit orbit-2"></div>
-            <div class="orbit orbit-3"></div>
-            <div class="data-wave"></div>
-            <div class="data-wave wave2"></div>
-            <div class="data-wave wave3"></div>
-            <div class="router">
-                <div class="antenna ant1"></div>
-                <div class="antenna ant2"></div>
-                <div class="router-body">
-                    <div class="router-top"></div>
-                    <div class="router-light">
-                        <span></span><span></span><span></span><span></span><span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="realtime-monitor">
-            <div class="monitor-header">
-                <span>⚡ Live Network Stream</span>
-                <div class="live-badge">
-                    <div class="live-dot"></div>
-                    <span>Active</span>
-                </div>
-            </div>
-            <div class="monitor-stats">
-                <span>Ping: <b id="pingVal">2 ms</b></span>
-                <span>Speed: <b id="speedVal">120 Mbps</b></span>
-                <span>Flow: <b>Stable</b></span>
-            </div>
-            <div class="monitor-clock">
-                <span class="clock-label">🕒 তারিখ ও সময় (12 Hours)</span>
-                <span id="liveClock">00:00:00 AM | 00 Mon 2026</span>
-            </div>
-        </div>
-    </div>
+
+<div>
+
+<div class="tag">
+NEXT GENERATION BROADBAND
+</div>
+
+<h1>
+ইন্টারনেটের <span>নতুন গতি</span><br>
+নতুন অভিজ্ঞতা
+</h1>
+
+<p>
+MAPS INTERNET-এর সাথে উপভোগ করুন দ্রুত, নির্ভরযোগ্য ও স্মার্ট ইন্টারনেট।
+Gaming, Streaming এবং Office-এর জন্য একটি শক্তিশালী ডিজিটাল সংযোগ।
+</p>
+
+<div class="actions">
+
+<a class="btn" href="#packages">
+প্যাকেজ দেখুন
+</a>
+
+<a class="ghost" href="#connection">
+নতুন সংযোগ নিন
+</a>
+
+</div>
+
+</div>
+
+
+<div class="visual">
+
+<div class="router-scene">
+
+<div class="scene-glow"></div>
+
+<div class="city-glow"></div>
+
+<div class="connection-line cl1"></div>
+<div class="connection-line cl2"></div>
+<div class="connection-line cl3"></div>
+<div class="connection-line cl4"></div>
+
+<div class="network-dot nd1"></div>
+<div class="network-dot nd2"></div>
+<div class="network-dot nd3"></div>
+<div class="network-dot nd4"></div>
+<div class="network-dot nd5"></div>
+
+<div class="wifi-symbol">
+
+<div class="wifi-arc arc-1"></div>
+<div class="wifi-arc arc-2"></div>
+<div class="wifi-arc arc-3"></div>
+<div class="wifi-dot"></div>
+
+</div>
+
+<div class="orbit orbit-1"></div>
+<div class="orbit orbit-2"></div>
+<div class="orbit orbit-3"></div>
+
+<div class="data-wave"></div>
+<div class="data-wave wave2"></div>
+<div class="data-wave wave3"></div>
+
+<div class="router">
+
+<div class="antenna ant1"></div>
+<div class="antenna ant2"></div>
+
+<div class="router-body">
+
+<div class="router-top"></div>
+
+<div class="router-light">
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+<div class="realtime-monitor">
+
+<div class="monitor-header">
+
+<span>
+⚡ Live Network Stream
+</span>
+
+<div class="live-badge">
+
+<div class="live-dot"></div>
+
+<span>
+Active
+</span>
+
+</div>
+
+</div>
+
+<div class="monitor-stats">
+
+<span>
+Ping: <b id="pingVal">2 ms</b>
+</span>
+
+<span>
+Speed: <b id="speedVal">120 Mbps</b>
+</span>
+
+<span>
+Flow: <b>Stable</b>
+</span>
+
+</div>
+
+<div class="monitor-clock">
+
+<span class="clock-label">
+🕒 তারিখ ও সময় (12 Hours)
+</span>
+
+<span id="liveClock">
+00:00:00 AM | 00 Mon 2026
+</span>
+
+</div>
+
+</div>
+
+</div>
+
 </header>
 
+
+<!-- =========================
+PACKAGES
+========================= -->
+
 <section id="packages">
-    <h2 class="title">সুপার ফাস্ট ইন্টারনেট প্যাকেজ</h2>
-    <p class="sub">আপনার প্রয়োজন অনুযায়ী সাশ্রয়ী ও শক্তিশালী ইন্টারনেট প্যাকেজ বেছে নিন</p>
-    <div class="grid" id="packageGrid"></div>
+
+<h2 class="title">
+সুপার ফাস্ট ইন্টারনেট প্যাকেজ
+</h2>
+
+<p class="sub">
+আপনার প্রয়োজন অনুযায়ী সাশ্রয়ী ও শক্তিশালী ইন্টারনেট প্যাকেজ বেছে নিন
+</p>
+
+<div class="grid" id="packageGrid"></div>
+
 </section>
+
+
+<!-- =========================
+COVERAGE
+========================= -->
 
 <section id="coverage">
-    <div class="coverage">
-        <div class="tag">CHECK YOUR AREA</div>
-        <h2 class="title">আপনার এলাকায় MAPS INTERNET আছে?</h2>
-        <p class="sub">এলাকার নাম লিখে আমাদের কভারেজ সম্পর্কে জানতে পারবেন।</p>
-        <div class="coverage-search">
-            <input id="area" placeholder="আপনার এলাকার নাম লিখুন">
-            <button class="btn" type="button" onclick="checkCoverage()">Check</button>
-        </div>
-        <p id="coverageResult" style="margin-top:15px;font-weight:bold;color:#47e7ff"></p>
-    </div>
+
+<div class="coverage">
+
+<div class="tag">
+CHECK YOUR AREA
+</div>
+
+<h2 class="title">
+আপনার এলাকায় MAPS INTERNET আছে?
+</h2>
+
+<p class="sub">
+এলাকার নাম লিখে আমাদের কভারেজ সম্পর্কে জানতে পারবেন।
+</p>
+
+<div class="coverage-search">
+
+<input
+id="area"
+placeholder="আপনার এলাকার নাম লিখুন">
+
+<button
+class="btn"
+type="button"
+onclick="checkCoverage()">
+Check
+</button>
+
+</div>
+
+<p
+id="coverageResult"
+style="margin-top:15px;font-weight:bold;color:#47e7ff">
+</p>
+
+</div>
+
 </section>
+
+
+<!-- =========================
+NEW CONNECTION
+========================= -->
 
 <section id="connection">
-    <h2 class="title">নতুন ইন্টারনেট সংযোগ নিন</h2>
-    <p class="sub">ফর্ম পূরণ করুন, আমাদের টিম আপনার সাথে যোগাযোগ করবে।</p>
-    <form class="form" onsubmit="submitMainForm(event)">
-        <input id="mainName" placeholder="আপনার নাম" required>
-        <input id="mainPhone" type="tel" placeholder="মোবাইল নম্বর" required>
-        <select id="mainPackage" required>
-            <option value="">পছন্দের প্যাকেজ নির্বাচন করুন</option>
-            <option>20 Mbps - 500 টাকা</option>
-            <option>30 Mbps - 600 টাকা</option>
-            <option>50 Mbps - 800 টাকা</option>
-            <option>80 Mbps - 1000 টাকা</option>
-            <option>120 Mbps - 1300 টাকা</option>
-            <option>140 Mbps - 1500 টাকা</option>
-            <option>170 Mbps - 1700 টাকা</option>
-            <option>220 Mbps - 2000 টাকা</option>
-            <option>350 Mbps - 3000 টাকা</option>
-        </select>
-        <input id="mainArea" placeholder="এলাকার নাম" required>
-        <textarea id="mainAddress" placeholder="সম্পূর্ণ ঠিকানা" required></textarea>
-        <button class="btn" type="submit" id="submitBtn">সংযোগের আবেদন করুন</button>
-    </form>
-    <p id="formResult" style="text-align:center;margin-top:20px;font-size:16px"></p>
+
+<h2 class="title">
+নতুন ইন্টারনেট সংযোগ নিন
+</h2>
+
+<p class="sub">
+ফর্ম পূরণ করুন, আমাদের টিম আপনার সাথে যোগাযোগ করবে।
+</p>
+
+<form
+class="form"
+onsubmit="submitMainForm(event)">
+
+<input
+id="mainName"
+placeholder="আপনার নাম"
+required>
+
+<input
+id="mainPhone"
+type="tel"
+placeholder="মোবাইল নম্বর"
+required>
+
+<select id="mainPackage" required>
+
+<option value="">
+পছন্দের প্যাকেজ নির্বাচন করুন
+</option>
+
+<option>
+20 Mbps - 500 টাকা
+</option>
+
+<option>
+30 Mbps - 600 টাকা
+</option>
+
+<option>
+50 Mbps - 800 টাকা
+</option>
+
+<option>
+80 Mbps - 1000 টাকা
+</option>
+
+<option>
+120 Mbps - 1300 টাকা
+</option>
+
+<option>
+140 Mbps - 1500 টাকা
+</option>
+
+<option>
+170 Mbps - 1700 টাকা
+</option>
+
+<option>
+220 Mbps - 2000 টাকা
+</option>
+
+<option>
+350 Mbps - 3000 টাকা
+</option>
+
+</select>
+
+<input
+id="mainArea"
+placeholder="এলাকার নাম"
+required>
+
+<textarea
+id="mainAddress"
+placeholder="সম্পূর্ণ ঠিকানা"
+required></textarea>
+
+<button
+class="btn"
+type="submit"
+id="submitBtn">
+সংযোগের আবেদন করুন
+</button>
+
+</form>
+
+<p
+id="formResult"
+style="text-align:center;margin-top:20px;font-size:16px">
+</p>
+
 </section>
 
+
+<!-- =========================
+FOOTER
+========================= -->
+
 <footer>
-    <div class="logo"><b>MAPS</b> INTERNET</div>
-    <p>সংযোগ যখন আস্থার গতি, তখন আপনার হাতে ডিজিটাল দুনিয়া।</p>
-    <p>© 2026 MAPS INTERNET</p>
+
+<div class="logo">
+<b>MAPS</b> INTERNET
+</div>
+
+<p>
+সংযোগ যখন আস্থার গতি, তখন আপনার হাতে ডিজিটাল দুনিয়া।
+</p>
+
+<p>
+© 2026 MAPS INTERNET
+</p>
+
 </footer>
 
-<div id="bkashPopup" class="popup-overlay">
-    <div class="popup-card">
-        <span class="close-popup" onclick="closeBkash()">×</span>
-        <h2 style="text-align:center">💳 bKash Payment</h2>
-        <p style="text-align:center"><b>bKash Merchant Number</b></p>
-        <h1 style="color:#e2136e;text-align:center;margin:10px 0">01827700022</h1>
-        <hr style="border-color:rgba(255,255,255,.12)">
-        <p style="line-height:1.8;font-size:14px">
-            1️⃣ bKash App খুলুন<br>
-            2️⃣ Make Payment নির্বাচন করুন<br>
-            3️⃣ Merchant Number দিন: <b>01827700022</b><br>
-            4️⃣ বিলের Amount দিন<br>
-            5️⃣ Reference-এ Customer ID দিন<br>
-            6️⃣ PIN দিয়ে Payment সম্পন্ন করুন
-        </p>
-        <button class="popup-button" style="background:#e2136e;color:white" onclick="copyBkash()">📋 Copy Merchant Number</button>
-    </div>
+
+<!-- =========================
+BKASH POPUP
+========================= -->
+
+<div
+id="bkashPopup"
+class="popup-overlay">
+
+<div class="popup-card">
+
+<span
+class="close-popup"
+onclick="closeBkash()">
+×
+</span>
+
+<h2 style="text-align:center">
+💳 bKash Payment
+</h2>
+
+<p style="text-align:center">
+<b>bKash Merchant Number</b>
+</p>
+
+<h1
+style="color:#e2136e;text-align:center;margin:10px 0">
+01827700022
+</h1>
+
+<hr style="border-color:rgba(255,255,255,.12)">
+
+<p style="line-height:1.8;font-size:14px">
+
+1️⃣ bKash App খুলুন<br>
+
+2️⃣ Make Payment নির্বাচন করুন<br>
+
+3️⃣ Merchant Number দিন:
+<b>01827700022</b><br>
+
+4️⃣ বিলের Amount দিন<br>
+
+5️⃣ Reference-এ Customer ID দিন<br>
+
+6️⃣ PIN দিয়ে Payment সম্পন্ন করুন
+
+</p>
+
+<button
+class="popup-button"
+style="background:#e2136e;color:white"
+onclick="copyBkash()">
+
+📋 Copy Merchant Number
+
+</button>
+
 </div>
 
-<div id="authLoginPopup" class="popup-overlay">
-    <div class="popup-card">
-        <span class="close-popup" onclick="closeAuthLogin()">×</span>
-        <h2 style="text-align:center; color:var(--cyan);">🔐 Authorized Login</h2>
-        <div id="authLoginForm">
-            <input id="authUsername" placeholder="Username (ইউজারনেম)">
-            <input id="authPassword" type="password" placeholder="Password (পাসওয়ার্ড)">
-            <button class="popup-button" style="background:var(--cyan); color:#07101d;" onclick="verifyAuthLogin()">Login</button>
-            <p id="authLoginResult" style="text-align:center; margin-top:15px;"></p>
-        </div>
-    </div>
 </div>
 
-<div id="loginPopup" class="popup-overlay">
-    <div class="popup-card">
-        <span class="close-popup" onclick="closeLogin()">×</span>
-        <h2 style="text-align:center">👤 Customer Login</h2>
-        <input id="loginCustomerId" placeholder="Customer ID">
-        <input id="loginPassword" type="password" placeholder="Password">
-        <button class="popup-button" style="background:#47e7ff;color:#07101d" onclick="customerLogin()">Login করুন</button>
-        <p id="loginResult" style="text-align:center;margin-top:15px"></p>
-    </div>
+
+<!-- =========================
+AUTHORIZED LOGIN
+========================= -->
+
+<div
+id="authLoginPopup"
+class="popup-overlay">
+
+<div class="popup-card">
+
+<span
+class="close-popup"
+onclick="closeAuthLogin()">
+×
+</span>
+
+<h2
+style="text-align:center;color:var(--cyan);">
+🔐 Authorized Login
+</h2>
+
+<div id="authLoginForm">
+
+<input
+id="authUsername"
+placeholder="Username (ইউজারনেম)">
+
+<input
+id="authPassword"
+type="password"
+placeholder="Password (পাসওয়ার্ড)">
+
+<button
+class="popup-button"
+style="background:var(--cyan);color:#07101d;"
+onclick="verifyAuthLogin()">
+
+Login
+
+</button>
+
+<p
+id="authLoginResult"
+style="text-align:center;margin-top:15px;">
+</p>
+
 </div>
 
-<div class="call-box">
-    📞 সংযোগ পেতে কল করুন<br>
-    <a href="tel:01827700011">01827700011</a> | <a href="tel:01827700022">01827700022</a>
 </div>
+
+</div>
+
+
+<!-- =========================
+CUSTOMER LOGIN
+========================= -->
+
+<div
+id="loginPopup"
+class="popup-overlay">
+
+<div class="popup-card">
+
+<span
+class="close-popup"
+onclick="closeLogin()">
+×
+</span>
+
+<h2 style="text-align:center">
+👤 Customer Login
+</h2>
+
+<input
+id="loginCustomerId"
+placeholder="Customer ID">
+
+<input
+id="loginPassword"
+type="password"
+placeholder="Password">
+
+<button
+class="popup-button"
+style="background:#47e7ff;color:#07101d"
+onclick="customerLogin()">
+
+Login করুন
+
+</button>
+
+<p
+id="loginResult"
+style="text-align:center;margin-top:15px">
+</p>
+
+</div>
+
+</div>
+
+
+<!-- =================================================
+SUPPORT OVERLAY
+================================================= -->
+
+<div
+id="supportOverlay"
+class="support-overlay"
+onclick="closeSupportPanel()">
+</div>
+
+
+<!-- =================================================
+RIGHT SUPPORT PANEL
+================================================= -->
+
+<div
+id="supportPanel"
+class="support-panel">
+
+<div class="support-header">
+
+<div class="support-online">
+
+<div class="support-online-dot"></div>
+
+Agents Online 24/7
+
+</div>
+
+<h2>
+MAPS INTERNET Support
+</h2>
+
+<button
+class="support-close"
+onclick="closeSupportPanel()">
+×
+</button>
+
+</div>
+
+
+<div class="support-content">
+
+
+<!-- DIRECT SUPPORT -->
+
+<div class="support-box">
+
+<div class="support-box-title">
+⚡ Instant Support Direct Lines
+</div>
+
+<a
+href="https://wa.me/8801827700011"
+target="_blank"
+class="direct-btn whatsapp-btn">
+
+💬 Chat on WhatsApp
+
+</a>
+
+<a
+href="tel:01827700011"
+class="direct-btn call-btn">
+
+📞 +880 18277 00011
+
+</a>
+
+</div>
+
+<a
+href="https://wa.me/8801827700022"
+target="_blank"
+class="direct-btn whatsapp-btn">
+
+💬 Chat on WhatsApp
+
+</a>
+
+<a
+href="tel:01827700011"
+class="direct-btn call-btn">
+
+📞 +880 18277 00022
+
+</a>
+
+</div>
+
+<!-- SUPPORT TICKET -->
+
+<div class="support-box">
+
+<div class="support-box-title">
+🛠️ Create Support Ticket
+</div>
+
+<form
+class="support-form"
+onsubmit="submitSupportTicket(event)">
+
+<input
+id="supportName"
+type="text"
+placeholder="Your Name..."
+required>
+
+<input
+id="supportPhone"
+type="tel"
+placeholder="Mobile Number (e.g. 01700000000)"
+required>
+
+<select
+id="supportIssue"
+required>
+
+<option value="">
+Line Cut / No Internet
+</option>
+
+<option>
+Line Cut / No Internet
+</option>
+
+<option>
+Slow Speed Issue
+</option>
+
+<option>
+Billing & Payment Question
+</option>
+
+<option>
+Router Setup & Wi-Fi
+</option>
+
+<option>
+New Connection
+</option>
+
+<option>
+Other Service
+</option>
+
+</select>
+
+<textarea
+id="supportMessage"
+placeholder="Describe your problem..."
+required></textarea>
+
+<button
+class="support-submit"
+type="submit">
+
+➤ Submit Support Ticket
+
+</button>
+
+<div
+id="ticketResult"
+class="ticket-result">
+</div>
+
+</form>
+
+</div>
+
+
+<!-- QUICK HELP -->
+
+<div class="support-box">
+
+<div class="support-box-title">
+🚀 Quick Service
+</div>
+
+<button
+class="direct-btn call-btn"
+onclick="goToConnection()">
+
+🌐 নতুন সংযোগ নিতে ক্লিক করুন
+
+</button>
+
+<button
+class="direct-btn call-btn"
+onclick="closeSupportPanel();openBkash();">
+
+💳 বিল / bKash Payment
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =================================================
+FLOATING SERVICE BUTTON
+================================================= -->
+
+<div class="service-float">
+
+<button
+class="service-main-btn"
+onclick="openSupportPanel()">
+
+✨ সংযোগ পেতে বা সার্ভিস পেতে ক্লিক করুন
+
+</button>
+
+</div>
+
 
 <script>
+
+/* =================================================
+CANVAS PARTICLES
+================================================= */
+
 const canvas = document.getElementById("bgCanvas");
 const ctx = canvas.getContext("2d");
 
-function resizeCanvas() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+function resizeCanvas(){
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
 }
-window.addEventListener("resize", resizeCanvas);
+
+window.addEventListener("resize",resizeCanvas);
+
 resizeCanvas();
 
 let particlesArray = [];
-const numberOfParticles = Math.floor((window.innerWidth * window.innerHeight) / 12000);
+
+const numberOfParticles =
+Math.floor(
+(window.innerWidth * window.innerHeight) / 12000
+);
 
 let mouse = {
-    x: null,
-    y: null,
-    radius: 150
+x:null,
+y:null,
+radius:150
 };
 
-window.addEventListener("mousemove", (event) => {
-    mouse.x = event.clientX;
-    mouse.y = event.clientY;
+window.addEventListener("mousemove",(event)=>{
+
+mouse.x = event.clientX;
+mouse.y = event.clientY;
+
 });
 
-window.addEventListener("mouseout", () => {
-    mouse.x = null;
-    mouse.y = null;
+window.addEventListener("mouseout",()=>{
+
+mouse.x = null;
+mouse.y = null;
+
 });
 
-class Particle {
-    constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.8;
-        this.vy = (Math.random() - 0.5) * 0.8;
-        this.baseSize = Math.random() * 2 + 1;
-        this.size = this.baseSize;
-    }
-    update() {
-        this.x += this.vx;
-        this.y += this.vy;
 
-        if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
-        if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
+class Particle{
 
-        if (mouse.x !== null && mouse.y !== null) {
-            let dx = mouse.x - this.x;
-            let dy = mouse.y - this.y;
-            let distance = Math.sqrt(dx * dx + dy * dy);
+constructor(){
 
-            if (distance < mouse.radius) {
-                const forceDirectionX = dx / distance;
-                const forceDirectionY = dy / distance;
-                const force = (mouse.radius - distance) / mouse.radius;
-                
-                this.x += forceDirectionX * force * 2;
-                this.y += forceDirectionY * force * 2;
-            }
-        }
-    }
-    draw() {
-        let isTouching = false;
-        if (mouse.x !== null && mouse.y !== null) {
-            let dx = mouse.x - this.x;
-            let dy = mouse.y - this.y;
-            let distance = Math.sqrt(dx * dx + dy * dy);
-            if (distance < 35) {
-                isTouching = true;
-            }
-        }
+this.x =
+Math.random() * canvas.width;
 
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, isTouching ? this.size * 2.2 : this.size, 0, Math.PI * 2);
-        
-        if (isTouching) {
-            ctx.fillStyle = "#ffffff";
-            ctx.shadowBlur = 15;
-            ctx.shadowColor = "#47e7ff";
-        } else {
-            ctx.fillStyle = "rgba(71, 231, 255, 0.7)";
-            ctx.shadowBlur = 0;
-        }
-        ctx.fill();
-        ctx.shadowBlur = 0;
-    }
+this.y =
+Math.random() * canvas.height;
+
+this.vx =
+(Math.random() - .5) * .8;
+
+this.vy =
+(Math.random() - .5) * .8;
+
+this.baseSize =
+Math.random() * 2 + 1;
+
+this.size =
+this.baseSize;
+
 }
 
-function initParticles() {
-    particlesArray = [];
-    for (let i = 0; i < numberOfParticles; i++) {
-        particlesArray.push(new Particle());
-    }
+update(){
+
+this.x += this.vx;
+this.y += this.vy;
+
+if(
+this.x < 0 ||
+this.x > canvas.width
+){
+this.vx = -this.vx;
 }
+
+if(
+this.y < 0 ||
+this.y > canvas.height
+){
+this.vy = -this.vy;
+}
+
+if(
+mouse.x !== null &&
+mouse.y !== null
+){
+
+let dx =
+mouse.x - this.x;
+
+let dy =
+mouse.y - this.y;
+
+let distance =
+Math.sqrt(
+dx * dx +
+dy * dy
+);
+
+if(distance < mouse.radius){
+
+const forceDirectionX =
+dx / distance;
+
+const forceDirectionY =
+dy / distance;
+
+const force =
+(mouse.radius - distance) /
+mouse.radius;
+
+this.x +=
+forceDirectionX *
+force *
+2;
+
+this.y +=
+forceDirectionY *
+force *
+2;
+
+}
+
+}
+
+}
+
+draw(){
+
+let isTouching = false;
+
+if(
+mouse.x !== null &&
+mouse.y !== null
+){
+
+let dx =
+mouse.x - this.x;
+
+let dy =
+mouse.y - this.y;
+
+let distance =
+Math.sqrt(
+dx * dx +
+dy * dy
+);
+
+if(distance < 35){
+
+isTouching = true;
+
+}
+
+}
+
+ctx.beginPath();
+
+ctx.arc(
+this.x,
+this.y,
+isTouching ?
+this.size * 2.2 :
+this.size,
+0,
+Math.PI * 2
+);
+
+if(isTouching){
+
+ctx.fillStyle = "#ffffff";
+
+ctx.shadowBlur = 15;
+
+ctx.shadowColor = "#47e7ff";
+
+}else{
+
+ctx.fillStyle =
+"rgba(71,231,255,.7)";
+
+ctx.shadowBlur = 0;
+
+}
+
+ctx.fill();
+
+ctx.shadowBlur = 0;
+
+}
+
+}
+
+
+function initParticles(){
+
+particlesArray = [];
+
+for(
+let i = 0;
+i < numberOfParticles;
+i++
+){
+
+particlesArray.push(
+new Particle()
+);
+
+}
+
+}
+
 initParticles();
 
-function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
-    for (let i = 0; i < particlesArray.length; i++) {
-        particlesArray[i].update();
-        particlesArray[i].draw();
 
-        for (let j = i + 1; j < particlesArray.length; j++) {
-            let dx = particlesArray[i].x - particlesArray[j].x;
-            let dy = particlesArray[i].y - particlesArray[j].y;
-            let distance = Math.sqrt(dx * dx + dy * dy);
+function animateParticles(){
 
-            if (distance < 110) {
-                ctx.strokeStyle = `rgba(71, 231, 255, ${1 - distance / 110})`;
-                ctx.lineWidth = 0.6;
-                ctx.beginPath();
-                ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
-                ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
-                ctx.stroke();
-            }
-        }
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
 
-        if (mouse.x !== null && mouse.y !== null) {
-            let mdx = particlesArray[i].x - mouse.x;
-            let mdy = particlesArray[i].y - mouse.y;
-            let mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+for(
+let i = 0;
+i < particlesArray.length;
+i++
+){
 
-            if (mDist < mouse.radius) {
-                ctx.strokeStyle = `rgba(22, 135, 255, ${(1 - mDist / mouse.radius) * 0.8})`;
-                ctx.lineWidth = 0.8;
-                ctx.beginPath();
-                ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
-                ctx.lineTo(mouse.x, mouse.y);
-                ctx.stroke();
-            }
-        }
-    }
-    requestAnimationFrame(animateParticles);
+particlesArray[i].update();
+
+particlesArray[i].draw();
+
+
+for(
+let j = i + 1;
+j < particlesArray.length;
+j++
+){
+
+let dx =
+particlesArray[i].x -
+particlesArray[j].x;
+
+let dy =
+particlesArray[i].y -
+particlesArray[j].y;
+
+let distance =
+Math.sqrt(
+dx * dx +
+dy * dy
+);
+
+if(distance < 110){
+
+ctx.strokeStyle =
+`rgba(71,231,255,${
+1 - distance / 110
+})`;
+
+ctx.lineWidth = .6;
+
+ctx.beginPath();
+
+ctx.moveTo(
+particlesArray[i].x,
+particlesArray[i].y
+);
+
+ctx.lineTo(
+particlesArray[j].x,
+particlesArray[j].y
+);
+
+ctx.stroke();
+
 }
+
+}
+
+
+if(
+mouse.x !== null &&
+mouse.y !== null
+){
+
+let mdx =
+particlesArray[i].x -
+mouse.x;
+
+let mdy =
+particlesArray[i].y -
+mouse.y;
+
+let mDist =
+Math.sqrt(
+mdx * mdx +
+mdy * mdy
+);
+
+if(mDist < mouse.radius){
+
+ctx.strokeStyle =
+`rgba(22,135,255,${
+(1 - mDist / mouse.radius) * .8
+})`;
+
+ctx.lineWidth = .8;
+
+ctx.beginPath();
+
+ctx.moveTo(
+particlesArray[i].x,
+particlesArray[i].y
+);
+
+ctx.lineTo(
+mouse.x,
+mouse.y
+);
+
+ctx.stroke();
+
+}
+
+}
+
+}
+
+requestAnimationFrame(
+animateParticles
+);
+
+}
+
 animateParticles();
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbysoiZDEWChVN3x8seAzZXBM0F4IotVQvV7e1LaCa-GoCpzijPsNqPQJiVjbjU7On3m/exec";
+
+/* =================================================
+GOOGLE SCRIPT
+================================================= */
+
+const GOOGLE_SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbysoiZDEWChVN3x8seAzZXBM0F4IotVQvV7e1LaCa-GoCpzijPsNqPQJiVjbjU7On3m/exec";
+
+
+/* =================================================
+LIVE CLOCK
+================================================= */
 
 function updateClock(){
-    const now = new Date();
-    let hours = now.getHours();
-    const minutes = String(now.getMinutes()).padStart(2,'0');
-    const seconds = String(now.getSeconds()).padStart(2,'0');
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    
-    hours = hours % 12;
-    hours = hours ? hours : 12; 
-    const formattedHours = String(hours).padStart(2,'0');
 
-    const day = String(now.getDate()).padStart(2,'0');
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    const month = months[now.getMonth()];
-    const year = now.getFullYear();
+const now = new Date();
 
-    document.getElementById("liveClock").innerText = `${formattedHours}:${minutes}:${seconds} ${ampm} | ${day} ${month} ${year}`;
-}
-setInterval(updateClock, 1000);
-updateClock();
+let hours =
+now.getHours();
 
-setInterval(() => {
-    document.getElementById("pingVal").innerText = Math.floor(Math.random() * 4) + 1 + " ms";
-}, 3000);
+const minutes =
+String(now.getMinutes())
+.padStart(2,"0");
 
-const packages = [
-    {speed:"20 Mbps", price:"500 টাকা", features:["Unlimited Browsing", "YouTube 1080p", "Real IP Optional", "24/7 Support"]},
-    {speed:"30 Mbps", price:"600 টাকা", features:["Fast Downloading", "YouTube 4K", "BDIX Enabled", "24/7 Support"]},
-    {speed:"50 Mbps", price:"800 টাকা", features:["HD Gaming & Streaming", "YouTube 4K", "BDIX Super Fast", "Priority Support"]},
-    {speed:"80 Mbps", price:"1000 টাকা", features:["Ultra Fast Gaming", "Multi-Device Streaming", "Free BDIX FTP", "Dedicated Support"]},
-    {speed:"120 Mbps", price:"1300 টাকা", features:["Professional Gaming", "Heavy Office Work", "Direct BDIX", "VIP Support"]},
-    {speed:"140 Mbps", price:"1500 টাকা", features:["Enterprise Grade", "Extreme Speed", "Unlimited Data", "VIP Support"]},
-    {speed:"170 Mbps", price:"1700 টাকা", features:["Ultra Enterprise", "Zero Latency Gaming", "Dedicated Server", "VIP Support"]},
-    {speed:"220 Mbps", price:"2000 টাকা", features:["Gigabit Experience", "Extreme Power", "Custom Setup", "24/7 Support"]},
-    {speed:"350 Mbps", price:"3000 টাকা", features:["Ultimate Speed", "Corporate Solutions", "Dedicated Bandwidth", "VIP Support"]}
+const seconds =
+String(now.getSeconds())
+.padStart(2,"0");
+
+const ampm =
+hours >= 12 ?
+"PM" :
+"AM";
+
+hours =
+hours % 12;
+
+hours =
+hours ?
+hours :
+12;
+
+const formattedHours =
+String(hours)
+.padStart(2,"0");
+
+const day =
+String(now.getDate())
+.padStart(2,"0");
+
+const months = [
+"Jan",
+"Feb",
+"Mar",
+"Apr",
+"May",
+"Jun",
+"Jul",
+"Aug",
+"Sep",
+"Oct",
+"Nov",
+"Dec"
 ];
 
-const packageGrid = document.getElementById("packageGrid");
-if(packageGrid) {
-    packages.forEach(pkg => {
-        const fullPkgString = `${pkg.speed} - ${pkg.price}`;
-        packageGrid.innerHTML += `
-            <div class="card">
-                <div>
-                    <div class="speed">${pkg.speed}</div>
-                    <div class="price">${pkg.price}</div>
-                    <ul class="features">
-                        ${pkg.features.map(f => `<li>${f}</li>`).join('')}
-                    </ul>
-                </div>
-                <a href="#connection" class="card-btn" onclick="selectPackage('${fullPkgString}')">প্যাকেজ নিন</a>
-            </div>
-        `;
-    });
+const month =
+months[now.getMonth()];
+
+const year =
+now.getFullYear();
+
+document.getElementById(
+"liveClock"
+).innerText =
+`${formattedHours}:${minutes}:${seconds} ${ampm} | ${day} ${month} ${year}`;
+
 }
 
-function selectPackage(pkgName) {
-    const selectElem = document.getElementById("mainPackage");
-    for(let i = 0; i < selectElem.options.length; i++) {
-        if(selectElem.options[i].text === pkgName) {
-            selectElem.selectedIndex = i;
-            break;
-        }
-    }
+setInterval(
+updateClock,
+1000
+);
+
+updateClock();
+
+
+/* =================================================
+PING
+================================================= */
+
+setInterval(()=>{
+
+document.getElementById(
+"pingVal"
+).innerText =
+Math.floor(
+Math.random() * 4
+) + 1 + " ms";
+
+},3000);
+
+
+/* =================================================
+PACKAGES
+================================================= */
+
+const packages = [
+
+{
+speed:"20 Mbps",
+price:"500 টাকা",
+features:[
+"Unlimited Browsing",
+"YouTube 1080p",
+"Real IP Optional",
+"24/7 Support"
+]
+},
+
+{
+speed:"30 Mbps",
+price:"600 টাকা",
+features:[
+"Fast Downloading",
+"YouTube 4K",
+"BDIX Enabled",
+"24/7 Support"
+]
+},
+
+{
+speed:"50 Mbps",
+price:"800 টাকা",
+features:[
+"HD Gaming & Streaming",
+"YouTube 4K",
+"BDIX Super Fast",
+"Priority Support"
+]
+},
+
+{
+speed:"80 Mbps",
+price:"1000 টাকা",
+features:[
+"Ultra Fast Gaming",
+"Multi-Device Streaming",
+"Free BDIX FTP",
+"Dedicated Support"
+]
+},
+
+{
+speed:"120 Mbps",
+price:"1300 টাকা",
+features:[
+"Professional Gaming",
+"Heavy Office Work",
+"Direct BDIX",
+"VIP Support"
+]
+},
+
+{
+speed:"140 Mbps",
+price:"1500 টাকা",
+features:[
+"Enterprise Grade",
+"Extreme Speed",
+"Unlimited Data",
+"VIP Support"
+]
+},
+
+{
+speed:"170 Mbps",
+price:"1700 টাকা",
+features:[
+"Ultra Enterprise",
+"Zero Latency Gaming",
+"Dedicated Server",
+"VIP Support"
+]
+},
+
+{
+speed:"220 Mbps",
+price:"2000 টাকা",
+features:[
+"Gigabit Experience",
+"Extreme Power",
+"Custom Setup",
+"24/7 Support"
+]
+},
+
+{
+speed:"350 Mbps",
+price:"3000 টাকা",
+features:[
+"Ultimate Speed",
+"Corporate Solutions",
+"Dedicated Bandwidth",
+"VIP Support"
+]
 }
+
+];
+
+
+const packageGrid =
+document.getElementById(
+"packageGrid"
+);
+
+
+if(packageGrid){
+
+packages.forEach(pkg=>{
+
+const fullPkgString =
+`${pkg.speed} - ${pkg.price}`;
+
+packageGrid.innerHTML += `
+
+<div class="card">
+
+<div>
+
+<div class="speed">
+${pkg.speed}
+</div>
+
+<div class="price">
+${pkg.price}
+</div>
+
+<ul class="features">
+
+${pkg.features
+.map(
+f=>`<li>${f}</li>`
+)
+.join("")}
+
+</ul>
+
+</div>
+
+<a
+href="#connection"
+class="card-btn"
+onclick="selectPackage('${fullPkgString}')">
+
+প্যাকেজ নিন
+
+</a>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+/* =================================================
+PACKAGE SELECT
+================================================= */
+
+function selectPackage(pkgName){
+
+const selectElem =
+document.getElementById(
+"mainPackage"
+);
+
+for(
+let i = 0;
+i < selectElem.options.length;
+i++
+){
+
+if(
+selectElem.options[i].text ===
+pkgName
+){
+
+selectElem.selectedIndex =
+i;
+
+break;
+
+}
+
+}
+
+}
+
+
+/* =================================================
+COVERAGE
+================================================= */
 
 function checkCoverage(){
-    const area = document.getElementById("area").value.trim();
-    const res = document.getElementById("coverageResult");
-    if(!area){ res.innerText = "⚠️ এলাকার নাম লিখুন!"; res.style.color = "#f87171"; return; }
-    res.style.color = "#4ade80";
-    res.innerText = `✅ মহানন্দে জানাচ্ছি যে, '${area}' এলাকায় আমাদের হাই-স্পিড কভারেজ উপলব্ধ রয়েছে!`;
+
+const area =
+document.getElementById(
+"area"
+).value.trim();
+
+const res =
+document.getElementById(
+"coverageResult"
+);
+
+if(!area){
+
+res.innerText =
+"⚠️ এলাকার নাম লিখুন!";
+
+res.style.color =
+"#f87171";
+
+return;
+
 }
 
-function toggleMenu(){ document.getElementById("navLinks").classList.toggle("active"); }
-function openBkash(){ document.getElementById("bkashPopup").style.display = "flex"; }
-function closeBkash(){ document.getElementById("bkashPopup").style.display = "none"; }
-function copyBkash(){ navigator.clipboard.writeText("01827700022"); alert("bKash Merchant Number Copied!"); }
-function openLogin(){ document.getElementById("loginPopup").style.display = "flex"; }
-function closeLogin(){ document.getElementById("loginPopup").style.display = "none"; }
+res.style.color =
+"#4ade80";
 
-function openAuthLogin() { 
-    document.getElementById("authLoginPopup").style.display = "flex"; 
+res.innerText =
+`✅ মহানন্দে জানাচ্ছি যে, '${area}' এলাকায় আমাদের হাই-স্পিড কভারেজ উপলব্ধ রয়েছে!`;
+
 }
 
-function closeAuthLogin() {
-    document.getElementById("authLoginPopup").style.display = "none";
-    document.getElementById("authLoginForm").style.display = "block";
-    document.getElementById("authUsername").value = "";
-    document.getElementById("authPassword").value = "";
-    document.getElementById("authLoginResult").innerText = "";
+
+/* =================================================
+MENU
+================================================= */
+
+function toggleMenu(){
+
+document
+.getElementById("navLinks")
+.classList
+.toggle("active");
+
 }
+
+
+/* =================================================
+BKASH
+================================================= */
+
+function openBkash(){
+
+document
+.getElementById("bkashPopup")
+.style.display = "flex";
+
+}
+
+function closeBkash(){
+
+document
+.getElementById("bkashPopup")
+.style.display = "none";
+
+}
+
+function copyBkash(){
+
+navigator.clipboard
+.writeText("01827700022")
+.then(()=>{
+
+alert(
+"bKash Merchant Number Copied!"
+);
+
+})
+.catch(()=>{
+
+alert(
+"Merchant Number: 01827700022"
+);
+
+});
+
+}
+
+
+/* =================================================
+CUSTOMER LOGIN
+================================================= */
+
+function openLogin(){
+
+document
+.getElementById("loginPopup")
+.style.display = "flex";
+
+}
+
+function closeLogin(){
+
+document
+.getElementById("loginPopup")
+.style.display = "none";
+
+}
+
+function customerLogin(){
+
+const id =
+document.getElementById(
+"loginCustomerId"
+).value.trim();
+
+const password =
+document.getElementById(
+"loginPassword"
+).value.trim();
+
+const result =
+document.getElementById(
+"loginResult"
+);
+
+if(!id || !password){
+
+result.style.color =
+"#facc15";
+
+result.innerText =
+"⚠️ Customer ID এবং Password দিন!";
+
+return;
+
+}
+
+result.style.color =
+"#38bdf8";
+
+result.innerText =
+"যাচাই করা হচ্ছে...";
+
+
+fetch(
+`${GOOGLE_SCRIPT_URL}?action=customerLogin&customerId=${encodeURIComponent(id)}&password=${encodeURIComponent(password)}`
+)
+
+.then(
+response=>response.json()
+)
+
+.then(data=>{
+
+if(data.success){
+
+result.style.color =
+"#4ade80";
+
+result.innerText =
+"✅ Login সফল হয়েছে!";
+
+}else{
+
+result.style.color =
+"#f87171";
+
+result.innerText =
+"❌ ভুল Customer ID অথবা Password!";
+
+}
+
+})
+
+.catch(error=>{
+
+result.style.color =
+"#f87171";
+
+result.innerText =
+"⚠️ সংযোগে সমস্যা হয়েছে, আবার চেষ্টা করুন।";
+
+});
+
+}
+
+
+/* =================================================
+AUTHORIZED LOGIN
+================================================= */
+
+function openAuthLogin(){
+
+document
+.getElementById("authLoginPopup")
+.style.display = "flex";
+
+}
+
+function closeAuthLogin(){
+
+document
+.getElementById("authLoginPopup")
+.style.display = "none";
+
+document
+.getElementById("authLoginForm")
+.style.display = "block";
+
+document
+.getElementById("authUsername")
+.value = "";
+
+document
+.getElementById("authPassword")
+.value = "";
+
+document
+.getElementById("authLoginResult")
+.innerText = "";
+
+}
+
 
 function verifyAuthLogin(){
-    const u = document.getElementById("authUsername").value.trim();
-    const p = document.getElementById("authPassword").value.trim();
-    const res = document.getElementById("authLoginResult");
 
-    if(!u || !p){
-        res.style.color = "#facc15";
-        res.innerText = "⚠️ ইউজারনেম এবং পাসওয়ার্ড দিন!";
-        return;
-    }
+const u =
+document
+.getElementById("authUsername")
+.value
+.trim();
 
-    res.style.color = "#38bdf8";
-    res.innerText = "যাচাই করা হচ্ছে...";
+const p =
+document
+.getElementById("authPassword")
+.value
+.trim();
 
-    if(u === "admin" && p === "maps2026") {
-        res.style.color = "#4ade80";
-        res.innerText = "✅ লগইন সফল হয়েছে! ৩ সেকেন্ডের মধ্যে রিডাইরেক্ট হচ্ছে...";
-        setTimeout(() => {
-            window.open("https://sites.google.com/view/mapsinternet1/home", "_blank");
-            closeAuthLogin();
-        }, 3000);
-        return;
-    }
+const res =
+document
+.getElementById("authLoginResult");
 
-    fetch(`${GOOGLE_SCRIPT_URL}?action=authLogin&username=${encodeURIComponent(u)}&password=${encodeURIComponent(p)}`)
-    .then(response => response.json())
-    .then(data => {
-        if(data.success){
-            res.style.color = "#4ade80";
-            res.innerText = "✅ লগইন সফল হয়েছে! ৩ সেকেন্ডের মধ্যে রিডাইরেক্ট হচ্ছে...";
-            setTimeout(() => {
-                window.open("https://sites.google.com/view/mapsinternet1/home", "_blank");
-                closeAuthLogin();
-            }, 3000);
-        } else {
-            res.style.color = "#f87171";
-            res.innerText = "❌ ভুল ইউজারনেম বা পাসওয়ার্ড!";
-        }
-    })
-    .catch(error => {
-        res.style.color = "#f87171";
-        res.innerText = "⚠️ সংযোগে সমস্যা হয়েছে, আবার চেষ্টা করুন।";
-    });
+
+if(!u || !p){
+
+res.style.color =
+"#facc15";
+
+res.innerText =
+"⚠️ ইউজারনেম এবং পাসওয়ার্ড দিন!";
+
+return;
+
 }
+
+
+res.style.color =
+"#38bdf8";
+
+res.innerText =
+"যাচাই করা হচ্ছে...";
+
+
+if(
+u === "admin" &&
+p === "maps2026"
+){
+
+res.style.color =
+"#4ade80";
+
+res.innerText =
+"✅ লগইন সফল হয়েছে! ৩ সেকেন্ডের মধ্যে রিডাইরেক্ট হচ্ছে...";
+
+
+setTimeout(()=>{
+
+window.open(
+"https://sites.google.com/view/mapsinternet1/home",
+"_blank"
+);
+
+closeAuthLogin();
+
+},3000);
+
+return;
+
+}
+
+
+fetch(
+`${GOOGLE_SCRIPT_URL}?action=authLogin&username=${encodeURIComponent(u)}&password=${encodeURIComponent(p)}`
+)
+
+.then(
+response=>response.json()
+)
+
+.then(data=>{
+
+if(data.success){
+
+res.style.color =
+"#4ade80";
+
+res.innerText =
+"✅ লগইন সফল হয়েছে! ৩ সেকেন্ডের মধ্যে রিডাইরেক্ট হচ্ছে...";
+
+
+setTimeout(()=>{
+
+window.open(
+"https://sites.google.com/view/mapsinternet1/home",
+"_blank"
+);
+
+closeAuthLogin();
+
+},3000);
+
+}else{
+
+res.style.color =
+"#f87171";
+
+res.innerText =
+"❌ ভুল ইউজারনেম বা পাসওয়ার্ড!";
+
+}
+
+})
+
+.catch(error=>{
+
+res.style.color =
+"#f87171";
+
+res.innerText =
+"⚠️ সংযোগে সমস্যা হয়েছে, আবার চেষ্টা করুন।";
+
+});
+
+}
+
+
+/* =================================================
+NEW CONNECTION FORM
+================================================= */
 
 function submitMainForm(e){
-    e.preventDefault();
-    document.getElementById("formResult").style.color = "#4ade80";
-    document.getElementById("formResult").innerText = "🎉 আপনার আবেদনটি সফলভাবে জমা হয়েছে! খুব শীঘ্রই আমাদের টিম যোগাযোগ করবে।";
-    e.target.reset();
+
+e.preventDefault();
+
+document.getElementById(
+"formResult"
+).style.color =
+"#4ade80";
+
+document.getElementById(
+"formResult"
+).innerText =
+"🎉 আপনার আবেদনটি সফলভাবে জমা হয়েছে! খুব শীঘ্রই আমাদের টিম যোগাযোগ করবে।";
+
+e.target.reset();
+
 }
+
+
+/* =================================================
+SUPPORT PANEL OPEN
+================================================= */
+
+function openSupportPanel(){
+
+document
+.getElementById("supportPanel")
+.classList
+.add("active");
+
+document
+.getElementById("supportOverlay")
+.classList
+.add("active");
+
+document.body.style.overflow =
+"hidden";
+
+}
+
+
+/* =================================================
+SUPPORT PANEL CLOSE
+================================================= */
+
+function closeSupportPanel(){
+
+document
+.getElementById("supportPanel")
+.classList
+.remove("active");
+
+document
+.getElementById("supportOverlay")
+.classList
+.remove("active");
+
+document.body.style.overflow =
+"";
+
+}
+
+
+/* =================================================
+GO TO CONNECTION
+================================================= */
+
+function goToConnection(){
+
+closeSupportPanel();
+
+setTimeout(()=>{
+
+document
+.getElementById("connection")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+},200);
+
+}
+
+
+/* =================================================
+SUPPORT TICKET
+================================================= */
+
+function submitSupportTicket(e){
+
+e.preventDefault();
+
+const name =
+document
+.getElementById("supportName")
+.value
+.trim();
+
+const phone =
+document
+.getElementById("supportPhone")
+.value
+.trim();
+
+const issue =
+document
+.getElementById("supportIssue")
+.value;
+
+const message =
+document
+.getElementById("supportMessage")
+.value
+.trim();
+
+const result =
+document
+.getElementById("ticketResult");
+
+
+if(
+!name ||
+!phone ||
+!issue ||
+!message
+){
+
+result.style.color =
+"#dc2626";
+
+result.innerText =
+"⚠️ সব তথ্য পূরণ করুন।";
+
+return;
+
+}
+
+
+result.style.color =
+"#16a34a";
+
+result.innerText =
+"✅ Support Ticket সফলভাবে জমা হয়েছে! আমাদের টিম দ্রুত যোগাযোগ করবে।";
+
+
+/*
+এখানে চাইলে পরবর্তীতে আপনার
+Google Apps Script-এর সাথে
+Support Ticket Database যুক্ত করা যাবে।
+*/
+
+
+setTimeout(()=>{
+
+document
+.querySelector(".support-form")
+.reset();
+
+},1500);
+
+}
+
+
+/* =================================================
+ESC KEY CLOSE SUPPORT
+================================================= */
+
+document.addEventListener(
+"keydown",
+function(e){
+
+if(e.key === "Escape"){
+
+closeSupportPanel();
+
+closeBkash();
+
+closeLogin();
+
+closeAuthLogin();
+
+}
+
+}
+);
+
+
+/* =================================================
+CLICK OUTSIDE POPUPS
+================================================= */
+
+document
+.querySelectorAll(".popup-overlay")
+.forEach(overlay=>{
+
+overlay.addEventListener(
+"click",
+function(e){
+
+if(e.target === overlay){
+
+overlay.style.display =
+"none";
+
+}
+
+});
+
+});
+
 </script>
+
 </body>
 </html>
-
-```
