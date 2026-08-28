@@ -535,10 +535,6 @@ padding-top:10px;
 .monitor-stats span b{
 color:var(--text);
 }
-
-/* =========================
-MONITOR CLOCK & HOVER GLOW EFFECT (UPDATED SIZE)
-========================= */
 .monitor-clock{
 margin-top:12px;
 padding:16px 22px;
@@ -555,7 +551,6 @@ box-shadow: 0 0 20px rgba(71,231,255,.2), inset 0 0 12px rgba(71,231,255,.15);
 transition: all 0.4s ease;
 cursor: pointer;
 }
-
 .monitor-clock:hover {
 border-color: var(--cyan);
 background: 
@@ -570,19 +565,12 @@ box-shadow:
 inset 0 0 20px rgba(71,231,255,.5);
 transform: translateY(-2px);
 }
-
 .clock-label{
 display:block;
 color:var(--muted);
 font-size:12px;
 margin-bottom:5px;
-transition: color 0.3s ease;
 }
-
-.monitor-clock:hover .clock-label {
-color: #ffffff;
-}
-
 #liveClock{
 display:block;
 font-size:20px;
@@ -593,16 +581,6 @@ text-shadow:
     0 0 12px rgba(71,231,255,0.9),
     0 0 24px rgba(71,231,255,0.7),
     0 0 36px rgba(71,231,255,0.5);
-transition: all 0.4s ease;
-}
-
-.monitor-clock:hover #liveClock {
-color: #ffffff;
-text-shadow: 
-    0 0 18px rgba(71,231,255,1),
-    0 0 35px rgba(71,231,255,0.9),
-    0 0 50px rgba(22,135,255,0.8);
-transform: scale(1.03);
 }
 
 /* =========================
@@ -636,8 +614,9 @@ to{opacity:1;transform:scale(1.4);}
 0%,100%{opacity:.4;transform:scale(.8);}
 50%{opacity:1;transform:scale(1.2);}
 }
+
 /* =========================
-SECTIONS
+SECTIONS & PREMIUM PACKAGE CARDS
 ========================= */
 section{
 padding:80px 7%;
@@ -656,37 +635,108 @@ max-width:650px;
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:20px;
+gap:25px;
 }
 .card{
-background:var(--card);
-border:1px solid var(--line);
+background: linear-gradient(145deg, rgba(18,22,55,0.85), rgba(10,14,35,0.95));
+border: 1.5px solid rgba(71,231,255,0.25);
 border-radius:24px;
-padding:25px;
-backdrop-filter:blur(14px);
-transition:.3s;
+padding:28px;
+backdrop-filter:blur(16px);
+position: relative;
+overflow: hidden;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
+
+/* প্রিমিয়াম হোভার ও গ্লো এফেক্ট */
+.card::before {
+content: '';
+position: absolute;
+top: 0; left: 0; width: 100%; height: 100%;
+background: radial-gradient(circle at top right, rgba(71,231,255,0.18), transparent 60%);
+opacity: 0;
+transition: opacity 0.4s ease;
+pointer-events: none;
+}
+
 .card:hover{
-transform:translateY(-8px);
-border-color:rgba(71,231,255,.5);
-box-shadow:0 20px 40px rgba(0,0,0,.4);
+transform: translateY(-8px) scale(1.02);
+border-color: var(--cyan);
+box-shadow: 
+    0 0 35px rgba(71,231,255,0.4),
+    0 0 70px rgba(22,135,255,0.2),
+    inset 0 0 20px rgba(71,231,255,0.15);
 }
+
+.card:hover::before {
+opacity: 1;
+}
+
 .price{
-font-size:30px;
+font-size:32px;
 font-weight:900;
 color:var(--cyan);
-margin:10px 0;
+margin:8px 0 15px;
+text-shadow: 0 0 15px rgba(71,231,255,0.4);
 }
 .speed{
-font-size:22px;
-font-weight:700;
+font-size:24px;
+font-weight:800;
+color: #ffffff;
+letter-spacing: .5px;
 }
 .features{
 color:var(--muted);
-line-height:1.8;
+line-height:1.9;
 font-size:14px;
-margin-bottom:20px;
+margin-bottom:24px;
+list-style: none;
+padding: 0;
+border-top: 1px solid var(--line);
+border-bottom: 1px solid var(--line);
+padding: 15px 0;
 }
+.features li {
+position: relative;
+padding-left: 20px;
+margin-bottom: 8px;
+}
+.features li::before {
+content: '✦';
+position: absolute;
+left: 0;
+color: var(--cyan);
+font-size: 11px;
+}
+
+.card-btn {
+width: 100%;
+padding: 13px;
+border-radius: 12px;
+background: linear-gradient(135deg, rgba(71,231,255,0.15), rgba(22,135,255,0.25));
+border: 1px solid rgba(71,231,255,0.5);
+color: #fff;
+font-weight: 700;
+cursor: pointer;
+transition: all 0.3s ease;
+text-align: center;
+text-decoration: none;
+display: block;
+box-shadow: 0 0 10px rgba(71,231,255,0.1);
+}
+
+.card:hover .card-btn {
+background: linear-gradient(135deg, var(--cyan), var(--blue));
+color: #07101d;
+border-color: transparent;
+box-shadow: 0 0 25px rgba(71,231,255,0.7);
+transform: translateY(-2px);
+}
+
 /* =========================
 COVERAGE
 ========================= */
@@ -863,7 +913,6 @@ nav{padding:15px 4%;}
 .visual{min-height:500px;}
 .realtime-monitor{width:min(92vw,390px);}
 #liveClock{font-size:18px;}
-.monitor-stats{font-size:10px;}
 .call-box{bottom:10px;right:10px;padding:8px 12px;font-size:12px;}
 .coverage-search{flex-direction:column;}
 .coverage-search .btn{width:100%;}
@@ -1107,7 +1156,6 @@ class Particle {
         if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
         if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
 
-        // ম্যাগনেট এফেক্ট (Mouse-এর দিকে কণাগুলো টেনে নেওয়া)
         if (mouse.x !== null && mouse.y !== null) {
             let dx = mouse.x - this.x;
             let dy = mouse.y - this.y;
@@ -1242,16 +1290,30 @@ const packages = [
 const packageGrid = document.getElementById("packageGrid");
 if(packageGrid) {
     packages.forEach(pkg => {
+        const fullPkgString = `${pkg.speed} - ${pkg.price}`;
         packageGrid.innerHTML += `
             <div class="card">
-                <div class="speed">${pkg.speed}</div>
-                <div class="price">${pkg.price}</div>
-                <ul class="features">
-                    ${pkg.features.map(f => `<li>${f}</li>`).join('')}
-                </ul>
+                <div>
+                    <div class="speed">${pkg.speed}</div>
+                    <div class="price">${pkg.price}</div>
+                    <ul class="features">
+                        ${pkg.features.map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                </div>
+                <a href="#connection" class="card-btn" onclick="selectPackage('${fullPkgString}')">প্যাকেজ নিন</a>
             </div>
         `;
     });
+}
+
+function selectPackage(pkgName) {
+    const selectElem = document.getElementById("mainPackage");
+    for(let i = 0; i < selectElem.options.length; i++) {
+        if(selectElem.options[i].text === pkgName) {
+            selectElem.selectedIndex = i;
+            break;
+        }
+    }
 }
 
 function checkCoverage(){
