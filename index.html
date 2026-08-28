@@ -3,1397 +3,988 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>MAPS INTERNET | নতুন গতি, নতুন অভিজ্ঞতা</title>
-
 <style>
 :root{
-    --bg:#060817;
-    --card:rgba(18,22,55,.72);
-    --cyan:#47e7ff;
-    --blue:#1687ff;
-    --violet:#8b5cf6;
-    --pink:#e2136e;
-    --yellow:#ffd21f;
-    --green:#16d36a;
-    --text:#f6f7ff;
-    --muted:#aab1d6;
-    --line:rgba(255,255,255,.12);
+--bg:#060817;
+--card:rgba(18,22,55,.72);
+--cyan:#47e7ff;
+--blue:#1687ff;
+--violet:#8b5cf6;
+--pink:#e2136e;
+--yellow:#ffd21f;
+--green:#16d36a;
+--text:#f6f7ff;
+--muted:#aab1d6;
+--line:rgba(255,255,255,.12);
 }
-
 *{
-    box-sizing:border-box;
+box-sizing:border-box;
 }
-
 html{
-    scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
-
 body{
-    margin:0;
-    font-family:Arial,"Noto Sans Bengali",sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    overflow-x:hidden;
+margin:0;
+font-family:Arial,"Noto Sans Bengali",sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
 }
-
 /* =========================
-ANIMATED BACKGROUND
+CANVAS BACKGROUND
 ========================= */
-
 #bgCanvas{
-    position:fixed;
-    inset:0;
-    width:100vw;
-    height:100vh;
-    z-index:-2;
-    background:
-        radial-gradient(circle at 75% 35%,rgba(0,110,255,.12),transparent 30%),
-        #040614;
+position:fixed;
+top:0;
+left:0;
+width:100vw;
+height:100vh;
+z-index:-1;
+background:linear-gradient(135deg, #050814 0%, #0b1126 100%);
+pointer-events:none;
 }
-
-.video-overlay{
-    position:fixed;
-    inset:0;
-    background:
-        radial-gradient(
-            circle at 50% 35%,
-            rgba(30,70,120,.12),
-            rgba(6,8,23,.70) 65%,
-            rgba(4,6,20,.96)
-        );
-    z-index:-1;
-    pointer-events:none;
-}
-
 /* =========================
 NAVBAR
 ========================= */
-
 nav{
-    position:fixed;
-    z-index:1000;
-    top:0;
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 7%;
-    background:rgba(6,8,23,.90);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid var(--line);
+position:fixed;
+z-index:1000;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 7%;
+background:rgba(6,8,23,.90);
+backdrop-filter:blur(18px);
+border-bottom:1px solid var(--line);
 }
-
 .logo{
-    font-weight:900;
-    letter-spacing:1px;
-    white-space:nowrap;
-    font-size:20px;
+font-weight:900;
+letter-spacing:1px;
+white-space:nowrap;
+font-size:20px;
 }
-
 .logo b{
-    color:var(--cyan);
+color:var(--cyan);
 }
-
 .links{
-    display:flex;
-    align-items:center;
+display:flex;
+align-items:center;
 }
-
 nav a{
-    color:#dfe5ff;
-    text-decoration:none;
-    margin-left:18px;
-    font-size:14px;
-    transition:.3s;
+color:#dfe5ff;
+text-decoration:none;
+margin-left:18px;
+font-size:14px;
+transition:.3s;
 }
-
 nav a:hover{
-    color:var(--cyan);
+color:var(--cyan);
 }
-
 .menu-toggle{
-    display:none;
-    font-size:24px;
-    cursor:pointer;
-    color:var(--cyan);
+display:none;
+font-size:24px;
+cursor:pointer;
+color:var(--cyan);
 }
-
 .nav-buttons{
-    display:flex;
-    gap:10px;
-    align-items:center;
+display:flex;
+gap:10px;
+align-items:center;
 }
-
 .btn{
-    display:inline-block;
-    padding:12px 22px;
-    border-radius:999px;
-    background:linear-gradient(135deg,var(--cyan),var(--blue),var(--violet));
-    color:#07101d !important;
-    font-weight:800;
-    text-decoration:none;
-    border:none;
-    cursor:pointer;
-    box-shadow:0 0 25px rgba(71,231,255,.30);
-    transition:.3s;
-    white-space:nowrap;
+display:inline-block;
+padding:12px 22px;
+border-radius:999px;
+background:linear-gradient(135deg,var(--cyan),var(--blue),var(--violet));
+color:#07101d !important;
+font-weight:800;
+text-decoration:none;
+border:none;
+cursor:pointer;
+box-shadow:0 0 25px rgba(71,231,255,.30);
+transition:.3s;
+white-space:nowrap;
 }
-
 .btn:hover{
-    transform:translateY(-2px) scale(1.03);
-    box-shadow:
-        0 0 20px rgba(71,231,255,.70),
-        0 0 50px rgba(22,135,255,.35);
+transform:translateY(-2px) scale(1.03);
+box-shadow:
+0 0 20px rgba(71,231,255,.70),
+0 0 50px rgba(22,135,255,.35);
 }
-
 /* =========================
 HERO
 ========================= */
-
 .hero{
-    min-height:100vh;
-    padding:145px 7% 70px;
-    display:grid;
-    grid-template-columns:1.05fr .95fr;
-    gap:30px;
-    align-items:center;
+min-height:100vh;
+padding:145px 7% 70px;
+display:grid;
+grid-template-columns:1.05fr .95fr;
+gap:30px;
+align-items:center;
 }
-
 .tag{
-    color:var(--yellow);
-    font-weight:800;
-    letter-spacing:2px;
-    font-size:14px;
+color:var(--yellow);
+font-weight:800;
+letter-spacing:2px;
+font-size:14px;
 }
-
 .hero h1{
-    font-size:clamp(36px,5vw,72px);
-    line-height:1.1;
-    margin:14px 0;
+font-size:clamp(36px,5vw,72px);
+line-height:1.1;
+margin:14px 0;
 }
-
 .hero h1 span{
-    background:linear-gradient(90deg,var(--yellow),#fff0a0);
-    -webkit-background-clip:text;
-    background-clip:text;
-    color:transparent;
+background:linear-gradient(90deg,var(--yellow),#fff0a0);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
 }
-
 .hero p{
-    font-size:17px;
-    line-height:1.7;
-    color:var(--muted);
-    max-width:600px;
+font-size:17px;
+line-height:1.7;
+color:var(--muted);
+max-width:600px;
 }
-
 .actions{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    margin-top:28px;
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:28px;
 }
-
 .ghost{
-    display:inline-block;
-    padding:12px 22px;
-    border:1px solid rgba(71,231,255,.45);
-    border-radius:999px;
-    color:white;
-    text-decoration:none;
-    cursor:pointer;
-    background:rgba(255,255,255,.03);
-    transition:.3s;
+display:inline-block;
+padding:12px 22px;
+border:1px solid rgba(71,231,255,.45);
+border-radius:999px;
+color:white;
+text-decoration:none;
+cursor:pointer;
+background:rgba(255,255,255,.03);
+transition:.3s;
 }
-
 .ghost:hover{
-    border-color:var(--cyan);
-    color:var(--cyan);
-    box-shadow:0 0 25px rgba(71,231,255,.18);
+border-color:var(--cyan);
+color:var(--cyan);
+box-shadow:0 0 25px rgba(71,231,255,.18);
 }
-
 /* ==========================================
-NEW ROUTER + WIFI 3D NETWORK ANIMATION
+ROUTER + WIFI 3D NETWORK ANIMATION
 ========================================== */
-
 .visual{
-    min-height:600px;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    position:relative;
+min-height:600px;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
 }
-
 .router-scene{
-    width:480px;
-    height:480px;
-    position:relative;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    perspective:1000px;
-    cursor:pointer;
+width:480px;
+height:480px;
+position:relative;
+display:flex;
+justify-content:center;
+align-items:center;
+perspective:1000px;
+cursor:pointer;
 }
-
 .scene-glow{
-    position:absolute;
-    width:380px;
-    height:380px;
-    border-radius:50%;
-    background:
-        radial-gradient(
-            circle,
-            rgba(0,220,255,.28) 0%,
-            rgba(0,100,255,.16) 35%,
-            transparent 72%
-        );
-    filter:blur(30px);
-    animation:scenePulse 3s ease-in-out infinite;
-    transition:.4s;
+position:absolute;
+width:380px;
+height:380px;
+border-radius:50%;
+background:
+radial-gradient(
+circle,
+rgba(0,220,255,.28) 0%,
+rgba(0,100,255,.16) 35%,
+transparent 72%
+);
+filter:blur(30px);
+animation:scenePulse 3s ease-in-out infinite;
+transition:.4s;
 }
-
 .city-glow{
-    position:absolute;
-    bottom:65px;
-    width:350px;
-    height:120px;
-    opacity:.32;
-    background:
-        repeating-linear-gradient(
-            90deg,
-            transparent 0 12px,
-            rgba(71,231,255,.35) 13px 17px,
-            transparent 18px 30px
-        );
-    mask-image:linear-gradient(to top,#000,transparent);
-    -webkit-mask-image:linear-gradient(to top,#000,transparent);
+position:absolute;
+bottom:65px;
+width:350px;
+height:120px;
+opacity:.32;
+background:
+repeating-linear-gradient(
+90deg,
+transparent 0 12px,
+rgba(71,231,255,.35) 13px 17px,
+transparent 18px 30px
+);
+mask-image:linear-gradient(to top,#000,transparent);
+-webkit-mask-image:linear-gradient(to top,#000,transparent);
 }
-
 .wifi-symbol{
-    position:absolute;
-    top:38px;
-    left:50%;
-    transform:translateX(-50%);
-    width:160px;
-    height:130px;
-    z-index:12;
-    transition:.4s;
+position:absolute;
+top:38px;
+left:50%;
+transform:translateX(-50%);
+width:160px;
+height:130px;
+z-index:12;
+transition:.4s;
 }
-
 .wifi-arc{
-    position:absolute;
-    left:50%;
-    transform:translateX(-50%);
-    border:16px solid var(--cyan);
-    border-left-color:transparent;
-    border-right-color:transparent;
-    border-bottom-color:transparent;
-    border-radius:50%;
-    filter:
-        drop-shadow(0 0 8px var(--cyan))
-        drop-shadow(0 0 20px rgba(71,231,255,.7));
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+border:16px solid var(--cyan);
+border-left-color:transparent;
+border-right-color:transparent;
+border-bottom-color:transparent;
+border-radius:50%;
+filter:
+drop-shadow(0 0 8px var(--cyan))
+drop-shadow(0 0 20px rgba(71,231,255,.7));
 }
-
 .arc-1{
-    width:145px;
-    height:110px;
-    top:0;
+width:145px;
+height:110px;
+top:0;
 }
-
 .arc-2{
-    width:105px;
-    height:80px;
-    top:30px;
+width:105px;
+height:80px;
+top:30px;
 }
-
 .arc-3{
-    width:65px;
-    height:50px;
-    top:58px;
+width:65px;
+height:50px;
+top:58px;
 }
-
 .wifi-dot{
-    position:absolute;
-    width:20px;
-    height:20px;
-    border-radius:50%;
-    background:var(--cyan);
-    bottom:2px;
-    left:50%;
-    transform:translateX(-50%);
-    box-shadow:
-        0 0 15px var(--cyan),
-        0 0 35px var(--cyan);
+position:absolute;
+width:20px;
+height:20px;
+border-radius:50%;
+background:var(--cyan);
+bottom:2px;
+left:50%;
+transform:translateX(-50%);
+box-shadow:
+0 0 15px var(--cyan),
+0 0 35px var(--cyan);
 }
-
 .orbit{
-    position:absolute;
-    border-radius:50%;
-    border:1px solid rgba(71,231,255,.42);
-    box-shadow:
-        0 0 10px rgba(71,231,255,.2),
-        inset 0 0 15px rgba(71,231,255,.06);
-    pointer-events:none;
+position:absolute;
+border-radius:50%;
+border:1px solid rgba(71,231,255,.42);
+box-shadow:
+0 0 10px rgba(71,231,255,.2),
+inset 0 0 15px rgba(71,231,255,.06);
+pointer-events:none;
 }
-
 .orbit-1{
-    width:400px;
-    height:180px;
-    transform:rotateX(70deg);
-    animation:orbitRotate 9s linear infinite;
+width:400px;
+height:180px;
+transform:rotateX(70deg);
+animation:orbitRotate 9s linear infinite;
 }
-
 .orbit-2{
-    width:330px;
-    height:145px;
-    transform:rotateX(68deg);
-    animation:orbitReverse 7s linear infinite;
+width:330px;
+height:145px;
+transform:rotateX(68deg);
+animation:orbitReverse 7s linear infinite;
 }
-
 .orbit-3{
-    width:440px;
-    height:215px;
-    transform:rotateX(74deg);
-    border-color:rgba(22,135,255,.35);
-    animation:orbitRotate 13s linear infinite;
+width:440px;
+height:215px;
+transform:rotateX(74deg);
+border-color:rgba(22,135,255,.35);
+animation:orbitRotate 13s linear infinite;
 }
-
 .network-dot{
-    position:absolute;
-    width:12px;
-    height:12px;
-    border-radius:50%;
-    background:var(--cyan);
-    box-shadow:
-        0 0 12px var(--cyan),
-        0 0 30px var(--cyan);
-    z-index:8;
-    animation:dotPulse 1.8s infinite alternate;
+position:absolute;
+width:12px;
+height:12px;
+border-radius:50%;
+background:var(--cyan);
+box-shadow:
+0 0 12px var(--cyan),
+0 0 30px var(--cyan);
+z-index:8;
+animation:dotPulse 1.8s infinite alternate;
 }
-
 .nd1{top:110px;left:60px;}
 .nd2{top:75px;right:80px;background:#ffb347;box-shadow:0 0 15px #ff9f43;}
 .nd3{bottom:115px;left:50px;}
 .nd4{bottom:85px;right:55px;background:#8b5cf6;box-shadow:0 0 15px #8b5cf6;}
 .nd5{top:190px;right:20px;}
-
 .connection-line{
-    position:absolute;
-    height:2px;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        var(--cyan),
-        #ffffff,
-        var(--cyan),
-        transparent
-    );
-    box-shadow:0 0 12px var(--cyan);
-    transform-origin:left center;
-    opacity:.8;
+position:absolute;
+height:2px;
+background:linear-gradient(
+90deg,
+transparent,
+var(--cyan),
+#ffffff,
+var(--cyan),
+transparent
+);
+box-shadow:0 0 12px var(--cyan);
+transform-origin:left center;
+opacity:.8;
 }
-
-.cl1{
-    width:180px;
-    top:150px;
-    left:105px;
-    transform:rotate(28deg);
-}
-
-.cl2{
-    width:165px;
-    top:145px;
-    right:75px;
-    transform:rotate(150deg);
-}
-
-.cl3{
-    width:140px;
-    bottom:135px;
-    left:90px;
-    transform:rotate(-30deg);
-}
-
-.cl4{
-    width:150px;
-    bottom:135px;
-    right:85px;
-    transform:rotate(205deg);
-}
-
+.cl1{width:180px;top:150px;left:105px;transform:rotate(28deg);}
+.cl2{width:165px;top:145px;right:75px;transform:rotate(150deg);}
+.cl3{width:140px;bottom:135px;left:90px;transform:rotate(-30deg);}
+.cl4{width:150px;bottom:135px;right:85px;transform:rotate(205deg);}
 .router{
-    position:relative;
-    width:245px;
-    height:125px;
-    z-index:20;
-    margin-top:80px;
-    transform:rotateX(10deg) rotateY(-8deg);
-    transition:transform .4s ease,filter .4s ease;
+position:relative;
+width:245px;
+height:125px;
+z-index:20;
+margin-top:80px;
+transform:rotateX(10deg) rotateY(-8deg);
+transition:transform .4s ease,filter .4s ease;
 }
-
 .router-body{
-    position:absolute;
-    width:100%;
-    height:100%;
-    bottom:0;
-    border-radius:18px 18px 25px 25px;
-    background:
-        linear-gradient(
-            145deg,
-            #1a2434 0%,
-            #090d14 45%,
-            #020407 100%
-        );
-    border:1px solid rgba(71,231,255,.42);
-    box-shadow:
-        0 22px 35px rgba(0,0,0,.75),
-        0 0 25px rgba(71,231,255,.18),
-        inset 0 2px 8px rgba(255,255,255,.08);
-    overflow:hidden;
+position:absolute;
+width:100%;
+height:100%;
+bottom:0;
+border-radius:18px 18px 25px 25px;
+background:
+linear-gradient(
+145deg,
+#1a2434 0%,
+#090d14 45%,
+#020407 100%
+);
+border:1px solid rgba(71,231,255,.42);
+box-shadow:
+0 22px 35px rgba(0,0,0,.75),
+0 0 25px rgba(71,231,255,.18),
+inset 0 2px 8px rgba(255,255,255,.08);
+overflow:hidden;
 }
-
 .router-top{
-    position:absolute;
-    width:210px;
-    height:55px;
-    top:-18px;
-    left:17px;
-    border-radius:50%;
-    background:
-        radial-gradient(
-            ellipse at center,
-            #253b52,
-            #0b111a 70%
-        );
-    border:1px solid rgba(71,231,255,.25);
-    box-shadow:
-        inset 0 0 20px rgba(71,231,255,.08);
+position:absolute;
+width:210px;
+height:55px;
+top:-18px;
+left:17px;
+border-radius:50%;
+background:
+radial-gradient(
+ellipse at center,
+#253b52,
+#0b111a 70%
+);
+border:1px solid rgba(71,231,255,.25);
+box-shadow:inset 0 0 20px rgba(71,231,255,.08);
 }
-
 .router-light{
-    position:absolute;
-    left:28px;
-    bottom:18px;
-    display:flex;
-    gap:9px;
+position:absolute;
+left:28px;
+bottom:18px;
+display:flex;
+gap:9px;
 }
-
 .router-light span{
-    width:6px;
-    height:6px;
-    border-radius:50%;
-    background:var(--cyan);
-    box-shadow:0 0 9px var(--cyan);
-    animation:routerLight 1.5s infinite alternate;
+width:6px;
+height:6px;
+border-radius:50%;
+background:var(--cyan);
+box-shadow:0 0 9px var(--cyan);
+animation:routerLight 1.5s infinite alternate;
 }
-
 .router-light span:nth-child(2){animation-delay:.2s;}
 .router-light span:nth-child(3){animation-delay:.4s;}
 .router-light span:nth-child(4){animation-delay:.6s;}
 .router-light span:nth-child(5){animation-delay:.8s;}
-
 .antenna{
-    position:absolute;
-    width:9px;
-    height:150px;
-    bottom:85px;
-    border-radius:8px;
-    background:
-        linear-gradient(
-            90deg,
-            #050607,
-            #38404b 45%,
-            #08090b
-        );
-    border:1px solid rgba(255,255,255,.12);
-    box-shadow:
-        0 0 12px rgba(71,231,255,.16);
-    transform-origin:bottom;
+position:absolute;
+width:9px;
+height:150px;
+bottom:85px;
+border-radius:8px;
+background:
+linear-gradient(
+90deg,
+#050607,
+#38404b 45%,
+#08090b
+);
+border:1px solid rgba(255,255,255,.12);
+box-shadow:0 0 12px rgba(71,231,255,.16);
+transform-origin:bottom;
 }
-
-.ant1{
-    left:45px;
-    transform:rotate(-10deg);
-}
-
-.ant2{
-    right:48px;
-    transform:rotate(10deg);
-}
-
+.ant1{left:45px;transform:rotate(-10deg);}
+.ant2{right:48px;transform:rotate(10deg);}
 .antenna::after{
-    content:"";
-    position:absolute;
-    width:11px;
-    height:11px;
-    border-radius:50%;
-    top:-5px;
-    left:-2px;
-    background:#1b2630;
-    box-shadow:0 0 8px rgba(71,231,255,.35);
+content:"";
+position:absolute;
+width:11px;
+height:11px;
+border-radius:50%;
+top:-5px;
+left:-2px;
+background:#1b2630;
+box-shadow:0 0 8px rgba(71,231,255,.35);
 }
-
 .data-wave{
-    position:absolute;
-    width:270px;
-    height:80px;
-    border-radius:50%;
-    border:3px solid rgba(71,231,255,.8);
-    bottom:45px;
-    left:50%;
-    transform:translateX(-50%) rotateX(70deg);
-    box-shadow:
-        0 0 15px var(--cyan),
-        inset 0 0 12px rgba(71,231,255,.4);
-    animation:dataWave 2.5s ease-out infinite;
+position:absolute;
+width:270px;
+height:80px;
+border-radius:50%;
+border:3px solid rgba(71,231,255,.8);
+bottom:45px;
+left:50%;
+transform:translateX(-50%) rotateX(70deg);
+box-shadow:
+0 0 15px var(--cyan),
+inset 0 0 12px rgba(71,231,255,.4);
+animation:dataWave 2.5s ease-out infinite;
 }
-
 .data-wave.wave2{
-    width:340px;
-    height:110px;
-    animation-delay:.8s;
-    border-color:rgba(22,135,255,.65);
+width:340px;
+height:110px;
+animation-delay:.8s;
+border-color:rgba(22,135,255,.65);
 }
-
 .data-wave.wave3{
-    width:420px;
-    height:145px;
-    animation-delay:1.6s;
-    border-color:rgba(139,92,246,.45);
+width:420px;
+height:145px;
+animation-delay:1.6s;
+border-color:rgba(139,92,246,.45);
 }
-
 .router-scene:hover .scene-glow{
-    transform:scale(1.35);
-    filter:blur(38px);
-    background:
-        radial-gradient(
-            circle,
-            rgba(71,231,255,.60) 0%,
-            rgba(0,120,255,.35) 35%,
-            transparent 72%
-        );
+transform:scale(1.35);
+filter:blur(38px);
+background:
+radial-gradient(
+circle,
+rgba(71,231,255,.60) 0%,
+rgba(0,120,255,.35) 35%,
+transparent 72%
+);
 }
-
 .router-scene:hover .router{
-    transform:
-        translateY(-12px)
-        rotateX(12deg)
-        rotateY(-12deg)
-        scale(1.06);
-    filter:
-        drop-shadow(0 0 20px rgba(71,231,255,.9))
-        drop-shadow(0 0 45px rgba(22,135,255,.5));
+transform:
+translateY(-12px)
+rotateX(12deg)
+rotateY(-12deg)
+scale(1.06);
+filter:
+drop-shadow(0 0 20px rgba(71,231,255,.9))
+drop-shadow(0 0 45px rgba(22,135,255,.5));
 }
-
 .router-scene:hover .wifi-symbol{
-    transform:translateX(-50%) scale(1.12);
-    filter:
-        drop-shadow(0 0 12px var(--cyan))
-        drop-shadow(0 0 35px var(--cyan));
+transform:translateX(-50%) scale(1.12);
+filter:
+drop-shadow(0 0 12px var(--cyan))
+drop-shadow(0 0 35px var(--cyan));
 }
-
 /* =========================
 LIVE NETWORK MONITOR
 ========================= */
-
 .realtime-monitor{
-    position:absolute;
-    bottom:5px;
-    width:390px;
-    background:rgba(12,16,40,.92);
-    border:1px solid rgba(71,231,255,.65);
-    padding:18px 22px;
-    border-radius:18px;
-    backdrop-filter:blur(14px);
-    box-shadow:
-        0 10px 35px rgba(71,231,255,.2),
-        inset 0 0 20px rgba(71,231,255,.03);
-    z-index:30;
+position:absolute;
+bottom:5px;
+width:390px;
+background:rgba(12,16,40,.92);
+border:1px solid rgba(71,231,255,.65);
+padding:16px 20px;
+border-radius:18px;
+backdrop-filter:blur(14px);
+box-shadow:
+0 10px 35px rgba(71,231,255,.2),
+inset 0 0 20px rgba(71,231,255,.03);
+z-index:30;
 }
-
 .monitor-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    font-size:14px;
-    margin-bottom:12px;
-    font-weight:bold;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:13px;
+margin-bottom:10px;
+font-weight:bold;
 }
-
 .live-badge{
-    display:flex;
-    align-items:center;
-    gap:6px;
-    color:var(--green);
+display:flex;
+align-items:center;
+gap:6px;
+color:var(--green);
 }
-
 .live-dot{
-    width:9px;
-    height:9px;
-    background:var(--green);
-    border-radius:50%;
-    box-shadow:0 0 10px var(--green);
-    animation:greenPulse 1s infinite;
+width:8px;
+height:8px;
+background:var(--green);
+border-radius:50%;
+box-shadow:0 0 10px var(--green);
+animation:greenPulse 1s infinite;
 }
-
 .monitor-stats{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    font-size:12px;
-    color:var(--muted);
-    border-top:1px solid var(--line);
-    padding-top:12px;
+display:flex;
+justify-content:space-between;
+gap:10px;
+font-size:12px;
+color:var(--muted);
+border-top:1px solid var(--line);
+padding-top:10px;
 }
-
 .monitor-stats span b{
-    color:var(--text);
+color:var(--text);
 }
 
+/* =========================
+MONITOR CLOCK & HOVER GLOW EFFECT (UPDATED SIZE)
+========================= */
 .monitor-clock{
-    margin-top:14px;
-    padding:16px 12px;
-    border-radius:14px;
-    background:
-        linear-gradient(
-            135deg,
-            rgba(71,231,255,.08),
-            rgba(139,92,246,.12)
-        );
-    border:1px solid rgba(71,231,255,.2);
-    text-align:center;
+margin-top:12px;
+padding:16px 22px;
+border-radius:16px;
+background:
+linear-gradient(
+135deg,
+rgba(71,231,255,.15),
+rgba(139,92,246,.22)
+);
+border:1.5px solid rgba(71,231,255,.5);
+text-align:center;
+box-shadow: 0 0 20px rgba(71,231,255,.2), inset 0 0 12px rgba(71,231,255,.15);
+transition: all 0.4s ease;
+cursor: pointer;
+}
+
+.monitor-clock:hover {
+border-color: var(--cyan);
+background: 
+linear-gradient(
+135deg,
+rgba(71,231,255,.28),
+rgba(139,92,246,.38)
+);
+box-shadow: 
+0 0 30px rgba(71,231,255,.6),
+0 0 60px rgba(71,231,255,.3),
+inset 0 0 20px rgba(71,231,255,.5);
+transform: translateY(-2px);
 }
 
 .clock-label{
-    display:block;
-    color:var(--muted);
-    font-size:12px;
-    margin-bottom:7px;
+display:block;
+color:var(--muted);
+font-size:12px;
+margin-bottom:5px;
+transition: color 0.3s ease;
+}
+
+.monitor-clock:hover .clock-label {
+color: #ffffff;
 }
 
 #liveClock{
-    display:block;
-    font-size:30px;
-    font-weight:900;
-    letter-spacing:2px;
-    color:var(--cyan);
-    text-shadow:
-        0 0 10px rgba(71,231,255,.7),
-        0 0 25px rgba(71,231,255,.25);
+display:block;
+font-size:20px;
+font-weight:900;
+letter-spacing:1px;
+color:var(--cyan);
+text-shadow: 
+    0 0 12px rgba(71,231,255,0.9),
+    0 0 24px rgba(71,231,255,0.7),
+    0 0 36px rgba(71,231,255,0.5);
+transition: all 0.4s ease;
+}
+
+.monitor-clock:hover #liveClock {
+color: #ffffff;
+text-shadow: 
+    0 0 18px rgba(71,231,255,1),
+    0 0 35px rgba(71,231,255,0.9),
+    0 0 50px rgba(22,135,255,0.8);
+transform: scale(1.03);
 }
 
 /* =========================
 ANIMATIONS
 ========================= */
-
 @keyframes scenePulse{
-    0%,100%{
-        transform:scale(.9);
-        opacity:.6;
-    }
-    50%{
-        transform:scale(1.08);
-        opacity:1;
-    }
+0%,100%{transform:scale(.9);opacity:.6;}
+50%{transform:scale(1.08);opacity:1;}
 }
-
 @keyframes orbitRotate{
-    from{
-        transform:rotateX(70deg) rotateZ(0deg);
-    }
-    to{
-        transform:rotateX(70deg) rotateZ(360deg);
-    }
+from{transform:rotateX(70deg) rotateZ(0deg);}
+to{transform:rotateX(70deg) rotateZ(360deg);}
 }
-
 @keyframes orbitReverse{
-    from{
-        transform:rotateX(68deg) rotateZ(360deg);
-    }
-    to{
-        transform:rotateX(68deg) rotateZ(0deg);
-    }
+from{transform:rotateX(68deg) rotateZ(360deg);}
+to{transform:rotateX(68deg) rotateZ(0deg);}
 }
-
 @keyframes dotPulse{
-    from{
-        transform:scale(.8);
-        opacity:.65;
-    }
-    to{
-        transform:scale(1.5);
-        opacity:1;
-    }
+from{transform:scale(.8);opacity:.65;}
+to{transform:scale(1.5);opacity:1;}
 }
-
 @keyframes dataWave{
-    0%{
-        transform:translateX(-50%) rotateX(70deg) scale(.65);
-        opacity:.9;
-    }
-    100%{
-        transform:translateX(-50%) rotateX(70deg) scale(1.25);
-        opacity:0;
-    }
+0%{transform:translateX(-50%) rotateX(70deg) scale(.65);opacity:.9;}
+100%{transform:translateX(-50%) rotateX(70deg) scale(1.25);opacity:0;}
 }
-
 @keyframes routerLight{
-    from{
-        opacity:.35;
-        transform:scale(.8);
-    }
-    to{
-        opacity:1;
-        transform:scale(1.4);
-    }
+from{opacity:.35;transform:scale(.8);}
+to{opacity:1;transform:scale(1.4);}
 }
-
 @keyframes greenPulse{
-    0%,100%{
-        opacity:.4;
-        transform:scale(.8);
-    }
-    50%{
-        opacity:1;
-        transform:scale(1.2);
-    }
+0%,100%{opacity:.4;transform:scale(.8);}
+50%{opacity:1;transform:scale(1.2);}
 }
-
 /* =========================
 SECTIONS
 ========================= */
-
 section{
-    padding:80px 7%;
+padding:80px 7%;
 }
-
 .title{
-    text-align:center;
-    font-size:34px;
-    margin:0 0 12px;
+text-align:center;
+font-size:34px;
+margin:0 0 12px;
 }
-
 .sub{
-    text-align:center;
-    color:var(--muted);
-    margin:0 auto 40px;
-    max-width:650px;
+text-align:center;
+color:var(--muted);
+margin:0 auto 40px;
+max-width:650px;
 }
-
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
 }
-
 .card{
-    background:var(--card);
-    border:1px solid var(--line);
-    border-radius:24px;
-    padding:25px;
-    backdrop-filter:blur(14px);
-    transition:.3s;
+background:var(--card);
+border:1px solid var(--line);
+border-radius:24px;
+padding:25px;
+backdrop-filter:blur(14px);
+transition:.3s;
 }
-
 .card:hover{
-    transform:translateY(-8px);
-    border-color:rgba(71,231,255,.5);
-    box-shadow:0 20px 40px rgba(0,0,0,.4);
+transform:translateY(-8px);
+border-color:rgba(71,231,255,.5);
+box-shadow:0 20px 40px rgba(0,0,0,.4);
 }
-
 .price{
-    font-size:30px;
-    font-weight:900;
-    color:var(--cyan);
-    margin:10px 0;
+font-size:30px;
+font-weight:900;
+color:var(--cyan);
+margin:10px 0;
 }
-
 .speed{
-    font-size:22px;
-    font-weight:700;
+font-size:22px;
+font-weight:700;
 }
-
 .features{
-    color:var(--muted);
-    line-height:1.8;
-    font-size:14px;
-    margin-bottom:20px;
+color:var(--muted);
+line-height:1.8;
+font-size:14px;
+margin-bottom:20px;
 }
-
 /* =========================
 COVERAGE
 ========================= */
-
 .coverage{
-    background:
-        linear-gradient(
-            135deg,
-            rgba(71,231,255,.1),
-            rgba(139,92,246,.1)
-        );
-    border-radius:30px;
-    padding:40px 20px;
-    text-align:center;
-    border:1px solid var(--line);
+background:
+linear-gradient(
+135deg,
+rgba(71,231,255,.1),
+rgba(139,92,246,.1)
+);
+border-radius:30px;
+padding:40px 20px;
+text-align:center;
+border:1px solid var(--line);
 }
-
 .coverage-search{
-    display:flex;
-    max-width:550px;
-    margin:auto;
-    gap:10px;
+display:flex;
+max-width:550px;
+margin:auto;
+gap:10px;
 }
-
 .coverage-search input{
-    flex:1;
-    padding:14px;
-    border-radius:12px;
-    border:1px solid var(--line);
-    background:#0a0e27;
-    color:white;
-    outline:none;
+flex:1;
+padding:14px;
+border-radius:12px;
+border:1px solid var(--line);
+background:#0a0e27;
+color:white;
+outline:none;
 }
-
 /* =========================
 FORM
 ========================= */
-
 .form{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:14px;
-    max-width:850px;
-    margin:auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+max-width:850px;
+margin:auto;
 }
-
 .form input,
 .form select,
 .form textarea{
-    width:100%;
-    padding:14px;
-    border-radius:12px;
-    border:1px solid var(--line);
-    background:#0a0e27;
-    color:white;
-    outline:none;
+width:100%;
+padding:14px;
+border-radius:12px;
+border:1px solid var(--line);
+background:#0a0e27;
+color:white;
+outline:none;
 }
-
 .form textarea{
-    grid-column:1/-1;
-    min-height:100px;
+grid-column:1/-1;
+min-height:100px;
 }
-
 .form button{
-    grid-column:1/-1;
+grid-column:1/-1;
 }
-
 /* =========================
 FOOTER
 ========================= */
-
 footer{
-    padding:35px 7%;
-    border-top:1px solid var(--line);
-    color:var(--muted);
-    text-align:center;
+padding:35px 7%;
+border-top:1px solid var(--line);
+color:var(--muted);
+text-align:center;
 }
-
 /* =========================
 POPUPS
 ========================= */
-
 .popup-overlay{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.82);
-    z-index:9999;
-    justify-content:center;
-    align-items:center;
-    padding:20px;
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.82);
+z-index:9999;
+justify-content:center;
+align-items:center;
+padding:20px;
 }
-
 .popup-card{
-    background:#161b2d;
-    color:white;
-    width:100%;
-    max-width:420px;
-    max-height:90vh;
-    overflow-y:auto;
-    padding:30px;
-    border-radius:20px;
-    position:relative;
-    border:1px solid var(--line);
-    box-shadow:0 20px 80px rgba(0,0,0,.6);
+background:#161b2d;
+color:white;
+width:100%;
+max-width:420px;
+max-height:90vh;
+overflow-y:auto;
+padding:30px;
+border-radius:20px;
+position:relative;
+border:1px solid var(--line);
+box-shadow:0 20px 80px rgba(0,0,0,.6);
 }
-
 .close-popup{
-    position:absolute;
-    right:18px;
-    top:12px;
-    font-size:26px;
-    cursor:pointer;
-    color:var(--muted);
+position:absolute;
+right:18px;
+top:12px;
+font-size:26px;
+cursor:pointer;
+color:var(--muted);
 }
-
 .popup-card input{
-    width:100%;
-    padding:13px;
-    margin:8px 0;
-    border-radius:8px;
-    border:1px solid var(--line);
-    background:#0a0e27;
-    color:white;
+width:100%;
+padding:13px;
+margin:8px 0;
+border-radius:8px;
+border:1px solid var(--line);
+background:#0a0e27;
+color:white;
 }
-
 .popup-button{
-    width:100%;
-    padding:14px;
-    margin-top:10px;
-    border:none;
-    border-radius:10px;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
+width:100%;
+padding:14px;
+margin-top:10px;
+border:none;
+border-radius:10px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
 }
-
 /* =========================
 CALL BOX
 ========================= */
-
 .call-box{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#16a34a;
-    color:white;
-    padding:12px 18px;
-    border-radius:15px;
-    z-index:900;
-    text-align:center;
-    box-shadow:0 10px 25px rgba(0,0,0,.4);
+position:fixed;
+bottom:20px;
+right:20px;
+background:#16a34a;
+color:white;
+padding:12px 18px;
+border-radius:15px;
+z-index:900;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,.4);
 }
-
 .call-box a{
-    color:white;
-    font-weight:bold;
-    text-decoration:none;
+color:white;
+font-weight:bold;
+text-decoration:none;
 }
-
 /* =========================
 RESPONSIVE
 ========================= */
-
 @media(max-width:950px){
-
-    .hero{
-        grid-template-columns:1fr;
-        text-align:center;
-    }
-
-    .hero p{
-        margin:auto;
-    }
-
-    .actions{
-        justify-content:center;
-    }
-
-    .visual{
-        min-height:570px;
-    }
-
+.hero{grid-template-columns:1fr;text-align:center;}
+.hero p{margin:auto;}
+.actions{justify-content:center;}
+.visual{min-height:570px;}
 }
-
 @media(max-width:850px){
-
-    .menu-toggle{
-        display:block;
-    }
-
-    nav .links{
-        display:none;
-        position:absolute;
-        top:100%;
-        left:0;
-        width:100%;
-        background:rgba(6,8,23,.97);
-        flex-direction:column;
-        padding:20px 0;
-        border-bottom:1px solid var(--line);
-    }
-
-    nav .links.active{
-        display:flex;
-    }
-
-    nav a{
-        margin:10px 0;
-        font-size:16px;
-    }
-
-    .form{
-        grid-template-columns:1fr;
-    }
-
-    .nav-buttons{
-        margin-top:10px;
-    }
-
+.menu-toggle{display:block;}
+nav .links{
+display:none;
+position:absolute;
+top:100%;
+left:0;
+width:100%;
+background:rgba(6,8,23,.97);
+flex-direction:column;
+padding:20px 0;
+border-bottom:1px solid var(--line);
 }
-
+nav .links.active{display:flex;}
+nav a{margin:10px 0;font-size:16px;}
+.form{grid-template-columns:1fr;}
+.nav-buttons{margin-top:10px;}
+}
 @media(max-width:520px){
-
-    nav{
-        padding:15px 4%;
-    }
-
-    .logo{
-        font-size:16px;
-    }
-
-    .nav-buttons{
-        gap:5px;
-    }
-
-    .nav-buttons .btn{
-        padding:10px 12px;
-        font-size:11px;
-    }
-
-    .router-scene{
-        width:340px;
-        height:400px;
-        transform:scale(.88);
-    }
-
-    .visual{
-        min-height:500px;
-    }
-
-    .realtime-monitor{
-        width:min(92vw,390px);
-    }
-
-    #liveClock{
-        font-size:26px;
-    }
-
-    .monitor-stats{
-        font-size:10px;
-    }
-
-    .call-box{
-        bottom:10px;
-        right:10px;
-        padding:8px 12px;
-        font-size:12px;
-    }
-
-    .coverage-search{
-        flex-direction:column;
-    }
-
-    .coverage-search .btn{
-        width:100%;
-    }
-
+nav{padding:15px 4%;}
+.logo{font-size:16px;}
+.nav-buttons{gap:5px;}
+.nav-buttons .btn{padding:10px 12px;font-size:11px;}
+.router-scene{width:340px;height:400px;transform:scale(.88);}
+.visual{min-height:500px;}
+.realtime-monitor{width:min(92vw,390px);}
+#liveClock{font-size:18px;}
+.monitor-stats{font-size:10px;}
+.call-box{bottom:10px;right:10px;padding:8px 12px;font-size:12px;}
+.coverage-search{flex-direction:column;}
+.coverage-search .btn{width:100%;}
 }
 </style>
 </head>
-
 <body>
 
+<!-- Constellation Network Background Canvas -->
 <canvas id="bgCanvas"></canvas>
-<div class="video-overlay"></div>
-
-<!-- NAVBAR -->
 
 <nav>
-
-    <div class="logo">
-        <b>MAPS</b> INTERNET
-    </div>
-
-    <div class="menu-toggle" onclick="toggleMenu()">
-        ☰
-    </div>
-
+    <div class="logo"><b>MAPS</b> INTERNET</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <div class="links" id="navLinks">
-
         <a href="#packages" onclick="toggleMenu()">প্যাকেজ</a>
-
         <a href="#coverage" onclick="toggleMenu()">Coverage</a>
-
         <a href="#connection" onclick="toggleMenu()">নতুন সংযোগ</a>
-
-        <a href="#" onclick="openBkash();toggleMenu();return false;">
-            💳 bKash Payment
-        </a>
-
-        <a href="#" onclick="openLogin();toggleMenu();return false;">
-            👤 Customer Login
-        </a>
-
+        <a href="#" onclick="openBkash();toggleMenu();return false;">💳 bKash Payment</a>
+        <a href="#" onclick="openLogin();toggleMenu();return false;">👤 Customer Login</a>
     </div>
-
     <div class="nav-buttons">
-
-        <a
-            class="btn"
-            href="http://192.168.100.100/"
-            target="_blank"
-        >
-            🎬 FTP Server
-        </a>
-
-        <a class="btn" href="#connection">
-            সংযোগ নিন
-        </a>
-
+        <a class="btn" href="http://192.168.100.100/" target="_blank">🎬 FTP Server</a>
+        <a class="btn" href="#connection">সংযোগ নিন</a>
+        <a class="btn" href="#" onclick="openAuthLogin(); return false;" style="background: linear-gradient(135deg, #ffd21f, #ff9f43, #e2136e);">🔐 Authorized Login</a>
     </div>
-
 </nav>
 
-<!-- HERO -->
-
 <header class="hero">
-
     <div>
-
-        <div class="tag">
-            NEXT GENERATION BROADBAND
-        </div>
-
-        <h1>
-            ইন্টারনেটের
-            <span>নতুন গতি</span>
-            <br>
-            নতুন অভিজ্ঞতা
-        </h1>
-
-        <p>
-            MAPS INTERNET-এর সাথে উপভোগ করুন দ্রুত,
-            নির্ভরযোগ্য ও স্মার্ট ইন্টারনেট।
-            Gaming, Streaming এবং Office-এর জন্য
-            একটি শক্তিশালী ডিজিটাল সংযোগ।
-        </p>
-
+        <div class="tag">NEXT GENERATION BROADBAND</div>
+        <h1>ইন্টারনেটের <span>নতুন গতি</span><br>নতুন অভিজ্ঞতা</h1>
+        <p>MAPS INTERNET-এর সাথে উপভোগ করুন দ্রুত, নির্ভরযোগ্য ও স্মার্ট ইন্টারনেট। Gaming, Streaming এবং Office-এর জন্য একটি শক্তিশালী ডিজিটাল সংযোগ।</p>
         <div class="actions">
-
-            <a class="btn" href="#packages">
-                প্যাকেজ দেখুন
-            </a>
-
-            <a class="ghost" href="#connection">
-                নতুন সংযোগ নিন
-            </a>
-
+            <a class="btn" href="#packages">প্যাকেজ দেখুন</a>
+            <a class="ghost" href="#connection">নতুন সংযোগ নিন</a>
         </div>
-
     </div>
-
     <div class="visual">
-
         <div class="router-scene">
-
             <div class="scene-glow"></div>
             <div class="city-glow"></div>
-
             <div class="connection-line cl1"></div>
             <div class="connection-line cl2"></div>
             <div class="connection-line cl3"></div>
             <div class="connection-line cl4"></div>
-
             <div class="network-dot nd1"></div>
             <div class="network-dot nd2"></div>
             <div class="network-dot nd3"></div>
             <div class="network-dot nd4"></div>
             <div class="network-dot nd5"></div>
-
             <div class="wifi-symbol">
-
                 <div class="wifi-arc arc-1"></div>
                 <div class="wifi-arc arc-2"></div>
                 <div class="wifi-arc arc-3"></div>
                 <div class="wifi-dot"></div>
-
             </div>
-
             <div class="orbit orbit-1"></div>
             <div class="orbit orbit-2"></div>
             <div class="orbit orbit-3"></div>
-
             <div class="data-wave"></div>
             <div class="data-wave wave2"></div>
             <div class="data-wave wave3"></div>
-
             <div class="router">
-
                 <div class="antenna ant1"></div>
                 <div class="antenna ant2"></div>
-
                 <div class="router-body">
-
                     <div class="router-top"></div>
-
                     <div class="router-light">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span></span><span></span><span></span><span></span><span></span>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
         <div class="realtime-monitor">
-
             <div class="monitor-header">
-
                 <span>⚡ Live Network Stream</span>
-
                 <div class="live-badge">
-
                     <div class="live-dot"></div>
-
                     <span>Active</span>
-
                 </div>
-
             </div>
-
             <div class="monitor-stats">
-
-                <span>
-                    Ping:
-                    <b id="pingVal">2 ms</b>
-                </span>
-
-                <span>
-                    Speed:
-                    <b id="speedVal">120 Mbps</b>
-                </span>
-
-                <span>
-                    Flow:
-                    <b>Stable</b>
-                </span>
-
+                <span>Ping: <b id="pingVal">2 ms</b></span>
+                <span>Speed: <b id="speedVal">120 Mbps</b></span>
+                <span>Flow: <b>Stable</b></span>
             </div>
-
             <div class="monitor-clock">
-
-                <span class="clock-label">
-                    🕒 বর্তমান সময়
-                </span>
-
-                <span id="liveClock">
-                    00:00:00
-                </span>
-
+                <span class="clock-label">🕒 তারিখ ও সময় (12 Hours)</span>
+                <span id="liveClock">00:00:00 AM | 00 Mon 2026</span>
             </div>
-
         </div>
-
     </div>
-
 </header>
 
-<!-- PACKAGES -->
-
 <section id="packages">
-
-    <h2 class="title">
-        সুপার ফাস্ট ইন্টারনেট প্যাকেজ
-    </h2>
-
-    <p class="sub">
-        আপনার প্রয়োজন অনুযায়ী সাশ্রয়ী ও শক্তিশালী
-        ইন্টারনেট প্যাকেজ বেছে নিন
-    </p>
-
+    <h2 class="title">সুপার ফাস্ট ইন্টারনেট প্যাকেজ</h2>
+    <p class="sub">আপনার প্রয়োজন অনুযায়ী সাশ্রয়ী ও শক্তিশালী ইন্টারনেট প্যাকেজ বেছে নিন</p>
     <div class="grid" id="packageGrid"></div>
-
 </section>
-
-<!-- COVERAGE -->
 
 <section id="coverage">
-
     <div class="coverage">
-
-        <div class="tag">
-            CHECK YOUR AREA
-        </div>
-
-        <h2 class="title">
-            আপনার এলাকায় MAPS INTERNET আছে?
-        </h2>
-
-        <p class="sub">
-            এলাকার নাম লিখে আমাদের কভারেজ সম্পর্কে জানতে পারবেন।
-        </p>
-
+        <div class="tag">CHECK YOUR AREA</div>
+        <h2 class="title">আপনার এলাকায় MAPS INTERNET আছে?</h2>
+        <p class="sub">এলাকার নাম লিখে আমাদের কভারেজ সম্পর্কে জানতে পারবেন।</p>
         <div class="coverage-search">
-
-            <input
-                id="area"
-                placeholder="আপনার এলাকার নাম লিখুন"
-            >
-
-            <button
-                class="btn"
-                type="button"
-                onclick="checkCoverage()"
-            >
-                Check
-            </button>
-
+            <input id="area" placeholder="আপনার এলাকার নাম লিখুন">
+            <button class="btn" type="button" onclick="checkCoverage()">Check</button>
         </div>
-
-        <p
-            id="coverageResult"
-            style="margin-top:15px;font-weight:bold;color:#47e7ff"
-        ></p>
-
+        <p id="coverageResult" style="margin-top:15px;font-weight:bold;color:#47e7ff"></p>
     </div>
-
 </section>
 
-<!-- CONNECTION -->
-
 <section id="connection">
-
-    <h2 class="title">
-        নতুন ইন্টারনেট সংযোগ নিন
-    </h2>
-
-    <p class="sub">
-        ফর্ম পূরণ করুন, আমাদের টিম আপনার সাথে যোগাযোগ করবে।
-    </p>
-
+    <h2 class="title">নতুন ইন্টারনেট সংযোগ নিন</h2>
+    <p class="sub">ফর্ম পূরণ করুন, আমাদের টিম আপনার সাথে যোগাযোগ করবে।</p>
     <form class="form" onsubmit="submitMainForm(event)">
-
-        <input
-            id="mainName"
-            placeholder="আপনার নাম"
-            required
-        >
-
-        <input
-            id="mainPhone"
-            type="tel"
-            placeholder="মোবাইল নম্বর"
-            required
-        >
-
+        <input id="mainName" placeholder="আপনার নাম" required>
+        <input id="mainPhone" type="tel" placeholder="মোবাইল নম্বর" required>
         <select id="mainPackage" required>
-
             <option value="">পছন্দের প্যাকেজ নির্বাচন করুন</option>
             <option>20 Mbps - 500 টাকা</option>
             <option>30 Mbps - 600 টাকা</option>
@@ -1404,1077 +995,337 @@ RESPONSIVE
             <option>170 Mbps - 1700 টাকা</option>
             <option>220 Mbps - 2000 টাকা</option>
             <option>350 Mbps - 3000 টাকা</option>
-
         </select>
-
-        <input
-            id="mainArea"
-            placeholder="এলাকার নাম"
-            required
-        >
-
-        <textarea
-            id="mainAddress"
-            placeholder="সম্পূর্ণ ঠিকানা"
-            required
-        ></textarea>
-
-        <button
-            class="btn"
-            type="submit"
-            id="submitBtn"
-        >
-            সংযোগের আবেদন করুন
-        </button>
-
+        <input id="mainArea" placeholder="এলাকার নাম" required>
+        <textarea id="mainAddress" placeholder="সম্পূর্ণ ঠিকানা" required></textarea>
+        <button class="btn" type="submit" id="submitBtn">সংযোগের আবেদন করুন</button>
     </form>
-
-    <p
-        id="formResult"
-        style="text-align:center;margin-top:20px;font-size:16px"
-    ></p>
-
+    <p id="formResult" style="text-align:center;margin-top:20px;font-size:16px"></p>
 </section>
 
-<!-- FOOTER -->
-
 <footer>
-
-    <div class="logo">
-        <b>MAPS</b> INTERNET
-    </div>
-
-    <p>
-        সংযোগ যখন আস্থার গতি,
-        তখন আপনার হাতে ডিজিটাল দুনিয়া।
-    </p>
-
-    <p>
-        © 2026 MAPS INTERNET
-    </p>
-
+    <div class="logo"><b>MAPS</b> INTERNET</div>
+    <p>সংযোগ যখন আস্থার গতি, তখন আপনার হাতে ডিজিটাল দুনিয়া।</p>
+    <p>© 2026 MAPS INTERNET</p>
 </footer>
 
-<!-- BKASH POPUP -->
-
+<!-- bKash Popup -->
 <div id="bkashPopup" class="popup-overlay">
-
     <div class="popup-card">
-
         <span class="close-popup" onclick="closeBkash()">×</span>
-
-        <h2 style="text-align:center">
-            💳 bKash Payment
-        </h2>
-
-        <p style="text-align:center">
-            <b>bKash Merchant Number</b>
-        </p>
-
-        <h1 style="color:#e2136e;text-align:center;margin:10px 0">
-            01827700022
-        </h1>
-
+        <h2 style="text-align:center">💳 bKash Payment</h2>
+        <p style="text-align:center"><b>bKash Merchant Number</b></p>
+        <h1 style="color:#e2136e;text-align:center;margin:10px 0">01827700022</h1>
         <hr style="border-color:rgba(255,255,255,.12)">
-
         <p style="line-height:1.8;font-size:14px">
-
             1️⃣ bKash App খুলুন<br>
             2️⃣ Make Payment নির্বাচন করুন<br>
-            3️⃣ Merchant Number দিন:
-            <b>01827700022</b><br>
+            3️⃣ Merchant Number দিন: <b>01827700022</b><br>
             4️⃣ বিলের Amount দিন<br>
             5️⃣ Reference-এ Customer ID দিন<br>
             6️⃣ PIN দিয়ে Payment সম্পন্ন করুন
-
         </p>
-
-        <button
-            class="popup-button"
-            style="background:#e2136e;color:white"
-            onclick="copyBkash()"
-        >
-            📋 Copy Merchant Number
-        </button>
-
+        <button class="popup-button" style="background:#e2136e;color:white" onclick="copyBkash()">📋 Copy Merchant Number</button>
     </div>
-
 </div>
 
-<!-- CUSTOMER LOGIN -->
-
-<div id="loginPopup" class="popup-overlay">
-
+<!-- Authorized Login Popup -->
+<div id="authLoginPopup" class="popup-overlay">
     <div class="popup-card">
-
-        <span class="close-popup" onclick="closeLogin()">×</span>
-
-        <h2 style="text-align:center">
-            👤 Customer Login
-        </h2>
-
-        <input
-            id="loginCustomerId"
-            placeholder="Customer ID"
-        >
-
-        <input
-            id="loginPassword"
-            type="password"
-            placeholder="Password"
-        >
-
-        <button
-            class="popup-button"
-            style="background:#47e7ff;color:#07101d"
-            onclick="customerLogin()"
-        >
-            Login করুন
-        </button>
-
-        <p
-            id="loginResult"
-            style="text-align:center;margin-top:15px"
-        ></p>
-
-    </div>
-
-</div>
-
-<!-- CUSTOMER DASHBOARD -->
-
-<div id="customerDashboard" class="popup-overlay">
-
-    <div class="popup-card">
-
-        <span class="close-popup" onclick="logoutCustomer()">×</span>
-
-        <h2 style="text-align:center">
-            👋 Welcome
-        </h2>
-
-        <div
-            style="
-                background:#0a0e27;
-                padding:18px;
-                border-radius:12px;
-                margin:15px 0;
-                line-height:1.8
-            "
-        >
-
-            <p>
-                👤 <b>Name:</b>
-                <span id="dashboardName"></span>
-            </p>
-
-            <p>
-                🆔 <b>Customer ID:</b>
-                <span id="dashboardId"></span>
-            </p>
-
-            <p>
-                📦 <b>Package:</b>
-                <span id="dashboardPackage"></span>
-            </p>
-
-            <p>
-                💰 <b>Current Bill:</b>
-                <span id="dashboardBill"></span>
-            </p>
-
-            <p>
-                📊 <b>Status:</b>
-                <span id="dashboardStatus"></span>
-            </p>
-
+        <span class="close-popup" onclick="closeAuthLogin()">×</span>
+        <h2 style="text-align:center; color:var(--cyan);">🔐 Authorized Login</h2>
+        <div id="authLoginForm">
+            <input id="authUsername" placeholder="Username (ইউজারনেম)">
+            <input id="authPassword" type="password" placeholder="Password (পাসওয়ার্ড)">
+            <button class="popup-button" style="background:var(--cyan); color:#07101d;" onclick="verifyAuthLogin()">Login</button>
+            <p id="authLoginResult" style="text-align:center; margin-top:15px; color:#ff4747;"></p>
         </div>
-
-        <button
-            class="popup-button"
-            style="background:#e2136e;color:white"
-            onclick="logoutCustomer()"
-        >
-            Logout
-        </button>
-
     </div>
-
 </div>
 
-<!-- CALL BOX -->
+<!-- Customer Login Popup -->
+<div id="loginPopup" class="popup-overlay">
+    <div class="popup-card">
+        <span class="close-popup" onclick="closeLogin()">×</span>
+        <h2 style="text-align:center">👤 Customer Login</h2>
+        <input id="loginCustomerId" placeholder="Customer ID">
+        <input id="loginPassword" type="password" placeholder="Password">
+        <button class="popup-button" style="background:#47e7ff;color:#07101d" onclick="customerLogin()">Login করুন</button>
+        <p id="loginResult" style="text-align:center;margin-top:15px"></p>
+    </div>
+</div>
 
 <div class="call-box">
-
-    📞 সংযোগ পেতে কল করুন
-
-    <br>
-
-    <a href="tel:01827700011">
-        01827700011
-    </a>
-
-    |
-
-    <a href="tel:01827700022">
-        01827700022
-    </a>
-
+    📞 সংযোগ পেতে কল করুন<br>
+    <a href="tel:01827700011">01827700011</a> | <a href="tel:01827700022">01827700022</a>
 </div>
 
 <script>
-
-/* GOOGLE SCRIPT */
-
-const GOOGLE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxCvlO7ymkYzbWfs9pEChgSNSIMqvFJXRvp9NLMPzb01a2YDe-0-AUVlo_oQ0XkZ3Bt/exec";
-
-
-/* =========================
-BACKGROUND CANVAS + MOUSE MAGNET
-========================= */
-
+// Constellation Background Animation Script (Magnet & Touch Glow Updated)
 const canvas = document.getElementById("bgCanvas");
 const ctx = canvas.getContext("2d");
 
-let particles = [];
-const particleCount = 75;
-
-const mouse = {
-    x:null,
-    y:null,
-    radius:220
-};
-
-window.addEventListener("mousemove",function(e){
-
-    mouse.x = e.clientX;
-    mouse.y = e.clientY;
-
-});
-
-window.addEventListener("mouseleave",function(){
-
-    mouse.x = null;
-    mouse.y = null;
-
-});
-
-function resizeCanvas(){
-
+function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
 }
-
-window.addEventListener("resize",resizeCanvas);
-
+window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
+let particlesArray = [];
+const numberOfParticles = Math.floor((window.innerWidth * window.innerHeight) / 12000);
 
-class Particle{
+let mouse = {
+    x: null,
+    y: null,
+    radius: 150
+};
 
-    constructor(){
+window.addEventListener("mousemove", (event) => {
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
+});
 
+window.addEventListener("mouseout", () => {
+    mouse.x = null;
+    mouse.y = null;
+});
+
+class Particle {
+    constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-
         this.vx = (Math.random() - 0.5) * 0.8;
         this.vy = (Math.random() - 0.5) * 0.8;
-
-        this.radius = Math.random() * 2 + 1;
-
-        this.density = Math.random() * 20 + 10;
-
+        this.baseSize = Math.random() * 2 + 1;
+        this.size = this.baseSize;
     }
-
-    update(){
-
-        /* NORMAL MOVEMENT */
-
+    update() {
         this.x += this.vx;
         this.y += this.vy;
 
+        if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
+        if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
 
-        /* MAGNET EFFECT */
+        // ম্যাগনেট এফেক্ট (Mouse-এর দিকে কণাগুলো টেনে নেওয়া)
+        if (mouse.x !== null && mouse.y !== null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
 
-        if(
-            mouse.x !== null &&
-            mouse.y !== null
-        ){
-
-            const dx = mouse.x - this.x;
-            const dy = mouse.y - this.y;
-
-            const distance =
-                Math.sqrt(dx * dx + dy * dy);
-
-            if(
-                distance < mouse.radius &&
-                distance > 1
-            ){
-
-                const force =
-                    (mouse.radius - distance) /
-                    mouse.radius;
-
-                const pull =
-                    force * 2.2;
-
-                this.x +=
-                    (dx / distance) *
-                    pull *
-                    this.density *
-                    0.02;
-
-                this.y +=
-                    (dy / distance) *
-                    pull *
-                    this.density *
-                    0.04;
-
-
-                /* CLOSE TO MOUSE = CIRCULAR MAGNET MOTION */
-
-                if(distance < 70){
-
-                    this.x +=
-                        (-dy / distance) *
-                        1.2;
-
-                    this.y +=
-                        (dx / distance) *
-                        1.2;
-
-                }
-
+            if (distance < mouse.radius) {
+                const forceDirectionX = dx / distance;
+                const forceDirectionY = dy / distance;
+                const force = (mouse.radius - distance) / mouse.radius;
+                
+                this.x += forceDirectionX * force * 2;
+                this.y += forceDirectionY * force * 2;
             }
-
         }
-
-
-        /* SCREEN EDGE */
-
-        if(this.x < 0){
-
-            this.x = 0;
-            this.vx *= -1;
-
-        }
-
-        if(this.x > canvas.width){
-
-            this.x = canvas.width;
-            this.vx *= -1;
-
-        }
-
-        if(this.y < 0){
-
-            this.y = 0;
-            this.vy *= -1;
-
-        }
-
-        if(this.y > canvas.height){
-
-            this.y = canvas.height;
-            this.vy *= -1;
-
-        }
-
     }
-
-
-    draw(){
+    draw() {
+        let isTouching = false;
+        if (mouse.x !== null && mouse.y !== null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < 35) {
+                isTouching = true;
+            }
+        }
 
         ctx.beginPath();
-
-        ctx.arc(
-            this.x,
-            this.y,
-            this.radius,
-            0,
-            Math.PI * 2
-        );
-
-        ctx.fillStyle = "#47e7ff";
-
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = "#47e7ff";
-
+        ctx.arc(this.x, this.y, isTouching ? this.size * 2.2 : this.size, 0, Math.PI * 2);
+        
+        if (isTouching) {
+            ctx.fillStyle = "#ffffff";
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = "#47e7ff";
+        } else {
+            ctx.fillStyle = "rgba(71, 231, 255, 0.7)";
+            ctx.shadowBlur = 0;
+        }
         ctx.fill();
-
         ctx.shadowBlur = 0;
-
     }
-
 }
 
-
-for(let i = 0;i < particleCount;i++){
-
-    particles.push(
-        new Particle()
-    );
-
-}
-
-
-function animateBackground(){
-
-    ctx.clearRect(
-        0,
-        0,
-        canvas.width,
-        canvas.height
-    );
-
-
-    /* MOUSE GLOW */
-
-    if(
-        mouse.x !== null &&
-        mouse.y !== null
-    ){
-
-        const gradient =
-            ctx.createRadialGradient(
-                mouse.x,
-                mouse.y,
-                0,
-                mouse.x,
-                mouse.y,
-                mouse.radius
-            );
-
-        gradient.addColorStop(
-            0,
-            "rgba(71,231,255,.16)"
-        );
-
-        gradient.addColorStop(
-            .4,
-            "rgba(22,135,255,.07)"
-        );
-
-        gradient.addColorStop(
-            1,
-            "rgba(0,0,0,0)"
-        );
-
-        ctx.fillStyle = gradient;
-
-        ctx.beginPath();
-
-        ctx.arc(
-            mouse.x,
-            mouse.y,
-            mouse.radius,
-            0,
-            Math.PI * 2
-        );
-
-        ctx.fill();
-
+function initParticles() {
+    particlesArray = [];
+    for (let i = 0; i < numberOfParticles; i++) {
+        particlesArray.push(new Particle());
     }
+}
+initParticles();
 
+function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    for (let i = 0; i < particlesArray.length; i++) {
+        particlesArray[i].update();
+        particlesArray[i].draw();
 
-    for(
-        let i = 0;
-        i < particles.length;
-        i++
-    ){
+        for (let j = i + 1; j < particlesArray.length; j++) {
+            let dx = particlesArray[i].x - particlesArray[j].x;
+            let dy = particlesArray[i].y - particlesArray[j].y;
+            let distance = Math.sqrt(dx * dx + dy * dy);
 
-        particles[i].update();
-        particles[i].draw();
-
-
-        /* PARTICLE CONNECTION */
-
-        for(
-            let j = i + 1;
-            j < particles.length;
-            j++
-        ){
-
-            const dx =
-                particles[i].x -
-                particles[j].x;
-
-            const dy =
-                particles[i].y -
-                particles[j].y;
-
-            const dist =
-                Math.sqrt(
-                    dx * dx +
-                    dy * dy
-                );
-
-            if(dist < 130){
-
+            if (distance < 110) {
+                ctx.strokeStyle = `rgba(71, 231, 255, ${1 - distance / 110})`;
+                ctx.lineWidth = 0.6;
                 ctx.beginPath();
-
-                ctx.moveTo(
-                    particles[i].x,
-                    particles[i].y
-                );
-
-                ctx.lineTo(
-                    particles[j].x,
-                    particles[j].y
-                );
-
-                ctx.strokeStyle =
-                    `rgba(71,231,255,${0.8 - dist / 160})`;
-
-                ctx.lineWidth = .7;
-
+                ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
                 ctx.stroke();
-
             }
-
         }
 
+        if (mouse.x !== null && mouse.y !== null) {
+            let mdx = particlesArray[i].x - mouse.x;
+            let mdy = particlesArray[i].y - mouse.y;
+            let mDist = Math.sqrt(mdx * mdx + mdy * mdy);
 
-        /* MOUSE CONNECTION */
-
-        if(
-            mouse.x !== null &&
-            mouse.y !== null
-        ){
-
-            const dx =
-                mouse.x -
-                particles[i].x;
-
-            const dy =
-                mouse.y -
-                particles[i].y;
-
-            const dist =
-                Math.sqrt(
-                    dx * dx +
-                    dy * dy
-                );
-
-            if(dist < 170){
-
+            if (mDist < mouse.radius) {
+                ctx.strokeStyle = `rgba(22, 135, 255, ${(1 - mDist / mouse.radius) * 0.8})`;
+                ctx.lineWidth = 0.8;
                 ctx.beginPath();
-
-                ctx.moveTo(
-                    mouse.x,
-                    mouse.y
-                );
-
-                ctx.lineTo(
-                    particles[i].x,
-                    particles[i].y
-                );
-
-                ctx.strokeStyle =
-                    `rgba(71,231,255,${(170 - dist) / 300})`;
-
-                ctx.lineWidth = 1;
-
+                ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                ctx.lineTo(mouse.x, mouse.y);
                 ctx.stroke();
-
             }
-
         }
-
     }
-
-
-    requestAnimationFrame(
-        animateBackground
-    );
-
+    requestAnimationFrame(animateParticles);
 }
+animateParticles();
 
-animateBackground();
-
-
-/* CLOCK */
+// GOOGLE SCRIPT & OTHER LOGIC
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbysoiZDEWChVN3x8seAzZXBM0F4IotVQvV7e1LaCa-GoCpzijPsNqPQJiVjbjU7On3m/exec";
 
 function updateClock(){
-
     const now = new Date();
+    let hours = now.getHours();
+    const minutes = String(now.getMinutes()).padStart(2,'0');
+    const seconds = String(now.getSeconds()).padStart(2,'0');
+    const ampm = hours >= 12 ? 'PM' : 'AM';
+    
+    hours = hours % 12;
+    hours = hours ? hours : 12; 
+    const formattedHours = String(hours).padStart(2,'0');
 
-    document.getElementById(
-        "liveClock"
-    ).textContent =
-        now.toLocaleTimeString();
+    const day = String(now.getDate()).padStart(2,'0');
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const month = months[now.getMonth()];
+    const year = now.getFullYear();
 
+    document.getElementById("liveClock").innerText = `${formattedHours}:${minutes}:${seconds} ${ampm} | ${day} ${month} ${year}`;
 }
-
-setInterval(updateClock,1000);
-
+setInterval(updateClock, 1000);
 updateClock();
 
+setInterval(() => {
+    document.getElementById("pingVal").innerText = Math.floor(Math.random() * 4) + 1 + " ms";
+}, 3000);
 
-/* NETWORK SIMULATOR */
-
-setInterval(function(){
-
-    const pings = [2,3,4,2,5];
-
-    const speeds = [
-        "120 Mbps",
-        "145 Mbps",
-        "130 Mbps",
-        "150 Mbps",
-        "135 Mbps"
-    ];
-
-    document.getElementById(
-        "pingVal"
-    ).textContent =
-        pings[
-            Math.floor(
-                Math.random() * pings.length
-            )
-        ] + " ms";
-
-
-    document.getElementById(
-        "speedVal"
-    ).textContent =
-        speeds[
-            Math.floor(
-                Math.random() * speeds.length
-            )
-        ];
-
-},2000);
-
-
-/* MOBILE MENU */
-
-function toggleMenu(){
-
-    const links =
-        document.getElementById(
-            "navLinks"
-        );
-
-    links.classList.toggle("active");
-
-}
-
-
-/* PACKAGES */
-
-const packs = [
-
-    ["20 Mbps","500 টাকা"],
-    ["30 Mbps","600 টাকা"],
-    ["50 Mbps","800 টাকা"],
-    ["80 Mbps","1000 টাকা"],
-    ["120 Mbps","1300 টাকা"],
-    ["140 Mbps","1500 টাকা"],
-    ["170 Mbps","1700 টাকা"],
-    ["220 Mbps","2000 টাকা"],
-    ["350 Mbps","3000 টাকা"]
-
+const packages = [
+    {speed:"20 Mbps", price:"500 টাকা", features:["Unlimited Browsing", "YouTube 1080p", "Real IP Optional", "24/7 Support"]},
+    {speed:"30 Mbps", price:"600 টাকা", features:["Fast Downloading", "YouTube 4K", "BDIX Enabled", "24/7 Support"]},
+    {speed:"50 Mbps", price:"800 টাকা", features:["HD Gaming & Streaming", "YouTube 4K", "BDIX Super Fast", "Priority Support"]},
+    {speed:"80 Mbps", price:"1000 টাকা", features:["Ultra Fast Gaming", "Multi-Device Streaming", "Free BDIX FTP", "Dedicated Support"]},
+    {speed:"120 Mbps", price:"1300 টাকা", features:["Professional Gaming", "Heavy Office Work", "Direct BDIX", "VIP Support"]},
+    {speed:"140 Mbps", price:"1500 টাকা", features:["Enterprise Grade", "Extreme Speed", "Unlimited Data", "VIP Support"]},
+    {speed:"170 Mbps", price:"1700 টাকা", features:["Ultra Enterprise", "Zero Latency Gaming", "Dedicated Server", "VIP Support"]},
+    {speed:"220 Mbps", price:"2000 টাকা", features:["Gigabit Experience", "Extreme Power", "Custom Setup", "24/7 Support"]},
+    {speed:"350 Mbps", price:"3000 টাকা", features:["Ultimate Speed", "Corporate Solutions", "Dedicated Bandwidth", "VIP Support"]}
 ];
 
-
-document.getElementById(
-    "packageGrid"
-).innerHTML =
-packs.map(function(p){
-
-    return `
-
-        <div class="card">
-
-            <div class="speed">
-                ${p[0]}
+const packageGrid = document.getElementById("packageGrid");
+if(packageGrid) {
+    packages.forEach(pkg => {
+        packageGrid.innerHTML += `
+            <div class="card">
+                <div class="speed">${pkg.speed}</div>
+                <div class="price">${pkg.price}</div>
+                <ul class="features">
+                    ${pkg.features.map(f => `<li>${f}</li>`).join('')}
+                </ul>
             </div>
-
-            <div class="price">
-
-                ${p[1]}
-
-                <small
-                    style="
-                        font-size:13px;
-                        color:#aab1d6
-                    "
-                >
-                    /মাস
-                </small>
-
-            </div>
-
-            <p class="features">
-
-                ✓ Ultra-Fast Fiber<br>
-                ✓ Bufferless Streaming<br>
-                ✓ 24/7 Support Service<br>
-                ✓ Low Latency Gaming
-
-            </p>
-
-            <a
-                class="ghost"
-                href="#connection"
-            >
-                এই প্যাকেজ নিন
-            </a>
-
-        </div>
-
-    `;
-
-}).join("");
-
-
-/* COVERAGE */
+        `;
+    });
+}
 
 function checkCoverage(){
+    const area = document.getElementById("area").value.trim();
+    const res = document.getElementById("coverageResult");
+    if(!area){ res.innerText = "⚠️ এলাকার নাম লিখুন!"; return; }
+    res.innerText = `✅ মহানন্দে জানাচ্ছি যে, '${area}' এলাকায় আমাদের হাই-স্পিড কভারেজ উপলব্ধ রয়েছে!`;
+}
 
-    const area =
-        document.getElementById(
-            "area"
-        ).value.trim();
+function toggleMenu(){ document.getElementById("navLinks").classList.toggle("active"); }
+function openBkash(){ document.getElementById("bkashPopup").style.display = "flex"; }
+function closeBkash(){ document.getElementById("bkashPopup").style.display = "none"; }
+function copyBkash(){ navigator.clipboard.writeText("01827700022"); alert("bKash Merchant Number Copied!"); }
+function openLogin(){ document.getElementById("loginPopup").style.display = "flex"; }
+function closeLogin(){ document.getElementById("loginPopup").style.display = "none"; }
 
-    const result =
-        document.getElementById(
-            "coverageResult"
-        );
+function openAuthLogin() { document.getElementById("authLoginPopup").style.display = "flex"; }
+function closeAuthLogin() {
+    document.getElementById("authLoginPopup").style.display = "none";
+    document.getElementById("authLoginForm").style.display = "block";
+    document.getElementById("authUsername").value = "";
+    document.getElementById("authPassword").value = "";
+    document.getElementById("authLoginResult").innerText = "";
+}
 
-    if(area === ""){
+function verifyAuthLogin(){
+    const u = document.getElementById("authUsername").value.trim();
+    const p = document.getElementById("authPassword").value.trim();
+    const res = document.getElementById("authLoginResult");
 
-        result.textContent =
-            "⚠️ অনুগ্রহ করে এলাকার নাম লিখুন।";
-
+    if(!u || !p){
+        res.style.color = "#facc15";
+        res.innerText = "⚠️ ইউজারনেম এবং পাসওয়ার্ড দিন!";
         return;
-
     }
 
-    result.textContent =
-        "✅ ধন্যবাদ! " +
-        area +
-        " এলাকায় আমাদের কভারেজ নিশ্চিত করতে প্রতিনিধি শীঘ্রই যোগাযোগ করবে।";
+    res.style.color = "#38bdf8";
+    res.innerText = "যাচাই করা হচ্ছে...";
 
-}
-
-
-/* BKASH */
-
-function openBkash(){
-
-    document.getElementById(
-        "bkashPopup"
-    ).style.display = "flex";
-
-}
-
-function closeBkash(){
-
-    document.getElementById(
-        "bkashPopup"
-    ).style.display = "none";
-
-}
-
-function copyBkash(){
-
-    const number = "01827700022";
-
-    navigator.clipboard
-        .writeText(number)
-        .then(function(){
-
-            alert(
-                "Merchant Number Copied: " +
-                number
-            );
-
-        })
-        .catch(function(){
-
-            alert(
-                "Merchant Number: " +
-                number
-            );
-
-        });
-
-}
-
-
-/* LOGIN */
-
-function openLogin(){
-
-    document.getElementById(
-        "loginPopup"
-    ).style.display = "flex";
-
-    document.getElementById(
-        "loginResult"
-    ).innerHTML = "";
-
-}
-
-function closeLogin(){
-
-    document.getElementById(
-        "loginPopup"
-    ).style.display = "none";
-
-}
-
-async function customerLogin(){
-
-    const customerId =
-        document.getElementById(
-            "loginCustomerId"
-        ).value.trim();
-
-    const password =
-        document.getElementById(
-            "loginPassword"
-        ).value.trim();
-
-    const result =
-        document.getElementById(
-            "loginResult"
-        );
-
-    if(!customerId || !password){
-
-        result.innerHTML =
-            "⚠️ Customer ID এবং Password দিন";
-
-        return;
-
-    }
-
-    result.innerHTML =
-        "⏳ Login হচ্ছে...";
-
-    try{
-
-        const url =
-            GOOGLE_SCRIPT_URL +
-            "?action=login" +
-            "&customerId=" +
-            encodeURIComponent(customerId) +
-            "&password=" +
-            encodeURIComponent(password);
-
-        const response =
-            await fetch(url);
-
-        const data =
-            await response.json();
-
+    fetch(`${GOOGLE_SCRIPT_URL}?action=authLogin&username=${encodeURIComponent(u)}&password=${encodeURIComponent(p)}`)
+    .then(response => response.json())
+    .then(data => {
         if(data.success){
+            res.style.color = "#4ade80";
+            res.innerText = "✅ লগইন সফল হয়েছে! ৩ সেকেন্ডের মধ্যে রিডাইরেক্ট হচ্ছে...";
+            
+            setTimeout(() => {
+                const autoLink = document.createElement("a");
+                autoLink.href = "https://sites.google.com/view/mapsinternet1/home";
+                autoLink.target = "_blank";
+                document.body.appendChild(autoLink);
+                autoLink.click();
+                autoLink.remove();
+                
+                closeAuthLogin();
+            }, 3000);
 
-            document.getElementById(
-                "dashboardName"
-            ).textContent =
-                data.customer.name;
-
-            document.getElementById(
-                "dashboardId"
-            ).textContent =
-                data.customer.id;
-
-            document.getElementById(
-                "dashboardPackage"
-            ).textContent =
-                data.customer.package;
-
-            document.getElementById(
-                "dashboardBill"
-            ).textContent =
-                "৳" + data.customer.bill;
-
-            document.getElementById(
-                "dashboardStatus"
-            ).textContent =
-                data.customer.status;
-
-            closeLogin();
-
-            document.getElementById(
-                "customerDashboard"
-            ).style.display = "flex";
-
-        }else{
-
-            result.innerHTML =
-                "❌ " + data.message;
-
+        } else {
+            res.style.color = "#f87171";
+            res.innerText = "❌ ভুল ইউজারনেম বা পাসওয়ার্ড!";
         }
-
-    }catch(error){
-
-        result.innerHTML =
-            "❌ Server connection error";
-
-        console.log(error);
-
-    }
-
+    })
+    .catch(error => {
+        res.style.color = "#f87171";
+        res.innerText = "⚠️ সংযোগে সমস্যা হয়েছে, আবার চেষ্টা করুন।";
+    });
 }
 
-
-/* LOGOUT */
-
-function logoutCustomer(){
-
-    document.getElementById(
-        "customerDashboard"
-    ).style.display = "none";
-
-    document.getElementById(
-        "loginCustomerId"
-    ).value = "";
-
-    document.getElementById(
-        "loginPassword"
-    ).value = "";
-
-    document.getElementById(
-        "loginResult"
-    ).innerHTML = "";
-
+function submitMainForm(e){
+    e.preventDefault();
+    document.getElementById("formResult").style.color = "#16d36a";
+    document.getElementById("formResult").innerText = "🎉 আপনার আবেদনটি সফলভাবে জমা হয়েছে! খুব শীঘ্রই আমাদের টিম যোগাযোগ করবে।";
+    e.target.reset();
 }
-
-
-/* CONNECTION FORM */
-
-async function submitMainForm(event){
-
-    event.preventDefault();
-
-    const btn =
-        document.getElementById(
-            "submitBtn"
-        );
-
-    const result =
-        document.getElementById(
-            "formResult"
-        );
-
-    btn.disabled = true;
-
-    result.innerHTML =
-        "⏳ আপনার আবেদন জমা হচ্ছে...";
-
-    const formData =
-        new URLSearchParams();
-
-    formData.append(
-        "action",
-        "application"
-    );
-
-    formData.append(
-        "name",
-        document.getElementById(
-            "mainName"
-        ).value
-    );
-
-    formData.append(
-        "phone",
-        document.getElementById(
-            "mainPhone"
-        ).value
-    );
-
-    formData.append(
-        "package",
-        document.getElementById(
-            "mainPackage"
-        ).value
-    );
-
-    formData.append(
-        "area",
-        document.getElementById(
-            "mainArea"
-        ).value
-    );
-
-    formData.append(
-        "address",
-        document.getElementById(
-            "mainAddress"
-        ).value
-    );
-
-    try{
-
-        await fetch(
-            GOOGLE_SCRIPT_URL,
-            {
-                method:"POST",
-                mode:"no-cors",
-                body:formData
-            }
-        );
-
-        result.innerHTML =
-            "✅ আবেদন সফলভাবে জমা হয়েছে!<br><br>" +
-            "<b>MAPS INTERNET</b> থেকে শীঘ্রই যোগাযোগ করা হবে।";
-
-        event.target.reset();
-
-    }catch(error){
-
-        result.innerHTML =
-            "❌ আবেদন নেওয়া সম্ভব হয়নি। আবার চেষ্টা করুন।";
-
-    }finally{
-
-        btn.disabled = false;
-
-    }
-
-}
-
-
-/* CLICK OUTSIDE */
-
-window.addEventListener(
-    "click",
-    function(event){
-
-        if(
-            event.target ===
-            document.getElementById("bkashPopup")
-        ){
-            closeBkash();
-        }
-
-        if(
-            event.target ===
-            document.getElementById("loginPopup")
-        ){
-            closeLogin();
-        }
-
-        if(
-            event.target ===
-            document.getElementById("customerDashboard")
-        ){
-            logoutCustomer();
-        }
-
-    }
-);
-
 </script>
-
 </body>
 </html>
