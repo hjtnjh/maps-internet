@@ -1481,6 +1481,9 @@ scroll-behavior:auto !important;
 }
 
 }
+
+/* ================================================= CUSTOMER PORTAL ================================================= */
+.portal-overlay{position:fixed;inset:0;display:none;z-index:10000;background:rgba(2,6,23,.88);backdrop-filter:blur(14px);padding:22px;overflow-y:auto}.portal-overlay.active{display:flex;justify-content:center;align-items:flex-start}.portal-card{width:min(1100px,100%);margin:30px auto;background:linear-gradient(145deg,#0b1230,#070b1d);border:1px solid rgba(71,231,255,.28);border-radius:28px;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.65),0 0 60px rgba(71,231,255,.08)}.portal-head{padding:22px 26px;display:flex;align-items:center;justify-content:space-between;gap:15px;background:linear-gradient(135deg,#063d8f,#124fd0,#071d52)}.portal-brand{font-size:22px;font-weight:900;letter-spacing:.8px}.portal-brand b{color:var(--cyan)}.portal-welcome{color:#dbeafe;font-size:13px;margin-top:5px}.portal-close{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-size:24px;cursor:pointer}.portal-body{padding:26px}.portal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.portal-stat{padding:20px;border-radius:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}.portal-stat-label{font-size:12px;color:var(--muted);margin-bottom:8px}.portal-stat-value{font-size:21px;font-weight:900;color:#fff;word-break:break-word}.portal-stat-value.cyan{color:var(--cyan)}.portal-stat-value.green{color:#4ade80}.portal-stat-value.yellow{color:#facc15}.portal-main{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:18px}.portal-box{padding:22px;border-radius:20px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1)}.portal-box h3{margin:0 0 16px;font-size:17px}.portal-row{display:flex;justify-content:space-between;gap:15px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px}.portal-row:last-child{border-bottom:0}.portal-row span:first-child{color:var(--muted)}.portal-row strong{color:#fff;text-align:right}.portal-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.portal-action{border:none;padding:13px;border-radius:12px;font-weight:900;cursor:pointer;color:#07101d;background:linear-gradient(135deg,var(--cyan),var(--blue));transition:.3s}.portal-action:hover{transform:translateY(-2px);box-shadow:0 0 25px rgba(71,231,255,.35)}.portal-action.alt{color:#fff;background:rgba(255,255,255,.07);border:1px solid rgba(71,231,255,.35)}.portal-history{width:100%;border-collapse:collapse;font-size:12px}.portal-history th,.portal-history td{text-align:left;padding:11px 8px;border-bottom:1px solid rgba(255,255,255,.08)}.portal-history th{color:var(--muted);font-weight:700}.portal-history td{color:#e5e7eb}.portal-status{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;background:rgba(22,211,106,.12);color:#4ade80;border:1px solid rgba(22,211,106,.25);font-size:11px;font-weight:900}.portal-loading{text-align:center;padding:30px;color:var(--muted)}@media(max-width:850px){.portal-grid{grid-template-columns:1fr 1fr}.portal-main{grid-template-columns:1fr}}@media(max-width:520px){.portal-overlay{padding:8px}.portal-card{margin:8px auto;border-radius:20px}.portal-head{padding:18px}.portal-body{padding:15px}.portal-grid{grid-template-columns:1fr}.portal-actions{grid-template-columns:1fr}.portal-history{font-size:11px}}
 </style>
 </head>
 
@@ -2043,6 +2046,8 @@ style="text-align:center;margin-top:15px">
 </div>
 
 
+<!-- ================================================= CUSTOMER PORTAL ================================================= -->
+<div id="portalOverlay" class="portal-overlay"><div class="portal-card"><div class="portal-head"><div><div class="portal-brand"><b>MAPS</b> INTERNET Customer Portal</div><div class="portal-welcome" id="portalWelcome">আপনার অ্যাকাউন্ট ড্যাশবোর্ড</div></div><button class="portal-close" onclick="closePortal()">×</button></div><div class="portal-body"><div id="portalLoading" class="portal-loading">⏳ Customer information loading...</div><div id="portalContent" style="display:none"><div class="portal-grid"><div class="portal-stat"><div class="portal-stat-label">Customer ID</div><div class="portal-stat-value cyan" id="portalCustomerId">—</div></div><div class="portal-stat"><div class="portal-stat-label">Current Package</div><div class="portal-stat-value" id="portalPackage">—</div></div><div class="portal-stat"><div class="portal-stat-label">Current Bill</div><div class="portal-stat-value yellow" id="portalBill">—</div></div><div class="portal-stat"><div class="portal-stat-label">Connection Status</div><div class="portal-stat-value green" id="portalStatus">—</div></div></div><div class="portal-main"><div class="portal-box"><h3>👤 Customer Information</h3><div class="portal-row"><span>নাম</span><strong id="portalName">—</strong></div><div class="portal-row"><span>মোবাইল</span><strong id="portalPhone">—</strong></div><div class="portal-row"><span>Package</span><strong id="portalPackage2">—</strong></div><div class="portal-row"><span>Bill Amount</span><strong id="portalBill2">—</strong></div><div class="portal-row"><span>Due Date</span><strong id="portalDueDate">—</strong></div><div class="portal-row"><span>Usage</span><strong id="portalUsage">—</strong></div><div class="portal-actions"><button class="portal-action" onclick="portalPayBill()">💳 Pay Bill</button><button class="portal-action alt" onclick="portalSupport()">🛠️ Support</button></div></div><div class="portal-box"><h3>📊 Account Summary</h3><div class="portal-row"><span>Status</span><strong id="portalStatus2">—</strong></div><div class="portal-row"><span>Last Payment</span><strong id="portalLastPayment">—</strong></div><div class="portal-row"><span>Payment Method</span><strong>bKash / Nagad</strong></div><div class="portal-row"><span>Support</span><strong>01827700011 / 01827700022</strong></div><div class="portal-actions"><button class="portal-action alt" onclick="portalRefresh()">🔄 Refresh</button><button class="portal-action alt" onclick="portalLogout()">🚪 Logout</button></div></div></div><div class="portal-box" style="margin-top:18px"><h3>🧾 Payment History</h3><div style="overflow-x:auto"><table class="portal-history"><thead><tr><th>Date</th><th>Amount</th><th>Method</th><th>Transaction ID</th><th>Status</th></tr></thead><tbody id="portalHistory"><tr><td colspan="5" style="text-align:center;color:#aab1d6">No payment history found.</td></tr></tbody></table></div></div></div></div></div></div>
 <!-- =================================================
 SUPPORT OVERLAY
 ================================================= -->
@@ -2617,7 +2622,7 @@ GOOGLE SCRIPT
 ================================================= */
 
 const GOOGLE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbysoiZDEWChVN3x8seAzZXBM0F4IotVQvV7e1LaCa-GoCpzijPsNqPQJiVjbjU7On3m/exec";
+"https://script.google.com/macros/s/AKfycbwZGmgSMLdGabcyuI887hNlHpqz-SUA45-9EpUldO2dg4-R_wBmbj97Gpym5sAo_0Yf/exec";
 
 
 /* =================================================
@@ -3025,83 +3030,28 @@ document
 }
 
 function customerLogin(){
-
-const id =
-document.getElementById(
-"loginCustomerId"
-).value.trim();
-
-const password =
-document.getElementById(
-"loginPassword"
-).value.trim();
-
-const result =
-document.getElementById(
-"loginResult"
-);
-
-if(!id || !password){
-
-result.style.color =
-"#facc15";
-
-result.innerText =
-"⚠️ Customer ID এবং Password দিন!";
-
-return;
-
+const id=document.getElementById("loginCustomerId").value.trim();
+const password=document.getElementById("loginPassword").value.trim();
+const result=document.getElementById("loginResult");
+if(!id||!password){result.style.color="#facc15";result.innerText="⚠️ Customer ID এবং Password দিন!";return;}
+result.style.color="#38bdf8";result.innerText="যাচাই করা হচ্ছে...";
+fetch(`${GOOGLE_SCRIPT_URL}?action=customerLogin&customerId=${encodeURIComponent(id)}&password=${encodeURIComponent(password)}`).then(response=>response.json()).then(data=>{if(data.success){result.style.color="#4ade80";result.innerText="✅ Login সফল হয়েছে! Portal খোলা হচ্ছে...";sessionStorage.setItem("mapsCustomerId",id);sessionStorage.setItem("mapsCustomerPassword",password);setTimeout(()=>{closeLogin();openPortal();loadCustomerPortal(id,password,data);},500);}else{result.style.color="#f87171";result.innerText="❌ ভুল Customer ID অথবা Password!";}}).catch(error=>{console.error(error);result.style.color="#f87171";result.innerText="⚠️ সংযোগে সমস্যা হয়েছে, আবার চেষ্টা করুন।";});
 }
 
-result.style.color =
-"#38bdf8";
-
-result.innerText =
-"যাচাই করা হচ্ছে...";
-
-
-fetch(
-`${GOOGLE_SCRIPT_URL}?action=customerLogin&customerId=${encodeURIComponent(id)}&password=${encodeURIComponent(password)}`
-)
-
-.then(
-response=>response.json()
-)
-
-.then(data=>{
-
-if(data.success){
-
-result.style.color =
-"#4ade80";
-
-result.innerText =
-"✅ Login সফল হয়েছে!";
-
-}else{
-
-result.style.color =
-"#f87171";
-
-result.innerText =
-"❌ ভুল Customer ID অথবা Password!";
-
+function openPortal(){document.getElementById("portalOverlay").classList.add("active");document.body.style.overflow="hidden";}
+function closePortal(){document.getElementById("portalOverlay").classList.remove("active");document.body.style.overflow="";}
+function setPortalValue(id,value){const el=document.getElementById(id);if(el)el.innerText=(value===undefined||value===null||value==="")?"—":value;}
+function renderPortal(data,customerId){
+const c=data.customer||data.data||data;
+setPortalValue("portalCustomerId",c.customerId||c.customerID||customerId);setPortalValue("portalName",c.name||c.customerName);setPortalValue("portalPhone",c.phone||c.mobile||c.mobileNumber);setPortalValue("portalPackage",c.package||c.plan||c.currentPackage);setPortalValue("portalPackage2",c.package||c.plan||c.currentPackage);setPortalValue("portalBill",c.bill||c.billAmount||c.due||c.dueAmount);setPortalValue("portalBill2",c.bill||c.billAmount||c.due||c.dueAmount);setPortalValue("portalDueDate",c.dueDate||c.billDueDate);setPortalValue("portalUsage",c.usage||c.dataUsage||c.monthlyUsage);setPortalValue("portalLastPayment",c.lastPayment||c.lastPaymentDate);const status=c.status||c.connectionStatus||"Active";setPortalValue("portalStatus",status);setPortalValue("portalStatus2",status);
+const hist=c.paymentHistory||data.paymentHistory||[];const tbody=document.getElementById("portalHistory");if(Array.isArray(hist)&&hist.length){tbody.innerHTML=hist.map(x=>`<tr><td>${x.date||"—"}</td><td>${x.amount||"—"}</td><td>${x.method||"—"}</td><td>${x.transactionId||x.txid||"—"}</td><td><span class="portal-status">${x.status||"Paid"}</span></td></tr>`).join("");}
+document.getElementById("portalWelcome").innerText=`স্বাগতম, ${c.name||customerId} — আপনার Internet Account Dashboard`;document.getElementById("portalLoading").style.display="none";document.getElementById("portalContent").style.display="block";
 }
-
-})
-
-.catch(error=>{
-
-result.style.color =
-"#f87171";
-
-result.innerText =
-"⚠️ সংযোগে সমস্যা হয়েছে, আবার চেষ্টা করুন।";
-
-});
-
-}
-
+function loadCustomerPortal(id,password,loginData){document.getElementById("portalLoading").style.display="block";document.getElementById("portalContent").style.display="none";if(loginData&&(loginData.customer||loginData.data||loginData.name||loginData.customerId)){renderPortal(loginData,id);return;}fetch(`${GOOGLE_SCRIPT_URL}?action=customerData&customerId=${encodeURIComponent(id)}&password=${encodeURIComponent(password)}`).then(r=>r.json()).then(data=>{if(data.success)renderPortal(data,id);else renderPortal({success:true,customer:{customerId:id,status:"Active"}},id);}).catch(()=>renderPortal({success:true,customer:{customerId:id,status:"Active"}},id));}
+function portalRefresh(){const id=sessionStorage.getItem("mapsCustomerId");const password=sessionStorage.getItem("mapsCustomerPassword");if(id&&password)loadCustomerPortal(id,password,{});}
+function portalPayBill(){closePortal();openBkash();}
+function portalSupport(){closePortal();openSupportPanel();}
+function portalLogout(){sessionStorage.removeItem("mapsCustomerId");sessionStorage.removeItem("mapsCustomerPassword");closePortal();document.getElementById("loginCustomerId").value="";document.getElementById("loginPassword").value="";document.getElementById("loginResult").innerText="";}
 
 /* =================================================
 AUTHORIZED LOGIN
@@ -3199,6 +3149,7 @@ window.open(
 );
 
 closeAuthLogin();
+closePortal();
 
 },3000);
 
