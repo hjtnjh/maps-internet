@@ -1488,10 +1488,41 @@ scroll-behavior:auto !important;
 /* ================================================= ADMIN PANEL ================================================= */
 .admin-overlay{position:fixed;inset:0;display:none;z-index:12000;background:rgba(2,6,23,.94);backdrop-filter:blur(16px);padding:18px;overflow:auto}.admin-overlay.active{display:block}.admin-card{width:min(1250px,100%);margin:10px auto;background:linear-gradient(145deg,#0b1230,#070b1d);border:1px solid rgba(71,231,255,.25);border-radius:24px;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.7)}.admin-head{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:15px;background:linear-gradient(135deg,#062f73,#1048bb,#071d52)}.admin-title{font-size:21px;font-weight:900}.admin-title b{color:var(--cyan)}.admin-sub{font-size:12px;color:#cbd5e1;margin-top:4px}.admin-close{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-size:24px;cursor:pointer}.admin-body{padding:22px}.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.admin-stat{padding:18px;border-radius:17px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09)}.admin-stat small{display:block;color:var(--muted);font-size:11px;margin-bottom:7px}.admin-stat strong{font-size:24px;color:#fff}.admin-layout{display:grid;grid-template-columns:360px 1fr;gap:16px;margin-top:16px}.admin-box{padding:18px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09)}.admin-box h3{margin:0 0 14px;font-size:16px}.admin-form input,.admin-form select{width:100%;box-sizing:border-box;padding:11px 12px;margin-bottom:9px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(0,0,0,.25);color:#fff;outline:none}.admin-form input::placeholder{color:#94a3b8}.admin-btn{border:0;border-radius:10px;padding:11px 14px;font-weight:900;cursor:pointer;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#06111f}.admin-btn.alt{background:rgba(255,255,255,.07);border:1px solid rgba(71,231,255,.25);color:#fff}.admin-btn.danger{background:#7f1d1d;color:#fff}.admin-btns{display:flex;gap:8px;flex-wrap:wrap}.admin-table-wrap{overflow:auto}.admin-table{width:100%;border-collapse:collapse;font-size:11px}.admin-table th,.admin-table td{padding:10px 8px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);white-space:nowrap}.admin-table th{color:#94a3b8}.admin-table td{color:#e5e7eb}.admin-mini-btn{border:1px solid rgba(71,231,255,.25);background:rgba(255,255,255,.06);color:#fff;border-radius:7px;padding:5px 8px;cursor:pointer;margin-right:4px}.admin-msg{min-height:18px;font-size:12px;margin-top:8px}.admin-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}.admin-tab{padding:9px 13px;border-radius:9px;border:1px solid rgba(71,231,255,.2);background:rgba(255,255,255,.05);color:#fff;cursor:pointer;font-weight:800}.admin-tab.active{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#06111f}.admin-section{display:none}.admin-section.active{display:block}@media(max-width:900px){.admin-layout{grid-template-columns:1fr}.admin-stats{grid-template-columns:1fr 1fr}}@media(max-width:520px){.admin-overlay{padding:6px}.admin-body{padding:12px}.admin-stats{grid-template-columns:1fr}.admin-head{padding:16px}}
 .admin-form textarea{width:100%;box-sizing:border-box;padding:11px 12px;margin-bottom:9px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(0,0,0,.25);color:#fff;outline:none;resize:vertical}.admin-package-row{display:grid;grid-template-columns:1fr 1fr 1.5fr auto;gap:7px;margin-bottom:8px}.admin-package-row input{width:100%;box-sizing:border-box;padding:9px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff}.admin-package-row button{border:0;border-radius:8px;background:#7f1d1d;color:#fff;cursor:pointer;padding:8px 10px}@media(max-width:900px){.admin-package-row{grid-template-columns:1fr 1fr}.admin-package-row button{grid-column:1/-1}}
+
+/* =========================
+WEBSITE NOTICE POPUP
+========================= */
+.notice-overlay{
+position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);
+z-index:5000;display:none;align-items:center;justify-content:center;padding:20px;
+}
+.notice-overlay.show{display:flex;animation:noticeFade .25s ease;}
+.notice-card{width:min(520px,96vw);background:linear-gradient(145deg,rgba(13,18,45,.98),rgba(18,24,60,.98));border:1px solid rgba(71,231,255,.55);border-radius:24px;padding:30px;position:relative;box-shadow:0 0 60px rgba(71,231,255,.22),0 25px 80px rgba(0,0,0,.55);text-align:center;}
+.notice-icon{font-size:42px;margin-bottom:8px;}
+.notice-card h2{margin:6px 35px 12px;font-size:28px;color:var(--cyan);}
+.notice-card p{color:var(--muted);font-size:16px;line-height:1.75;white-space:pre-line;margin:0 0 22px;}
+.notice-close{position:absolute;right:14px;top:10px;border:0;background:transparent;color:#fff;font-size:30px;cursor:pointer;opacity:.8;}
+.notice-close:hover{color:var(--cyan);opacity:1;}
+.notice-action{border:0;border-radius:999px;padding:13px 26px;background:linear-gradient(135deg,var(--cyan),var(--blue),var(--violet));color:#07101d;font-weight:900;cursor:pointer;font-size:15px;}
+@keyframes noticeFade{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+
 </style>
 </head>
 
 <body>
+<!-- =========================
+WEBSITE NOTICE POPUP
+========================= -->
+<div id="websiteNoticeOverlay" class="notice-overlay" onclick="if(event.target===this)closeWebsiteNotice()">
+  <div class="notice-card">
+    <button class="notice-close" onclick="closeWebsiteNotice()">×</button>
+    <div class="notice-icon" id="noticeIcon">📢</div>
+    <h2 id="noticeTitle">গুরুত্বপূর্ণ নোটিশ</h2>
+    <p id="noticeMessage">MAPS INTERNET-এর পক্ষ থেকে গুরুত্বপূর্ণ ঘোষণা।</p>
+    <button class="notice-action" id="noticeButton" onclick="closeWebsiteNotice()">ঠিক আছে</button>
+  </div>
+</div>
+
 
 <canvas id="bgCanvas"></canvas>
 
@@ -2119,7 +2150,6 @@ style="text-align:center;margin-top:15px;">
               <input id="siteSettingNoticeTitle" placeholder="Notice Title">
               <textarea id="siteSettingNoticeMessage" placeholder="Notice Message" style="min-height:90px"></textarea>
               <input id="siteSettingNoticeButton" placeholder="Button Text (e.g. ঠিক আছে)">
-              <div style="font-size:12px;color:#94a3b8;margin-top:-4px">💡 ON করলে website visitor ঢোকার সময় popup notice দেখাবে। OFF করলে popup পুরোপুরি বন্ধ থাকবে।</div>
               <input id="siteSettingCyan" placeholder="Theme Cyan (e.g. #47e7ff)">
               <input id="siteSettingBlue" placeholder="Theme Blue (e.g. #2563eb)">
               <input id="siteSettingViolet" placeholder="Theme Violet (e.g. #7c3aed)">
@@ -3010,10 +3040,6 @@ renderPackages(packages);
 
 function applySiteSettings(settings){
   const set=(id,val)=>{const el=document.getElementById(id);if(el&&val!==undefined&&val!==null)el.textContent=val;};
-  const noticeEnabled=String(settings.noticeEnabled===undefined?'true':settings.noticeEnabled).toLowerCase()==='true';
-  const ni=document.getElementById('siteSettingNoticeEnabled'); if(ni) ni.value=noticeEnabled?'true':'false';
-  const noticeFields={noticeIcon:'📢',noticeTitle:'গুরুত্বপূর্ণ নোটিশ',noticeMessage:'MAPS INTERNET-এর পক্ষ থেকে গুরুত্বপূর্ণ ঘোষণা।',noticeButton:'ঠিক আছে'};
-  Object.keys(noticeFields).forEach(k=>{const el=document.getElementById('siteSetting'+k.charAt(0).toUpperCase()+k.slice(1));if(el)el.value=(settings[k]===undefined||settings[k]===null||settings[k]==='')?noticeFields[k]:String(settings[k]);});
   set('siteHeroTag',settings.heroTag);
   const hh=document.getElementById('siteHeroHeading'); if(hh&&(settings.heroHeading1||settings.heroHeading2)){hh.innerHTML=`${escapeSite(settings.heroHeading1||'')}<br>${escapeSite(settings.heroHeading2||'')}`;}
   set('siteHeroDesc',settings.heroDesc); set('sitePackagesTitle',settings.packagesTitle); set('sitePackagesSub',settings.packagesSub);
@@ -3026,10 +3052,37 @@ function applySiteSettings(settings){
   const w1=String(settings.whatsapp1||'8801827700011').replace(/[^0-9]/g,''),w2=String(settings.whatsapp2||'8801827700022').replace(/[^0-9]/g,'');
   const wa1=document.getElementById('supportWhatsApp1'),wa2=document.getElementById('supportWhatsApp2'); if(wa1)wa1.href='https://wa.me/'+w1; if(wa2)wa2.href='https://wa.me/'+w2;
   if(settings.bkashMerchant){const bm=document.getElementById('siteBkashMerchantText');const bmi=document.getElementById('siteBkashMerchantInline');if(bm)bm.textContent=settings.bkashMerchant;if(bmi)bmi.textContent=settings.bkashMerchant;document.querySelectorAll('#bkashPopup p').forEach(el=>{if(el.innerHTML.includes('Merchant Number'))el.innerHTML='1️⃣ bKash App খুলুন<br><br>2️⃣ Make Payment নির্বাচন করুন<br><br>3️⃣ Merchant Number দিন: <b>'+escapeSite(settings.bkashMerchant)+'</b><br><br>4️⃣ বিলের Amount দিন<br><br>5️⃣ Reference-এ Customer ID দিন<br><br>6️⃣ PIN দিয়ে Payment সম্পন্ন করুন';});}
+  const noticeEnabled=String(settings.noticeEnabled===undefined?'true':settings.noticeEnabled).toLowerCase()==='true';
+  set('noticeIcon',settings.noticeIcon||'📢');
+  set('noticeTitle',settings.noticeTitle||'গুরুত্বপূর্ণ নোটিশ');
+  set('noticeMessage',settings.noticeMessage||'MAPS INTERNET-এর পক্ষ থেকে গুরুত্বপূর্ণ ঘোষণা।');
+  set('noticeButton',settings.noticeButton||'ঠিক আছে');
+  if(noticeEnabled){
+    setTimeout(()=>openWebsiteNotice(),150);
+  }else{
+    closeWebsiteNotice();
+  }
   if(Array.isArray(settings.packages)) renderPackages(settings.packages);
 }
+function openWebsiteNotice(){const o=document.getElementById('websiteNoticeOverlay');if(o)o.classList.add('show');}
+function closeWebsiteNotice(){const o=document.getElementById('websiteNoticeOverlay');if(o)o.classList.remove('show');}
 function loadSiteSettings(){
-  apiGet({action:'siteSettings'}).then(data=>{if(data.success)applySiteSettings(data.settings||{});}).catch(()=>{});
+  const overlay=document.getElementById('websiteNoticeOverlay');
+  const fallbackTimer=setTimeout(()=>{
+    if(overlay && !overlay.classList.contains('show')) openWebsiteNotice();
+  },900);
+  apiGet({action:'siteSettings'}).then(data=>{
+    clearTimeout(fallbackTimer);
+    if(data && data.success){
+      applySiteSettings(data.settings||{});
+    }else if(overlay){
+      openWebsiteNotice();
+    }
+  }).catch(err=>{
+    clearTimeout(fallbackTimer);
+    console.warn('MAPS INTERNET notice settings load failed:',err);
+    if(overlay) openWebsiteNotice();
+  });
 }
 /* =================================================
 PACKAGE SELECT
@@ -3437,6 +3490,16 @@ overlay.style.display =
 
 });
 
+
+<script>
+// Public-site safety fallback: the notice will appear even if the settings API is slow.
+document.addEventListener('DOMContentLoaded',()=>{
+  setTimeout(()=>{
+    const o=document.getElementById('websiteNoticeOverlay');
+    if(o && !o.classList.contains('show')) openWebsiteNotice();
+  },1100);
+});
+</script>
 </script>
 
 </body>
