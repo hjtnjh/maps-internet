@@ -1487,6 +1487,7 @@ scroll-behavior:auto !important;
 
 /* ================================================= ADMIN PANEL ================================================= */
 .admin-overlay{position:fixed;inset:0;display:none;z-index:12000;background:rgba(2,6,23,.94);backdrop-filter:blur(16px);padding:18px;overflow:auto}.admin-overlay.active{display:block}.admin-card{width:min(1250px,100%);margin:10px auto;background:linear-gradient(145deg,#0b1230,#070b1d);border:1px solid rgba(71,231,255,.25);border-radius:24px;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.7)}.admin-head{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:15px;background:linear-gradient(135deg,#062f73,#1048bb,#071d52)}.admin-title{font-size:21px;font-weight:900}.admin-title b{color:var(--cyan)}.admin-sub{font-size:12px;color:#cbd5e1;margin-top:4px}.admin-close{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-size:24px;cursor:pointer}.admin-body{padding:22px}.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.admin-stat{padding:18px;border-radius:17px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09)}.admin-stat small{display:block;color:var(--muted);font-size:11px;margin-bottom:7px}.admin-stat strong{font-size:24px;color:#fff}.admin-layout{display:grid;grid-template-columns:360px 1fr;gap:16px;margin-top:16px}.admin-box{padding:18px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09)}.admin-box h3{margin:0 0 14px;font-size:16px}.admin-form input,.admin-form select{width:100%;box-sizing:border-box;padding:11px 12px;margin-bottom:9px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(0,0,0,.25);color:#fff;outline:none}.admin-form input::placeholder{color:#94a3b8}.admin-btn{border:0;border-radius:10px;padding:11px 14px;font-weight:900;cursor:pointer;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#06111f}.admin-btn.alt{background:rgba(255,255,255,.07);border:1px solid rgba(71,231,255,.25);color:#fff}.admin-btn.danger{background:#7f1d1d;color:#fff}.admin-btns{display:flex;gap:8px;flex-wrap:wrap}.admin-table-wrap{overflow:auto}.admin-table{width:100%;border-collapse:collapse;font-size:11px}.admin-table th,.admin-table td{padding:10px 8px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);white-space:nowrap}.admin-table th{color:#94a3b8}.admin-table td{color:#e5e7eb}.admin-mini-btn{border:1px solid rgba(71,231,255,.25);background:rgba(255,255,255,.06);color:#fff;border-radius:7px;padding:5px 8px;cursor:pointer;margin-right:4px}.admin-msg{min-height:18px;font-size:12px;margin-top:8px}.admin-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}.admin-tab{padding:9px 13px;border-radius:9px;border:1px solid rgba(71,231,255,.2);background:rgba(255,255,255,.05);color:#fff;cursor:pointer;font-weight:800}.admin-tab.active{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#06111f}.admin-section{display:none}.admin-section.active{display:block}@media(max-width:900px){.admin-layout{grid-template-columns:1fr}.admin-stats{grid-template-columns:1fr 1fr}}@media(max-width:520px){.admin-overlay{padding:6px}.admin-body{padding:12px}.admin-stats{grid-template-columns:1fr}.admin-head{padding:16px}}
+.admin-form textarea{width:100%;box-sizing:border-box;padding:11px 12px;margin-bottom:9px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(0,0,0,.25);color:#fff;outline:none;resize:vertical}.admin-package-row{display:grid;grid-template-columns:1fr 1fr 1.5fr auto;gap:7px;margin-bottom:8px}.admin-package-row input{width:100%;box-sizing:border-box;padding:9px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff}.admin-package-row button{border:0;border-radius:8px;background:#7f1d1d;color:#fff;cursor:pointer;padding:8px 10px}@media(max-width:900px){.admin-package-row{grid-template-columns:1fr 1fr}.admin-package-row button{grid-column:1/-1}}
 </style>
 </head>
 
@@ -1558,16 +1559,16 @@ HERO
 
 <div>
 
-<div class="tag">
+<div class="tag" id="siteHeroTag">
 NEXT GENERATION BROADBAND
 </div>
 
-<h1>
+<h1 id="siteHeroHeading">
 ইন্টারনেটের <span>নতুন গতি</span><br>
 নতুন অভিজ্ঞতা
 </h1>
 
-<p>
+<p id="siteHeroDesc">
 MAPS INTERNET-এর সাথে উপভোগ করুন দ্রুত, নির্ভরযোগ্য ও স্মার্ট ইন্টারনেট।
 Gaming, Streaming এবং Office-এর জন্য একটি শক্তিশালী ডিজিটাল সংযোগ।
 </p>
@@ -1707,11 +1708,11 @@ PACKAGES
 
 <section id="packages">
 
-<h2 class="title">
+<h2 class="title" id="sitePackagesTitle">
 সুপার ফাস্ট ইন্টারনেট প্যাকেজ
 </h2>
 
-<p class="sub">
+<p class="sub" id="sitePackagesSub">
 আপনার প্রয়োজন অনুযায়ী সাশ্রয়ী ও শক্তিশালী ইন্টারনেট প্যাকেজ বেছে নিন
 </p>
 
@@ -1910,7 +1911,7 @@ onclick="closeBkash()">
 <b>bKash Merchant Number</b>
 </p>
 
-<h1
+<h1 id="siteBkashMerchantText"
 style="color:#e2136e;text-align:center;margin:10px 0">
 01827700022
 </h1>
@@ -1924,7 +1925,7 @@ style="color:#e2136e;text-align:center;margin:10px 0">
 2️⃣ Make Payment নির্বাচন করুন<br>
 
 3️⃣ Merchant Number দিন:
-<b>01827700022</b><br>
+<b><span id="siteBkashMerchantInline">01827700022</span></b><br>
 
 4️⃣ বিলের Amount দিন<br>
 
@@ -2019,6 +2020,10 @@ style="text-align:center;margin-top:15px;">
       <div class="admin-tabs" style="margin-top:16px">
         <button class="admin-tab active" onclick="switchAdminTab('customers',this)">👥 Customers</button>
         <button class="admin-tab" onclick="switchAdminTab('payments',this)">💳 Payments</button>
+        <button class="admin-tab" onclick="switchAdminTab('messages',this)">📩 Messages <span id="adminUnreadBadge" style="display:none;margin-left:4px">0</span></button>
+        <button class="admin-tab" onclick="switchAdminTab('reports',this)">📊 Reports</button>
+        <button class="admin-tab" onclick="switchAdminTab('website',this)">🌐 Website Edit</button>
+        <button class="admin-tab" id="adminUsersTab" onclick="switchAdminTab('admins',this)">🔐 Admin IDs</button>
       </div>
       <div id="adminCustomersSection" class="admin-section active">
         <div class="admin-layout">
@@ -2065,6 +2070,87 @@ style="text-align:center;margin-top:15px;">
           </div>
         </div>
       </div>
+      <div id="adminMessagesSection" class="admin-section">
+        <div class="admin-box">
+          <h3>📩 Website Messages / Applications <button class="admin-mini-btn" onclick="loadAdminMessages()">🔄 Refresh</button></h3>
+          <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Type</th><th>Date</th><th>Name</th><th>Phone</th><th>Package / Issue</th><th>Area</th><th>Address / Message</th><th>Status</th><th>Action</th></tr></thead><tbody id="adminMessageTable"><tr><td colspan="9">Loading...</td></tr></tbody></table></div>
+          <div id="adminMessageMsg" class="admin-msg"></div>
+        </div>
+      </div>
+
+      <div id="adminReportsSection" class="admin-section">
+        <div class="admin-stats" style="grid-template-columns:repeat(3,1fr)">
+          <div class="admin-stat"><small>Total Revenue</small><strong id="reportRevenue">0</strong></div>
+          <div class="admin-stat"><small>Paid Payments</small><strong id="reportPaidCount">0</strong></div>
+          <div class="admin-stat"><small>Pending Payments</small><strong id="reportPendingCount">0</strong></div>
+          <div class="admin-stat"><small>New Connections</small><strong id="reportConnections">0</strong></div>
+          <div class="admin-stat"><small>Support Tickets</small><strong id="reportTickets">0</strong></div>
+          <div class="admin-stat"><small>Unread Messages</small><strong id="reportUnread">0</strong></div>
+        </div>
+        <div class="admin-box" style="margin-top:16px">
+          <h3>📊 Monthly Revenue Report</h3>
+          <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Month</th><th>Payment Count</th><th>Revenue</th></tr></thead><tbody id="adminMonthlyReport"><tr><td colspan="3">Loading...</td></tr></tbody></table></div>
+        </div>
+      </div>
+
+      <div id="adminWebsiteSection" class="admin-section">
+        <div class="admin-layout">
+          <div class="admin-box">
+            <h3>✏️ Website Text & Support</h3>
+            <form class="admin-form" onsubmit="saveWebsiteSettings(event)">
+              <input id="siteSettingHeroTag" placeholder="Hero Tag">
+              <input id="siteSettingHeroHeading1" placeholder="Hero Heading 1">
+              <input id="siteSettingHeroHeading2" placeholder="Hero Heading 2">
+              <textarea id="siteSettingHeroDesc" placeholder="Hero Description" style="min-height:80px"></textarea>
+              <input id="siteSettingPackagesTitle" placeholder="Packages Title">
+              <input id="siteSettingPackagesSub" placeholder="Packages Subtitle">
+              <input id="siteSettingSupportOnline" placeholder="Agents Online text">
+              <input id="siteSettingSupportTitle" placeholder="Support panel title">
+              <input id="siteSettingSupportDirectTitle" placeholder="Direct support title">
+              <input id="siteSettingServiceButton" placeholder="Floating service button text">
+              <input id="siteSettingPhone1" placeholder="Support phone 1">
+              <input id="siteSettingPhone2" placeholder="Support phone 2">
+              <input id="siteSettingWhatsapp1" placeholder="WhatsApp 1 (e.g. 8801827700011)">
+              <input id="siteSettingWhatsapp2" placeholder="WhatsApp 2 (e.g. 8801827700022)">
+              <input id="siteSettingBkash" placeholder="bKash Merchant Number">
+              <input id="siteSettingCyan" placeholder="Theme Cyan (e.g. #47e7ff)">
+              <input id="siteSettingBlue" placeholder="Theme Blue (e.g. #2563eb)">
+              <input id="siteSettingViolet" placeholder="Theme Violet (e.g. #7c3aed)">
+              <div class="admin-btns"><button class="admin-btn" type="submit">💾 Save Website</button><button class="admin-btn alt" type="button" onclick="loadWebsiteSettings()">🔄 Reload</button></div>
+              <div id="adminWebsiteMsg" class="admin-msg"></div>
+            </form>
+          </div>
+          <div class="admin-box">
+            <h3>📦 Package Management</h3>
+            <p style="color:#94a3b8;font-size:12px;margin-top:-4px">Website-এর package এখান থেকে add/edit করুন। প্রতিটি row একটি package.</p>
+            <div id="adminPackageEditor"></div>
+            <div class="admin-btns" style="margin-top:10px"><button class="admin-btn alt" type="button" onclick="addAdminPackageRow()">➕ Add Package</button><button class="admin-btn" type="button" onclick="savePackagesOnly()">💾 Save Packages</button></div>
+            <div id="adminPackageMsg" class="admin-msg"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="adminAdminsSection" class="admin-section">
+        <div class="admin-layout">
+          <div class="admin-box">
+            <h3>🔐 Create / Edit Admin ID</h3>
+            <form class="admin-form" onsubmit="saveAdminUser(event)">
+              <input id="adminUserUsername" placeholder="Username *" required>
+              <input id="adminUserPassword" type="password" placeholder="Password *" required>
+              <input id="adminUserName" placeholder="Name *" required>
+              <select id="adminUserRole"><option>Super Admin</option><option>Manager</option><option>Support</option><option>Viewer</option></select>
+              <select id="adminUserStatus"><option>Active</option><option>Inactive</option></select>
+              <div class="admin-btns"><button class="admin-btn" type="submit">💾 Save Admin</button><button class="admin-btn alt" type="button" onclick="clearAdminUserForm()">Clear</button></div>
+              <div id="adminUserMsg" class="admin-msg"></div>
+            </form>
+          </div>
+          <div class="admin-box">
+            <h3>👨‍💼 Admin Accounts <button class="admin-mini-btn" onclick="loadAdminUsers()">🔄 Refresh</button></h3>
+            <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Username</th><th>Name</th><th>Role</th><th>Status</th><th>Action</th></tr></thead><tbody id="adminUsersTable"><tr><td colspan="5">Loading...</td></tr></tbody></table></div>
+          </div>
+        </div>
+      </div>
+
       <div style="margin-top:16px"><button class="admin-btn alt" onclick="adminLogout()">🚪 Logout Admin</button></div>
     </div>
   </div>
@@ -2145,11 +2231,11 @@ class="support-panel">
 
 <div class="support-online-dot"></div>
 
-Agents Online 24/7
+<span id="siteSupportOnlineText">Agents Online 24/7</span>
 
 </div>
 
-<h2>
+<h2 id="siteSupportTitle">
 MAPS INTERNET Support
 </h2>
 
@@ -2169,12 +2255,12 @@ onclick="closeSupportPanel()">
 
 <div class="support-box">
 
-<div class="support-box-title">
+<div class="support-box-title" id="siteSupportDirectTitle">
 ⚡ Instant Support Direct Lines
 </div>
 
 <a
-href="https://wa.me/8801827700011"
+id="supportWhatsApp1" href="https://wa.me/8801827700011"
 target="_blank"
 class="direct-btn whatsapp-btn">
 
@@ -2183,17 +2269,17 @@ class="direct-btn whatsapp-btn">
 </a>
 
 <a
-href="tel:01827700011"
+id="supportCall1" href="tel:01827700011"
 class="direct-btn call-btn">
 
-📞 +880 18277 00011
+📞 <span id="supportPhoneText1">+880 18277 00011</span>
 
 </a>
 
 </div>
 
 <a
-href="https://wa.me/8801827700022"
+id="supportWhatsApp2" href="https://wa.me/8801827700022"
 target="_blank"
 class="direct-btn whatsapp-btn">
 
@@ -2202,10 +2288,10 @@ class="direct-btn whatsapp-btn">
 </a>
 
 <a
-href="tel:01827700011"
+id="supportCall2" href="tel:01827700022"
 class="direct-btn call-btn">
 
-📞 +880 18277 00022
+📞 <span id="supportPhoneText2">+880 18277 00022</span>
 
 </a>
 
@@ -2333,7 +2419,7 @@ FLOATING SERVICE BUTTON
 class="service-main-btn"
 onclick="openSupportPanel()">
 
-✨ সংযোগ পেতে বা সার্ভিস পেতে ক্লিক করুন
+<span id="siteServiceButtonText">✨ সংযোগ পেতে বা সার্ভিস পেতে ক্লিক করুন</span>
 
 </button>
 
@@ -2897,63 +2983,43 @@ features:[
 ];
 
 
-const packageGrid =
-document.getElementById(
-"packageGrid"
-);
-
-
-if(packageGrid){
-
-packages.forEach(pkg=>{
-
-const fullPkgString =
-`${pkg.speed} - ${pkg.price}`;
-
-packageGrid.innerHTML += `
-
-<div class="card">
-
-<div>
-
-<div class="speed">
-${pkg.speed}
-</div>
-
-<div class="price">
-${pkg.price}
-</div>
-
-<ul class="features">
-
-${pkg.features
-.map(
-f=>`<li>${f}</li>`
-)
-.join("")}
-
-</ul>
-
-</div>
-
-<a
-href="#connection"
-class="card-btn"
-onclick="selectPackage('${fullPkgString}')">
-
-প্যাকেজ নিন
-
-</a>
-
-</div>
-
-`;
-
-});
-
+function escapeSite(v){return String(v ?? '').replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));}
+function renderPackages(list){
+  const grid=document.getElementById('packageGrid');
+  const sel=document.getElementById('mainPackage');
+  if(!grid)return;
+  grid.innerHTML=(list||[]).map((pkg,i)=>{
+    const speed=String(pkg.speed||''); const price=String(pkg.price||'');
+    const fullPkgString=`${speed} - ${price}`;
+    return `<div class="card"><div><div class="speed">${escapeSite(speed)}</div><div class="price">${escapeSite(price)}</div><ul class="features">${(pkg.features||[]).map(f=>`<li>${escapeSite(f)}</li>`).join('')}</ul></div><a href="#connection" class="card-btn" onclick="selectPackage('${fullPkgString.replace(/\\/g,'\\\\').replace(/'/g,"\\'")}')">প্যাকেজ নিন</a></div>`;
+  }).join('');
+  if(sel){
+    const old=sel.value;
+    sel.innerHTML='<option value="">পছন্দের প্যাকেজ নির্বাচন করুন</option>'+(list||[]).map(pkg=>{const v=`${pkg.speed} - ${pkg.price}`;return `<option value="${escapeSite(v)}">${escapeSite(v)}</option>`;}).join('');
+    if(old)sel.value=old;
+  }
 }
+renderPackages(packages);
 
-
+function applySiteSettings(settings){
+  const set=(id,val)=>{const el=document.getElementById(id);if(el&&val!==undefined&&val!==null)el.textContent=val;};
+  set('siteHeroTag',settings.heroTag);
+  const hh=document.getElementById('siteHeroHeading'); if(hh&&(settings.heroHeading1||settings.heroHeading2)){hh.innerHTML=`${escapeSite(settings.heroHeading1||'')}<br>${escapeSite(settings.heroHeading2||'')}`;}
+  set('siteHeroDesc',settings.heroDesc); set('sitePackagesTitle',settings.packagesTitle); set('sitePackagesSub',settings.packagesSub);
+  set('siteSupportOnlineText',settings.supportOnlineText); set('siteSupportTitle',settings.supportTitle); set('siteSupportDirectTitle',settings.supportDirectTitle); set('siteServiceButtonText',settings.serviceButtonText);
+  const root=document.documentElement; if(settings.themeCyan)root.style.setProperty('--cyan',settings.themeCyan); if(settings.themeBlue)root.style.setProperty('--blue',settings.themeBlue); if(settings.themeViolet)root.style.setProperty('--violet',settings.themeViolet);
+  const p1=String(settings.phone1||'01827700011'),p2=String(settings.phone2||'01827700022');
+  const c1=document.getElementById('supportCall1'),c2=document.getElementById('supportCall2');
+  if(c1){c1.href='tel:'+p1.replace(/[^0-9+]/g,'');} if(c2){c2.href='tel:'+p2.replace(/[^0-9+]/g,'');}
+  set('supportPhoneText1',p1); set('supportPhoneText2',p2);
+  const w1=String(settings.whatsapp1||'8801827700011').replace(/[^0-9]/g,''),w2=String(settings.whatsapp2||'8801827700022').replace(/[^0-9]/g,'');
+  const wa1=document.getElementById('supportWhatsApp1'),wa2=document.getElementById('supportWhatsApp2'); if(wa1)wa1.href='https://wa.me/'+w1; if(wa2)wa2.href='https://wa.me/'+w2;
+  if(settings.bkashMerchant){const bm=document.getElementById('siteBkashMerchantText');const bmi=document.getElementById('siteBkashMerchantInline');if(bm)bm.textContent=settings.bkashMerchant;if(bmi)bmi.textContent=settings.bkashMerchant;document.querySelectorAll('#bkashPopup p').forEach(el=>{if(el.innerHTML.includes('Merchant Number'))el.innerHTML='1️⃣ bKash App খুলুন<br><br>2️⃣ Make Payment নির্বাচন করুন<br><br>3️⃣ Merchant Number দিন: <b>'+escapeSite(settings.bkashMerchant)+'</b><br><br>4️⃣ বিলের Amount দিন<br><br>5️⃣ Reference-এ Customer ID দিন<br><br>6️⃣ PIN দিয়ে Payment সম্পন্ন করুন';});}
+  if(Array.isArray(settings.packages)) renderPackages(settings.packages);
+}
+function loadSiteSettings(){
+  apiGet({action:'siteSettings'}).then(data=>{if(data.success)applySiteSettings(data.settings||{});}).catch(()=>{});
+}
 /* =================================================
 PACKAGE SELECT
 ================================================= */
@@ -3062,7 +3128,7 @@ document
 function copyBkash(){
 
 navigator.clipboard
-.writeText("01827700022")
+.writeText((document.getElementById("siteBkashMerchantText")||{}).textContent || "01827700022")
 .then(()=>{
 
 alert(
@@ -3073,7 +3139,7 @@ alert(
 .catch(()=>{
 
 alert(
-"Merchant Number: 01827700022"
+"Merchant Number: "+((document.getElementById("siteBkashMerchantText")||{}).textContent || "01827700022")
 );
 
 });
@@ -3173,6 +3239,10 @@ function verifyAuthLogin(){
     .then(data=>{
       if(data.success){
         sessionStorage.setItem("mapsAdminLoggedIn","1");
+        sessionStorage.setItem("mapsAdminUser",JSON.stringify(data.user||{}));
+        const role=String((data.user||{}).role||'');
+        const adminUsersTab=document.getElementById('adminUsersTab');
+        if(adminUsersTab) adminUsersTab.style.display=role==='Super Admin'?'inline-block':'none';
         closeAuthLogin();
         openAdminPanel();
         loadAdminDashboard();
@@ -3185,67 +3255,51 @@ function verifyAuthLogin(){
 
 function openAdminPanel(){document.getElementById("adminOverlay").classList.add("active");document.body.style.overflow="hidden";}
 function closeAdminPanel(){document.getElementById("adminOverlay").classList.remove("active");document.body.style.overflow="";}
-function adminLogout(){sessionStorage.removeItem("mapsAdminLoggedIn");closeAdminPanel();}
-function switchAdminTab(tab,btn){document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));document.getElementById(tab==='customers'?'adminCustomersSection':'adminPaymentsSection').classList.add('active');}
+function adminLogout(){sessionStorage.removeItem("mapsAdminLoggedIn");sessionStorage.removeItem("mapsAdminUser");closeAdminPanel();}
+function switchAdminTab(tab,btn){document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={customers:'adminCustomersSection',payments:'adminPaymentsSection',messages:'adminMessagesSection',reports:'adminReportsSection',website:'adminWebsiteSection',admins:'adminAdminsSection'};document.getElementById(map[tab]||'adminCustomersSection').classList.add('active');if(tab==='messages')loadAdminMessages();if(tab==='reports')loadAdminReports();if(tab==='website')loadWebsiteSettings();if(tab==='admins')loadAdminUsers();}
 function apiGet(params){return fetch(GOOGLE_SCRIPT_URL+'?'+new URLSearchParams(params).toString()).then(r=>r.json());}
-function loadAdminDashboard(){loadAdminCustomers();loadAdminPayments();}
-function loadAdminCustomers(){
-  apiGet({action:'adminCustomers'}).then(data=>{
-    if(!data.success){throw new Error(data.message||'Customer load failed');}
-    const customers=data.customers||[];
-    document.getElementById('adminTotalCustomers').innerText=customers.length;
-    document.getElementById('adminActiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()==='active').length;
-    document.getElementById('adminInactiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()!=='active').length;
-    const tbody=document.getElementById('adminCustomerTable');
-    if(!customers.length){tbody.innerHTML='<tr><td colspan="8" style="text-align:center">No customers found.</td></tr>';return;}
-    tbody.innerHTML=customers.map(c=>`<tr><td>${escAdmin(c.customerId)}</td><td>${escAdmin(c.name)}</td><td>${escAdmin(c.phone)}</td><td>${escAdmin(c.package)}</td><td>${escAdmin(c.bill)}</td><td>${escAdmin(c.dueDate)}</td><td>${escAdmin(c.status)}</td><td><button class="admin-mini-btn" onclick='editAdminCustomer(${JSON.stringify(c)})'>Edit</button><button class="admin-mini-btn" onclick="deleteAdminCustomer('${escAttr(c.customerId)}')">Delete</button></td></tr>`).join('');
-  }).catch(err=>{document.getElementById('adminCustomerMsg').style.color='#f87171';document.getElementById('adminCustomerMsg').innerText='⚠️ '+err.message;});
-}
-function loadAdminPayments(){
-  apiGet({action:'adminPayments'}).then(data=>{
-    if(!data.success)throw new Error(data.message||'Payment load failed');
-    const payments=data.payments||[];document.getElementById('adminTotalPayments').innerText=payments.length;
-    const tbody=document.getElementById('adminPaymentTable');
-    if(!payments.length){tbody.innerHTML='<tr><td colspan="6" style="text-align:center">No payments found.</td></tr>';return;}
-    tbody.innerHTML=payments.map(x=>`<tr><td>${escAdmin(x.customerId)}</td><td>${escAdmin(x.date)}</td><td>${escAdmin(x.amount)}</td><td>${escAdmin(x.method)}</td><td>${escAdmin(x.transactionId)}</td><td>${escAdmin(x.status)}</td></tr>`).join('');
-  }).catch(err=>{document.getElementById('adminPaymentMsg').style.color='#f87171';document.getElementById('adminPaymentMsg').innerText='⚠️ '+err.message;});
-}
-function saveAdminCustomer(e){
-  e.preventDefault();
-  const msg=document.getElementById('adminCustomerMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';
-  apiGet({action:'saveCustomer',customerId:document.getElementById('adminCustomerId').value.trim(),password:document.getElementById('adminCustomerPassword').value.trim(),name:document.getElementById('adminCustomerName').value.trim(),mobile:document.getElementById('adminCustomerMobile').value.trim(),package:document.getElementById('adminCustomerPackage').value.trim(),bill:document.getElementById('adminCustomerBill').value.trim(),dueDate:document.getElementById('adminCustomerDueDate').value.trim(),status:document.getElementById('adminCustomerStatus').value,usage:document.getElementById('adminCustomerUsage').value.trim(),lastPayment:document.getElementById('adminCustomerLastPayment').value.trim()}).then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=data.success?'✅ '+data.message:'❌ '+data.message;if(data.success){clearAdminCustomerForm();loadAdminCustomers();}}).catch(err=>{msg.style.color='#f87171';msg.innerText='⚠️ '+err.message;});
-}
-function editAdminCustomer(c){document.getElementById('adminCustomerId').value=c.customerId||'';document.getElementById('adminCustomerPassword').value=c.password||'';document.getElementById('adminCustomerName').value=c.name||'';document.getElementById('adminCustomerMobile').value=c.phone||'';document.getElementById('adminCustomerPackage').value=c.package||'';document.getElementById('adminCustomerBill').value=c.bill||'';document.getElementById('adminCustomerDueDate').value=c.dueDate||'';document.getElementById('adminCustomerStatus').value=c.status||'Active';document.getElementById('adminCustomerUsage').value=c.usage||'';document.getElementById('adminCustomerLastPayment').value=c.lastPayment||'';window.scrollTo({top:0,behavior:'smooth'});}
+function loadAdminDashboard(){loadAdminCustomers();loadAdminPayments();loadAdminMessages();loadAdminReports();loadWebsiteSettings();loadAdminUsers();}
+function loadAdminCustomers(){apiGet({action:'adminCustomers'}).then(data=>{if(!data.success)throw new Error(data.message||'Customer load failed');const customers=data.customers||[];document.getElementById('adminTotalCustomers').innerText=customers.length;document.getElementById('adminActiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()==='active').length;document.getElementById('adminInactiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()!=='active').length;const tbody=document.getElementById('adminCustomerTable');if(!customers.length){tbody.innerHTML='<tr><td colspan="8" style="text-align:center">No customers found.</td></tr>';return;}tbody.innerHTML=customers.map(c=>`<tr><td>${escAdmin(c.customerId)}</td><td>${escAdmin(c.name)}</td><td>${escAdmin(c.phone)}</td><td>${escAdmin(c.package)}</td><td>${escAdmin(c.bill)}</td><td>${escAdmin(c.dueDate)}</td><td>${escAdmin(c.status)}</td><td><button class="admin-mini-btn" onclick='editAdminCustomer(${JSON.stringify(c)})'>Edit</button><button class="admin-mini-btn" onclick="deleteAdminCustomer('${escAttr(c.customerId)}')">Delete</button></td></tr>`).join('');}).catch(err=>{document.getElementById('adminCustomerMsg').style.color='#f87171';document.getElementById('adminCustomerMsg').innerText='⚠️ '+err.message;});}
+function loadAdminPayments(){apiGet({action:'adminPayments'}).then(data=>{if(!data.success)throw new Error(data.message||'Payment load failed');const payments=data.payments||[];document.getElementById('adminTotalPayments').innerText=payments.length;const tbody=document.getElementById('adminPaymentTable');if(!payments.length){tbody.innerHTML='<tr><td colspan="6" style="text-align:center">No payments found.</td></tr>';return;}tbody.innerHTML=payments.map(x=>`<tr><td>${escAdmin(x.customerId)}</td><td>${escAdmin(x.date)}</td><td>${escAdmin(x.amount)}</td><td>${escAdmin(x.method)}</td><td>${escAdmin(x.transactionId)}</td><td>${escAdmin(x.status)}</td></tr>`).join('');}).catch(err=>{document.getElementById('adminPaymentMsg').style.color='#f87171';document.getElementById('adminPaymentMsg').innerText='⚠️ '+err.message;});}
+function saveAdminCustomer(e){e.preventDefault();const msg=document.getElementById('adminCustomerMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';apiGet({action:'saveCustomer',customerId:document.getElementById('adminCustomerId').value.trim(),password:document.getElementById('adminCustomerPassword').value.trim(),name:document.getElementById('adminCustomerName').value.trim(),mobile:document.getElementById('adminCustomerMobile').value.trim(),package:document.getElementById('adminCustomerPackage').value.trim(),bill:document.getElementById('adminCustomerBill').value.trim(),dueDate:document.getElementById('adminCustomerDueDate').value.trim(),status:document.getElementById('adminCustomerStatus').value,usage:document.getElementById('adminCustomerUsage').value.trim(),lastPayment:document.getElementById('adminCustomerLastPayment').value.trim()}).then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=data.success?'✅ '+data.message:'❌ '+data.message;if(data.success){clearAdminCustomerForm();loadAdminCustomers();}}).catch(err=>{msg.style.color='#f87171';msg.innerText='⚠️ '+err.message;});}
+function editAdminCustomer(c){document.getElementById('adminCustomerId').value=c.customerId||'';document.getElementById('adminCustomerPassword').value=c.password||'';document.getElementById('adminCustomerName').value=c.name||'';document.getElementById('adminCustomerMobile').value=c.phone||'';document.getElementById('adminCustomerPackage').value=c.package||'';document.getElementById('adminCustomerBill').value=c.bill||'';document.getElementById('adminCustomerDueDate').value=c.dueDate||'';document.getElementById('adminCustomerStatus').value=c.status||'Active';document.getElementById('adminCustomerUsage').value=c.usage||'';document.getElementById('adminCustomerLastPayment').value=c.lastPayment||'';}
 function clearAdminCustomerForm(){['adminCustomerId','adminCustomerPassword','adminCustomerName','adminCustomerMobile','adminCustomerPackage','adminCustomerBill','adminCustomerDueDate','adminCustomerUsage','adminCustomerLastPayment'].forEach(id=>document.getElementById(id).value='');document.getElementById('adminCustomerStatus').value='Active';}
 function deleteAdminCustomer(id){if(!confirm('এই Customer delete করতে চান?'))return;apiGet({action:'deleteCustomer',customerId:id}).then(data=>{const msg=document.getElementById('adminCustomerMsg');msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=(data.success?'✅ ':'❌ ')+data.message;if(data.success)loadAdminCustomers();});}
-function saveAdminPayment(e){e.preventDefault();const msg=document.getElementById('adminPaymentMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';apiGet({action:'addPayment',customerId:document.getElementById('adminPaymentCustomerId').value.trim(),amount:document.getElementById('adminPaymentAmount').value.trim(),method:document.getElementById('adminPaymentMethod').value,transactionId:document.getElementById('adminPaymentTransaction').value.trim(),status:document.getElementById('adminPaymentStatus').value}).then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=(data.success?'✅ ':'❌ ')+data.message;if(data.success){clearAdminPaymentForm();loadAdminCustomers();loadAdminPayments();}}).catch(err=>{msg.style.color='#f87171';msg.innerText='⚠️ '+err.message;});}
+function saveAdminPayment(e){e.preventDefault();const msg=document.getElementById('adminPaymentMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';apiGet({action:'addPayment',customerId:document.getElementById('adminPaymentCustomerId').value.trim(),amount:document.getElementById('adminPaymentAmount').value.trim(),method:document.getElementById('adminPaymentMethod').value,transactionId:document.getElementById('adminPaymentTransaction').value.trim(),status:document.getElementById('adminPaymentStatus').value}).then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=(data.success?'✅ ':'❌ ')+data.message;if(data.success){clearAdminPaymentForm();loadAdminCustomers();loadAdminPayments();loadAdminReports();}}).catch(err=>{msg.style.color='#f87171';msg.innerText='⚠️ '+err.message;});}
 function clearAdminPaymentForm(){['adminPaymentCustomerId','adminPaymentAmount','adminPaymentTransaction'].forEach(id=>document.getElementById(id).value='');document.getElementById('adminPaymentMethod').value='bKash';document.getElementById('adminPaymentStatus').value='Paid';}
 function escAdmin(v){return String(v??'').replace(/[&<>'"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[m]));}
 function escAttr(v){return String(v??'').replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
-
+function loadAdminMessages(){apiGet({action:'adminMessages'}).then(data=>{if(!data.success)throw new Error(data.message||'Message load failed');const list=data.messages||[];const unread=list.filter(x=>String(x.status).toLowerCase()!=='read').length;const badge=document.getElementById('adminUnreadBadge');badge.innerText=unread;badge.style.display=unread?'inline-block':'none';document.getElementById('reportUnread').innerText=unread;const tbody=document.getElementById('adminMessageTable');if(!list.length){tbody.innerHTML='<tr><td colspan="9" style="text-align:center">No messages found.</td></tr>';return;}tbody.innerHTML=list.map(x=>`<tr><td>${escAdmin(x.type)}</td><td>${escAdmin(x.date)}</td><td>${escAdmin(x.name)}</td><td>${escAdmin(x.phone)}</td><td>${escAdmin(x.packageOrIssue)}</td><td>${escAdmin(x.area)}</td><td style="white-space:normal;min-width:220px">${escAdmin((x.address||'')+' '+(x.message||''))}</td><td>${escAdmin(x.status)}</td><td><button class="admin-mini-btn" onclick="markAdminMessage('${escAttr(x.id)}','Read')">✓ Read</button><button class="admin-mini-btn" onclick="deleteAdminMessage('${escAttr(x.id)}')">Delete</button></td></tr>`).join('');}).catch(err=>{document.getElementById('adminMessageMsg').style.color='#f87171';document.getElementById('adminMessageMsg').innerText='⚠️ '+err.message;});}
+function markAdminMessage(id,status){apiGet({action:'updateMessageStatus',id:id,status:status}).then(data=>{if(data.success)loadAdminMessages();else alert(data.message||'Update failed');});}
+function deleteAdminMessage(id){if(!confirm('এই message delete করতে চান?'))return;apiGet({action:'deleteMessage',id:id}).then(data=>{if(data.success)loadAdminMessages();else alert(data.message||'Delete failed');});}
+function loadAdminReports(){apiGet({action:'adminReports'}).then(data=>{if(!data.success)throw new Error(data.message||'Report failed');const r=data.report||{};document.getElementById('reportRevenue').innerText=String(r.totalRevenue||0)+' টাকা';document.getElementById('reportPaidCount').innerText=r.paidPayments||0;document.getElementById('reportPendingCount').innerText=r.pendingPayments||0;document.getElementById('reportConnections').innerText=r.newConnections||0;document.getElementById('reportTickets').innerText=r.supportTickets||0;document.getElementById('reportUnread').innerText=r.unreadMessages||0;const tb=document.getElementById('adminMonthlyReport');const rows=r.monthly||[];tb.innerHTML=rows.length?rows.map(x=>`<tr><td>${escAdmin(x.month)}</td><td>${escAdmin(x.count)}</td><td>${escAdmin(x.revenue)} টাকা</td></tr>`).join(''):'<tr><td colspan="3">No report data.</td></tr>';}).catch(err=>{console.error(err);});}
+function loadWebsiteSettings(){apiGet({action:'siteSettings'}).then(data=>{if(!data.success)throw new Error(data.message||'Settings load failed');const s=data.settings||{};const ids={heroTag:'siteSettingHeroTag',heroHeading1:'siteSettingHeroHeading1',heroHeading2:'siteSettingHeroHeading2',heroDesc:'siteSettingHeroDesc',packagesTitle:'siteSettingPackagesTitle',packagesSub:'siteSettingPackagesSub',supportOnlineText:'siteSettingSupportOnline',supportTitle:'siteSettingSupportTitle',supportDirectTitle:'siteSettingSupportDirectTitle',serviceButtonText:'siteSettingServiceButton',phone1:'siteSettingPhone1',phone2:'siteSettingPhone2',whatsapp1:'siteSettingWhatsapp1',whatsapp2:'siteSettingWhatsapp2',bkashMerchant:'siteSettingBkash',themeCyan:'siteSettingCyan',themeBlue:'siteSettingBlue',themeViolet:'siteSettingViolet'};Object.keys(ids).forEach(k=>{const el=document.getElementById(ids[k]);if(el)el.value=s[k]||'';});window.adminPackages=s.packages||packages;renderAdminPackageEditor();applySiteSettings(s);}).catch(err=>{document.getElementById('adminWebsiteMsg').style.color='#f87171';document.getElementById('adminWebsiteMsg').innerText='⚠️ '+err.message;});}
+function saveWebsiteSettings(e){e.preventDefault();saveWebsiteSettingsCore();}
+function collectWebsiteSettings(){return {heroTag:document.getElementById('siteSettingHeroTag').value.trim(),heroHeading1:document.getElementById('siteSettingHeroHeading1').value.trim(),heroHeading2:document.getElementById('siteSettingHeroHeading2').value.trim(),heroDesc:document.getElementById('siteSettingHeroDesc').value.trim(),packagesTitle:document.getElementById('siteSettingPackagesTitle').value.trim(),packagesSub:document.getElementById('siteSettingPackagesSub').value.trim(),supportOnlineText:document.getElementById('siteSettingSupportOnline').value.trim(),supportTitle:document.getElementById('siteSettingSupportTitle').value.trim(),supportDirectTitle:document.getElementById('siteSettingSupportDirectTitle').value.trim(),serviceButtonText:document.getElementById('siteSettingServiceButton').value.trim(),phone1:document.getElementById('siteSettingPhone1').value.trim(),phone2:document.getElementById('siteSettingPhone2').value.trim(),whatsapp1:document.getElementById('siteSettingWhatsapp1').value.trim(),whatsapp2:document.getElementById('siteSettingWhatsapp2').value.trim(),bkashMerchant:document.getElementById('siteSettingBkash').value.trim(),themeCyan:document.getElementById('siteSettingCyan').value.trim(),themeBlue:document.getElementById('siteSettingBlue').value.trim(),themeViolet:document.getElementById('siteSettingViolet').value.trim()};}
+function saveWebsiteSettingsCore(){const msg=document.getElementById('adminWebsiteMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';const settings=collectWebsiteSettings();settings.packages=readAdminPackages();window.adminPackages=settings.packages;apiGet({action:'saveSiteSettings',settings:JSON.stringify(settings)}).then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=(data.success?'✅ ':'❌ ')+data.message;if(data.success){applySiteSettings(settings);renderAdminPackageEditor();}}).catch(err=>{msg.style.color='#f87171';msg.innerText='⚠️ '+err.message;});}
+function renderAdminPackageEditor(){const box=document.getElementById('adminPackageEditor');const list=window.adminPackages||packages;box.innerHTML=list.map((p,i)=>`<div class="admin-package-row" data-i="${i}"><input data-field="speed" value="${escAdmin(p.speed)}" placeholder="Speed"><input data-field="price" value="${escAdmin(p.price)}" placeholder="Price"><input data-field="features" value="${escAdmin((p.features||[]).join(' | '))}" placeholder="Feature 1 | Feature 2 | Feature 3"><button type="button" onclick="removeAdminPackageRow(${i})">✕</button></div>`).join('');}
+function readAdminPackages(){return Array.from(document.querySelectorAll('.admin-package-row')).map(row=>{const get=f=>row.querySelector(`[data-field="${f}"]`).value.trim();return {speed:get('speed'),price:get('price'),features:get('features').split('|').map(x=>x.trim()).filter(Boolean)};}).filter(p=>p.speed&&p.price);}
+function addAdminPackageRow(){window.adminPackages=readAdminPackages();window.adminPackages.push({speed:'',price:'',features:[]});renderAdminPackageEditor();}
+function removeAdminPackageRow(i){window.adminPackages=readAdminPackages();window.adminPackages.splice(i,1);renderAdminPackageEditor();}
+function savePackagesOnly(){window.adminPackages=readAdminPackages();saveWebsiteSettingsCore();}
+function loadAdminUsers(){apiGet({action:'adminUsers'}).then(data=>{if(!data.success)throw new Error(data.message||'Admin users load failed');const users=data.users||[];document.getElementById('adminUsersTable').innerHTML=users.map(u=>`<tr><td>${escAdmin(u.username)}</td><td>${escAdmin(u.name)}</td><td>${escAdmin(u.role)}</td><td>${escAdmin(u.status)}</td><td><button class="admin-mini-btn" onclick='editAdminUser(${JSON.stringify(u)})'>Edit</button><button class="admin-mini-btn" onclick="deleteAdminUser('${escAttr(u.username)}')">Delete</button></td></tr>`).join('')||'<tr><td colspan="5">No admins found.</td></tr>';}).catch(err=>{document.getElementById('adminUserMsg').style.color='#f87171';document.getElementById('adminUserMsg').innerText='⚠️ '+err.message;});}
+function saveAdminUser(e){e.preventDefault();const msg=document.getElementById('adminUserMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';apiGet({action:'saveAdminUser',username:document.getElementById('adminUserUsername').value.trim(),password:document.getElementById('adminUserPassword').value.trim(),name:document.getElementById('adminUserName').value.trim(),role:document.getElementById('adminUserRole').value,status:document.getElementById('adminUserStatus').value}).then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=(data.success?'✅ ':'❌ ')+data.message;if(data.success){clearAdminUserForm();loadAdminUsers();}}).catch(err=>{msg.style.color='#f87171';msg.innerText='⚠️ '+err.message;});}
+function editAdminUser(u){document.getElementById('adminUserUsername').value=u.username||'';document.getElementById('adminUserPassword').value=u.password||'';document.getElementById('adminUserName').value=u.name||'';document.getElementById('adminUserRole').value=u.role||'Viewer';document.getElementById('adminUserStatus').value=u.status||'Active';}
+function clearAdminUserForm(){['adminUserUsername','adminUserPassword','adminUserName'].forEach(id=>document.getElementById(id).value='');document.getElementById('adminUserRole').value='Viewer';document.getElementById('adminUserStatus').value='Active';}
+function deleteAdminUser(username){if(!confirm('এই Admin ID delete করতে চান?'))return;apiGet({action:'deleteAdminUser',username:username}).then(data=>{if(data.success)loadAdminUsers();else alert(data.message||'Delete failed');});}
 
 /* =================================================
 NEW CONNECTION FORM
 ================================================= */
 
 function submitMainForm(e){
-
-e.preventDefault();
-
-document.getElementById(
-"formResult"
-).style.color =
-"#4ade80";
-
-document.getElementById(
-"formResult"
-).innerText =
-"🎉 আপনার আবেদনটি সফলভাবে জমা হয়েছে! খুব শীঘ্রই আমাদের টিম যোগাযোগ করবে।";
-
-e.target.reset();
-
+  e.preventDefault();
+  const result=document.getElementById('formResult');
+  const btn=document.getElementById('submitBtn');
+  const data={action:'addWebsiteMessage',type:'New Connection',name:document.getElementById('mainName').value.trim(),phone:document.getElementById('mainPhone').value.trim(),packageOrIssue:document.getElementById('mainPackage').value,area:document.getElementById('mainArea').value.trim(),address:document.getElementById('mainAddress').value.trim(),message:'New connection application'};
+  result.style.color='#38bdf8';result.innerText='⏳ আবেদন জমা হচ্ছে...';btn.disabled=true;
+  apiGet(data).then(r=>{result.style.color=r.success?'#4ade80':'#f87171';result.innerText=r.success?'🎉 আপনার আবেদনটি সফলভাবে জমা হয়েছে! আমাদের Admin Panel-এ message এসেছে।':'❌ '+(r.message||'আবেদন জমা হয়নি।');if(r.success)e.target.reset();}).catch(()=>{result.style.color='#f87171';result.innerText='⚠️ সংযোগে সমস্যা হয়েছে, আবার চেষ্টা করুন।';}).finally(()=>{btn.disabled=false;});
 }
-
 
 /* =================================================
 SUPPORT PANEL OPEN
@@ -3317,80 +3371,14 @@ SUPPORT TICKET
 ================================================= */
 
 function submitSupportTicket(e){
-
-e.preventDefault();
-
-const name =
-document
-.getElementById("supportName")
-.value
-.trim();
-
-const phone =
-document
-.getElementById("supportPhone")
-.value
-.trim();
-
-const issue =
-document
-.getElementById("supportIssue")
-.value;
-
-const message =
-document
-.getElementById("supportMessage")
-.value
-.trim();
-
-const result =
-document
-.getElementById("ticketResult");
-
-
-if(
-!name ||
-!phone ||
-!issue ||
-!message
-){
-
-result.style.color =
-"#dc2626";
-
-result.innerText =
-"⚠️ সব তথ্য পূরণ করুন।";
-
-return;
-
+  e.preventDefault();
+  const name=document.getElementById('supportName').value.trim();const phone=document.getElementById('supportPhone').value.trim();const issue=document.getElementById('supportIssue').value;const message=document.getElementById('supportMessage').value.trim();const result=document.getElementById('ticketResult');
+  if(!name||!phone||!issue||!message){result.style.color='#dc2626';result.innerText='⚠️ সব তথ্য পূরণ করুন।';return;}
+  result.style.color='#38bdf8';result.innerText='⏳ Support Ticket জমা হচ্ছে...';
+  apiGet({action:'addWebsiteMessage',type:'Support Ticket',name:name,phone:phone,packageOrIssue:issue,message:message}).then(data=>{result.style.color=data.success?'#4ade80':'#f87171';result.innerText=data.success?'✅ Support Ticket সফলভাবে জমা হয়েছে! Admin Panel-এ message এসেছে।':'❌ '+(data.message||'Ticket জমা হয়নি।');if(data.success)setTimeout(()=>e.target.reset(),1000);}).catch(()=>{result.style.color='#f87171';result.innerText='⚠️ সংযোগে সমস্যা হয়েছে, আবার চেষ্টা করুন।';});
 }
 
-
-result.style.color =
-"#16a34a";
-
-result.innerText =
-"✅ Support Ticket সফলভাবে জমা হয়েছে! আমাদের টিম দ্রুত যোগাযোগ করবে।";
-
-
-/*
-এখানে চাইলে পরবর্তীতে আপনার
-Google Apps Script-এর সাথে
-Support Ticket Database যুক্ত করা যাবে।
-*/
-
-
-setTimeout(()=>{
-
-document
-.querySelector(".support-form")
-.reset();
-
-},1500);
-
-}
-
-
+loadSiteSettings();
 /* =================================================
 ESC KEY CLOSE SUPPORT
 ================================================= */
