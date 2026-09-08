@@ -1007,28 +1007,6 @@ text-align:center;
 POPUPS
 ========================= */
 
-/* =========================
-VISITOR NOTICE POPUP
-========================= */
-.visitor-notice-overlay{
-position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);
-z-index:99999;display:none;align-items:center;justify-content:center;padding:20px;
-}
-.visitor-notice-overlay.show{display:flex;}
-.visitor-notice-card{
-width:min(520px,94vw);background:linear-gradient(145deg,rgba(18,22,55,.98),rgba(7,11,30,.99));
-border:1px solid rgba(71,231,255,.65);border-radius:24px;padding:28px;position:relative;
-box-shadow:0 0 45px rgba(71,231,255,.25),0 25px 80px rgba(0,0,0,.6);
-animation:visitorNoticeIn .35s ease-out;
-}
-.visitor-notice-icon{font-size:44px;text-align:center;margin-bottom:8px;}
-.visitor-notice-title{text-align:center;font-size:27px;font-weight:900;margin:0 0 12px;color:#fff;}
-.visitor-notice-message{text-align:center;color:#cbd5e1;font-size:16px;line-height:1.75;white-space:pre-line;margin:0 0 22px;}
-.visitor-notice-close{position:absolute;right:14px;top:10px;background:transparent;border:0;color:#94a3b8;font-size:30px;cursor:pointer;line-height:1;}
-.visitor-notice-close:hover{color:#fff;}
-.visitor-notice-btn{width:100%;border:0;border-radius:12px;padding:13px 18px;background:linear-gradient(135deg,var(--cyan),var(--blue),var(--violet));color:#07101d;font-weight:900;font-size:15px;cursor:pointer;}
-@keyframes visitorNoticeIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
-
 .popup-overlay{
 display:none;
 position:fixed;
@@ -1510,6 +1488,11 @@ scroll-behavior:auto !important;
 /* ================================================= ADMIN PANEL ================================================= */
 .admin-overlay{position:fixed;inset:0;display:none;z-index:12000;background:rgba(2,6,23,.94);backdrop-filter:blur(16px);padding:18px;overflow:auto}.admin-overlay.active{display:block}.admin-card{width:min(1250px,100%);margin:10px auto;background:linear-gradient(145deg,#0b1230,#070b1d);border:1px solid rgba(71,231,255,.25);border-radius:24px;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.7)}.admin-head{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:15px;background:linear-gradient(135deg,#062f73,#1048bb,#071d52)}.admin-title{font-size:21px;font-weight:900}.admin-title b{color:var(--cyan)}.admin-sub{font-size:12px;color:#cbd5e1;margin-top:4px}.admin-close{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-size:24px;cursor:pointer}.admin-body{padding:22px}.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.admin-stat{padding:18px;border-radius:17px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09)}.admin-stat small{display:block;color:var(--muted);font-size:11px;margin-bottom:7px}.admin-stat strong{font-size:24px;color:#fff}.admin-layout{display:grid;grid-template-columns:360px 1fr;gap:16px;margin-top:16px}.admin-box{padding:18px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09)}.admin-box h3{margin:0 0 14px;font-size:16px}.admin-form input,.admin-form select{width:100%;box-sizing:border-box;padding:11px 12px;margin-bottom:9px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(0,0,0,.25);color:#fff;outline:none}.admin-form input::placeholder{color:#94a3b8}.admin-btn{border:0;border-radius:10px;padding:11px 14px;font-weight:900;cursor:pointer;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#06111f}.admin-btn.alt{background:rgba(255,255,255,.07);border:1px solid rgba(71,231,255,.25);color:#fff}.admin-btn.danger{background:#7f1d1d;color:#fff}.admin-btns{display:flex;gap:8px;flex-wrap:wrap}.admin-table-wrap{overflow:auto}.admin-table{width:100%;border-collapse:collapse;font-size:11px}.admin-table th,.admin-table td{padding:10px 8px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);white-space:nowrap}.admin-table th{color:#94a3b8}.admin-table td{color:#e5e7eb}.admin-mini-btn{border:1px solid rgba(71,231,255,.25);background:rgba(255,255,255,.06);color:#fff;border-radius:7px;padding:5px 8px;cursor:pointer;margin-right:4px}.admin-msg{min-height:18px;font-size:12px;margin-top:8px}.admin-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}.admin-tab{padding:9px 13px;border-radius:9px;border:1px solid rgba(71,231,255,.2);background:rgba(255,255,255,.05);color:#fff;cursor:pointer;font-weight:800}.admin-tab.active{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#06111f}.admin-section{display:none}.admin-section.active{display:block}@media(max-width:900px){.admin-layout{grid-template-columns:1fr}.admin-stats{grid-template-columns:1fr 1fr}}@media(max-width:520px){.admin-overlay{padding:6px}.admin-body{padding:12px}.admin-stats{grid-template-columns:1fr}.admin-head{padding:16px}}
 .admin-form textarea{width:100%;box-sizing:border-box;padding:11px 12px;margin-bottom:9px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(0,0,0,.25);color:#fff;outline:none;resize:vertical}.admin-package-row{display:grid;grid-template-columns:1fr 1fr 1.5fr auto;gap:7px;margin-bottom:8px}.admin-package-row input{width:100%;box-sizing:border-box;padding:9px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff}.admin-package-row button{border:0;border-radius:8px;background:#7f1d1d;color:#fff;cursor:pointer;padding:8px 10px}@media(max-width:900px){.admin-package-row{grid-template-columns:1fr 1fr}.admin-package-row button{grid-column:1/-1}}
+
+<style>
+/* ===== MAPS ISP PRO ADMIN EXTENSIONS ===== */
+.admin-pro-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}.admin-pro-card{padding:14px;border-radius:15px;background:rgba(255,255,255,.04);border:1px solid rgba(71,231,255,.12)}.admin-pro-card small{display:block;color:#94a3b8;font-size:10px}.admin-pro-card strong{display:block;font-size:21px;margin-top:6px}.admin-search{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.admin-search input{flex:1;min-width:180px;padding:11px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff}.admin-due{border-left:3px solid #f59e0b}.admin-online{border-left:3px solid #22c55e}.admin-log{max-height:330px;overflow:auto}.admin-log-item{padding:9px 0;border-bottom:1px solid rgba(255,255,255,.07);font-size:12px}.admin-pill{display:inline-block;padding:3px 7px;border-radius:999px;background:rgba(71,231,255,.12);color:#67e8f9;font-size:10px;margin-left:5px}.admin-maintenance{padding:14px;border-radius:14px;border:1px solid rgba(245,158,11,.3);background:rgba(245,158,11,.07);margin-top:12px}.admin-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}.admin-chart{height:220px;display:flex;align-items:flex-end;gap:8px;padding:14px;overflow:auto}.admin-bar{min-width:32px;border-radius:7px 7px 2px 2px;background:linear-gradient(180deg,#47e7ff,#2563eb);position:relative}.admin-bar span{position:absolute;bottom:-20px;left:50%;transform:translateX(-50%);font-size:9px;white-space:nowrap;color:#94a3b8}.admin-bar b{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:9px;white-space:nowrap}.admin-receipt{background:#fff;color:#111;padding:22px;border-radius:10px;max-width:430px}.admin-receipt h2{margin-top:0}.admin-receipt-row{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #ddd}.admin-action-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.admin-action-grid button{width:100%}@media(max-width:900px){.admin-pro-grid{grid-template-columns:1fr 1fr}.admin-two{grid-template-columns:1fr}.admin-action-grid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.admin-pro-grid{grid-template-columns:1fr}.admin-action-grid{grid-template-columns:1fr}}
+</style>
 </style>
 </head>
 
@@ -1910,19 +1893,6 @@ FOOTER
 
 
 <!-- =========================
-VISITOR NOTICE POPUP
-========================= -->
-<div id="visitorNoticePopup" class="visitor-notice-overlay" aria-hidden="true">
-  <div class="visitor-notice-card">
-    <button class="visitor-notice-close" type="button" onclick="closeVisitorNotice()" aria-label="Close">&times;</button>
-    <div id="visitorNoticeIcon" class="visitor-notice-icon">📢</div>
-    <h2 id="visitorNoticeTitle" class="visitor-notice-title">গুরুত্বপূর্ণ নোটিশ</h2>
-    <p id="visitorNoticeMessage" class="visitor-notice-message">MAPS INTERNET-এর পক্ষ থেকে গুরুত্বপূর্ণ ঘোষণা।</p>
-    <button id="visitorNoticeButton" class="visitor-notice-btn" type="button" onclick="closeVisitorNotice()">ঠিক আছে</button>
-  </div>
-</div>
-
-<!-- =========================
 BKASH POPUP
 ========================= -->
 
@@ -2058,7 +2028,36 @@ style="text-align:center;margin-top:15px;">
         <button class="admin-tab" onclick="switchAdminTab('messages',this)">📩 Messages <span id="adminUnreadBadge" style="display:none;margin-left:4px">0</span></button>
         <button class="admin-tab" onclick="switchAdminTab('reports',this)">📊 Reports</button>
         <button class="admin-tab" onclick="switchAdminTab('website',this)">🌐 Website Edit</button>
+        <button class="admin-tab" onclick="switchAdminTab('pro',this)">🚀 Pro Dashboard</button>
         <button class="admin-tab" id="adminUsersTab" onclick="switchAdminTab('admins',this)">🔐 Admin IDs</button>
+      </div>
+
+      <!-- ===== PRO ISP MANAGEMENT ===== -->
+      <div id="adminProSection" class="admin-section">
+        <div class="admin-pro-grid">
+          <div class="admin-pro-card"><small>💰 Today Collection</small><strong id="proTodayRevenue">৳0</strong></div>
+          <div class="admin-pro-card admin-due"><small>⚠️ Total Due</small><strong id="proTotalDue">৳0</strong></div>
+          <div class="admin-pro-card admin-online"><small>🟢 Active Lines</small><strong id="proActive">0</strong></div>
+          <div class="admin-pro-card"><small>🆕 New Applications</small><strong id="proNewApps">0</strong></div>
+        </div>
+        <div class="admin-box" style="margin-top:16px">
+          <h3>🔎 Global Customer Search</h3>
+          <div class="admin-search"><input id="proCustomerSearch" placeholder="Customer ID / Name / Mobile / Package"><button class="admin-btn" onclick="proSearchCustomers()">Search</button><button class="admin-btn alt" onclick="proClearSearch()">Clear</button></div>
+          <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>ID</th><th>Name</th><th>Mobile</th><th>Package</th><th>Bill</th><th>Due</th><th>Status</th><th>Quick Action</th></tr></thead><tbody id="proSearchTable"><tr><td colspan="8">Search a customer.</td></tr></tbody></table></div>
+        </div>
+        <div class="admin-two" style="margin-top:16px">
+          <div class="admin-box"><h3>🚨 Due Customer List</h3><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Customer</th><th>Mobile</th><th>Bill</th><th>Due</th><th>Action</th></tr></thead><tbody id="proDueTable"><tr><td colspan="5">Loading...</td></tr></tbody></table></div></div>
+          <div class="admin-box"><h3>📦 Package Analytics</h3><div id="proPackageAnalytics"></div></div>
+        </div>
+        <div class="admin-box" style="margin-top:16px"><h3>📈 Revenue Analytics</h3><div class="admin-chart" id="proRevenueChart"></div></div>
+        <div class="admin-two" style="margin-top:16px">
+          <div class="admin-box"><h3>🎫 Support / Ticket Queue <button class="admin-mini-btn" onclick="proLoadTickets()">🔄 Refresh</button></h3><div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Date</th><th>Name</th><th>Phone</th><th>Issue</th><th>Status</th><th>Action</th></tr></thead><tbody id="proTicketTable"><tr><td colspan="6">Loading...</td></tr></tbody></table></div></div>
+          <div class="admin-box"><h3>🛡️ Admin Activity Log <button class="admin-mini-btn" onclick="proLoadLogs()">🔄 Refresh</button></h3><div id="proActivityLog" class="admin-log">Loading...</div></div>
+        </div>
+        <div class="admin-two" style="margin-top:16px">
+          <div class="admin-box"><h3>🚧 Maintenance Mode</h3><div class="admin-maintenance">Website maintenance mode can be controlled from here. Visitor will see the maintenance notice when enabled.</div><div class="admin-btns" style="margin-top:12px"><button class="admin-btn" onclick="proSetMaintenance(true)">🔴 Turn ON</button><button class="admin-btn alt" onclick="proSetMaintenance(false)">🟢 Turn OFF</button></div><div id="proMaintenanceMsg" class="admin-msg"></div></div>
+          <div class="admin-box"><h3>🧾 Payment Receipt</h3><p style="color:#94a3b8;font-size:12px">Payment History থেকে যেকোনো payment-এর receipt তৈরি করে print করতে পারবে।</p><div class="admin-action-grid"><button class="admin-btn" onclick="proReceiptFromLast()">Last Payment Receipt</button><button class="admin-btn alt" onclick="proPrintReceipt()">Print Receipt</button></div><div id="proReceipt" style="margin-top:12px"></div></div>
+        </div>
       </div>
       <div id="adminCustomersSection" class="admin-section active">
         <div class="admin-layout">
@@ -2148,18 +2147,16 @@ style="text-align:center;margin-top:15px;">
               <input id="siteSettingWhatsapp1" placeholder="WhatsApp 1 (e.g. 8801827700011)">
               <input id="siteSettingWhatsapp2" placeholder="WhatsApp 2 (e.g. 8801827700022)">
               <input id="siteSettingBkash" placeholder="bKash Merchant Number">
+              <div style="border-top:1px solid rgba(255,255,255,.1);margin-top:8px;padding-top:14px;color:#47e7ff;font-weight:800">📢 Visitor Notice Popup</div>
+              <select id="siteSettingNoticeEnabled"><option value="true">Popup ON</option><option value="false">Popup OFF</option></select>
+              <input id="siteSettingNoticeIcon" placeholder="Notice Icon (e.g. 📢)">
+              <input id="siteSettingNoticeTitle" placeholder="Notice Title">
+              <textarea id="siteSettingNoticeMessage" placeholder="Notice Message" style="min-height:90px"></textarea>
+              <input id="siteSettingNoticeButton" placeholder="Button Text (e.g. ঠিক আছে)">
+              <div style="font-size:12px;color:#94a3b8;margin-top:-4px">💡 ON করলে website visitor ঢোকার সময় popup notice দেখাবে। OFF করলে popup পুরোপুরি বন্ধ থাকবে।</div>
               <input id="siteSettingCyan" placeholder="Theme Cyan (e.g. #47e7ff)">
               <input id="siteSettingBlue" placeholder="Theme Blue (e.g. #2563eb)">
               <input id="siteSettingViolet" placeholder="Theme Violet (e.g. #7c3aed)">
-              <div style="margin-top:8px;padding:16px;border:1px solid rgba(71,231,255,.22);border-radius:16px;background:rgba(71,231,255,.04)">
-                <div style="font-weight:900;margin-bottom:10px;color:#47e7ff">📢 Visitor Notice Popup</div>
-                <select id="siteSettingNoticeEnabled"><option value="true">Popup ON</option><option value="false">Popup OFF</option></select>
-                <input id="siteSettingNoticeIcon" placeholder="Notice Icon (e.g. 📢)">
-                <input id="siteSettingNoticeTitle" placeholder="Notice Title">
-                <textarea id="siteSettingNoticeMessage" placeholder="Notice Message" style="min-height:100px"></textarea>
-                <input id="siteSettingNoticeButton" placeholder="Button Text (e.g. ঠিক আছে)">
-                <div style="font-size:12px;color:#94a3b8;margin-top:6px">💡 ON করলে website visitor ঢোকার সময় popup notice দেখাবে। OFF করলে popup বন্ধ থাকবে।</div>
-              </div>
               <div class="admin-btns"><button class="admin-btn" type="submit">💾 Save Website</button><button class="admin-btn alt" type="button" onclick="loadWebsiteSettings()">🔄 Reload</button></div>
               <div id="adminWebsiteMsg" class="admin-msg"></div>
             </form>
@@ -2824,7 +2821,7 @@ GOOGLE SCRIPT
 ================================================= */
 
 const GOOGLE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxHchUf6KneUIsyfLOpH7rt1ehcCBy59cALh0qbYGx-KnpRnAU73etULt9GUxLj9ENBqA/exec";
+"https://script.google.com/macros/s/AKfycbxkQMRp0FbZKpqHuX3de_PhZ2Tkb7I_HUgqnbBvC80yLAu0meiC50mKjr_40P8ntNjrXw/exec";
 
 
 /* =================================================
@@ -3047,6 +3044,10 @@ renderPackages(packages);
 
 function applySiteSettings(settings){
   const set=(id,val)=>{const el=document.getElementById(id);if(el&&val!==undefined&&val!==null)el.textContent=val;};
+  const noticeEnabled=String(settings.noticeEnabled===undefined?'true':settings.noticeEnabled).toLowerCase()==='true';
+  const ni=document.getElementById('siteSettingNoticeEnabled'); if(ni) ni.value=noticeEnabled?'true':'false';
+  const noticeFields={noticeIcon:'📢',noticeTitle:'গুরুত্বপূর্ণ নোটিশ',noticeMessage:'MAPS INTERNET-এর পক্ষ থেকে গুরুত্বপূর্ণ ঘোষণা।',noticeButton:'ঠিক আছে'};
+  Object.keys(noticeFields).forEach(k=>{const el=document.getElementById('siteSetting'+k.charAt(0).toUpperCase()+k.slice(1));if(el)el.value=(settings[k]===undefined||settings[k]===null||settings[k]==='')?noticeFields[k]:String(settings[k]);});
   set('siteHeroTag',settings.heroTag);
   const hh=document.getElementById('siteHeroHeading'); if(hh&&(settings.heroHeading1||settings.heroHeading2)){hh.innerHTML=`${escapeSite(settings.heroHeading1||'')}<br>${escapeSite(settings.heroHeading2||'')}`;}
   set('siteHeroDesc',settings.heroDesc); set('sitePackagesTitle',settings.packagesTitle); set('sitePackagesSub',settings.packagesSub);
@@ -3060,31 +3061,9 @@ function applySiteSettings(settings){
   const wa1=document.getElementById('supportWhatsApp1'),wa2=document.getElementById('supportWhatsApp2'); if(wa1)wa1.href='https://wa.me/'+w1; if(wa2)wa2.href='https://wa.me/'+w2;
   if(settings.bkashMerchant){const bm=document.getElementById('siteBkashMerchantText');const bmi=document.getElementById('siteBkashMerchantInline');if(bm)bm.textContent=settings.bkashMerchant;if(bmi)bmi.textContent=settings.bkashMerchant;document.querySelectorAll('#bkashPopup p').forEach(el=>{if(el.innerHTML.includes('Merchant Number'))el.innerHTML='1️⃣ bKash App খুলুন<br><br>2️⃣ Make Payment নির্বাচন করুন<br><br>3️⃣ Merchant Number দিন: <b>'+escapeSite(settings.bkashMerchant)+'</b><br><br>4️⃣ বিলের Amount দিন<br><br>5️⃣ Reference-এ Customer ID দিন<br><br>6️⃣ PIN দিয়ে Payment সম্পন্ন করুন';});}
   if(Array.isArray(settings.packages)) renderPackages(settings.packages);
-  applyVisitorNotice(settings);
 }
-function applyVisitorNotice(settings){
-  const enabled = settings && settings.noticeEnabled !== undefined && settings.noticeEnabled !== null ? String(settings.noticeEnabled) === 'true' : true;
-  const icon = settings && settings.noticeIcon ? String(settings.noticeIcon) : '📢';
-  const title = settings && settings.noticeTitle ? String(settings.noticeTitle) : 'গুরুত্বপূর্ণ নোটিশ';
-  const message = settings && settings.noticeMessage ? String(settings.noticeMessage) : 'MAPS INTERNET-এর পক্ষ থেকে গুরুত্বপূর্ণ ঘোষণা।';
-  const button = settings && settings.noticeButton ? String(settings.noticeButton) : 'ঠিক আছে';
-  const iconEl=document.getElementById('visitorNoticeIcon'), titleEl=document.getElementById('visitorNoticeTitle'), msgEl=document.getElementById('visitorNoticeMessage'), btnEl=document.getElementById('visitorNoticeButton');
-  if(iconEl) iconEl.textContent=icon; if(titleEl) titleEl.textContent=title; if(msgEl) msgEl.textContent=message; if(btnEl) btnEl.textContent=button;
-  if(enabled) setTimeout(showVisitorNotice,700); else closeVisitorNotice();
-}
-function showVisitorNotice(){const el=document.getElementById('visitorNoticePopup');if(el){el.classList.add('show');el.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}}
-function closeVisitorNotice(){const el=document.getElementById('visitorNoticePopup');if(el){el.classList.remove('show');el.setAttribute('aria-hidden','true');document.body.style.overflow='';}}
 function loadSiteSettings(){
-  // Show the notice by default immediately; server settings will override it.
-  // This keeps the popup working even if the Google Apps Script request is slow/blocked.
-  applyVisitorNotice({noticeEnabled:true});
-  apiGet({action:'siteSettings'}).then(data=>{
-    if(data && data.success){
-      applySiteSettings(data.settings||{});
-    }
-  }).catch(()=>{
-    // Keep the default popup visible if the settings request fails.
-  });
+  apiGet({action:'siteSettings'}).then(data=>{if(data.success)applySiteSettings(data.settings||{});}).catch(()=>{});
 }
 /* =================================================
 PACKAGE SELECT
@@ -3322,7 +3301,7 @@ function verifyAuthLogin(){
 function openAdminPanel(){document.getElementById("adminOverlay").classList.add("active");document.body.style.overflow="hidden";}
 function closeAdminPanel(){document.getElementById("adminOverlay").classList.remove("active");document.body.style.overflow="";}
 function adminLogout(){sessionStorage.removeItem("mapsAdminLoggedIn");sessionStorage.removeItem("mapsAdminUser");closeAdminPanel();}
-function switchAdminTab(tab,btn){document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={customers:'adminCustomersSection',payments:'adminPaymentsSection',messages:'adminMessagesSection',reports:'adminReportsSection',website:'adminWebsiteSection',admins:'adminAdminsSection'};document.getElementById(map[tab]||'adminCustomersSection').classList.add('active');if(tab==='messages')loadAdminMessages();if(tab==='reports')loadAdminReports();if(tab==='website')loadWebsiteSettings();if(tab==='admins')loadAdminUsers();}
+function switchAdminTab(tab,btn){document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={customers:'adminCustomersSection',payments:'adminPaymentsSection',messages:'adminMessagesSection',reports:'adminReportsSection',website:'adminWebsiteSection',admins:'adminAdminsSection',pro:'adminProSection'};document.getElementById(map[tab]||'adminCustomersSection').classList.add('active');if(tab==='messages')loadAdminMessages();if(tab==='reports')loadAdminReports();if(tab==='website')loadWebsiteSettings();if(tab==='admins')loadAdminUsers();if(tab==='pro')loadProDashboard();}
 function apiGet(params){return fetch(GOOGLE_SCRIPT_URL+'?'+new URLSearchParams(params).toString()).then(r=>r.json());}
 function loadAdminDashboard(){loadAdminCustomers();loadAdminPayments();loadAdminMessages();loadAdminReports();loadWebsiteSettings();loadAdminUsers();}
 function loadAdminCustomers(){apiGet({action:'adminCustomers'}).then(data=>{if(!data.success)throw new Error(data.message||'Customer load failed');const customers=data.customers||[];document.getElementById('adminTotalCustomers').innerText=customers.length;document.getElementById('adminActiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()==='active').length;document.getElementById('adminInactiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()!=='active').length;const tbody=document.getElementById('adminCustomerTable');if(!customers.length){tbody.innerHTML='<tr><td colspan="8" style="text-align:center">No customers found.</td></tr>';return;}tbody.innerHTML=customers.map(c=>`<tr><td>${escAdmin(c.customerId)}</td><td>${escAdmin(c.name)}</td><td>${escAdmin(c.phone)}</td><td>${escAdmin(c.package)}</td><td>${escAdmin(c.bill)}</td><td>${escAdmin(c.dueDate)}</td><td>${escAdmin(c.status)}</td><td><button class="admin-mini-btn" onclick='editAdminCustomer(${JSON.stringify(c)})'>Edit</button><button class="admin-mini-btn" onclick="deleteAdminCustomer('${escAttr(c.customerId)}')">Delete</button></td></tr>`).join('');}).catch(err=>{document.getElementById('adminCustomerMsg').style.color='#f87171';document.getElementById('adminCustomerMsg').innerText='⚠️ '+err.message;});}
@@ -3339,9 +3318,9 @@ function loadAdminMessages(){apiGet({action:'adminMessages'}).then(data=>{if(!da
 function markAdminMessage(id,status){apiGet({action:'updateMessageStatus',id:id,status:status}).then(data=>{if(data.success)loadAdminMessages();else alert(data.message||'Update failed');});}
 function deleteAdminMessage(id){if(!confirm('এই message delete করতে চান?'))return;apiGet({action:'deleteMessage',id:id}).then(data=>{if(data.success)loadAdminMessages();else alert(data.message||'Delete failed');});}
 function loadAdminReports(){apiGet({action:'adminReports'}).then(data=>{if(!data.success)throw new Error(data.message||'Report failed');const r=data.report||{};document.getElementById('reportRevenue').innerText=String(r.totalRevenue||0)+' টাকা';document.getElementById('reportPaidCount').innerText=r.paidPayments||0;document.getElementById('reportPendingCount').innerText=r.pendingPayments||0;document.getElementById('reportConnections').innerText=r.newConnections||0;document.getElementById('reportTickets').innerText=r.supportTickets||0;document.getElementById('reportUnread').innerText=r.unreadMessages||0;const tb=document.getElementById('adminMonthlyReport');const rows=r.monthly||[];tb.innerHTML=rows.length?rows.map(x=>`<tr><td>${escAdmin(x.month)}</td><td>${escAdmin(x.count)}</td><td>${escAdmin(x.revenue)} টাকা</td></tr>`).join(''):'<tr><td colspan="3">No report data.</td></tr>';}).catch(err=>{console.error(err);});}
-function loadWebsiteSettings(){apiGet({action:'siteSettings'}).then(data=>{if(!data.success)throw new Error(data.message||'Settings load failed');const s=data.settings||{};const ids={heroTag:'siteSettingHeroTag',heroHeading1:'siteSettingHeroHeading1',heroHeading2:'siteSettingHeroHeading2',heroDesc:'siteSettingHeroDesc',packagesTitle:'siteSettingPackagesTitle',noticeEnabled:'siteSettingNoticeEnabled',noticeIcon:'siteSettingNoticeIcon',noticeTitle:'siteSettingNoticeTitle',noticeMessage:'siteSettingNoticeMessage',noticeButton:'siteSettingNoticeButton',packagesSub:'siteSettingPackagesSub',supportOnlineText:'siteSettingSupportOnline',supportTitle:'siteSettingSupportTitle',supportDirectTitle:'siteSettingSupportDirectTitle',serviceButtonText:'siteSettingServiceButton',phone1:'siteSettingPhone1',phone2:'siteSettingPhone2',whatsapp1:'siteSettingWhatsapp1',whatsapp2:'siteSettingWhatsapp2',bkashMerchant:'siteSettingBkash',themeCyan:'siteSettingCyan',themeBlue:'siteSettingBlue',themeViolet:'siteSettingViolet'};Object.keys(ids).forEach(k=>{const el=document.getElementById(ids[k]);if(el){if(s[k]!==undefined&&s[k]!==null)el.value=String(s[k]);else if(k==='noticeEnabled')el.value='true';else el.value='';}});window.adminPackages=s.packages||packages;renderAdminPackageEditor();applySiteSettings(s);}).catch(err=>{document.getElementById('adminWebsiteMsg').style.color='#f87171';document.getElementById('adminWebsiteMsg').innerText='⚠️ '+err.message;});}
+function loadWebsiteSettings(){apiGet({action:'siteSettings'}).then(data=>{if(!data.success)throw new Error(data.message||'Settings load failed');const s=data.settings||{};const ids={heroTag:'siteSettingHeroTag',heroHeading1:'siteSettingHeroHeading1',heroHeading2:'siteSettingHeroHeading2',heroDesc:'siteSettingHeroDesc',packagesTitle:'siteSettingPackagesTitle',packagesSub:'siteSettingPackagesSub',supportOnlineText:'siteSettingSupportOnline',supportTitle:'siteSettingSupportTitle',supportDirectTitle:'siteSettingSupportDirectTitle',serviceButtonText:'siteSettingServiceButton',phone1:'siteSettingPhone1',phone2:'siteSettingPhone2',whatsapp1:'siteSettingWhatsapp1',whatsapp2:'siteSettingWhatsapp2',bkashMerchant:'siteSettingBkash',noticeEnabled:'siteSettingNoticeEnabled',noticeIcon:'siteSettingNoticeIcon',noticeTitle:'siteSettingNoticeTitle',noticeMessage:'siteSettingNoticeMessage',noticeButton:'siteSettingNoticeButton',themeCyan:'siteSettingCyan',themeBlue:'siteSettingBlue',themeViolet:'siteSettingViolet'};Object.keys(ids).forEach(k=>{const el=document.getElementById(ids[k]);if(el)el.value=(s[k]===undefined||s[k]===null)?'':String(s[k]);});window.adminPackages=s.packages||packages;window.currentWebsiteSettings=s;renderAdminPackageEditor();applySiteSettings(s);}).catch(err=>{document.getElementById('adminWebsiteMsg').style.color='#f87171';document.getElementById('adminWebsiteMsg').innerText='⚠️ '+err.message;});}
 function saveWebsiteSettings(e){e.preventDefault();saveWebsiteSettingsCore();}
-function collectWebsiteSettings(){return {heroTag:document.getElementById('siteSettingHeroTag').value.trim(),heroHeading1:document.getElementById('siteSettingHeroHeading1').value.trim(),heroHeading2:document.getElementById('siteSettingHeroHeading2').value.trim(),heroDesc:document.getElementById('siteSettingHeroDesc').value.trim(),packagesTitle:document.getElementById('siteSettingPackagesTitle').value.trim(),packagesSub:document.getElementById('siteSettingPackagesSub').value.trim(),supportOnlineText:document.getElementById('siteSettingSupportOnline').value.trim(),supportTitle:document.getElementById('siteSettingSupportTitle').value.trim(),supportDirectTitle:document.getElementById('siteSettingSupportDirectTitle').value.trim(),serviceButtonText:document.getElementById('siteSettingServiceButton').value.trim(),phone1:document.getElementById('siteSettingPhone1').value.trim(),phone2:document.getElementById('siteSettingPhone2').value.trim(),whatsapp1:document.getElementById('siteSettingWhatsapp1').value.trim(),whatsapp2:document.getElementById('siteSettingWhatsapp2').value.trim(),bkashMerchant:document.getElementById('siteSettingBkash').value.trim(),themeCyan:document.getElementById('siteSettingCyan').value.trim(),themeBlue:document.getElementById('siteSettingBlue').value.trim(),themeViolet:document.getElementById('siteSettingViolet').value.trim(),noticeEnabled:document.getElementById('siteSettingNoticeEnabled').value==='true',noticeIcon:document.getElementById('siteSettingNoticeIcon').value.trim(),noticeTitle:document.getElementById('siteSettingNoticeTitle').value.trim(),noticeMessage:document.getElementById('siteSettingNoticeMessage').value.trim(),noticeButton:document.getElementById('siteSettingNoticeButton').value.trim()};}
+function collectWebsiteSettings(){return {heroTag:document.getElementById('siteSettingHeroTag').value.trim(),heroHeading1:document.getElementById('siteSettingHeroHeading1').value.trim(),heroHeading2:document.getElementById('siteSettingHeroHeading2').value.trim(),heroDesc:document.getElementById('siteSettingHeroDesc').value.trim(),packagesTitle:document.getElementById('siteSettingPackagesTitle').value.trim(),packagesSub:document.getElementById('siteSettingPackagesSub').value.trim(),supportOnlineText:document.getElementById('siteSettingSupportOnline').value.trim(),supportTitle:document.getElementById('siteSettingSupportTitle').value.trim(),supportDirectTitle:document.getElementById('siteSettingSupportDirectTitle').value.trim(),serviceButtonText:document.getElementById('siteSettingServiceButton').value.trim(),phone1:document.getElementById('siteSettingPhone1').value.trim(),phone2:document.getElementById('siteSettingPhone2').value.trim(),whatsapp1:document.getElementById('siteSettingWhatsapp1').value.trim(),whatsapp2:document.getElementById('siteSettingWhatsapp2').value.trim(),bkashMerchant:document.getElementById('siteSettingBkash').value.trim(),noticeEnabled:document.getElementById('siteSettingNoticeEnabled').value==='true',noticeIcon:document.getElementById('siteSettingNoticeIcon').value.trim(),noticeTitle:document.getElementById('siteSettingNoticeTitle').value.trim(),noticeMessage:document.getElementById('siteSettingNoticeMessage').value.trim(),noticeButton:document.getElementById('siteSettingNoticeButton').value.trim(),themeCyan:document.getElementById('siteSettingCyan').value.trim(),themeBlue:document.getElementById('siteSettingBlue').value.trim(),themeViolet:document.getElementById('siteSettingViolet').value.trim()};}
 function saveWebsiteSettingsCore(){const msg=document.getElementById('adminWebsiteMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';const settings=collectWebsiteSettings();settings.packages=readAdminPackages();window.adminPackages=settings.packages;apiGet({action:'saveSiteSettings',settings:JSON.stringify(settings)}).then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=(data.success?'✅ ':'❌ ')+data.message;if(data.success){applySiteSettings(settings);renderAdminPackageEditor();}}).catch(err=>{msg.style.color='#f87171';msg.innerText='⚠️ '+err.message;});}
 function renderAdminPackageEditor(){const box=document.getElementById('adminPackageEditor');const list=window.adminPackages||packages;box.innerHTML=list.map((p,i)=>`<div class="admin-package-row" data-i="${i}"><input data-field="speed" value="${escAdmin(p.speed)}" placeholder="Speed"><input data-field="price" value="${escAdmin(p.price)}" placeholder="Price"><input data-field="features" value="${escAdmin((p.features||[]).join(' | '))}" placeholder="Feature 1 | Feature 2 | Feature 3"><button type="button" onclick="removeAdminPackageRow(${i})">✕</button></div>`).join('');}
 function readAdminPackages(){return Array.from(document.querySelectorAll('.admin-package-row')).map(row=>{const get=f=>row.querySelector(`[data-field="${f}"]`).value.trim();return {speed:get('speed'),price:get('price'),features:get('features').split('|').map(x=>x.trim()).filter(Boolean)};}).filter(p=>p.speed&&p.price);}
@@ -3353,6 +3332,33 @@ function saveAdminUser(e){e.preventDefault();const msg=document.getElementById('
 function editAdminUser(u){document.getElementById('adminUserUsername').value=u.username||'';document.getElementById('adminUserPassword').value=u.password||'';document.getElementById('adminUserName').value=u.name||'';document.getElementById('adminUserRole').value=u.role||'Viewer';document.getElementById('adminUserStatus').value=u.status||'Active';}
 function clearAdminUserForm(){['adminUserUsername','adminUserPassword','adminUserName'].forEach(id=>document.getElementById(id).value='');document.getElementById('adminUserRole').value='Viewer';document.getElementById('adminUserStatus').value='Active';}
 function deleteAdminUser(username){if(!confirm('এই Admin ID delete করতে চান?'))return;apiGet({action:'deleteAdminUser',username:username}).then(data=>{if(data.success)loadAdminUsers();else alert(data.message||'Delete failed');});}
+
+
+/* ===== MAPS ISP PRO ADMIN ===== */
+window.proCustomers=[];window.proPayments=[];window.proLastReceipt=null;
+function loadProDashboard(){
+  Promise.all([apiGet({action:'adminCustomers'}),apiGet({action:'adminPayments'}),apiGet({action:'adminReports'})]).then(([c,p,r])=>{
+    window.proCustomers=c.customers||[];window.proPayments=p.payments||[];
+    const paid=window.proPayments.filter(x=>String(x.status).toLowerCase()==='paid');
+    const today=new Date().toLocaleDateString('en-GB');
+    const todayRevenue=paid.filter(x=>String(x.date||'').includes(today)||String(x.date||'').includes(today.replaceAll('/','-'))).reduce((a,x)=>a+(parseFloat(String(x.amount).replace(/[^0-9.]/g,''))||0),0);
+    const due=window.proCustomers.reduce((a,x)=>a+(parseFloat(String(x.bill).replace(/[^0-9.]/g,''))||0),0);
+    document.getElementById('proTodayRevenue').innerText='৳'+todayRevenue;document.getElementById('proTotalDue').innerText='৳'+due;document.getElementById('proActive').innerText=window.proCustomers.filter(x=>String(x.status).toLowerCase()==='active').length;
+    const apps=(window.adminMessagesCache||[]).filter(x=>String(x.type).toLowerCase().includes('connection')).length;document.getElementById('proNewApps').innerText=apps;
+    proRenderDue();proRenderPackages();proRenderRevenue(r.report||{});proSearchCustomers();proLoadTickets();proLoadLogs();
+  }).catch(e=>console.error(e));
+}
+function proRenderDue(){const rows=window.proCustomers.filter(c=>parseFloat(String(c.bill).replace(/[^0-9.]/g,''))>0&&String(c.status).toLowerCase()!=='inactive').slice(0,100);document.getElementById('proDueTable').innerHTML=rows.length?rows.map(c=>`<tr><td>${escAdmin(c.name||c.customerId)}<br><small>${escAdmin(c.customerId)}</small></td><td>${escAdmin(c.phone)}</td><td>৳${escAdmin(c.bill)}</td><td>${escAdmin(c.dueDate)}</td><td><button class="admin-mini-btn" onclick="proWhatsApp('${escAttr(c.phone)}','${escAttr(c.name||c.customerId)}','${escAttr(c.bill)}')">WhatsApp</button></td></tr>`).join(''):'<tr><td colspan="5">No due customers.</td></tr>';}
+function proRenderPackages(){const m={};window.proCustomers.forEach(c=>{const k=c.package||'Unknown';m[k]=(m[k]||0)+1});document.getElementById('proPackageAnalytics').innerHTML=Object.entries(m).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div style="display:flex;justify-content:space-between;padding:9px;border-bottom:1px solid rgba(255,255,255,.07)"><span>${escAdmin(k)}</span><b>${v} Customers</b></div>`).join('')||'No data';}
+function proRenderRevenue(report){const rows=report.monthly||[];if(!rows.length){document.getElementById('proRevenueChart').innerHTML='<span style="color:#94a3b8">No revenue data.</span>';return}const max=Math.max(...rows.map(x=>Number(x.revenue)||0),1);document.getElementById('proRevenueChart').innerHTML=rows.slice(-12).map(x=>`<div class="admin-bar" style="height:${Math.max(8,(Number(x.revenue)||0)/max*160)}px"><b>৳${escAdmin(x.revenue)}</b><span>${escAdmin(x.month)}</span></div>`).join('');}
+function proSearchCustomers(){const q=(document.getElementById('proCustomerSearch')||{}).value?.toLowerCase().trim()||'';const list=window.proCustomers.filter(c=>!q||[c.customerId,c.name,c.phone,c.package,c.status].some(v=>String(v||'').toLowerCase().includes(q)));document.getElementById('proSearchTable').innerHTML=list.slice(0,100).map(c=>`<tr><td>${escAdmin(c.customerId)}</td><td>${escAdmin(c.name)}</td><td>${escAdmin(c.phone)}</td><td>${escAdmin(c.package)}</td><td>৳${escAdmin(c.bill)}</td><td>${escAdmin(c.dueDate)}</td><td>${escAdmin(c.status)}</td><td><button class="admin-mini-btn" onclick='editAdminCustomer(${JSON.stringify(c)})'>Edit</button><button class="admin-mini-btn" onclick="proWhatsApp('${escAttr(c.phone)}','${escAttr(c.name||c.customerId)}','${escAttr(c.bill)}')">WA</button></td></tr>`).join('')||'<tr><td colspan="8">No customer found.</td></tr>';}
+function proClearSearch(){document.getElementById('proCustomerSearch').value='';proSearchCustomers();}
+function proWhatsApp(phone,name,bill){let p=String(phone||'').replace(/[^0-9]/g,'');if(p.startsWith('01'))p='88'+p;const msg=`Assalamu Alaikum ${name}, MAPS INTERNET-এর আপনার বর্তমান bill ৳${bill}। অনুগ্রহ করে bill payment সম্পন্ন করুন।`;window.open('https://wa.me/'+p+'?text='+encodeURIComponent(msg),'_blank');}
+function proLoadTickets(){apiGet({action:'adminMessages'}).then(d=>{const list=(d.messages||[]).filter(x=>String(x.type).toLowerCase().includes('support'));document.getElementById('proTicketTable').innerHTML=list.slice(0,100).map(x=>`<tr><td>${escAdmin(x.date)}</td><td>${escAdmin(x.name)}</td><td>${escAdmin(x.phone)}</td><td>${escAdmin(x.packageOrIssue)}</td><td>${escAdmin(x.status)}</td><td><button class="admin-mini-btn" onclick="markAdminMessage('${escAttr(x.id)}','Resolved')">Resolve</button></td></tr>`).join('')||'<tr><td colspan="6">No tickets.</td></tr>';window.adminMessagesCache=d.messages||[];}).catch(()=>{});}
+function proLoadLogs(){apiGet({action:'adminActivityLogs'}).then(d=>{const logs=d.logs||[];document.getElementById('proActivityLog').innerHTML=logs.map(x=>`<div class="admin-log-item"><b>${escAdmin(x.action)}</b> <span class="admin-pill">${escAdmin(x.user||'Admin')}</span><br><span style="color:#94a3b8">${escAdmin(x.date)} — ${escAdmin(x.details)}</span></div>`).join('')||'No activity logs.';}).catch(e=>{document.getElementById('proActivityLog').innerText='Activity log unavailable. Deploy the upgraded Apps Script.';});}
+function proSetMaintenance(on){const msg=document.getElementById('proMaintenanceMsg');const s=window.currentWebsiteSettings||{};s.maintenanceMode=!!on;msg.style.color='#38bdf8';msg.innerText='Saving...';apiGet({action:'saveSiteSettings',settings:JSON.stringify(s)}).then(d=>{msg.style.color=d.success?'#4ade80':'#f87171';msg.innerText=d.success?'✅ Maintenance Mode '+(on?'ON':'OFF'):'❌ '+d.message;}).catch(e=>{msg.style.color='#f87171';msg.innerText='⚠️ '+e.message;});}
+function proReceiptFromLast(){const p=window.proPayments&&window.proPayments[window.proPayments.length-1];if(!p){document.getElementById('proReceipt').innerHTML='No payment.';return}window.proLastReceipt=p;document.getElementById('proReceipt').innerHTML=`<div class="admin-receipt"><h2>MAPS INTERNET</h2><div class="admin-receipt-row"><span>Customer ID</span><b>${escAdmin(p.customerId)}</b></div><div class="admin-receipt-row"><span>Date</span><b>${escAdmin(p.date)}</b></div><div class="admin-receipt-row"><span>Amount</span><b>৳${escAdmin(p.amount)}</b></div><div class="admin-receipt-row"><span>Method</span><b>${escAdmin(p.method)}</b></div><div class="admin-receipt-row"><span>Transaction ID</span><b>${escAdmin(p.transactionId)}</b></div><div class="admin-receipt-row"><span>Status</span><b>${escAdmin(p.status)}</b></div><p style="text-align:center;margin-bottom:0">Thank you for choosing MAPS INTERNET</p></div>`;}
+function proPrintReceipt(){const el=document.querySelector('#proReceipt .admin-receipt');if(!el){proReceiptFromLast();setTimeout(proPrintReceipt,100);return}const w=window.open('','_blank');w.document.write('<html><head><title>MAPS INTERNET Receipt</title></head><body>'+el.outerHTML+'</body></html>');w.document.close();w.print();}
 
 /* =================================================
 NEW CONNECTION FORM
@@ -3492,7 +3498,6 @@ overlay.style.display =
 
 });
 
-document.addEventListener('click',function(e){const o=document.getElementById('visitorNoticePopup');if(o&&e.target===o)closeVisitorNotice();});
 </script>
 
 </body>
