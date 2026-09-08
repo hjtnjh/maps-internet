@@ -3062,7 +3062,16 @@ function applyVisitorNotice(settings){
 function showVisitorNotice(){const el=document.getElementById('visitorNoticePopup');if(el){el.classList.add('show');el.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}}
 function closeVisitorNotice(){const el=document.getElementById('visitorNoticePopup');if(el){el.classList.remove('show');el.setAttribute('aria-hidden','true');document.body.style.overflow='';}}
 function loadSiteSettings(){
-  apiGet({action:'siteSettings'}).then(data=>{if(data.success)applySiteSettings(data.settings||{});}).catch(()=>{});
+  // Show the notice by default immediately; server settings will override it.
+  // This keeps the popup working even if the Google Apps Script request is slow/blocked.
+  applyVisitorNotice({noticeEnabled:true});
+  apiGet({action:'siteSettings'}).then(data=>{
+    if(data && data.success){
+      applySiteSettings(data.settings||{});
+    }
+  }).catch(()=>{
+    // Keep the default popup visible if the settings request fails.
+  });
 }
 /* =================================================
 PACKAGE SELECT
