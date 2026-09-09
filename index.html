@@ -1510,6 +1510,18 @@ scroll-behavior:auto !important;
 /* ================================================= ADMIN PANEL ================================================= */
 .admin-overlay{position:fixed;inset:0;display:none;z-index:12000;background:rgba(2,6,23,.94);backdrop-filter:blur(16px);padding:18px;overflow:auto}.admin-overlay.active{display:block}.admin-card{width:min(1250px,100%);margin:10px auto;background:linear-gradient(145deg,#0b1230,#070b1d);border:1px solid rgba(71,231,255,.25);border-radius:24px;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.7)}.admin-head{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:15px;background:linear-gradient(135deg,#062f73,#1048bb,#071d52)}.admin-title{font-size:21px;font-weight:900}.admin-title b{color:var(--cyan)}.admin-sub{font-size:12px;color:#cbd5e1;margin-top:4px}.admin-close{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:#fff;font-size:24px;cursor:pointer}.admin-body{padding:22px}.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.admin-stat{padding:18px;border-radius:17px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09)}.admin-stat small{display:block;color:var(--muted);font-size:11px;margin-bottom:7px}.admin-stat strong{font-size:24px;color:#fff}.admin-layout{display:grid;grid-template-columns:360px 1fr;gap:16px;margin-top:16px}.admin-box{padding:18px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.09)}.admin-box h3{margin:0 0 14px;font-size:16px}.admin-form input,.admin-form select{width:100%;box-sizing:border-box;padding:11px 12px;margin-bottom:9px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(0,0,0,.25);color:#fff;outline:none}.admin-form input::placeholder{color:#94a3b8}.admin-btn{border:0;border-radius:10px;padding:11px 14px;font-weight:900;cursor:pointer;background:linear-gradient(135deg,var(--cyan),var(--blue));color:#06111f}.admin-btn.alt{background:rgba(255,255,255,.07);border:1px solid rgba(71,231,255,.25);color:#fff}.admin-btn.danger{background:#7f1d1d;color:#fff}.admin-btns{display:flex;gap:8px;flex-wrap:wrap}.admin-table-wrap{overflow:auto}.admin-table{width:100%;border-collapse:collapse;font-size:11px}.admin-table th,.admin-table td{padding:10px 8px;text-align:left;border-bottom:1px solid rgba(255,255,255,.08);white-space:nowrap}.admin-table th{color:#94a3b8}.admin-table td{color:#e5e7eb}.admin-mini-btn{border:1px solid rgba(71,231,255,.25);background:rgba(255,255,255,.06);color:#fff;border-radius:7px;padding:5px 8px;cursor:pointer;margin-right:4px}.admin-msg{min-height:18px;font-size:12px;margin-top:8px}.admin-tabs{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}.admin-tab{padding:9px 13px;border-radius:9px;border:1px solid rgba(71,231,255,.2);background:rgba(255,255,255,.05);color:#fff;cursor:pointer;font-weight:800}.admin-tab.active{background:linear-gradient(135deg,var(--cyan),var(--blue));color:#06111f}.admin-section{display:none}.admin-section.active{display:block}@media(max-width:900px){.admin-layout{grid-template-columns:1fr}.admin-stats{grid-template-columns:1fr 1fr}}@media(max-width:520px){.admin-overlay{padding:6px}.admin-body{padding:12px}.admin-stats{grid-template-columns:1fr}.admin-head{padding:16px}}
 .admin-form textarea{width:100%;box-sizing:border-box;padding:11px 12px;margin-bottom:9px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(0,0,0,.25);color:#fff;outline:none;resize:vertical}.admin-package-row{display:grid;grid-template-columns:1fr 1fr 1.5fr auto;gap:7px;margin-bottom:8px}.admin-package-row input{width:100%;box-sizing:border-box;padding:9px;border-radius:8px;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.25);color:#fff}.admin-package-row button{border:0;border-radius:8px;background:#7f1d1d;color:#fff;cursor:pointer;padding:8px 10px}@media(max-width:900px){.admin-package-row{grid-template-columns:1fr 1fr}.admin-package-row button{grid-column:1/-1}}
+
+/* =========================
+MAPS CONTROL CENTER PRO
+========================= */
+.cc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.cc-card{background:rgba(255,255,255,.035);border:1px solid rgba(71,231,255,.16);border-radius:18px;padding:18px}
+.cc-card h4{margin:0 0 12px;color:#47e7ff;font-size:15px}.cc-card p{color:#94a3b8;font-size:12px;line-height:1.6}
+.cc-row{display:flex;gap:10px;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.cc-row:last-child{border-bottom:0}.cc-row label{font-weight:800;font-size:13px}.cc-switch{position:relative;width:48px;height:26px;display:inline-block;flex:0 0 auto}.cc-switch input{display:none}.cc-slider{position:absolute;inset:0;border-radius:999px;background:#334155;cursor:pointer;transition:.2s}.cc-slider:before{content:'';position:absolute;width:20px;height:20px;left:3px;top:3px;border-radius:50%;background:white;transition:.2s}.cc-switch input:checked+.cc-slider{background:linear-gradient(90deg,var(--cyan),var(--blue))}.cc-switch input:checked+.cc-slider:before{transform:translateX(22px)}
+.cc-input,.cc-card select,.cc-card textarea{width:100%;box-sizing:border-box;margin:6px 0;padding:11px 12px;border-radius:12px;border:1px solid rgba(71,231,255,.18);background:#080d1d;color:#fff;outline:none}.cc-card textarea{min-height:90px;resize:vertical}.cc-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.cc-small{font-size:11px;color:#64748b}.cc-table{width:100%;border-collapse:collapse}.cc-table th,.cc-table td{padding:8px;border-bottom:1px solid rgba(255,255,255,.07);font-size:12px;text-align:left}.cc-table th{color:#47e7ff}.cc-badge{padding:4px 8px;border-radius:999px;background:rgba(71,231,255,.10);font-size:11px}.cc-preview{padding:14px;border-radius:14px;border:1px dashed rgba(71,231,255,.35);background:rgba(71,231,255,.04);margin-top:10px}.cc-button-row{display:grid;grid-template-columns:1fr 1fr 110px 90px;gap:8px;margin-bottom:8px}.cc-button-row input,.cc-button-row select{margin:0}.cc-danger{border-color:rgba(248,113,113,.4)!important}.cc-list{max-height:280px;overflow:auto}.cc-full{grid-column:1/-1}
+@media(max-width:850px){.cc-grid{grid-template-columns:1fr}.cc-full{grid-column:auto}.cc-button-row{grid-template-columns:1fr 1fr}}
+
 </style>
 </head>
 
@@ -1523,7 +1535,7 @@ NAVBAR
 
 <nav>
 
-<div class="logo">
+<div class="logo" id="siteLogoText">
 <b>MAPS</b> INTERNET
 </div>
 
@@ -1535,7 +1547,7 @@ NAVBAR
 
 <a href="#coverage" onclick="toggleMenu()">Coverage</a>
 
-<a href="#connection" onclick="toggleMenu()">নতুন সংযোগ</a>
+<a id="navConnectionBtn" href="#connection" onclick="toggleMenu()">নতুন সংযোগ</a>
 
 <a href="#" onclick="openBkash();toggleMenu();return false;">
 💳 bKash Payment
@@ -2059,6 +2071,7 @@ style="text-align:center;margin-top:15px;">
         <button class="admin-tab" onclick="switchAdminTab('reports',this)">📊 Reports</button>
         <button class="admin-tab" onclick="switchAdminTab('website',this)">🌐 Website Edit</button>
         <button class="admin-tab" id="adminUsersTab" onclick="switchAdminTab('admins',this)">🔐 Admin IDs</button>
+        <button class="admin-tab" onclick="switchAdminTab('control',this)">🎛 Control Center</button>
       </div>
       <div id="adminCustomersSection" class="admin-section active">
         <div class="admin-layout">
@@ -2170,6 +2183,105 @@ style="text-align:center;margin-top:15px;">
             <div id="adminPackageEditor"></div>
             <div class="admin-btns" style="margin-top:10px"><button class="admin-btn alt" type="button" onclick="addAdminPackageRow()">➕ Add Package</button><button class="admin-btn" type="button" onclick="savePackagesOnly()">💾 Save Packages</button></div>
             <div id="adminPackageMsg" class="admin-msg"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="adminControlSection" class="admin-section">
+        <div class="cc-grid">
+          <div class="cc-card">
+            <h4>🔘 Website Feature Control</h4>
+            <p>যে feature দরকার নেই সেটি OFF করুন। Save করলে live website-এ apply হবে।</p>
+            <div class="cc-row"><label>💳 bKash Payment</label><label class="cc-switch"><input id="ccBkash" type="checkbox" checked><span class="cc-slider"></span></label></div>
+            <div class="cc-row"><label>👤 Customer Login</label><label class="cc-switch"><input id="ccCustomerLogin" type="checkbox" checked><span class="cc-slider"></span></label></div>
+            <div class="cc-row"><label>📁 FTP Server</label><label class="cc-switch"><input id="ccFtp" type="checkbox" checked><span class="cc-slider"></span></label></div>
+            <div class="cc-row"><label>📝 New Connection</label><label class="cc-switch"><input id="ccConnection" type="checkbox" checked><span class="cc-slider"></span></label></div>
+            <div class="cc-row"><label>🎧 Support Center</label><label class="cc-switch"><input id="ccSupport" type="checkbox" checked><span class="cc-slider"></span></label></div>
+            <div class="cc-row"><label>📢 Visitor Notice</label><label class="cc-switch"><input id="ccNotice" type="checkbox" checked><span class="cc-slider"></span></label></div>
+            <div class="cc-actions"><button class="admin-btn" type="button" onclick="ccSaveFeatures()">💾 Save Features</button><button class="admin-btn alt" type="button" onclick="ccLoadAll()">🔄 Reload</button></div>
+            <div id="ccFeatureMsg" class="admin-msg"></div>
+          </div>
+
+          <div class="cc-card">
+            <h4>🎨 Live Website Designer</h4>
+            <p>Website-এর text, color, logo ও visual settings এখান থেকেই control করুন। বিস্তারিত text/package edit-এর জন্য Website Edit tab-ও থাকবে।</p>
+            <input class="cc-input" id="ccLogoText" placeholder="Logo Text (e.g. MAPS INTERNET)">
+            <input class="cc-input" id="ccHeroTag" placeholder="Hero Tag">
+            <input class="cc-input" id="ccHeroTitle" placeholder="Hero Main Title">
+            <input class="cc-input" id="ccHeroSub" placeholder="Hero Highlight Text">
+            <input class="cc-input" id="ccHeroDesc" placeholder="Hero Description">
+            <input class="cc-input" id="ccBgUrl" placeholder="Background Image URL (optional)">
+            <input class="cc-input" id="ccBannerText" placeholder="Top Campaign / Offer Text">
+            <div class="cc-actions"><button class="admin-btn" type="button" onclick="ccPreviewDesigner()">👁 Preview</button><button class="admin-btn" type="button" onclick="ccSaveDesigner()">🚀 Publish Now</button><button class="admin-btn alt" type="button" onclick="ccResetDesigner()">↩ Reset</button></div>
+            <div id="ccDesignerMsg" class="admin-msg"></div><div id="ccDesignerPreview" class="cc-preview" style="display:none"></div>
+          </div>
+
+          <div class="cc-card">
+            <h4>📢 Emergency Announcement & Offer</h4>
+            <p>Maintenance, Eid offer, speed upgrade, payment notice—যেকোনো announcement visitor-দের দেখাতে পারবেন।</p>
+            <select id="ccAnnounceType"><option value="notice">📢 Notice Popup</option><option value="offer">🎁 Offer Banner</option><option value="maintenance">🛠 Maintenance Notice</option></select>
+            <input class="cc-input" id="ccAnnounceTitle" placeholder="Title">
+            <textarea id="ccAnnounceMessage" placeholder="Announcement / Offer Message"></textarea>
+            <input class="cc-input" id="ccAnnounceButton" placeholder="Button Text (e.g. ঠিক আছে / বিস্তারিত)">
+            <div class="cc-actions"><button class="admin-btn" type="button" onclick="ccPublishAnnouncement()">📢 Publish</button><button class="admin-btn alt" type="button" onclick="ccTurnAnnouncementOff()">OFF</button></div>
+            <div id="ccAnnounceMsg" class="admin-msg"></div>
+          </div>
+
+          <div class="cc-card">
+            <h4>🖼️ Media Manager</h4>
+            <p>Public image URL দিয়ে logo/background/banner সেট করতে পারবেন।</p>
+            <input class="cc-input" id="ccLogoUrl" placeholder="Logo Image URL">
+            <input class="cc-input" id="ccHeroImageUrl" placeholder="Hero Image URL">
+            <input class="cc-input" id="ccBannerImageUrl" placeholder="Offer Banner Image URL">
+            <div class="cc-actions"><button class="admin-btn" type="button" onclick="ccSaveMedia()">💾 Save Media</button><button class="admin-btn alt" type="button" onclick="ccClearMedia()">Clear</button></div>
+            <div id="ccMediaPreview" class="cc-preview" style="display:none"></div><div id="ccMediaMsg" class="admin-msg"></div>
+          </div>
+
+          <div class="cc-card cc-full">
+            <h4>🔘 Custom Button Manager — নিজের ইচ্ছামতো Button যোগ করুন</h4>
+            <p>যখন ইচ্ছা নতুন button যোগ, edit, ON/OFF বা delete করতে পারবেন। Button website-এর navbar বা floating area-তে দেখানো যাবে।</p>
+            <div class="cc-button-row">
+              <input id="ccBtnLabel" placeholder="Button Name">
+              <input id="ccBtnUrl" placeholder="URL (https://...) অথবা #connection">
+              <select id="ccBtnPlace"><option value="navbar">Navbar</option><option value="floating">Floating</option></select>
+              <select id="ccBtnType"><option value="link">Link</option><option value="whatsapp">WhatsApp</option><option value="call">Call</option></select>
+            </div>
+            <div class="cc-button-row">
+              <input id="ccBtnIcon" placeholder="Icon e.g. 🎁">
+              <input id="ccBtnColor" placeholder="Button Color e.g. #22d3ee">
+              <select id="ccBtnTarget"><option value="_self">Same Tab</option><option value="_blank">New Tab</option></select>
+              <button class="admin-btn" type="button" onclick="ccAddButton()">➕ Add</button>
+            </div>
+            <div id="ccButtonsList" class="cc-list"></div>
+            <div class="cc-actions"><button class="admin-btn" type="button" onclick="ccSaveButtons()">💾 Save Buttons</button><button class="admin-btn alt" type="button" onclick="ccPreviewButtons()">👁 Preview</button></div>
+            <div id="ccButtonMsg" class="admin-msg"></div>
+          </div>
+
+          <div class="cc-card">
+            <h4>📅 Scheduled Website Change</h4>
+            <p>নির্দিষ্ট সময়ের জন্য offer/notice/feature settings schedule করুন।</p>
+            <input class="cc-input" id="ccScheduleTime" type="datetime-local">
+            <select id="ccScheduleAction"><option value="publish">Publish Current Control Settings</option><option value="noticeOn">Visitor Notice ON</option><option value="noticeOff">Visitor Notice OFF</option></select>
+            <div class="cc-actions"><button class="admin-btn" type="button" onclick="ccSchedule()">📅 Schedule</button><button class="admin-btn alt" type="button" onclick="ccCancelSchedule()">Cancel</button></div>
+            <div id="ccScheduleStatus" class="cc-small"></div>
+          </div>
+
+          <div class="cc-card">
+            <h4>🔄 Version / Undo / Preview</h4>
+            <p>Control settings-এর browser backup রাখুন। ভুল change হলে আগের version restore করা যাবে।</p>
+            <div class="cc-actions"><button class="admin-btn" type="button" onclick="ccSaveVersion()">💾 Save Version</button><button class="admin-btn alt" type="button" onclick="ccUndoVersion()">↩ Undo Last</button><button class="admin-btn alt" type="button" onclick="ccPreviewAll()">👁 Preview All</button></div>
+            <div id="ccVersions" class="cc-small" style="margin-top:10px"></div>
+          </div>
+
+          <div class="cc-card cc-full">
+            <h4>⚡ Quick Action Center</h4>
+            <div class="cc-actions">
+              <button class="admin-btn" onclick="switchAdminTab('website',document.querySelector('.admin-tab:nth-child(5)'))">✏️ Website Edit</button>
+              <button class="admin-btn" onclick="switchAdminTab('customers',document.querySelector('.admin-tab:nth-child(1)'))">👥 Customers</button>
+              <button class="admin-btn" onclick="switchAdminTab('payments',document.querySelector('.admin-tab:nth-child(2)'))">💳 Payments</button>
+              <button class="admin-btn" onclick="switchAdminTab('messages',document.querySelector('.admin-tab:nth-child(3)'))">📩 Messages</button>
+              <button class="admin-btn" onclick="switchAdminTab('reports',document.querySelector('.admin-tab:nth-child(4)'))">📊 Reports</button>
+            </div>
           </div>
         </div>
       </div>
@@ -2824,7 +2936,7 @@ GOOGLE SCRIPT
 ================================================= */
 
 const GOOGLE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxHchUf6KneUIsyfLOpH7rt1ehcCBy59cALh0qbYGx-KnpRnAU73etULt9GUxLj9ENBqA/exec";
+"https://script.google.com/macros/s/AKfycbxkQMRp0FbZKpqHuX3de_PhZ2Tkb7I_HUgqnbBvC80yLAu0meiC50mKjr_40P8ntNjrXw/exec";
 
 
 /* =================================================
@@ -3061,6 +3173,7 @@ function applySiteSettings(settings){
   if(settings.bkashMerchant){const bm=document.getElementById('siteBkashMerchantText');const bmi=document.getElementById('siteBkashMerchantInline');if(bm)bm.textContent=settings.bkashMerchant;if(bmi)bmi.textContent=settings.bkashMerchant;document.querySelectorAll('#bkashPopup p').forEach(el=>{if(el.innerHTML.includes('Merchant Number'))el.innerHTML='1️⃣ bKash App খুলুন<br><br>2️⃣ Make Payment নির্বাচন করুন<br><br>3️⃣ Merchant Number দিন: <b>'+escapeSite(settings.bkashMerchant)+'</b><br><br>4️⃣ বিলের Amount দিন<br><br>5️⃣ Reference-এ Customer ID দিন<br><br>6️⃣ PIN দিয়ে Payment সম্পন্ন করুন';});}
   if(Array.isArray(settings.packages)) renderPackages(settings.packages);
   applyVisitorNotice(settings);
+  applyControlSettings(settings);
 }
 function applyVisitorNotice(settings){
   const enabled = settings && settings.noticeEnabled !== undefined && settings.noticeEnabled !== null ? String(settings.noticeEnabled) === 'true' : true;
@@ -3257,6 +3370,51 @@ function portalPayBill(){closePortal();openBkash();}
 function portalSupport(){closePortal();openSupportPanel();}
 function portalLogout(){sessionStorage.removeItem("mapsCustomerId");sessionStorage.removeItem("mapsCustomerPassword");closePortal();document.getElementById("loginCustomerId").value="";document.getElementById("loginPassword").value="";document.getElementById("loginResult").innerText="";}
 
+
+/* =================================================
+CONTROL CENTER PRO
+================================================= */
+window.ccButtons=[];window.ccCurrentSettings={};
+function setCC(id,v){const e=document.getElementById(id);if(e&&v!==undefined&&v!==null)e.value=String(v);}
+function ccBool(id,v){const e=document.getElementById(id);if(e)e.checked=String(v)!=='false'&&v!==false;}
+function controlSettingsFromForm(){return {bkash:!!document.getElementById('ccBkash')?.checked,customerLogin:!!document.getElementById('ccCustomerLogin')?.checked,ftp:!!document.getElementById('ccFtp')?.checked,connection:!!document.getElementById('ccConnection')?.checked,support:!!document.getElementById('ccSupport')?.checked,notice:!!document.getElementById('ccNotice')?.checked};}
+function applyControlSettings(settings){const c=settings?.featureControls||{};ccBool('ccBkash',c.bkash===undefined?true:c.bkash);ccBool('ccCustomerLogin',c.customerLogin===undefined?true:c.customerLogin);ccBool('ccFtp',c.ftp===undefined?true:c.ftp);ccBool('ccConnection',c.connection===undefined?true:c.connection);ccBool('ccSupport',c.support===undefined?true:c.support);ccBool('ccNotice',c.notice===undefined?(settings.noticeEnabled===undefined?true:settings.noticeEnabled):c.notice);
+ const hide=(id,on)=>{const e=document.getElementById(id);if(e)e.style.display=on?'':'none';};
+ hide('navBkashLink',c.bkash!==false);hide('navCustomerLoginLink',c.customerLogin!==false);hide('navFtpLink',c.ftp!==false);hide('navConnectionBtn',c.connection!==false);hide('serviceFloat',c.support!==false);
+ if(settings.logoText){const l=document.getElementById('siteLogoText');if(l)l.innerHTML='<b>'+escapeSite(settings.logoText.split(' ')[0]||'MAPS')+'</b> '+escapeSite(settings.logoText.split(' ').slice(1).join(' ')||'INTERNET');}
+ if(settings.bgUrl){document.querySelector('.hero')?.style.setProperty('background-image',`linear-gradient(rgba(4,7,20,.72),rgba(4,7,20,.88)),url("${String(settings.bgUrl).replace(/"/g,'')} ")`);document.querySelector('.hero')?.style.setProperty('background-size','cover');document.querySelector('.hero')?.style.setProperty('background-position','center');}
+ if(settings.bannerText){let b=document.getElementById('ccLiveBanner');if(!b){b=document.createElement('div');b.id='ccLiveBanner';b.style.cssText='position:fixed;top:0;left:0;right:0;z-index:9998;text-align:center;padding:7px 12px;background:linear-gradient(90deg,#111827,#0b3b55,#111827);color:#fff;font-weight:800;font-size:12px;box-shadow:0 4px 18px rgba(0,0,0,.25)';document.body.appendChild(b);}b.textContent=settings.bannerText;}else document.getElementById('ccLiveBanner')?.remove();
+ renderCustomButtons(settings.customButtons||window.ccButtons||[]);}
+function ccSaveFeatures(){const settings=controlSettingsFromForm();settings.notice=!!document.getElementById('ccNotice')?.checked;ccApiSave({featureControls:settings,noticeEnabled:settings.notice}).then(()=>{applyControlSettings({featureControls:settings,noticeEnabled:settings.notice});ccMsg('ccFeatureMsg','✅ Features saved','#4ade80');});}
+function ccApiSave(partial){const base=Object.assign({},window.ccCurrentSettings||{},partial);if(!base.packages)base.packages=window.adminPackages||packages;return apiGet({action:'saveSiteSettings',settings:JSON.stringify(base)}).then(d=>{if(!d.success)throw new Error(d.message||'Save failed');window.ccCurrentSettings=base;return d;});}
+function loadControlCenter(){apiGet({action:'siteSettings'}).then(d=>{const s=d.settings||d.data||{};window.ccCurrentSettings=s;setCC('ccLogoText',s.logoText||'MAPS INTERNET');setCC('ccHeroTag',s.heroTag||'');setCC('ccHeroTitle',s.heroHeading1||'');setCC('ccHeroSub',s.heroHeading2||'');setCC('ccHeroDesc',s.heroDesc||'');setCC('ccBgUrl',s.bgUrl||'');setCC('ccBannerText',s.bannerText||'');setCC('ccLogoUrl',s.logoUrl||'');setCC('ccHeroImageUrl',s.heroImageUrl||'');setCC('ccBannerImageUrl',s.bannerImageUrl||'');applyControlSettings(s);window.ccButtons=Array.isArray(s.customButtons)?s.customButtons:[];renderCCButtons();renderCCVersions();renderScheduleStatus();}).catch(()=>{applyControlSettings({});renderCCButtons();renderCCVersions();renderScheduleStatus();});}
+function ccLoadAll(){loadControlCenter();ccMsg('ccFeatureMsg','🔄 Reloaded','#38bdf8');}
+function ccMsg(id,text,color){const e=document.getElementById(id);if(e){e.style.color=color||'#38bdf8';e.innerText=text;setTimeout(()=>{e.innerText='';},3500);}}
+function ccPreviewDesigner(){const title=document.getElementById('ccHeroTitle')?.value||'ইন্টারনেটের নতুন গতি';const sub=document.getElementById('ccHeroSub')?.value||'নতুন অভিজ্ঞতা';const d=document.getElementById('ccDesignerPreview');if(d){d.style.display='block';d.innerHTML='<b style="color:#47e7ff">'+escapeSite(document.getElementById('ccHeroTag')?.value||'NEXT GENERATION BROADBAND')+'</b><h2 style="margin:8px 0">'+escapeSite(title)+'<br><span style="color:#facc15">'+escapeSite(sub)+'</span></h2><p>'+escapeSite(document.getElementById('ccHeroDesc')?.value||'')+'</p>';} }
+function ccSaveDesigner(){const partial={heroTag:document.getElementById('ccHeroTag').value.trim(),heroHeading1:document.getElementById('ccHeroTitle').value.trim(),heroHeading2:document.getElementById('ccHeroSub').value.trim(),heroDesc:document.getElementById('ccHeroDesc').value.trim(),logoText:document.getElementById('ccLogoText').value.trim(),bgUrl:document.getElementById('ccBgUrl').value.trim(),bannerText:document.getElementById('ccBannerText').value.trim()};ccApiSave(partial).then(()=>{applySiteSettings(Object.assign({},window.ccCurrentSettings,partial));ccMsg('ccDesignerMsg','🚀 Published successfully','#4ade80');}).catch(e=>ccMsg('ccDesignerMsg','❌ '+e.message,'#f87171'));}
+function ccResetDesigner(){loadControlCenter();ccMsg('ccDesignerMsg','↩ Reset from saved settings','#facc15');}
+function ccPublishAnnouncement(){const type=document.getElementById('ccAnnounceType').value,title=document.getElementById('ccAnnounceTitle').value.trim(),message=document.getElementById('ccAnnounceMessage').value.trim(),button=document.getElementById('ccAnnounceButton').value.trim()||'ঠিক আছে';if(type==='maintenance'){ccApiSave({maintenanceMode:true,noticeEnabled:true,noticeTitle:title||'Maintenance চলছে',noticeMessage:message||'Website maintenance চলছে।',noticeButton:button}).then(()=>ccMsg('ccAnnounceMsg','🛠 Maintenance published','#4ade80')).catch(e=>ccMsg('ccAnnounceMsg','❌ '+e.message,'#f87171'));return;}if(type==='offer'){ccApiSave({bannerText:message||title}).then(()=>ccMsg('ccAnnounceMsg','🎁 Offer banner published','#4ade80')).catch(e=>ccMsg('ccAnnounceMsg','❌ '+e.message,'#f87171'));return;}ccApiSave({noticeEnabled:true,noticeTitle:title||'গুরুত্বপূর্ণ নোটিশ',noticeMessage:message||'MAPS INTERNET-এর গুরুত্বপূর্ণ ঘোষণা।',noticeButton:button,featureControls:Object.assign({},window.ccCurrentSettings.featureControls||{}, {notice:true})}).then(x=>{applyVisitorNotice(Object.assign({},window.ccCurrentSettings,{noticeEnabled:true,noticeTitle:title,noticeMessage:message,noticeButton:button}));ccMsg('ccAnnounceMsg','📢 Announcement published','#4ade80');}).catch(e=>ccMsg('ccAnnounceMsg','❌ '+e.message,'#f87171'));}
+function ccTurnAnnouncementOff(){ccApiSave({noticeEnabled:false,maintenanceMode:false,bannerText:''}).then(()=>{closeVisitorNotice();document.getElementById('ccLiveBanner')?.remove();ccMsg('ccAnnounceMsg','OFF করা হয়েছে','#facc15');}).catch(e=>ccMsg('ccAnnounceMsg','❌ '+e.message,'#f87171'));}
+function ccSaveMedia(){const p={logoUrl:document.getElementById('ccLogoUrl').value.trim(),heroImageUrl:document.getElementById('ccHeroImageUrl').value.trim(),bannerImageUrl:document.getElementById('ccBannerImageUrl').value.trim()};ccApiSave(p).then(()=>{ccMediaPreview();ccMsg('ccMediaMsg','✅ Media settings saved','#4ade80');}).catch(e=>ccMsg('ccMediaMsg','❌ '+e.message,'#f87171'));}
+function ccMediaPreview(){const urls=[['Logo',document.getElementById('ccLogoUrl')?.value],['Hero',document.getElementById('ccHeroImageUrl')?.value],['Banner',document.getElementById('ccBannerImageUrl')?.value]].filter(x=>x[1]);const box=document.getElementById('ccMediaPreview');if(box){box.style.display=urls.length?'block':'none';box.innerHTML=urls.map(x=>'<div style="margin:6px 0"><b>'+x[0]+'</b><br><img src="'+x[1].replace(/"/g,'')+'" style="max-width:220px;max-height:90px;border-radius:10px;object-fit:cover" onerror="this.style.display=\'none\'"></div>').join('');}}
+function ccClearMedia(){['ccLogoUrl','ccHeroImageUrl','ccBannerImageUrl'].forEach(id=>setCC(id,''));document.getElementById('ccMediaPreview').style.display='none';}
+function ccAddButton(){const label=document.getElementById('ccBtnLabel').value.trim();const url=document.getElementById('ccBtnUrl').value.trim();if(!label||!url){ccMsg('ccButtonMsg','⚠️ Button Name এবং URL দিন','#facc15');return;}window.ccButtons.push({id:'btn_'+Date.now(),label,url,place:document.getElementById('ccBtnPlace').value,type:document.getElementById('ccBtnType').value,icon:document.getElementById('ccBtnIcon').value.trim(),color:document.getElementById('ccBtnColor').value.trim(),target:document.getElementById('ccBtnTarget').value,enabled:true});['ccBtnLabel','ccBtnUrl','ccBtnIcon','ccBtnColor'].forEach(id=>setCC(id,''));renderCCButtons();ccMsg('ccButtonMsg','➕ Button added — Save Buttons চাপুন','#4ade80');}
+function renderCCButtons(){const box=document.getElementById('ccButtonsList');if(!box)return;if(!window.ccButtons.length){box.innerHTML='<div class="cc-small">কোনো custom button নেই।</div>';return;}box.innerHTML=window.ccButtons.map((b,i)=>`<div class="cc-button-row"><input value="${escAdmin(b.label||'')}" onchange="ccEditButton(${i},'label',this.value)"><input value="${escAdmin(b.url||'')}" onchange="ccEditButton(${i},'url',this.value)"><select onchange="ccEditButton(${i},'place',this.value)"><option value="navbar" ${b.place==='navbar'?'selected':''}>Navbar</option><option value="floating" ${b.place==='floating'?'selected':''}>Floating</option></select><button class="admin-btn alt" type="button" onclick="ccDeleteButton(${i})">✕</button></div>`).join('');}
+function ccEditButton(i,k,v){if(window.ccButtons[i])window.ccButtons[i][k]=v;}function ccDeleteButton(i){window.ccButtons.splice(i,1);renderCCButtons();}
+function ccSaveButtons(){ccApiSave({customButtons:window.ccButtons}).then(()=>{renderCustomButtons(window.ccButtons);ccMsg('ccButtonMsg','✅ Buttons published','#4ade80');}).catch(e=>ccMsg('ccButtonMsg','❌ '+e.message,'#f87171'));}
+function ccPreviewButtons(){renderCustomButtons(window.ccButtons,true);ccMsg('ccButtonMsg','👁 Preview applied','#38bdf8');}
+function renderCustomButtons(list,preview){document.querySelectorAll('.ccDynamicButton').forEach(e=>e.remove());(list||[]).filter(b=>b.enabled!==false).forEach(b=>{const a=document.createElement('a');a.className='btn ccDynamicButton';a.innerHTML=escapeSite((b.icon||'')+' '+(b.label||'Button'));let u=b.url||'#';if(b.type==='whatsapp'){u='https://wa.me/'+String(u).replace(/[^0-9]/g,'');}if(b.type==='call'){u='tel:'+String(u).replace(/[^0-9+]/g,'');}a.href=u;a.target=b.target||'_self';a.style.background=b.color||'';a.style.marginLeft='10px';if(b.place==='floating'){a.style.position='fixed';a.style.right='18px';a.style.bottom='90px';a.style.zIndex='9990';a.style.borderRadius='999px';a.style.fontSize='12px';document.body.appendChild(a);}else{document.querySelector('.nav-buttons')?.appendChild(a);}});}
+function ccSaveVersion(){const snap=JSON.stringify(window.ccCurrentSettings||{});let arr=JSON.parse(localStorage.getItem('mapsCCVersions')||'[]');arr.unshift({time:new Date().toLocaleString(),settings:JSON.parse(snap)});arr=arr.slice(0,10);localStorage.setItem('mapsCCVersions',JSON.stringify(arr));renderCCVersions();ccMsg('ccDesignerMsg','💾 Version saved','#4ade80');}
+function renderCCVersions(){const box=document.getElementById('ccVersions');if(!box)return;const arr=JSON.parse(localStorage.getItem('mapsCCVersions')||'[]');box.innerHTML=arr.length?arr.map((x,i)=>'<div style="padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06)">'+escapeSite(x.time)+' <button class="admin-mini-btn" onclick="ccRestoreVersion('+i+')">Restore</button></div>').join(''):'No saved versions';}
+function ccRestoreVersion(i){const arr=JSON.parse(localStorage.getItem('mapsCCVersions')||'[]'),x=arr[i];if(!x)return;ccApiSave(x.settings).then(()=>{window.ccCurrentSettings=x.settings;applySiteSettings(x.settings);loadControlCenter();ccMsg('ccDesignerMsg','↩ Version restored','#4ade80');}).catch(e=>ccMsg('ccDesignerMsg','❌ '+e.message,'#f87171'));}
+function ccUndoVersion(){const arr=JSON.parse(localStorage.getItem('mapsCCVersions')||'[]');if(arr[1])ccRestoreVersion(1);else ccMsg('ccDesignerMsg','⚠️ Undo করার মতো version নেই','#facc15');}
+function ccPreviewAll(){ccPreviewDesigner();ccMediaPreview();ccPreviewButtons();ccMsg('ccDesignerMsg','👁 Preview ready','#38bdf8');}
+function ccSchedule(){const when=document.getElementById('ccScheduleTime').value;if(!when){ccMsg('ccScheduleStatus','⚠️ Date/time নির্বাচন করুন','#facc15');return;}localStorage.setItem('mapsCCSchedule',JSON.stringify({when,action:document.getElementById('ccScheduleAction').value,settings:controlSettingsFromForm()}));renderScheduleStatus();ccMsg('ccScheduleStatus','📅 Schedule saved','#4ade80');}
+function ccCancelSchedule(){localStorage.removeItem('mapsCCSchedule');renderScheduleStatus();ccMsg('ccScheduleStatus','Schedule cancelled','#facc15');}
+function renderScheduleStatus(){const box=document.getElementById('ccScheduleStatus');if(!box)return;const x=JSON.parse(localStorage.getItem('mapsCCSchedule')||'null');box.innerText=x?'Scheduled: '+x.when+' — '+x.action:'No scheduled change';}
+function applyScheduledControl(){const x=JSON.parse(localStorage.getItem('mapsCCSchedule')||'null');if(!x)return;if(Date.now()>=new Date(x.when).getTime()){if(x.action==='noticeOn')ccApiSave({noticeEnabled:true});if(x.action==='noticeOff')ccApiSave({noticeEnabled:false});if(x.action==='publish')ccApiSave({featureControls:x.settings});localStorage.removeItem('mapsCCSchedule');}}
+setTimeout(applyScheduledControl,1200);
+
 /* =================================================
 AUTHORIZED LOGIN
 ================================================= */
@@ -3322,7 +3480,7 @@ function verifyAuthLogin(){
 function openAdminPanel(){document.getElementById("adminOverlay").classList.add("active");document.body.style.overflow="hidden";}
 function closeAdminPanel(){document.getElementById("adminOverlay").classList.remove("active");document.body.style.overflow="";}
 function adminLogout(){sessionStorage.removeItem("mapsAdminLoggedIn");sessionStorage.removeItem("mapsAdminUser");closeAdminPanel();}
-function switchAdminTab(tab,btn){document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={customers:'adminCustomersSection',payments:'adminPaymentsSection',messages:'adminMessagesSection',reports:'adminReportsSection',website:'adminWebsiteSection',admins:'adminAdminsSection'};document.getElementById(map[tab]||'adminCustomersSection').classList.add('active');if(tab==='messages')loadAdminMessages();if(tab==='reports')loadAdminReports();if(tab==='website')loadWebsiteSettings();if(tab==='admins')loadAdminUsers();}
+function switchAdminTab(tab,btn){document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={customers:'adminCustomersSection',payments:'adminPaymentsSection',messages:'adminMessagesSection',reports:'adminReportsSection',website:'adminWebsiteSection',admins:'adminAdminsSection',control:'adminControlSection'};document.getElementById(map[tab]||'adminCustomersSection').classList.add('active');if(tab==='messages')loadAdminMessages();if(tab==='reports')loadAdminReports();if(tab==='website')loadWebsiteSettings();if(tab==='admins')loadAdminUsers();if(tab==='control')loadControlCenter();}
 function apiGet(params){return fetch(GOOGLE_SCRIPT_URL+'?'+new URLSearchParams(params).toString()).then(r=>r.json());}
 function loadAdminDashboard(){loadAdminCustomers();loadAdminPayments();loadAdminMessages();loadAdminReports();loadWebsiteSettings();loadAdminUsers();}
 function loadAdminCustomers(){apiGet({action:'adminCustomers'}).then(data=>{if(!data.success)throw new Error(data.message||'Customer load failed');const customers=data.customers||[];document.getElementById('adminTotalCustomers').innerText=customers.length;document.getElementById('adminActiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()==='active').length;document.getElementById('adminInactiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()!=='active').length;const tbody=document.getElementById('adminCustomerTable');if(!customers.length){tbody.innerHTML='<tr><td colspan="8" style="text-align:center">No customers found.</td></tr>';return;}tbody.innerHTML=customers.map(c=>`<tr><td>${escAdmin(c.customerId)}</td><td>${escAdmin(c.name)}</td><td>${escAdmin(c.phone)}</td><td>${escAdmin(c.package)}</td><td>${escAdmin(c.bill)}</td><td>${escAdmin(c.dueDate)}</td><td>${escAdmin(c.status)}</td><td><button class="admin-mini-btn" onclick='editAdminCustomer(${JSON.stringify(c)})'>Edit</button><button class="admin-mini-btn" onclick="deleteAdminCustomer('${escAttr(c.customerId)}')">Delete</button></td></tr>`).join('');}).catch(err=>{document.getElementById('adminCustomerMsg').style.color='#f87171';document.getElementById('adminCustomerMsg').innerText='⚠️ '+err.message;});}
@@ -3341,7 +3499,7 @@ function deleteAdminMessage(id){if(!confirm('এই message delete করতে 
 function loadAdminReports(){apiGet({action:'adminReports'}).then(data=>{if(!data.success)throw new Error(data.message||'Report failed');const r=data.report||{};document.getElementById('reportRevenue').innerText=String(r.totalRevenue||0)+' টাকা';document.getElementById('reportPaidCount').innerText=r.paidPayments||0;document.getElementById('reportPendingCount').innerText=r.pendingPayments||0;document.getElementById('reportConnections').innerText=r.newConnections||0;document.getElementById('reportTickets').innerText=r.supportTickets||0;document.getElementById('reportUnread').innerText=r.unreadMessages||0;const tb=document.getElementById('adminMonthlyReport');const rows=r.monthly||[];tb.innerHTML=rows.length?rows.map(x=>`<tr><td>${escAdmin(x.month)}</td><td>${escAdmin(x.count)}</td><td>${escAdmin(x.revenue)} টাকা</td></tr>`).join(''):'<tr><td colspan="3">No report data.</td></tr>';}).catch(err=>{console.error(err);});}
 function loadWebsiteSettings(){apiGet({action:'siteSettings'}).then(data=>{if(!data.success)throw new Error(data.message||'Settings load failed');const s=data.settings||{};const ids={heroTag:'siteSettingHeroTag',heroHeading1:'siteSettingHeroHeading1',heroHeading2:'siteSettingHeroHeading2',heroDesc:'siteSettingHeroDesc',packagesTitle:'siteSettingPackagesTitle',noticeEnabled:'siteSettingNoticeEnabled',noticeIcon:'siteSettingNoticeIcon',noticeTitle:'siteSettingNoticeTitle',noticeMessage:'siteSettingNoticeMessage',noticeButton:'siteSettingNoticeButton',packagesSub:'siteSettingPackagesSub',supportOnlineText:'siteSettingSupportOnline',supportTitle:'siteSettingSupportTitle',supportDirectTitle:'siteSettingSupportDirectTitle',serviceButtonText:'siteSettingServiceButton',phone1:'siteSettingPhone1',phone2:'siteSettingPhone2',whatsapp1:'siteSettingWhatsapp1',whatsapp2:'siteSettingWhatsapp2',bkashMerchant:'siteSettingBkash',themeCyan:'siteSettingCyan',themeBlue:'siteSettingBlue',themeViolet:'siteSettingViolet'};Object.keys(ids).forEach(k=>{const el=document.getElementById(ids[k]);if(el){if(s[k]!==undefined&&s[k]!==null)el.value=String(s[k]);else if(k==='noticeEnabled')el.value='true';else el.value='';}});window.adminPackages=s.packages||packages;renderAdminPackageEditor();applySiteSettings(s);}).catch(err=>{document.getElementById('adminWebsiteMsg').style.color='#f87171';document.getElementById('adminWebsiteMsg').innerText='⚠️ '+err.message;});}
 function saveWebsiteSettings(e){e.preventDefault();saveWebsiteSettingsCore();}
-function collectWebsiteSettings(){return {heroTag:document.getElementById('siteSettingHeroTag').value.trim(),heroHeading1:document.getElementById('siteSettingHeroHeading1').value.trim(),heroHeading2:document.getElementById('siteSettingHeroHeading2').value.trim(),heroDesc:document.getElementById('siteSettingHeroDesc').value.trim(),packagesTitle:document.getElementById('siteSettingPackagesTitle').value.trim(),packagesSub:document.getElementById('siteSettingPackagesSub').value.trim(),supportOnlineText:document.getElementById('siteSettingSupportOnline').value.trim(),supportTitle:document.getElementById('siteSettingSupportTitle').value.trim(),supportDirectTitle:document.getElementById('siteSettingSupportDirectTitle').value.trim(),serviceButtonText:document.getElementById('siteSettingServiceButton').value.trim(),phone1:document.getElementById('siteSettingPhone1').value.trim(),phone2:document.getElementById('siteSettingPhone2').value.trim(),whatsapp1:document.getElementById('siteSettingWhatsapp1').value.trim(),whatsapp2:document.getElementById('siteSettingWhatsapp2').value.trim(),bkashMerchant:document.getElementById('siteSettingBkash').value.trim(),themeCyan:document.getElementById('siteSettingCyan').value.trim(),themeBlue:document.getElementById('siteSettingBlue').value.trim(),themeViolet:document.getElementById('siteSettingViolet').value.trim(),noticeEnabled:document.getElementById('siteSettingNoticeEnabled').value==='true',noticeIcon:document.getElementById('siteSettingNoticeIcon').value.trim(),noticeTitle:document.getElementById('siteSettingNoticeTitle').value.trim(),noticeMessage:document.getElementById('siteSettingNoticeMessage').value.trim(),noticeButton:document.getElementById('siteSettingNoticeButton').value.trim()};}
+function collectWebsiteSettings(){return {heroTag:document.getElementById('siteSettingHeroTag').value.trim(),heroHeading1:document.getElementById('siteSettingHeroHeading1').value.trim(),heroHeading2:document.getElementById('siteSettingHeroHeading2').value.trim(),heroDesc:document.getElementById('siteSettingHeroDesc').value.trim(),packagesTitle:document.getElementById('siteSettingPackagesTitle').value.trim(),packagesSub:document.getElementById('siteSettingPackagesSub').value.trim(),supportOnlineText:document.getElementById('siteSettingSupportOnline').value.trim(),supportTitle:document.getElementById('siteSettingSupportTitle').value.trim(),supportDirectTitle:document.getElementById('siteSettingSupportDirectTitle').value.trim(),serviceButtonText:document.getElementById('siteSettingServiceButton').value.trim(),phone1:document.getElementById('siteSettingPhone1').value.trim(),phone2:document.getElementById('siteSettingPhone2').value.trim(),whatsapp1:document.getElementById('siteSettingWhatsapp1').value.trim(),whatsapp2:document.getElementById('siteSettingWhatsapp2').value.trim(),bkashMerchant:document.getElementById('siteSettingBkash').value.trim(),themeCyan:document.getElementById('siteSettingCyan').value.trim(),themeBlue:document.getElementById('siteSettingBlue').value.trim(),themeViolet:document.getElementById('siteSettingViolet').value.trim(),noticeEnabled:document.getElementById('siteSettingNoticeEnabled').value==='true',noticeIcon:document.getElementById('siteSettingNoticeIcon').value.trim(),noticeTitle:document.getElementById('siteSettingNoticeTitle').value.trim(),noticeMessage:document.getElementById('siteSettingNoticeMessage').value.trim(),noticeButton:document.getElementById('siteSettingNoticeButton').value.trim(),featureControls:controlSettingsFromForm(),logoText:document.getElementById('ccLogoText')?.value.trim()||'',bgUrl:document.getElementById('ccBgUrl')?.value.trim()||'',bannerText:document.getElementById('ccBannerText')?.value.trim()||'',logoUrl:document.getElementById('ccLogoUrl')?.value.trim()||'',heroImageUrl:document.getElementById('ccHeroImageUrl')?.value.trim()||'',bannerImageUrl:document.getElementById('ccBannerImageUrl')?.value.trim()||'',customButtons:window.ccButtons||[],scheduledControl:JSON.parse(localStorage.getItem('mapsCCSchedule')||'null')};}
 function saveWebsiteSettingsCore(){const msg=document.getElementById('adminWebsiteMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';const settings=collectWebsiteSettings();settings.packages=readAdminPackages();window.adminPackages=settings.packages;apiGet({action:'saveSiteSettings',settings:JSON.stringify(settings)}).then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=(data.success?'✅ ':'❌ ')+data.message;if(data.success){applySiteSettings(settings);renderAdminPackageEditor();}}).catch(err=>{msg.style.color='#f87171';msg.innerText='⚠️ '+err.message;});}
 function renderAdminPackageEditor(){const box=document.getElementById('adminPackageEditor');const list=window.adminPackages||packages;box.innerHTML=list.map((p,i)=>`<div class="admin-package-row" data-i="${i}"><input data-field="speed" value="${escAdmin(p.speed)}" placeholder="Speed"><input data-field="price" value="${escAdmin(p.price)}" placeholder="Price"><input data-field="features" value="${escAdmin((p.features||[]).join(' | '))}" placeholder="Feature 1 | Feature 2 | Feature 3"><button type="button" onclick="removeAdminPackageRow(${i})">✕</button></div>`).join('');}
 function readAdminPackages(){return Array.from(document.querySelectorAll('.admin-package-row')).map(row=>{const get=f=>row.querySelector(`[data-field="${f}"]`).value.trim();return {speed:get('speed'),price:get('price'),features:get('features').split('|').map(x=>x.trim()).filter(Boolean)};}).filter(p=>p.speed&&p.price);}
