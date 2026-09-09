@@ -3174,6 +3174,7 @@ function applySiteSettings(settings){
   if(Array.isArray(settings.packages)) renderPackages(settings.packages);
   applyVisitorNotice(settings);
   applyControlSettings(settings);
+  if(Array.isArray(settings.customButtons)) renderCustomButtons(settings.customButtons);
 }
 function applyVisitorNotice(settings){
   const enabled = settings && settings.noticeEnabled !== undefined && settings.noticeEnabled !== null ? String(settings.noticeEnabled) === 'true' : true;
