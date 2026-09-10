@@ -1522,8 +1522,12 @@ MAPS CONTROL CENTER PRO
 .cc-input,.cc-card select,.cc-card textarea{width:100%;box-sizing:border-box;margin:6px 0;padding:11px 12px;border-radius:12px;border:1px solid rgba(71,231,255,.18);background:#080d1d;color:#fff;outline:none}.cc-card textarea{min-height:90px;resize:vertical}.cc-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}.cc-small{font-size:11px;color:#64748b}.cc-table{width:100%;border-collapse:collapse}.cc-table th,.cc-table td{padding:8px;border-bottom:1px solid rgba(255,255,255,.07);font-size:12px;text-align:left}.cc-table th{color:#47e7ff}.cc-badge{padding:4px 8px;border-radius:999px;background:rgba(71,231,255,.10);font-size:11px}.cc-preview{padding:14px;border-radius:14px;border:1px dashed rgba(71,231,255,.35);background:rgba(71,231,255,.04);margin-top:10px}.cc-button-row{display:grid;grid-template-columns:1fr 1fr 110px 90px;gap:8px;margin-bottom:8px}.cc-button-row input,.cc-button-row select{margin:0}.cc-danger{border-color:rgba(248,113,113,.4)!important}.cc-list{max-height:280px;overflow:auto}.cc-full{grid-column:1/-1}
 @media(max-width:850px){.cc-grid{grid-template-columns:1fr}.cc-full{grid-column:auto}.cc-button-row{grid-template-columns:1fr 1fr}}
 
-</style>
-</head>
+.sc-head{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:16px}.sc-head h3{margin:0;color:#47e7ff}.sc-head p{margin:6px 0 0;color:#94a3b8;font-size:12px}.sc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.sc-card{background:rgba(12,18,42,.72);border:1px solid rgba(71,231,255,.14);border-radius:18px;padding:16px;min-height:150px}.sc-card.sc-wide{grid-column:span 2}.sc-card h4{margin:0 0 10px;color:#f8fafc}.sc-card input,.sc-card textarea,.sc-card select{width:100%;margin:6px 0;padding:11px 12px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:#080d22;color:#fff}.sc-card textarea{min-height:72px;resize:vertical}.sc-inline{display:flex;gap:8px;align-items:center}.sc-inline>*:first-child{flex:1}.sc-output{margin-top:10px;padding:10px;border-radius:10px;background:rgba(0,0,0,.18);color:#cbd5e1;font-size:13px;white-space:pre-wrap}.sc-metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.sc-metric{padding:12px;border-radius:12px;background:rgba(71,231,255,.06)}.sc-metric b{display:block;font-size:20px;color:#47e7ff}.sc-table{overflow:auto;max-height:220px}.sc-table table{width:100%;border-collapse:collapse;font-size:12px}.sc-table th,.sc-table td{padding:8px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left}.admin-btn.danger{background:linear-gradient(135deg,#ef4444,#b91c1c);color:#fff}.sc-card .admin-btn{margin-top:5px}@media(max-width:800px){.sc-grid{grid-template-columns:1fr}.sc-card.sc-wide{grid-column:span 1}.sc-head{flex-direction:column;align-items:flex-start}}</style>
+<style>
+.maps-event-night{filter:saturate(.82) brightness(.78)}
+.maps-event-eid::before{content:"🌙 ঈদ মোড • MAPS INTERNET";position:fixed;top:0;left:0;right:0;z-index:9998;text-align:center;padding:7px;background:rgba(10,40,20,.92);color:#fff;font-weight:700}
+.maps-event-emergency::before{content:"🚨 EMERGENCY MODE";position:fixed;top:0;left:0;right:0;z-index:9998;text-align:center;padding:7px;background:rgba(120,10,10,.94);color:#fff;font-weight:800}
+</style></head>
 
 <body>
 
@@ -2072,6 +2076,7 @@ style="text-align:center;margin-top:15px;">
         <button class="admin-tab" onclick="switchAdminTab('website',this)">🌐 Website Edit</button>
         <button class="admin-tab" id="adminUsersTab" onclick="switchAdminTab('admins',this)">🔐 Admin IDs</button>
         <button class="admin-tab" onclick="switchAdminTab('control',this)">🎛 Control Center</button>
+        <button class="admin-tab" onclick="switchAdminTab('super',this)">🚀 Super Command Center</button>
       </div>
       <div id="adminCustomersSection" class="admin-section active">
         <div class="admin-layout">
@@ -2286,6 +2291,42 @@ style="text-align:center;margin-top:15px;">
         </div>
       </div>
 
+      <div id="adminSuperSection" class="admin-section">
+        <div class="sc-head"><div><h3>🚀 MAPS INTERNET Super Command Center</h3><p>৩০টি advanced management module এক জায়গা থেকে। Operational data এখন Google Sheet-এ save হবে; external API লাগা live features source না থাকলে clear status দেখাবে।</p></div><button class="admin-mini-btn" onclick="scRefreshAll()">🔄 Refresh All</button></div>
+        <div class="sc-grid">
+          <div class="sc-card sc-wide"><h4>🧠 1. MAPS Smart Assistant</h4><textarea id="scAiQuestion" placeholder="যেমন: আজকের collection কত? / কতজন active customer?"></textarea><button class="admin-btn" onclick="scAskAI()">Ask</button><div id="scAiAnswer" class="sc-output"></div></div>
+          <div class="sc-card"><h4>📊 2. Business Command Center</h4><div class="sc-metrics" id="scBusinessMetrics">Loading...</div></div>
+          <div class="sc-card sc-wide"><h4>👤 3. Customer 360° Timeline</h4><div class="sc-inline"><input id="sc360Id" placeholder="Customer ID"><button class="admin-btn" onclick="scLoad360()">Open</button></div><div id="sc360Result" class="sc-output"></div></div>
+          <div class="sc-card"><h4>💰 4. Revenue Leakage Detector</h4><button class="admin-btn" onclick="scLeakCheck()">Run Scan</button><div id="scLeakResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>📢 5. Broadcast Center</h4><textarea id="scBroadcast" placeholder="Broadcast message"></textarea><button class="admin-btn" onclick="scBroadcastSend()">Prepare Broadcast</button><div id="scBroadcastResult" class="sc-output"></div></div>
+          <div class="sc-card sc-wide"><h4>🎫 6. Smart Complaint System</h4><div class="sc-inline"><select id="scTicketFilter"><option value="all">All</option><option value="unread">Unread</option><option value="support">Support</option></select><button class="admin-btn" onclick="scLoadTickets()">Load Tickets</button></div><div id="scTickets" class="sc-table"></div></div>
+          <div class="sc-card"><h4>📍 7. Area-wise Analytics</h4><button class="admin-btn" onclick="scAreaAnalytics()">Analyze</button><div id="scAreaResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>📈 8. Customer Growth Prediction</h4><button class="admin-btn" onclick="scGrowth()">Calculate</button><div id="scGrowthResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>🎁 9. Smart Offer Generator</h4><input id="scOfferPrompt" placeholder="50 Mbps customer ঈদ offer"><button class="admin-btn" onclick="scOfferGenerate()">Generate</button><div id="scOfferResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>🔔 10. Smart Alert Center</h4><button class="admin-btn" onclick="scAlerts()">Check Alerts</button><div id="scAlertResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>🟢 11. Customer Online Activity</h4><button class="admin-btn" onclick="scOnlineActivity()">Refresh</button><div id="scOnlineResult" class="sc-output">Online data needs MikroTik/other network API.</div></div>
+          <div class="sc-card"><h4>📱 12. WhatsApp Quick Center</h4><input id="scWaPhone" placeholder="8801XXXXXXXXX"><textarea id="scWaMsg" placeholder="Message"></textarea><button class="admin-btn" onclick="scWhatsApp()">Open WhatsApp</button></div>
+          <div class="sc-card"><h4>🧾 13. One-click Payment Receipt</h4><button class="admin-btn" onclick="scReceipt()">Create Receipt</button><div id="scReceiptResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>🧮 14. Invoice Generator</h4><div class="sc-inline"><input id="scInvoiceId" placeholder="Customer ID"><button class="admin-btn" onclick="scInvoice()">Generate</button></div><div id="scInvoiceResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>🪪 15. Customer ID Card</h4><div class="sc-inline"><input id="scCardId" placeholder="Customer ID"><button class="admin-btn" onclick="scIdCard()">Generate</button></div><div id="scCardResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>📄 16. Connection Agreement</h4><div class="sc-inline"><input id="scAgreementId" placeholder="Customer ID"><button class="admin-btn" onclick="scAgreement()">Generate</button></div><div id="scAgreementResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>📸 17. Installation Documents</h4><input id="scDocUrl" placeholder="Document/photo URL"><button class="admin-btn" onclick="scSaveDoc()">Save Link</button><div id="scDocResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>👨‍🔧 18. Field Staff Management</h4><input id="scStaffName" placeholder="Staff name"><input id="scStaffPhone" placeholder="Phone"><button class="admin-btn" onclick="scSaveStaff()">Save Staff</button><div id="scStaffResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>📍 19. Installation Job Map</h4><input id="scJobArea" placeholder="Area / location"><input id="scJobCustomer" placeholder="Customer ID"><button class="admin-btn" onclick="scSaveJob()">Create Job</button><div id="scJobResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>📅 20. Technician Schedule</h4><input id="scTechName" placeholder="Technician"><input id="scTechTime" type="datetime-local"><button class="admin-btn" onclick="scSaveSchedule()">Schedule</button><div id="scScheduleResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>💵 21. Staff Commission</h4><input id="scCommissionAmount" placeholder="Collection amount"><input id="scCommissionRate" placeholder="Rate %"><button class="admin-btn" onclick="scCommission()">Calculate</button><div id="scCommissionResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>🏆 22. Staff Performance</h4><button class="admin-btn" onclick="scStaffPerformance()">View</button><div id="scPerformanceResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>🎯 23. Sales Target</h4><input id="scTarget" placeholder="Monthly target"><button class="admin-btn" onclick="scTargetSave()">Save Target</button><div id="scTargetResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>📦 24. Package Intelligence</h4><button class="admin-btn" onclick="scPackageIntel()">Analyze</button><div id="scPackageResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>🧪 25. Website A/B Offer Test</h4><input id="scABTextA" placeholder="Variant A"><input id="scABTextB" placeholder="Variant B"><button class="admin-btn" onclick="scABSave()">Save Test</button><div id="scABResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>🌙 26. Night / Event Mode</h4><select id="scEventMode"><option value="normal">Normal</option><option value="night">Night Mode</option><option value="eid">Eid Mode</option><option value="emergency">Emergency Mode</option></select><button class="admin-btn" onclick="scEventSave()">Apply</button><div id="scEventResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>🚨 27. Emergency Lockdown</h4><button class="admin-btn danger" onclick="scLockdown(true)">🔒 Enable</button><button class="admin-btn alt" onclick="scLockdown(false)">Unlock</button><div id="scLockResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>🔐 28. Admin Action Approval</h4><button class="admin-btn" onclick="scApprovals()">Load Queue</button><div id="scApprovalResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>📝 29. Full Admin Audit Trail</h4><button class="admin-btn" onclick="scAudit()">Load Logs</button><div id="scAuditResult" class="sc-output"></div></div>
+          <div class="sc-card"><h4>↩️ 30. One-click Website Rollback</h4><button class="admin-btn" onclick="scRollback()">Rollback Last Saved Version</button><div id="scRollbackResult" class="sc-output"></div></div>
+        </div>
+      </div>
+
       <div id="adminAdminsSection" class="admin-section">
         <div class="admin-layout">
           <div class="admin-box">
@@ -2309,6 +2350,17 @@ style="text-align:center;margin-top:15px;">
 
       <div style="margin-top:16px"><button class="admin-btn alt" onclick="adminLogout()">🚪 Logout Admin</button></div>
     </div>
+  </div>
+</div>
+
+<!-- MAPS EMERGENCY / MAINTENANCE OVERLAY -->
+<div id="mapsMaintenanceOverlay" style="display:none;position:fixed;inset:0;z-index:99999;background:rgba(3,7,18,.97);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:24px;text-align:center">
+  <div style="max-width:650px;border:1px solid rgba(71,231,255,.35);border-radius:24px;padding:38px;background:linear-gradient(145deg,rgba(10,20,45,.98),rgba(12,8,35,.98));box-shadow:0 0 60px rgba(71,231,255,.15)">
+    <div style="font-size:54px">🚨</div>
+    <h2 style="color:#fff;margin:12px 0">MAPS INTERNET</h2>
+    <h3 style="color:#47e7ff;margin:8px 0">Website Temporarily Unavailable</h3>
+    <p style="color:#c9d1ef">সিস্টেম বর্তমানে maintenance / emergency mode-এ আছে। জরুরি সহায়তার জন্য নিচের নম্বরে যোগাযোগ করুন।</p>
+    <p style="color:#fff;font-weight:700">01827700011 • 01827700022</p>
   </div>
 </div>
 
@@ -2935,8 +2987,7 @@ animateParticles();
 GOOGLE SCRIPT
 ================================================= */
 
-const GOOGLE_SCRIPT_URL =
-"https://script.google.com/macros/s/AKfycbxkQMRp0FbZKpqHuX3de_PhZ2Tkb7I_HUgqnbBvC80yLAu0meiC50mKjr_40P8ntNjrXw/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxkQMRp0FbZKpqHuX3de_PhZ2Tkb7I_HUgqnbBvC80yLAu0meiC50mKjr_40P8ntNjrXw/exec";
 
 
 /* =================================================
@@ -3174,8 +3225,24 @@ function applySiteSettings(settings){
   if(Array.isArray(settings.packages)) renderPackages(settings.packages);
   applyVisitorNotice(settings);
   applyControlSettings(settings);
+  applyMaintenanceMode(settings);
+  applyEventMode(settings);
   if(Array.isArray(settings.customButtons)) renderCustomButtons(settings.customButtons);
 }
+function applyMaintenanceMode(settings){
+  const overlay=document.getElementById('mapsMaintenanceOverlay');
+  if(!overlay)return;
+  const on = settings && (String(settings.maintenanceMode)==='true' || String(settings.emergencyLockdown)==='true');
+  overlay.style.display = on ? 'flex' : 'none';
+}
+function applyEventMode(settings){
+  const mode=String(settings && settings.eventMode || 'normal');
+  document.body.classList.remove('maps-event-night','maps-event-eid','maps-event-emergency');
+  if(mode==='night')document.body.classList.add('maps-event-night');
+  if(mode==='eid')document.body.classList.add('maps-event-eid');
+  if(mode==='emergency')document.body.classList.add('maps-event-emergency');
+}
+
 function applyVisitorNotice(settings){
   const enabled = settings && settings.noticeEnabled !== undefined && settings.noticeEnabled !== null ? String(settings.noticeEnabled) === 'true' : true;
   const icon = settings && settings.noticeIcon ? String(settings.noticeIcon) : '📢';
@@ -3481,7 +3548,7 @@ function verifyAuthLogin(){
 function openAdminPanel(){document.getElementById("adminOverlay").classList.add("active");document.body.style.overflow="hidden";}
 function closeAdminPanel(){document.getElementById("adminOverlay").classList.remove("active");document.body.style.overflow="";}
 function adminLogout(){sessionStorage.removeItem("mapsAdminLoggedIn");sessionStorage.removeItem("mapsAdminUser");closeAdminPanel();}
-function switchAdminTab(tab,btn){document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={customers:'adminCustomersSection',payments:'adminPaymentsSection',messages:'adminMessagesSection',reports:'adminReportsSection',website:'adminWebsiteSection',admins:'adminAdminsSection',control:'adminControlSection'};document.getElementById(map[tab]||'adminCustomersSection').classList.add('active');if(tab==='messages')loadAdminMessages();if(tab==='reports')loadAdminReports();if(tab==='website')loadWebsiteSettings();if(tab==='admins')loadAdminUsers();if(tab==='control')loadControlCenter();}
+function switchAdminTab(tab,btn){document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={customers:'adminCustomersSection',payments:'adminPaymentsSection',messages:'adminMessagesSection',reports:'adminReportsSection',website:'adminWebsiteSection',admins:'adminAdminsSection',control:'adminControlSection',super:'adminSuperSection'};document.getElementById(map[tab]||'adminCustomersSection').classList.add('active');if(tab==='messages')loadAdminMessages();if(tab==='reports')loadAdminReports();if(tab==='website')loadWebsiteSettings();if(tab==='admins')loadAdminUsers();if(tab==='control')loadControlCenter();}
 function apiGet(params){return fetch(GOOGLE_SCRIPT_URL+'?'+new URLSearchParams(params).toString()).then(r=>r.json());}
 function loadAdminDashboard(){loadAdminCustomers();loadAdminPayments();loadAdminMessages();loadAdminReports();loadWebsiteSettings();loadAdminUsers();}
 function loadAdminCustomers(){apiGet({action:'adminCustomers'}).then(data=>{if(!data.success)throw new Error(data.message||'Customer load failed');const customers=data.customers||[];document.getElementById('adminTotalCustomers').innerText=customers.length;document.getElementById('adminActiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()==='active').length;document.getElementById('adminInactiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()!=='active').length;const tbody=document.getElementById('adminCustomerTable');if(!customers.length){tbody.innerHTML='<tr><td colspan="8" style="text-align:center">No customers found.</td></tr>';return;}tbody.innerHTML=customers.map(c=>`<tr><td>${escAdmin(c.customerId)}</td><td>${escAdmin(c.name)}</td><td>${escAdmin(c.phone)}</td><td>${escAdmin(c.package)}</td><td>${escAdmin(c.bill)}</td><td>${escAdmin(c.dueDate)}</td><td>${escAdmin(c.status)}</td><td><button class="admin-mini-btn" onclick='editAdminCustomer(${JSON.stringify(c)})'>Edit</button><button class="admin-mini-btn" onclick="deleteAdminCustomer('${escAttr(c.customerId)}')">Delete</button></td></tr>`).join('');}).catch(err=>{document.getElementById('adminCustomerMsg').style.color='#f87171';document.getElementById('adminCustomerMsg').innerText='⚠️ '+err.message;});}
@@ -3602,6 +3669,42 @@ function submitSupportTicket(e){
   result.style.color='#38bdf8';result.innerText='⏳ Support Ticket জমা হচ্ছে...';
   apiGet({action:'addWebsiteMessage',type:'Support Ticket',name:name,phone:phone,packageOrIssue:issue,message:message}).then(data=>{result.style.color=data.success?'#4ade80':'#f87171';result.innerText=data.success?'✅ Support Ticket সফলভাবে জমা হয়েছে! Admin Panel-এ message এসেছে।':'❌ '+(data.message||'Ticket জমা হয়নি।');if(data.success)setTimeout(()=>e.target.reset(),1000);}).catch(()=>{result.style.color='#f87171';result.innerText='⚠️ সংযোগে সমস্যা হয়েছে, আবার চেষ্টা করুন।';});
 }
+
+/* SUPER COMMAND CENTER */
+function scOut(id,text){const e=document.getElementById(id);if(e)e.textContent=text;}
+function scGetCustomers(){return apiGet({action:'adminCustomers'}).then(r=>r.customers||[]);}
+function scGetPayments(){return apiGet({action:'adminPayments'}).then(r=>r.payments||[]);}
+function scAskAI(){const q=(document.getElementById('scAiQuestion')?.value||'').toLowerCase();Promise.all([scGetCustomers(),scGetPayments()]).then(([c,p])=>{const active=c.filter(x=>String(x.status).toLowerCase().includes('active')).length;const rev=p.filter(x=>String(x.status).toLowerCase()==='paid').reduce((a,x)=>a+(parseFloat(String(x.amount).replace(/[^0-9.]/g,''))||0),0);let a=q.includes('collection')||q.includes('revenue')?'💰 Paid collection/revenue: '+rev.toLocaleString()+' টাকা':q.includes('active')?'🟢 Active customers: '+active:q.includes('customer')?'👥 Total customers: '+c.length:'আমি Customer, Payment ও Revenue data থেকে summary দিতে পারি। প্রশ্ন করুন: আজকের collection / active customer / total customer / revenue';scOut('scAiAnswer',a);}).catch(e=>scOut('scAiAnswer','⚠️ '+e.message));}
+function scRefreshAll(){scBusiness();scAlerts();scPackageIntel();}
+function scBusiness(){Promise.all([scGetCustomers(),scGetPayments()]).then(([c,p])=>{const active=c.filter(x=>String(x.status).toLowerCase().includes('active')).length;const due=c.filter(x=>(parseFloat(String(x.bill).replace(/[^0-9.]/g,''))||0)>0&& !String(x.status).toLowerCase().includes('inactive')).length;const rev=p.filter(x=>String(x.status).toLowerCase()==='paid').reduce((a,x)=>a+(parseFloat(String(x.amount).replace(/[^0-9.]/g,''))||0),0);document.getElementById('scBusinessMetrics').innerHTML='<div class="sc-metric"><b>'+c.length+'</b>Total Customers</div><div class="sc-metric"><b>'+active+'</b>Active</div><div class="sc-metric"><b>'+due+'</b>Potential Due</div><div class="sc-metric"><b>'+rev.toLocaleString()+'</b>Paid Revenue</div>';}).catch(e=>scOut('scBusinessMetrics',e.message));}
+function scLoad360(){const id=(document.getElementById('sc360Id')?.value||'').trim();if(!id)return scOut('sc360Result','Customer ID দিন।');apiGet({action:'customerData',customerId:id}).then(r=>{if(!r.success)return scOut('sc360Result',r.message);const c=r.customer;scOut('sc360Result','ID: '+c.customerId+'\nName: '+c.name+'\nMobile: '+c.phone+'\nPackage: '+c.package+'\nBill: '+c.bill+'\nDue: '+c.dueDate+'\nStatus: '+c.status+'\nUsage: '+c.usage+'\nLast Payment: '+c.lastPayment+'\nPayments: '+(c.paymentHistory||[]).length);}).catch(e=>scOut('sc360Result',e.message));}
+function scLeakCheck(){Promise.all([scGetCustomers(),scGetPayments()]).then(([c,p])=>{const ids=new Set(p.map(x=>String(x.customerId).trim()));const leak=c.filter(x=>(parseFloat(String(x.bill).replace(/[^0-9.]/g,''))||0)>0&&!ids.has(String(x.customerId).trim()));scOut('scLeakResult',leak.length?'⚠️ '+leak.length+' customer-এর bill আছে কিন্তু payment history-তে entry নেই।\n'+leak.slice(0,10).map(x=>x.customerId).join(', '):'✅ বড় কোনো obvious leakage পাওয়া যায়নি।');});}
+function scBroadcastSend(){const m=document.getElementById('scBroadcast')?.value.trim();if(!m)return scOut('scBroadcastResult','Message লিখুন।');apiGet({action:'broadcastQueue',message:m,target:'All Customers'}).then(r=>scOut('scBroadcastResult',(r.success?'✅ ':'⚠️ ')+(r.message||''))).catch(e=>scOut('scBroadcastResult','⚠️ '+e.message));}
+function scLoadTickets(){apiGet({action:'adminMessages'}).then(r=>{let a=(r.messages||[]).filter(x=>String(x.type).toLowerCase().includes('support'));const f=document.getElementById('scTicketFilter')?.value;if(f==='unread')a=a.filter(x=>String(x.status).toLowerCase()!=='read');document.getElementById('scTickets').innerHTML='<table><thead><tr><th>Date</th><th>Name</th><th>Phone</th><th>Issue</th><th>Status</th></tr></thead><tbody>'+a.slice(0,50).map(x=>'<tr><td>'+scEsc(x.date)+'</td><td>'+scEsc(x.name)+'</td><td>'+scEsc(x.phone)+'</td><td>'+scEsc(x.packageOrIssue)+'</td><td>'+scEsc(x.status)+'</td></tr>').join('')+'</tbody></table>';}).catch(e=>scOut('scTickets',e.message));}
+function scAreaAnalytics(){scGetCustomers().then(c=>{const m={};c.forEach(x=>{const k=String(x.area||'Unknown');m[k]=(m[k]||0)+1});scOut('scAreaResult',Object.entries(m).sort((a,b)=>b[1]-a[1]).slice(0,12).map(x=>x[0]+': '+x[1]).join('\n')||'No area data');});}
+function scGrowth(){scGetCustomers().then(c=>{const now=c.length;scOut('scGrowthResult','Current customers: '+now+'\nSimple planning estimate: next month target '+Math.ceil(now*1.10)+' (+10%).\n*Prediction is a planning estimate, not an ML forecast.*');});}
+function scOfferGenerate(){const p=document.getElementById('scOfferPrompt')?.value.trim()||'MAPS INTERNET customer';scOut('scOfferResult','🎁 Offer draft:\n'+p+'-এর জন্য বিশেষ MAPS INTERNET offer!\n⚡ Upgrade করুন, limited-time সুবিধা নিন।\n📞 যোগাযোগ: 01827700011 / 01827700022');}
+function scAlerts(){Promise.all([scGetCustomers(),apiGet({action:'adminMessages'})]).then(([c,m])=>{const due=c.filter(x=>(parseFloat(String(x.bill).replace(/[^0-9.]/g,''))||0)>0).length;const unread=(m.messages||[]).filter(x=>String(x.status).toLowerCase()!=='read').length;scOut('scAlertResult',(due?'⚠️ Potential due customers: '+due+'\n':'')+(unread?'📩 Unread messages: '+unread:'')||'✅ No obvious alerts.');});}
+function scOnlineActivity(){apiGet({action:'adminCustomers'}).then(r=>{const c=r.customers||[];const active=c.filter(x=>String(x.status).toLowerCase().includes('active')).length;scOut('scOnlineResult','🟢 Active connections: '+active+' / '+c.length+'\nℹ️ Exact live online/offline session data requires a read-only MikroTik/PPPoE API.');}).catch(e=>scOut('scOnlineResult','⚠️ '+e.message));}
+function scWhatsApp(){let p=(document.getElementById('scWaPhone')?.value||'').replace(/[^0-9]/g,'');let m=encodeURIComponent(document.getElementById('scWaMsg')?.value||'');if(p.startsWith('01'))p='88'+p;window.open('https://wa.me/'+p+'?text='+m,'_blank');}
+function scReceipt(){apiGet({action:'adminPayments'}).then(r=>{const p=(r.payments||[])[0];scOut('scReceiptResult',p?'🧾 Latest payment receipt\nCustomer: '+p.customerId+'\nAmount: '+p.amount+'\nMethod: '+p.method+'\nTransaction: '+p.transactionId+'\nStatus: '+p.status:'No payment found');});}
+function scDocCustomer(id,kind,out){if(!id)return scOut(out,'Customer ID দিন।');apiGet({action:'customerData',customerId:id}).then(r=>{if(!r.success)return scOut(out,r.message);const c=r.customer;if(kind==='invoice')scOut(out,'INVOICE\nMAPS INTERNET\nCustomer: '+c.name+' ('+c.customerId+')\nPackage: '+c.package+'\nBill: '+c.bill+'\nDue: '+c.dueDate);if(kind==='card')scOut(out,'CUSTOMER ID CARD\nMAPS INTERNET\nID: '+c.customerId+'\nName: '+c.name+'\nMobile: '+c.phone+'\nPackage: '+c.package+'\nStatus: '+c.status);if(kind==='agreement')scOut(out,'CONNECTION AGREEMENT\nMAPS INTERNET\nCustomer: '+c.name+'\nCustomer ID: '+c.customerId+'\nPackage: '+c.package+'\nMobile: '+c.phone+'\nStatus: '+c.status+'\n\nAgreement draft ready for print.');});}
+function scInvoice(){scDocCustomer(document.getElementById('scInvoiceId')?.value,'invoice','scInvoiceResult');}function scIdCard(){scDocCustomer(document.getElementById('scCardId')?.value,'card','scCardResult');}function scAgreement(){scDocCustomer(document.getElementById('scAgreementId')?.value,'agreement','scAgreementResult');}
+function scSaveDoc(){const u=document.getElementById('scDocUrl')?.value.trim();if(!u)return scOut('scDocResult','URL দিন।');apiGet({action:'saveSuperItem',type:'Installation Document',details:u}).then(r=>scOut('scDocResult',r.message||'Saved')).catch(e=>scOut('scDocResult',e.message));}
+function scSaveStaff(){const n=document.getElementById('scStaffName')?.value.trim(),p=document.getElementById('scStaffPhone')?.value.trim();if(!n)return scOut('scStaffResult','Staff name দিন।');apiGet({action:'saveSuperItem',type:'Field Staff',details:n+' | '+p}).then(r=>scOut('scStaffResult',r.message||'Saved'));}
+function scSaveJob(){const a=document.getElementById('scJobArea')?.value.trim(),c=document.getElementById('scJobCustomer')?.value.trim();apiGet({action:'saveSuperItem',type:'Installation Job',details:c+' | '+a}).then(r=>scOut('scJobResult',r.message||'Saved'));}
+function scSaveSchedule(){const n=document.getElementById('scTechName')?.value.trim(),t=document.getElementById('scTechTime')?.value;apiGet({action:'saveSuperItem',type:'Technician Schedule',details:n+' | '+t}).then(r=>scOut('scScheduleResult',r.message||'Saved'));}
+function scCommission(){const a=parseFloat(document.getElementById('scCommissionAmount')?.value)||0,r=parseFloat(document.getElementById('scCommissionRate')?.value)||0;scOut('scCommissionResult','Commission: '+(a*r/100).toFixed(2)+' টাকা');}
+function scStaffPerformance(){Promise.all([apiGet({action:'superItems',type:'Field Staff'}),apiGet({action:'superItems',type:'Installation Job'}),apiGet({action:'superItems',type:'Technician Schedule'})]).then(([s,j,t])=>{scOut('scPerformanceResult','👨‍🔧 Staff records: '+(s.items||[]).length+'\n📍 Installation jobs: '+(j.items||[]).length+'\n📅 Scheduled jobs: '+(t.items||[]).length+'\n\nPerformance data is now being tracked from saved operational records.');});}
+function scTargetSave(){const t=document.getElementById('scTarget')?.value.trim();apiGet({action:'saveSuperItem',type:'Sales Target',details:t}).then(r=>scOut('scTargetResult',r.message||'Saved'));}
+function scPackageIntel(){scGetCustomers().then(c=>{const m={};c.forEach(x=>{const k=String(x.package||'Unknown');m[k]=(m[k]||0)+1});scOut('scPackageResult',Object.entries(m).sort((a,b)=>b[1]-a[1]).map(x=>x[0]+': '+x[1]).join('\n')||'No package data');});}
+function scABSave(){const a=document.getElementById('scABTextA')?.value||'',b=document.getElementById('scABTextB')?.value||'';apiGet({action:'saveSuperItem',type:'AB Test',details:'A: '+a+' | B: '+b}).then(r=>scOut('scABResult',r.message||'Saved'));}
+function scEventSave(){const v=document.getElementById('scEventMode')?.value;apiGet({action:'saveSiteSettings',settings:JSON.stringify({eventMode:v})}).then(r=>scOut('scEventResult',r.message||'Applied'));}
+function scLockdown(on){apiGet({action:'saveSiteSettings',settings:JSON.stringify({emergencyLockdown:on,maintenanceMode:on})}).then(r=>scOut('scLockResult',on?'🔒 Emergency lockdown enabled.':'🔓 Lockdown disabled.'));}
+function scApprovals(){apiGet({action:'superItems',type:'Admin Approval'}).then(r=>{const a=r.items||[];scOut('scApprovalResult',a.length? a.slice(0,20).map(x=>'🟡 '+x.date+' — '+x.details+' ['+x.status+']').join('\n'):'✅ Approval queue empty.');});}
+function scAudit(){apiGet({action:'adminActivityLogs'}).then(r=>scOut('scAuditResult',(r.logs||[]).slice(0,30).map(x=>x.date+' — '+x.action+' — '+x.details).join('\n')||'No logs.'));}
+function scRollback(){const arr=JSON.parse(localStorage.getItem('mapsCCVersions')||'[]');if(!arr.length)return scOut('scRollbackResult','No saved browser version found.');const s=arr[0].settings;apiGet({action:'saveSiteSettings',settings:JSON.stringify(s)}).then(r=>{scOut('scRollbackResult',r.message||'Rollback saved.');loadSiteSettings();});}
+function scEsc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
 
 loadSiteSettings();
 /* =================================================
