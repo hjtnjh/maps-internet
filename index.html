@@ -1527,7 +1527,11 @@ MAPS CONTROL CENTER PRO
 .maps-event-night{filter:saturate(.82) brightness(.78)}
 .maps-event-eid::before{content:"🌙 ঈদ মোড • MAPS INTERNET";position:fixed;top:0;left:0;right:0;z-index:9998;text-align:center;padding:7px;background:rgba(10,40,20,.92);color:#fff;font-weight:700}
 .maps-event-emergency::before{content:"🚨 EMERGENCY MODE";position:fixed;top:0;left:0;right:0;z-index:9998;text-align:center;padding:7px;background:rgba(120,10,10,.94);color:#fff;font-weight:800}
-</style></head>
+</style>
+<style>
+.sms-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:16px;margin-top:16px}.sms-card{padding:18px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid rgba(71,231,255,.12)}.sms-card h3{margin:0 0 12px}.sms-card input,.sms-card select,.sms-card textarea{width:100%;box-sizing:border-box;padding:11px 12px;margin-bottom:9px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(0,0,0,.25);color:#fff;outline:none}.sms-card textarea{min-height:130px;resize:vertical}.sms-info{font-size:12px;color:#94a3b8;line-height:1.6}.sms-balance{font-size:28px;font-weight:900;color:#47e7ff}.sms-status{min-height:22px;font-size:12px;margin-top:8px}.sms-templates{display:flex;gap:7px;flex-wrap:wrap;margin:7px 0 12px}.sms-template{border:1px solid rgba(71,231,255,.22);background:rgba(255,255,255,.05);color:#fff;border-radius:8px;padding:7px 9px;cursor:pointer;font-size:11px}.sms-table{max-height:360px;overflow:auto}.sms-table table{width:100%;border-collapse:collapse;font-size:11px}.sms-table th,.sms-table td{padding:9px 7px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left;vertical-align:top}.sms-table th{color:#94a3b8}.sms-count{font-size:11px;color:#94a3b8;margin:-3px 0 9px}.sms-full{grid-column:1/-1}@media(max-width:900px){.sms-grid{grid-template-columns:1fr}.sms-full{grid-column:auto}}
+</style>
+</head>
 
 <body>
 
@@ -1602,8 +1606,8 @@ NEXT GENERATION BROADBAND
 </div>
 
 <h1 id="siteHeroHeading">
-বাফারিং <span>ভুলে যান,</span><br>
-গতিতে ভাসুন!
+ইন্টারনেটের <span>নতুন গতি</span><br>
+নতুন অভিজ্ঞতা
 </h1>
 
 <p id="siteHeroDesc">
@@ -2076,6 +2080,7 @@ style="text-align:center;margin-top:15px;">
         <button class="admin-tab" onclick="switchAdminTab('website',this)">🌐 Website Edit</button>
         <button class="admin-tab" id="adminUsersTab" onclick="switchAdminTab('admins',this)">🔐 Admin IDs</button>
         <button class="admin-tab" onclick="switchAdminTab('control',this)">🎛 Control Center</button>
+        <button class="admin-tab" onclick="switchAdminTab('sms',this)">📱 SMS Center</button>
         <button class="admin-tab" onclick="switchAdminTab('super',this)">🚀 Super Command Center</button>
       </div>
       <div id="adminCustomersSection" class="admin-section active">
@@ -2286,7 +2291,50 @@ style="text-align:center;margin-top:15px;">
               <button class="admin-btn" onclick="switchAdminTab('payments',document.querySelector('.admin-tab:nth-child(2)'))">💳 Payments</button>
               <button class="admin-btn" onclick="switchAdminTab('messages',document.querySelector('.admin-tab:nth-child(3)'))">📩 Messages</button>
               <button class="admin-btn" onclick="switchAdminTab('reports',document.querySelector('.admin-tab:nth-child(4)'))">📊 Reports</button>
+              <button class="admin-btn" onclick="switchAdminTab('sms',document.querySelector('.admin-tab:nth-child(8)'))">📱 SMS Center</button>
             </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="adminSmsSection" class="admin-section">
+        <div class="sc-head"><div><h3>📱 MAPS INTERNET SMS Center</h3><p>Customer-এর mobile number-এ SMS পাঠান। API Key নিরাপদভাবে Google Apps Script-এর Script Properties-এ রাখা হবে।</p></div><button class="admin-mini-btn" onclick="smsRefreshAll()">🔄 Refresh</button></div>
+        <div class="sms-grid">
+          <div class="sms-card">
+            <h3>⚙️ SMS Provider Settings</h3>
+            <div class="sms-info">Provider: <b>sms.bd / Alpha SMS</b><br>API Key browser-এ দেখানো হবে না। Save করলে server-side Script Properties-এ থাকবে।</div>
+            <input id="smsApiKey" type="password" placeholder="SMS API Key">
+            <input id="smsSenderId" placeholder="Sender ID (optional)">
+            <div class="admin-btns"><button class="admin-btn" onclick="smsSaveConfig()">💾 Save Settings</button><button class="admin-btn alt" onclick="smsLoadConfig()">🔄 Load</button></div>
+            <div id="smsConfigStatus" class="sms-status"></div>
+            <hr style="border-color:rgba(255,255,255,.08);margin:16px 0">
+            <div class="sms-info">Current SMS Balance</div>
+            <div id="smsBalance" class="sms-balance">—</div>
+            <button class="admin-btn alt" onclick="smsCheckBalance()">💰 Check Balance</button>
+            <div id="smsBalanceStatus" class="sms-status"></div>
+            <div class="sms-info" style="margin-top:12px">Free test credit পাওয়া গেলে আগে test SMS দিয়ে verify করুন।</div>
+          </div>
+
+          <div class="sms-card">
+            <h3>✉️ Send SMS</h3>
+            <select id="smsCustomer" onchange="smsCustomerChanged()"><option value="">— Customer select করুন —</option></select>
+            <input id="smsMobile" placeholder="Mobile number (01XXXXXXXXX)">
+            <div class="sms-templates">
+              <button class="sms-template" onclick="smsUseTemplate('due')">💰 Bill Due</button>
+              <button class="sms-template" onclick="smsUseTemplate('paid')">✅ Payment Received</button>
+              <button class="sms-template" onclick="smsUseTemplate('notice')">📢 Service Notice</button>
+              <button class="sms-template" onclick="smsUseTemplate('custom')">📝 Custom</button>
+            </div>
+            <textarea id="smsMessage" placeholder="আপনার SMS লিখুন..." oninput="smsCountChars()"></textarea>
+            <div id="smsCharCount" class="sms-count">0 character</div>
+            <div class="admin-btns"><button class="admin-btn" onclick="smsSend()">📤 Send SMS</button><button class="admin-btn alt" onclick="smsClearForm()">Clear</button></div>
+            <div id="smsSendStatus" class="sms-status"></div>
+          </div>
+
+          <div class="sms-card sms-full">
+            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap"><h3 style="margin:0">📋 SMS History</h3><button class="admin-mini-btn" onclick="smsLoadHistory()">Refresh History</button></div>
+            <div class="sms-table" style="margin-top:12px"><table><thead><tr><th>Date</th><th>Customer</th><th>Mobile</th><th>Message</th><th>Request ID</th><th>Status</th></tr></thead><tbody id="smsHistoryTable"><tr><td colspan="6">Loading...</td></tr></tbody></table></div>
           </div>
         </div>
       </div>
@@ -3548,7 +3596,21 @@ function verifyAuthLogin(){
 function openAdminPanel(){document.getElementById("adminOverlay").classList.add("active");document.body.style.overflow="hidden";}
 function closeAdminPanel(){document.getElementById("adminOverlay").classList.remove("active");document.body.style.overflow="";}
 function adminLogout(){sessionStorage.removeItem("mapsAdminLoggedIn");sessionStorage.removeItem("mapsAdminUser");closeAdminPanel();}
-function switchAdminTab(tab,btn){document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={customers:'adminCustomersSection',payments:'adminPaymentsSection',messages:'adminMessagesSection',reports:'adminReportsSection',website:'adminWebsiteSection',admins:'adminAdminsSection',control:'adminControlSection',super:'adminSuperSection'};document.getElementById(map[tab]||'adminCustomersSection').classList.add('active');if(tab==='messages')loadAdminMessages();if(tab==='reports')loadAdminReports();if(tab==='website')loadWebsiteSettings();if(tab==='admins')loadAdminUsers();if(tab==='control')loadControlCenter();}
+
+function smsSetStatus(id,text,ok){const e=document.getElementById(id);if(!e)return;e.style.color=ok===true?'#4ade80':ok===false?'#f87171':'#facc15';e.innerText=text||'';}
+function smsRefreshAll(){smsLoadConfig();smsLoadCustomers();smsCheckBalance(true);smsLoadHistory();}
+function smsLoadConfig(){apiGet({action:'smsConfig'}).then(r=>{if(!r.success)throw new Error(r.message||'Config load failed');document.getElementById('smsSenderId').value=r.senderId||'';document.getElementById('smsApiKey').value='';smsSetStatus('smsConfigStatus',r.configured?'✅ API Key configured ('+r.apiKeyMasked+')':'⚠️ API Key not configured',r.configured);}).catch(e=>smsSetStatus('smsConfigStatus','⚠️ '+e.message,false));}
+function smsSaveConfig(){const key=document.getElementById('smsApiKey').value.trim();const sender=document.getElementById('smsSenderId').value.trim();if(!key){smsSetStatus('smsConfigStatus','⚠️ প্রথমবার API Key দিন। Existing key রেখে শুধু Sender ID বদলাতে চাইলে Load করার পর key field-এ masked value দেবেন না; blank রেখে Save করুন।',false);if(!sender)return;}apiGet({action:'saveSmsConfig',apiKey:key,senderId:sender}).then(r=>smsSetStatus('smsConfigStatus',(r.success?'✅ ':'❌ ')+(r.message||''),r.success)).catch(e=>smsSetStatus('smsConfigStatus','⚠️ '+e.message,false));}
+function smsCheckBalance(silent){apiGet({action:'smsBalance'}).then(r=>{if(r.success){document.getElementById('smsBalance').innerText=String(r.balance||'0');if(!silent)smsSetStatus('smsBalanceStatus','✅ Balance loaded',true);}else{document.getElementById('smsBalance').innerText='—';if(!silent)smsSetStatus('smsBalanceStatus','⚠️ '+(r.message||'Balance unavailable'),false);}}).catch(e=>{if(!silent)smsSetStatus('smsBalanceStatus','⚠️ '+e.message,false);});}
+function smsLoadCustomers(){apiGet({action:'adminCustomers'}).then(r=>{const s=document.getElementById('smsCustomer');if(!s)return;s.innerHTML='<option value="">— Customer select করুন —</option>'+(r.customers||[]).map(c=>'<option value="'+escAttr(c.customerId)+'" data-mobile="'+escAttr(c.phone||c.mobile||'')+'" data-name="'+escAttr(c.name||'')+'" data-bill="'+escAttr(c.bill||'')+'" data-package="'+escAttr(c.package||'')+'" data-due="'+escAttr(c.dueDate||'')+'">'+escAdmin(c.customerId)+' — '+escAdmin(c.name)+' — '+escAdmin(c.phone||'')+'</option>').join('');}).catch(e=>smsSetStatus('smsSendStatus','⚠️ Customer load failed: '+e.message,false));}
+function smsCustomerChanged(){const s=document.getElementById('smsCustomer');const o=s.options[s.selectedIndex];if(!o||!o.value)return;document.getElementById('smsMobile').value=o.dataset.mobile||'';window.smsSelected={id:o.value,name:o.dataset.name||'',bill:o.dataset.bill||'',package:o.dataset.package||'',due:o.dataset.due||''};}
+function smsUseTemplate(type){const c=window.smsSelected||{};const name=c.name||'Customer';if(type==='due')document.getElementById('smsMessage').value='প্রিয় '+name+', আপনার MAPS INTERNET বিল '+(c.bill||'')+' টাকা বকেয়া আছে। Due Date: '+(c.due||'')+'। সময়মতো বিল পরিশোধ করুন।';else if(type==='paid')document.getElementById('smsMessage').value='প্রিয় '+name+', আপনার MAPS INTERNET payment সফলভাবে received হয়েছে। ধন্যবাদ।';else if(type==='notice')document.getElementById('smsMessage').value='প্রিয় '+name+', MAPS INTERNET-এর গুরুত্বপূর্ণ service notice। বিস্তারিত জানতে আমাদের support-এ যোগাযোগ করুন।';else document.getElementById('smsMessage').value='';smsCountChars();}
+function smsCountChars(){const m=document.getElementById('smsMessage').value||'';document.getElementById('smsCharCount').innerText=m.length+' character'+(m.length>1?'s':'');}
+function smsSend(){const id=document.getElementById('smsCustomer').value.trim();const mobile=document.getElementById('smsMobile').value.trim();const msg=document.getElementById('smsMessage').value.trim();if(!mobile||!msg){smsSetStatus('smsSendStatus','⚠️ Customer/mobile এবং message দিন।',false);return;}smsSetStatus('smsSendStatus','⏳ SMS পাঠানো হচ্ছে...',null);apiGet({action:'sendSms',customerId:id,mobile:mobile,message:msg,name:(window.smsSelected||{}).name||''}).then(r=>{smsSetStatus('smsSendStatus',(r.success?'✅ ':'❌ ')+(r.message||'')+(r.requestId?' | Request ID: '+r.requestId:''),r.success);if(r.success){smsLoadHistory();smsCheckBalance(true);}}).catch(e=>smsSetStatus('smsSendStatus','⚠️ '+e.message,false));}
+function smsClearForm(){document.getElementById('smsCustomer').value='';document.getElementById('smsMobile').value='';document.getElementById('smsMessage').value='';window.smsSelected=null;smsCountChars();smsSetStatus('smsSendStatus','',null);}
+function smsLoadHistory(){apiGet({action:'smsHistory'}).then(r=>{const tb=document.getElementById('smsHistoryTable');if(!tb)return;const a=r.history||[];tb.innerHTML=a.length?a.map(x=>'<tr><td>'+escAdmin(x.date)+'</td><td>'+escAdmin(x.customerId)+'<br>'+escAdmin(x.name)+'</td><td>'+escAdmin(x.mobile)+'</td><td style="white-space:normal;min-width:260px">'+escAdmin(x.message)+'</td><td>'+escAdmin(x.requestId)+'</td><td>'+escAdmin(x.status)+'</td></tr>').join(''):'<tr><td colspan="6">No SMS history.</td></tr>';}).catch(e=>{const tb=document.getElementById('smsHistoryTable');if(tb)tb.innerHTML='<tr><td colspan="6">⚠️ '+escAdmin(e.message)+'</td></tr>';});}
+
+function switchAdminTab(tab,btn){document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={customers:'adminCustomersSection',payments:'adminPaymentsSection',messages:'adminMessagesSection',reports:'adminReportsSection',website:'adminWebsiteSection',admins:'adminAdminsSection',control:'adminControlSection',sms:'adminSmsSection',super:'adminSuperSection'};document.getElementById(map[tab]||'adminCustomersSection').classList.add('active');if(tab==='messages')loadAdminMessages();if(tab==='reports')loadAdminReports();if(tab==='website')loadWebsiteSettings();if(tab==='admins')loadAdminUsers();if(tab==='control')loadControlCenter();if(tab==='sms')smsRefreshAll();}
 function apiGet(params){return fetch(GOOGLE_SCRIPT_URL+'?'+new URLSearchParams(params).toString()).then(r=>r.json());}
 function loadAdminDashboard(){loadAdminCustomers();loadAdminPayments();loadAdminMessages();loadAdminReports();loadWebsiteSettings();loadAdminUsers();}
 function loadAdminCustomers(){apiGet({action:'adminCustomers'}).then(data=>{if(!data.success)throw new Error(data.message||'Customer load failed');const customers=data.customers||[];document.getElementById('adminTotalCustomers').innerText=customers.length;document.getElementById('adminActiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()==='active').length;document.getElementById('adminInactiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()!=='active').length;const tbody=document.getElementById('adminCustomerTable');if(!customers.length){tbody.innerHTML='<tr><td colspan="8" style="text-align:center">No customers found.</td></tr>';return;}tbody.innerHTML=customers.map(c=>`<tr><td>${escAdmin(c.customerId)}</td><td>${escAdmin(c.name)}</td><td>${escAdmin(c.phone)}</td><td>${escAdmin(c.package)}</td><td>${escAdmin(c.bill)}</td><td>${escAdmin(c.dueDate)}</td><td>${escAdmin(c.status)}</td><td><button class="admin-mini-btn" onclick='editAdminCustomer(${JSON.stringify(c)})'>Edit</button><button class="admin-mini-btn" onclick="deleteAdminCustomer('${escAttr(c.customerId)}')">Delete</button></td></tr>`).join('');}).catch(err=>{document.getElementById('adminCustomerMsg').style.color='#f87171';document.getElementById('adminCustomerMsg').innerText='⚠️ '+err.message;});}
