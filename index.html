@@ -1032,6 +1032,12 @@ animation:visitorNoticeIn .35s ease-out;
 /* =========================
 OFFER POPUP
 ========================= */
+/* =========================
+SOFTWARE LIBRARY
+========================= */
+.software-popup-card{width:min(1050px,96vw);max-height:90vh;overflow:auto;padding:26px;background:linear-gradient(145deg,#07122b,#0b1026);border:1px solid rgba(71,231,255,.28);border-radius:24px;box-shadow:0 30px 100px rgba(0,0,0,.7);position:relative}
+.software-title{text-align:center;font-size:28px;font-weight:900;margin:0 0 7px;color:#fff}.software-sub{text-align:center;color:#94a3b8;margin:0 0 18px}.software-login-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:600px;margin:0 auto}.software-login-grid input{width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.25);color:#fff;outline:none}.software-login-actions{display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap}.software-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px;margin-top:20px}.software-card{padding:15px;border:1px solid rgba(71,231,255,.18);border-radius:18px;background:rgba(255,255,255,.035);box-shadow:inset 0 1px rgba(255,255,255,.04)}.software-poster{width:100%;height:145px;object-fit:cover;border-radius:12px;display:block;margin-bottom:11px}.software-type{display:inline-block;padding:4px 8px;border-radius:999px;background:rgba(71,231,255,.12);border:1px solid rgba(71,231,255,.3);color:#67e8f9;font-size:10px;font-weight:900}.software-name{font-size:18px;font-weight:900;margin:8px 0 4px}.software-meta{font-size:11px;color:#94a3b8;margin-bottom:8px}.software-details{font-size:12px;color:#cbd5e1;line-height:1.55;white-space:pre-line;min-height:38px}.software-download{display:block;text-align:center;margin-top:12px;padding:10px;border-radius:10px;background:linear-gradient(135deg,#47e7ff,#2563eb,#7c3aed);color:#fff;text-decoration:none;font-weight:900}.software-empty{text-align:center;color:#94a3b8;padding:35px 10px}.software-filter{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0}.software-filter button{border:1px solid rgba(71,231,255,.2);background:rgba(255,255,255,.05);color:#fff;border-radius:999px;padding:8px 13px;cursor:pointer;font-weight:800}.software-filter button.active{background:linear-gradient(135deg,#47e7ff,#2563eb);color:#06111f}.software-admin-poster{width:70px;height:42px;object-fit:cover;border-radius:7px}.software-image-preview{display:none;width:100%;max-height:180px;object-fit:cover;border-radius:12px;margin-top:6px}.software-note{font-size:11px;color:#94a3b8;margin-top:4px}@media(max-width:600px){.software-login-grid{grid-template-columns:1fr}.software-popup-card{padding:18px}.software-title{font-size:24px}}
+
 .offer-popup-card{
 background:linear-gradient(145deg,#101735,#080d22);
 color:#fff;width:min(720px,96vw);max-height:88vh;overflow-y:auto;padding:28px;border-radius:22px;position:relative;
@@ -1595,6 +1601,10 @@ NAVBAR
 👤 Customer Login
 </a>
 
+<a href="#" onclick="openSoftware();toggleMenu();return false;">
+💻 Software
+</a>
+
 </div>
 
 <div class="nav-buttons">
@@ -2121,6 +2131,7 @@ style="text-align:center;margin-top:15px;">
         <button class="admin-tab" onclick="switchAdminTab('reports',this)">📊 Reports</button>
         <button class="admin-tab" onclick="switchAdminTab('website',this)">🌐 Website Edit</button>
         <button class="admin-tab" onclick="switchAdminTab('offers',this)">🎁 Offers</button>
+        <button class="admin-tab" onclick="switchAdminTab('software',this)">💻 Software</button>
         <button class="admin-tab" id="adminUsersTab" onclick="switchAdminTab('admins',this)">🔐 Admin IDs</button>
         <button class="admin-tab" onclick="switchAdminTab('control',this)">🎛 Control Center</button>
       </div>
@@ -2271,6 +2282,33 @@ style="text-align:center;margin-top:15px;">
         </div>
       </div>
 
+      <div id="adminSoftwareSection" class="admin-section">
+        <div class="admin-layout">
+          <div class="admin-box">
+            <h3>💻 Add / Edit Software or Game</h3>
+            <form class="admin-form" onsubmit="saveAdminSoftware(event)">
+              <input id="adminSoftwareId" placeholder="ID (Edit হলে auto-filled)">
+              <input id="adminSoftwareName" placeholder="Software / Game Name *" required>
+              <select id="adminSoftwarePlatform"><option value="PC">PC</option><option value="Android">Android</option><option value="Game">Game</option></select>
+              <input id="adminSoftwareCategory" placeholder="Category (e.g. Editing, Utility, Racing Game)">
+              <input id="adminSoftwareVersion" placeholder="Version">
+              <input id="adminSoftwareSize" placeholder="Size (e.g. 1.2 GB)">
+              <input id="adminSoftwareImageUrl" placeholder="Poster/Image URL (https://...)" >
+              <input id="adminSoftwareDownloadUrl" placeholder="Official/Free Download URL *" required>
+              <textarea id="adminSoftwareDetails" placeholder="Description / Details" style="min-height:90px"></textarea>
+              <select id="adminSoftwareStatus"><option value="Active">Active</option><option value="Inactive">Inactive</option></select>
+              <div class="admin-btns"><button class="admin-btn" type="submit">💾 Save Software</button><button class="admin-btn alt" type="button" onclick="clearAdminSoftwareForm()">Clear</button></div>
+              <div class="software-note">⚠️ শুধু আইনসম্মত/official/free/open-source download link ব্যবহার করুন।</div>
+              <div id="adminSoftwareMsg" class="admin-msg"></div>
+            </form>
+          </div>
+          <div class="admin-box">
+            <h3>💻 Software / Game Library <button class="admin-mini-btn" onclick="loadAdminSoftware()">🔄 Refresh</button></h3>
+            <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Poster</th><th>Name</th><th>Platform</th><th>Category</th><th>Version</th><th>Status</th><th>Action</th></tr></thead><tbody id="adminSoftwareTable"><tr><td colspan="7">Loading...</td></tr></tbody></table></div>
+          </div>
+        </div>
+      </div>
+
       <div id="adminControlSection" class="admin-section">
         <div class="cc-grid">
           <div class="cc-card">
@@ -2394,6 +2432,40 @@ style="text-align:center;margin-top:15px;">
     <h3 style="color:#47e7ff;margin:8px 0">Website Temporarily Unavailable</h3>
     <p style="color:#c9d1ef">সিস্টেম বর্তমানে maintenance / emergency mode-এ আছে। জরুরি সহায়তার জন্য নিচের নম্বরে যোগাযোগ করুন।</p>
     <p style="color:#fff;font-weight:700">01827700011 • 01827700022</p>
+  </div>
+</div>
+
+<!-- =========================
+SOFTWARE LIBRARY
+========================= -->
+<div id="softwarePopup" class="popup-overlay">
+  <div class="software-popup-card">
+    <span class="close-popup" onclick="closeSoftware()">×</span>
+    <h2 class="software-title">💻 MAPS INTERNET Software</h2>
+    <p class="software-sub">Android ও PC Software / Games — শুধু MAPS INTERNET customer-দের জন্য</p>
+    <div id="softwareLoginBox">
+      <div class="software-login-grid">
+        <input id="softwareCustomerId" placeholder="Customer ID">
+        <input id="softwarePassword" type="password" placeholder="Customer Password">
+      </div>
+      <div class="software-login-actions">
+        <button class="admin-btn" type="button" onclick="softwareLogin()">🔐 Customer Login</button>
+      </div>
+      <div id="softwareLoginMsg" class="admin-msg" style="text-align:center"></div>
+    </div>
+    <div id="softwareLibraryBox" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+        <div id="softwareWelcome" style="font-weight:900;color:#67e8f9"></div>
+        <button class="admin-btn alt" type="button" onclick="softwareLogout()">🚪 Logout</button>
+      </div>
+      <div class="software-filter">
+        <button class="active" data-software-filter="All" onclick="filterSoftware('All',this)">All</button>
+        <button data-software-filter="PC" onclick="filterSoftware('PC',this)">💻 PC</button>
+        <button data-software-filter="Android" onclick="filterSoftware('Android',this)">📱 Android</button>
+        <button data-software-filter="Game" onclick="filterSoftware('Game',this)">🎮 Games</button>
+      </div>
+      <div id="softwareList" class="software-grid"></div>
+    </div>
   </div>
 </div>
 
@@ -3607,9 +3679,9 @@ function closeAdminPanel(){document.getElementById("adminOverlay").classList.rem
 function adminLogout(){const token=sessionStorage.getItem("mapsAdminToken")||"";if(token){fetch(GOOGLE_SCRIPT_URL+"?"+new URLSearchParams({action:"adminLogout",adminToken:token}).toString()).catch(()=>{});}sessionStorage.removeItem("mapsAdminLoggedIn");sessionStorage.removeItem("mapsAdminToken");sessionStorage.removeItem("mapsAdminUser");closeAdminPanel();}
 
 
-function switchAdminTab(tab,btn){document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={customers:'adminCustomersSection',payments:'adminPaymentsSection',messages:'adminMessagesSection',reports:'adminReportsSection',website:'adminWebsiteSection',offers:'adminOffersSection',admins:'adminAdminsSection',control:'adminControlSection'};const target=document.getElementById(map[tab]||'adminCustomersSection');if(target)target.classList.add('active');if(tab==='customers')loadAdminCustomers();if(tab==='payments')loadAdminPayments();if(tab==='messages')loadAdminMessages();if(tab==='reports')loadAdminReports();if(tab==='website')loadWebsiteSettings();if(tab==='offers')loadAdminOffers();if(tab==='admins')loadAdminUsers();if(tab==='control')loadControlCenter();}
+function switchAdminTab(tab,btn){document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={customers:'adminCustomersSection',payments:'adminPaymentsSection',messages:'adminMessagesSection',reports:'adminReportsSection',website:'adminWebsiteSection',offers:'adminOffersSection',software:'adminSoftwareSection',admins:'adminAdminsSection',control:'adminControlSection'};const target=document.getElementById(map[tab]||'adminCustomersSection');if(target)target.classList.add('active');if(tab==='customers')loadAdminCustomers();if(tab==='payments')loadAdminPayments();if(tab==='messages')loadAdminMessages();if(tab==='reports')loadAdminReports();if(tab==='website')loadWebsiteSettings();if(tab==='offers')loadAdminOffers();if(tab==='software')loadAdminSoftware();if(tab==='admins')loadAdminUsers();if(tab==='control')loadControlCenter();}
 function apiGet(params){const q=Object.assign({},params);const token=sessionStorage.getItem('mapsAdminToken')||'';if(token)q.adminToken=token;return fetch(GOOGLE_SCRIPT_URL+'?'+new URLSearchParams(q).toString()).then(r=>r.json());}
-function loadAdminDashboard(){loadAdminCustomers();loadAdminPayments();loadAdminMessages();loadAdminReports();loadWebsiteSettings();const u=JSON.parse(sessionStorage.getItem('mapsAdminUser')||'{}');if(String(u.role||'')==='Super Admin')loadAdminUsers();}
+function loadAdminDashboard(){loadAdminCustomers();loadAdminPayments();loadAdminMessages();loadAdminReports();loadWebsiteSettings();loadAdminOffers();loadAdminSoftware();const u=JSON.parse(sessionStorage.getItem('mapsAdminUser')||'{}');if(String(u.role||'')==='Super Admin')loadAdminUsers();}
 function loadAdminCustomers(){apiGet({action:'adminCustomers'}).then(data=>{if(!data.success)throw new Error(data.message||'Customer load failed');const customers=data.customers||[];document.getElementById('adminTotalCustomers').innerText=customers.length;document.getElementById('adminActiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()==='active').length;document.getElementById('adminInactiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()!=='active').length;const tbody=document.getElementById('adminCustomerTable');if(!customers.length){tbody.innerHTML='<tr><td colspan="8" style="text-align:center">No customers found.</td></tr>';return;}tbody.innerHTML=customers.map(c=>`<tr><td>${escAdmin(c.customerId)}</td><td>${escAdmin(c.name)}</td><td>${escAdmin(c.phone)}</td><td>${escAdmin(c.package)}</td><td>${escAdmin(c.bill)}</td><td>${escAdmin(c.dueDate)}</td><td>${escAdmin(c.status)}</td><td><button class="admin-mini-btn" onclick='editAdminCustomer(${JSON.stringify(c)})'>Edit</button><button class="admin-mini-btn" onclick="deleteAdminCustomer('${escAttr(c.customerId)}')">Delete</button></td></tr>`).join('');}).catch(err=>{document.getElementById('adminCustomerMsg').style.color='#f87171';document.getElementById('adminCustomerMsg').innerText='⚠️ '+err.message;});}
 function loadAdminPayments(){apiGet({action:'adminPayments'}).then(data=>{if(!data.success)throw new Error(data.message||'Payment load failed');const payments=data.payments||[];document.getElementById('adminTotalPayments').innerText=payments.length;const tbody=document.getElementById('adminPaymentTable');if(!payments.length){tbody.innerHTML='<tr><td colspan="6" style="text-align:center">No payments found.</td></tr>';return;}tbody.innerHTML=payments.map(x=>`<tr><td>${escAdmin(x.customerId)}</td><td>${escAdmin(x.date)}</td><td>${escAdmin(x.amount)}</td><td>${escAdmin(x.method)}</td><td>${escAdmin(x.transactionId)}</td><td>${escAdmin(x.status)}</td></tr>`).join('');}).catch(err=>{document.getElementById('adminPaymentMsg').style.color='#f87171';document.getElementById('adminPaymentMsg').innerText='⚠️ '+err.message;});}
 function saveAdminCustomer(e){e.preventDefault();const msg=document.getElementById('adminCustomerMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';apiGet({action:'saveCustomer',customerId:document.getElementById('adminCustomerId').value.trim(),password:document.getElementById('adminCustomerPassword').value.trim(),name:document.getElementById('adminCustomerName').value.trim(),mobile:document.getElementById('adminCustomerMobile').value.trim(),package:document.getElementById('adminCustomerPackage').value.trim(),bill:document.getElementById('adminCustomerBill').value.trim(),dueDate:document.getElementById('adminCustomerDueDate').value.trim(),status:document.getElementById('adminCustomerStatus').value,usage:document.getElementById('adminCustomerUsage').value.trim(),lastPayment:document.getElementById('adminCustomerLastPayment').value.trim()}).then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=data.success?'✅ '+data.message:'❌ '+data.message;if(data.success){clearAdminCustomerForm();loadAdminCustomers();}}).catch(err=>{msg.style.color='#f87171';msg.innerText='⚠️ '+err.message;});}
@@ -3649,6 +3721,19 @@ function saveAdminOffer(e){e.preventDefault();const msg=document.getElementById(
 function editAdminOffer(o){document.getElementById('adminOfferId').value=o.id||'';document.getElementById('adminOfferTitle').value=o.title||'';document.getElementById('adminOfferSpeed').value=o.speed||'';document.getElementById('adminOfferPrice').value=o.price||'';document.getElementById('adminOfferOldPrice').value=o.oldPrice||'';document.getElementById('adminOfferBadge').value=o.badge||'';document.getElementById('adminOfferDetails').value=o.details||'';document.getElementById('adminOfferStatus').value=o.status==='Inactive'?'Inactive':'Active';document.getElementById('adminOfferStartAt').value=toDatetimeLocal(o.startAt);document.getElementById('adminOfferEndAt').value=toDatetimeLocal(o.endAt);document.getElementById('adminOfferImageUrl').value=o.imageUrl||'';const img=document.getElementById('adminOfferImagePreview');const file=document.getElementById('adminOfferImage');if(file)file.value='';if(img){if(o.imageUrl){img.src=o.imageUrl;img.style.display='block';}else{img.style.display='none';img.removeAttribute('src');}}}
 function clearAdminOfferForm(){['adminOfferId','adminOfferTitle','adminOfferSpeed','adminOfferPrice','adminOfferOldPrice','adminOfferBadge','adminOfferDetails','adminOfferImageUrl','adminOfferStartAt','adminOfferEndAt'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});const file=document.getElementById('adminOfferImage');if(file)file.value='';const img=document.getElementById('adminOfferImagePreview');if(img){img.style.display='none';img.removeAttribute('src');}document.getElementById('adminOfferStatus').value='Active';}
 function deleteAdminOffer(id){if(!confirm('এই offer delete করতে চান?'))return;apiGet({action:'deleteOffer',id:id}).then(data=>{if(data.success)loadAdminOffers();else alert(data.message||'Delete failed');});}
+
+function openSoftware(){const p=document.getElementById('softwarePopup');if(!p)return;p.style.display='flex';const id=sessionStorage.getItem('mapsCustomerId')||'',pw=sessionStorage.getItem('mapsCustomerPassword')||'';if(id&&pw){document.getElementById('softwareCustomerId').value=id;document.getElementById('softwarePassword').value=pw;softwareLogin();}else{document.getElementById('softwareLoginBox').style.display='block';document.getElementById('softwareLibraryBox').style.display='none';}}
+function closeSoftware(){const p=document.getElementById('softwarePopup');if(p)p.style.display='none';}
+function softwareLogin(){const id=document.getElementById('softwareCustomerId').value.trim(),pw=document.getElementById('softwarePassword').value;const m=document.getElementById('softwareLoginMsg');if(!id||!pw){m.style.color='#f87171';m.innerText='❌ Customer ID ও Password দিন।';return;}m.style.color='#38bdf8';m.innerText='⏳ যাচাই হচ্ছে...';fetch(GOOGLE_SCRIPT_URL+'?action=softwareLogin&customerId='+encodeURIComponent(id)+'&password='+encodeURIComponent(pw)).then(r=>r.json()).then(data=>{if(!data.success)throw new Error(data.message||'Login failed');sessionStorage.setItem('mapsCustomerId',id);sessionStorage.setItem('mapsCustomerPassword',pw);document.getElementById('softwareLoginBox').style.display='none';document.getElementById('softwareLibraryBox').style.display='block';document.getElementById('softwareWelcome').innerText='👋 '+(data.customer?.name||id);m.innerText='';loadPublicSoftware('All');}).catch(e=>{m.style.color='#f87171';m.innerText='❌ '+e.message;});}
+function softwareLogout(){sessionStorage.removeItem('mapsCustomerId');sessionStorage.removeItem('mapsCustomerPassword');document.getElementById('softwareLoginBox').style.display='block';document.getElementById('softwareLibraryBox').style.display='none';document.getElementById('softwareCustomerId').value='';document.getElementById('softwarePassword').value='';document.getElementById('softwareList').innerHTML='';}
+let softwareCurrentFilter='All';
+function filterSoftware(type,btn){softwareCurrentFilter=type;document.querySelectorAll('[data-software-filter]').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');loadPublicSoftware(type);}
+function loadPublicSoftware(type){const id=sessionStorage.getItem('mapsCustomerId')||'',pw=sessionStorage.getItem('mapsCustomerPassword')||'',box=document.getElementById('softwareList');if(!id||!pw)return;if(box)box.innerHTML='<div class="software-empty">⏳ Library লোড হচ্ছে...</div>';fetch(GOOGLE_SCRIPT_URL+'?action=software&customerId='+encodeURIComponent(id)+'&password='+encodeURIComponent(pw)+'&platform='+encodeURIComponent(type||'All')).then(r=>r.json()).then(data=>{if(!data.success)throw new Error(data.message||'Software load failed');const list=data.items||[];if(!list.length){box.innerHTML='<div class="software-empty">এই category-তে এখন কোনো software/game নেই।</div>';return;}box.innerHTML=list.map(o=>`<div class="software-card">${o.imageUrl?`<img class="software-poster" src="${escAttr(o.imageUrl)}" alt="Poster" loading="lazy">`:''}<span class="software-type">${escAdmin(o.platform)}</span><div class="software-name">${escAdmin(o.name)}</div><div class="software-meta">${escAdmin(o.category||'')} ${o.version?'• v'+escAdmin(o.version):''} ${o.size?'• '+escAdmin(o.size):''}</div><div class="software-details">${escAdmin(o.details||'')}</div><a class="software-download" href="${escAttr(o.downloadUrl)}" target="_blank" rel="noopener noreferrer">📥 Download</a></div>`).join('');}).catch(e=>{if(box)box.innerHTML='<div class="software-empty">⚠️ '+escAdmin(e.message)+'</div>';});}
+function loadAdminSoftware(){apiGet({action:'adminSoftware'}).then(data=>{if(!data.success)throw new Error(data.message||'Software load failed');const list=data.items||[],tb=document.getElementById('adminSoftwareTable');if(!tb)return;tb.innerHTML=list.length?list.map(o=>`<tr><td>${o.imageUrl?`<img class="software-admin-poster" src="${escAttr(o.imageUrl)}" alt="Poster">`:'—'}</td><td>${escAdmin(o.name)}</td><td>${escAdmin(o.platform)}</td><td>${escAdmin(o.category||'')}</td><td>${escAdmin(o.version||'')}</td><td>${escAdmin(o.status)}</td><td><button class="admin-mini-btn" onclick='editAdminSoftware(${JSON.stringify(o)})'>Edit</button><button class="admin-mini-btn" onclick="deleteAdminSoftware('${escAttr(o.id)}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="7" style="text-align:center">No software/game found.</td></tr>';}).catch(e=>{const m=document.getElementById('adminSoftwareMsg');if(m){m.style.color='#f87171';m.innerText='⚠️ '+e.message;}});}
+function saveAdminSoftware(e){e.preventDefault();const msg=document.getElementById('adminSoftwareMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';apiGet({action:'saveSoftware',id:document.getElementById('adminSoftwareId').value.trim(),name:document.getElementById('adminSoftwareName').value.trim(),platform:document.getElementById('adminSoftwarePlatform').value,category:document.getElementById('adminSoftwareCategory').value.trim(),version:document.getElementById('adminSoftwareVersion').value.trim(),size:document.getElementById('adminSoftwareSize').value.trim(),imageUrl:document.getElementById('adminSoftwareImageUrl').value.trim(),downloadUrl:document.getElementById('adminSoftwareDownloadUrl').value.trim(),details:document.getElementById('adminSoftwareDetails').value.trim(),status:document.getElementById('adminSoftwareStatus').value}).then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=(data.success?'✅ ':'❌ ')+data.message;if(data.success){clearAdminSoftwareForm();loadAdminSoftware();}}).catch(e=>{msg.style.color='#f87171';msg.innerText='⚠️ '+e.message;});}
+function editAdminSoftware(o){document.getElementById('adminSoftwareId').value=o.id||'';document.getElementById('adminSoftwareName').value=o.name||'';document.getElementById('adminSoftwarePlatform').value=o.platform||'PC';document.getElementById('adminSoftwareCategory').value=o.category||'';document.getElementById('adminSoftwareVersion').value=o.version||'';document.getElementById('adminSoftwareSize').value=o.size||'';document.getElementById('adminSoftwareImageUrl').value=o.imageUrl||'';document.getElementById('adminSoftwareDownloadUrl').value=o.downloadUrl||'';document.getElementById('adminSoftwareDetails').value=o.details||'';document.getElementById('adminSoftwareStatus').value=o.status==='Inactive'?'Inactive':'Active';}
+function clearAdminSoftwareForm(){['adminSoftwareId','adminSoftwareName','adminSoftwareCategory','adminSoftwareVersion','adminSoftwareSize','adminSoftwareImageUrl','adminSoftwareDownloadUrl','adminSoftwareDetails'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});document.getElementById('adminSoftwarePlatform').value='PC';document.getElementById('adminSoftwareStatus').value='Active';}
+function deleteAdminSoftware(id){if(!confirm('এই software/game delete করতে চান?'))return;apiGet({action:'deleteSoftware',id:id}).then(data=>{if(data.success)loadAdminSoftware();else alert(data.message||'Delete failed');});}
 
 function loadAdminUsers(){apiGet({action:'adminUsers'}).then(data=>{if(!data.success)throw new Error(data.message||'Admin users load failed');const users=data.users||[];document.getElementById('adminUsersTable').innerHTML=users.map(u=>`<tr><td>${escAdmin(u.username)}</td><td>${escAdmin(u.name)}</td><td>${escAdmin(u.role)}</td><td>${escAdmin(u.status)}</td><td><button class="admin-mini-btn" onclick='editAdminUser(${JSON.stringify(u)})'>Edit</button><button class="admin-mini-btn" onclick="deleteAdminUser('${escAttr(u.username)}')">Delete</button></td></tr>`).join('')||'<tr><td colspan="5">No admins found.</td></tr>';}).catch(err=>{document.getElementById('adminUserMsg').style.color='#f87171';document.getElementById('adminUserMsg').innerText='⚠️ '+err.message;});}
 function saveAdminUser(e){e.preventDefault();const msg=document.getElementById('adminUserMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';apiGet({action:'saveAdminUser',username:document.getElementById('adminUserUsername').value.trim(),password:document.getElementById('adminUserPassword').value.trim(),name:document.getElementById('adminUserName').value.trim(),role:document.getElementById('adminUserRole').value,status:document.getElementById('adminUserStatus').value}).then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=(data.success?'✅ ':'❌ ')+data.message;if(data.success){clearAdminUserForm();loadAdminUsers();}}).catch(err=>{msg.style.color='#f87171';msg.innerText='⚠️ '+err.message;});}
