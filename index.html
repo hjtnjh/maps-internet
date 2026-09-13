@@ -3291,8 +3291,12 @@ function applyEventMode(settings){
   if(mode==='emergency')document.body.classList.add('maps-event-emergency');
 }
 
+function noticeBool(v){
+  return v === true || String(v).toLowerCase() === 'true' || String(v) === '1';
+}
 function applyVisitorNotice(settings){
-  const enabled = settings && settings.noticeEnabled !== undefined && settings.noticeEnabled !== null ? String(settings.noticeEnabled) === 'true' : true;
+  const hasEnabled = settings && settings.noticeEnabled !== undefined && settings.noticeEnabled !== null;
+  const enabled = hasEnabled ? noticeBool(settings.noticeEnabled) : false;
   const icon = settings && settings.noticeIcon ? String(settings.noticeIcon) : '📢';
   const title = settings && settings.noticeTitle ? String(settings.noticeTitle) : 'গুরুত্বপূর্ণ নোটিশ';
   const message = settings && settings.noticeMessage ? String(settings.noticeMessage) : 'MAPS INTERNET-এর পক্ষ থেকে গুরুত্বপূর্ণ ঘোষণা।';
@@ -3301,18 +3305,23 @@ function applyVisitorNotice(settings){
   if(iconEl) iconEl.textContent=icon; if(titleEl) titleEl.textContent=title; if(msgEl) msgEl.textContent=message; if(btnEl) btnEl.textContent=button;
   if(enabled) setTimeout(showVisitorNotice,700); else closeVisitorNotice();
 }
-function showVisitorNotice(){const el=document.getElementById('visitorNoticePopup');if(el){el.classList.add('show');el.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}}
+function showVisitorNotice(){
+  const el=document.getElementById('visitorNoticePopup');
+  if(el){el.classList.add('show');el.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+}
 function closeVisitorNotice(){const el=document.getElementById('visitorNoticePopup');if(el){el.classList.remove('show');el.setAttribute('aria-hidden','true');document.body.style.overflow='';}}
 function loadSiteSettings(){
-  // Show the notice by default immediately; server settings will override it.
-  // This keeps the popup working even if the Google Apps Script request is slow/blocked.
-  applyVisitorNotice({noticeEnabled:true});
+  // Visitor Notice is OFF until the saved server setting explicitly enables it.
+  applyVisitorNotice({noticeEnabled:false});
   apiGet({action:'siteSettings'}).then(data=>{
     if(data && data.success){
       applySiteSettings(data.settings||{});
+    }else{
+      applyVisitorNotice({noticeEnabled:false});
     }
   }).catch(()=>{
-    // Keep the default popup visible if the settings request fails.
+    // Never show Visitor Notice when settings cannot be loaded.
+    applyVisitorNotice({noticeEnabled:false});
   });
 }
 /* =================================================
@@ -3494,7 +3503,12 @@ window.ccButtons=[];window.ccCurrentSettings={};
 function setCC(id,v){const e=document.getElementById(id);if(e&&v!==undefined&&v!==null)e.value=String(v);}
 function ccBool(id,v){const e=document.getElementById(id);if(e)e.checked=String(v)!=='false'&&v!==false;}
 function controlSettingsFromForm(){return {bkash:!!document.getElementById('ccBkash')?.checked,customerLogin:!!document.getElementById('ccCustomerLogin')?.checked,ftp:!!document.getElementById('ccFtp')?.checked,connection:!!document.getElementById('ccConnection')?.checked,support:!!document.getElementById('ccSupport')?.checked,notice:!!document.getElementById('ccNotice')?.checked};}
-function applyControlSettings(settings){const c=settings?.featureControls||{};ccBool('ccBkash',c.bkash===undefined?true:c.bkash);ccBool('ccCustomerLogin',c.customerLogin===undefined?true:c.customerLogin);ccBool('ccFtp',c.ftp===undefined?true:c.ftp);ccBool('ccConnection',c.connection===undefined?true:c.connection);ccBool('ccSupport',c.support===undefined?true:c.support);ccBool('ccNotice',c.notice===undefined?(settings.noticeEnabled===undefined?true:settings.noticeEnabled):c.notice);
+function applyControlSettings(settings){const c=settings?.featureControls||{};ccBool('ccBkash',c.bkash===undefined?true:c.bkash);ccBool('ccCustomerLogin',c.customerLogin===undefined?true:c.customerLogin);ccBool('ccFtp',c.ftp===undefined?true:c.ftp);ccBool('ccConnection',c.connection===undefined?true:c.connection);ccBool('ccSupport',c.support===undefined?true:c.support);
+  const noticeState = (settings && settings.noticeEnabled !== undefined && settings.noticeEnabled !== null)
+    ? noticeBool(settings.noticeEnabled)
+    : (c.notice !== undefined && c.notice !== null ? noticeBool(c.notice) : false);
+  ccBool('ccNotice',noticeState);
+  applyVisitorNotice(Object.assign({},settings||{}, {noticeEnabled:noticeState}));
  const hide=(id,on)=>{const e=document.getElementById(id);if(e)e.style.display=on?'':'none';};
  hide('navBkashLink',c.bkash!==false);hide('navCustomerLoginLink',c.customerLogin!==false);hide('navFtpLink',c.ftp!==false);hide('navConnectionBtn',c.connection!==false);hide('serviceFloat',c.support!==false);
  if(settings.logoText){const l=document.getElementById('siteLogoText');if(l)l.innerHTML='<b>'+escapeSite(settings.logoText.split(' ')[0]||'MAPS')+'</b> '+escapeSite(settings.logoText.split(' ').slice(1).join(' ')||'INTERNET');}
@@ -3510,7 +3524,17 @@ function ccPreviewDesigner(){const title=document.getElementById('ccHeroTitle')?
 function ccSaveDesigner(){const partial={heroTag:document.getElementById('ccHeroTag').value.trim(),heroHeading1:document.getElementById('ccHeroTitle').value.trim(),heroHeading2:document.getElementById('ccHeroSub').value.trim(),heroDesc:document.getElementById('ccHeroDesc').value.trim(),logoText:document.getElementById('ccLogoText').value.trim(),bgUrl:document.getElementById('ccBgUrl').value.trim(),bannerText:document.getElementById('ccBannerText').value.trim()};ccApiSave(partial).then(()=>{applySiteSettings(Object.assign({},window.ccCurrentSettings,partial));ccMsg('ccDesignerMsg','🚀 Published successfully','#4ade80');}).catch(e=>ccMsg('ccDesignerMsg','❌ '+e.message,'#f87171'));}
 function ccResetDesigner(){loadControlCenter();ccMsg('ccDesignerMsg','↩ Reset from saved settings','#facc15');}
 function ccPublishAnnouncement(){const type=document.getElementById('ccAnnounceType').value,title=document.getElementById('ccAnnounceTitle').value.trim(),message=document.getElementById('ccAnnounceMessage').value.trim(),button=document.getElementById('ccAnnounceButton').value.trim()||'ঠিক আছে';if(type==='maintenance'){ccApiSave({maintenanceMode:true,noticeEnabled:true,noticeTitle:title||'Maintenance চলছে',noticeMessage:message||'Website maintenance চলছে।',noticeButton:button}).then(()=>ccMsg('ccAnnounceMsg','🛠 Maintenance published','#4ade80')).catch(e=>ccMsg('ccAnnounceMsg','❌ '+e.message,'#f87171'));return;}if(type==='offer'){ccApiSave({bannerText:message||title}).then(()=>ccMsg('ccAnnounceMsg','🎁 Offer banner published','#4ade80')).catch(e=>ccMsg('ccAnnounceMsg','❌ '+e.message,'#f87171'));return;}ccApiSave({noticeEnabled:true,noticeTitle:title||'গুরুত্বপূর্ণ নোটিশ',noticeMessage:message||'MAPS INTERNET-এর গুরুত্বপূর্ণ ঘোষণা।',noticeButton:button,featureControls:Object.assign({},window.ccCurrentSettings.featureControls||{}, {notice:true})}).then(x=>{applyVisitorNotice(Object.assign({},window.ccCurrentSettings,{noticeEnabled:true,noticeTitle:title,noticeMessage:message,noticeButton:button}));ccMsg('ccAnnounceMsg','📢 Announcement published','#4ade80');}).catch(e=>ccMsg('ccAnnounceMsg','❌ '+e.message,'#f87171'));}
-function ccTurnAnnouncementOff(){ccApiSave({noticeEnabled:false,maintenanceMode:false,bannerText:''}).then(()=>{closeVisitorNotice();document.getElementById('ccLiveBanner')?.remove();ccMsg('ccAnnounceMsg','OFF করা হয়েছে','#facc15');}).catch(e=>ccMsg('ccAnnounceMsg','❌ '+e.message,'#f87171'));}
+function ccTurnAnnouncementOff(){
+  const fc=Object.assign({},window.ccCurrentSettings?.featureControls||{}, {notice:false});
+  ccApiSave({noticeEnabled:false,featureControls:fc,maintenanceMode:false,bannerText:''}).then(()=>{
+    window.ccCurrentSettings=Object.assign({},window.ccCurrentSettings,{noticeEnabled:false,featureControls:fc,maintenanceMode:false,bannerText:''});
+    applyVisitorNotice({noticeEnabled:false});
+    applyControlSettings(window.ccCurrentSettings);
+    closeVisitorNotice();
+    document.getElementById('ccLiveBanner')?.remove();
+    ccMsg('ccAnnounceMsg','OFF করা হয়েছে','#facc15');
+  }).catch(e=>ccMsg('ccAnnounceMsg','❌ '+e.message,'#f87171'));
+}
 function ccSaveMedia(){const p={logoUrl:document.getElementById('ccLogoUrl').value.trim(),heroImageUrl:document.getElementById('ccHeroImageUrl').value.trim(),bannerImageUrl:document.getElementById('ccBannerImageUrl').value.trim()};ccApiSave(p).then(()=>{ccMediaPreview();ccMsg('ccMediaMsg','✅ Media settings saved','#4ade80');}).catch(e=>ccMsg('ccMediaMsg','❌ '+e.message,'#f87171'));}
 function ccMediaPreview(){const urls=[['Logo',document.getElementById('ccLogoUrl')?.value],['Hero',document.getElementById('ccHeroImageUrl')?.value],['Banner',document.getElementById('ccBannerImageUrl')?.value]].filter(x=>x[1]);const box=document.getElementById('ccMediaPreview');if(box){box.style.display=urls.length?'block':'none';box.innerHTML=urls.map(x=>'<div style="margin:6px 0"><b>'+x[0]+'</b><br><img src="'+x[1].replace(/"/g,'')+'" style="max-width:220px;max-height:90px;border-radius:10px;object-fit:cover" onerror="this.style.display=\'none\'"></div>').join('');}}
 function ccClearMedia(){['ccLogoUrl','ccHeroImageUrl','ccBannerImageUrl'].forEach(id=>setCC(id,''));document.getElementById('ccMediaPreview').style.display='none';}
