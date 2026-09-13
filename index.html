@@ -1029,6 +1029,37 @@ animation:visitorNoticeIn .35s ease-out;
 .visitor-notice-btn{width:100%;border:0;border-radius:12px;padding:13px 18px;background:linear-gradient(135deg,var(--cyan),var(--blue),var(--violet));color:#07101d;font-weight:900;font-size:15px;cursor:pointer;}
 @keyframes visitorNoticeIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 
+/* =========================
+OFFER POPUP
+========================= */
+.offer-popup-card{
+background:linear-gradient(145deg,#101735,#080d22);
+color:#fff;width:min(720px,96vw);max-height:88vh;overflow-y:auto;padding:28px;border-radius:22px;position:relative;
+border:1px solid rgba(71,231,255,.28);box-shadow:0 25px 90px rgba(0,0,0,.65);
+}
+.offer-popup-title{text-align:center;font-size:28px;font-weight:900;margin:0 0 8px;}
+.offer-popup-sub{text-align:center;color:#94a3b8;margin:0 0 20px;}
+.offer-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+.offer-card{padding:18px;border:1px solid rgba(71,231,255,.2);border-radius:18px;background:rgba(255,255,255,.035);box-shadow:inset 0 1px rgba(255,255,255,.04);}
+.offer-badge{display:inline-block;padding:5px 9px;border-radius:999px;background:linear-gradient(135deg,#ffd21f,#ff9f43);color:#111;font-weight:900;font-size:11px;margin-bottom:8px;}
+.offer-speed{font-size:22px;font-weight:900;color:#47e7ff;}
+.offer-price{font-size:28px;font-weight:900;margin:6px 0;color:#fff;}
+.offer-old{font-size:13px;color:#94a3b8;text-decoration:line-through;margin-left:6px;}
+.offer-details{color:#cbd5e1;font-size:13px;line-height:1.65;white-space:pre-line;}
+.offer-empty{text-align:center;color:#94a3b8;padding:35px 10px;}
+.offer-apply-btn{width:100%;margin-top:12px;border:0;border-radius:10px;padding:11px;background:linear-gradient(135deg,#47e7ff,#2563eb,#7c3aed);color:#fff;font-weight:900;cursor:pointer;}
+.offer-poster{width:100%;max-height:260px;object-fit:cover;border-radius:14px;margin-bottom:12px;border:1px solid rgba(71,231,255,.18);display:block;}
+.offer-status-glow{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:999px;font-size:11px;font-weight:900;margin:2px 0;letter-spacing:.3px;}
+.offer-status-active{color:#bbf7d0;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.5);box-shadow:0 0 12px rgba(34,197,94,.45),inset 0 0 10px rgba(34,197,94,.08);animation:offerActiveGlow 1.8s ease-in-out infinite;}
+.offer-status-expired{color:#fecaca;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.55);box-shadow:0 0 12px rgba(239,68,68,.4),inset 0 0 10px rgba(239,68,68,.08);animation:offerExpiredGlow 1.8s ease-in-out infinite;}
+.offer-status-scheduled{color:#fde68a;background:rgba(234,179,8,.1);border:1px solid rgba(234,179,8,.45);box-shadow:0 0 10px rgba(234,179,8,.3);}
+@keyframes offerActiveGlow{50%{box-shadow:0 0 22px rgba(34,197,94,.75),inset 0 0 14px rgba(34,197,94,.14)}}
+@keyframes offerExpiredGlow{50%{box-shadow:0 0 22px rgba(239,68,68,.7),inset 0 0 14px rgba(239,68,68,.14)}}
+.offer-image-preview{display:none;width:100%;max-height:220px;object-fit:cover;border-radius:14px;margin-top:8px;border:1px dashed rgba(71,231,255,.35);}
+.offer-upload-note{font-size:11px;color:#94a3b8;margin-top:-2px;}
+
+@media(max-width:600px){.offer-popup-card{padding:20px}.offer-popup-title{font-size:24px}}
+
 .popup-overlay{
 display:none;
 position:fixed;
@@ -1550,6 +1581,8 @@ NAVBAR
 
 <a href="#packages" onclick="toggleMenu()">প্যাকেজ</a>
 
+<a href="#" onclick="openOffers();toggleMenu();return false;">🎁 অফার</a>
+
 <a href="#coverage" onclick="toggleMenu()">Coverage</a>
 
 <a id="navConnectionBtn" href="#connection" onclick="toggleMenu()">নতুন সংযোগ</a>
@@ -1940,6 +1973,18 @@ VISITOR NOTICE POPUP
 </div>
 
 <!-- =========================
+OFFER POPUP
+========================= -->
+<div id="offersPopup" class="popup-overlay">
+  <div class="offer-popup-card">
+    <span class="close-popup" onclick="closeOffers()">×</span>
+    <h2 class="offer-popup-title">🎁 MAPS INTERNET অফার</h2>
+    <p class="offer-popup-sub">চলমান অফার প্যাকেজগুলো এখানে দেখুন</p>
+    <div id="publicOfferList" class="offer-list"><div class="offer-empty">⏳ অফার লোড হচ্ছে...</div></div>
+  </div>
+</div>
+
+<!-- =========================
 BKASH POPUP
 ========================= -->
 
@@ -2075,6 +2120,7 @@ style="text-align:center;margin-top:15px;">
         <button class="admin-tab" onclick="switchAdminTab('messages',this)">📩 Messages <span id="adminUnreadBadge" style="display:none;margin-left:4px">0</span></button>
         <button class="admin-tab" onclick="switchAdminTab('reports',this)">📊 Reports</button>
         <button class="admin-tab" onclick="switchAdminTab('website',this)">🌐 Website Edit</button>
+        <button class="admin-tab" onclick="switchAdminTab('offers',this)">🎁 Offers</button>
         <button class="admin-tab" id="adminUsersTab" onclick="switchAdminTab('admins',this)">🔐 Admin IDs</button>
         <button class="admin-tab" onclick="switchAdminTab('control',this)">🎛 Control Center</button>
       </div>
@@ -2188,6 +2234,39 @@ style="text-align:center;margin-top:15px;">
             <div id="adminPackageEditor"></div>
             <div class="admin-btns" style="margin-top:10px"><button class="admin-btn alt" type="button" onclick="addAdminPackageRow()">➕ Add Package</button><button class="admin-btn" type="button" onclick="savePackagesOnly()">💾 Save Packages</button></div>
             <div id="adminPackageMsg" class="admin-msg"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="adminOffersSection" class="admin-section">
+        <div class="admin-layout">
+          <div class="admin-box">
+            <h3>🎁 Add / Edit Offer Package</h3>
+            <form class="admin-form" onsubmit="saveAdminOffer(event)">
+              <input type="hidden" id="adminOfferId">
+              <input type="hidden" id="adminOfferImageUrl">
+              <input id="adminOfferTitle" placeholder="Offer Title (e.g. ঈদ স্পেশাল অফার)" required>
+              <input id="adminOfferSpeed" placeholder="Package / Speed (e.g. 50 Mbps)" required>
+              <input id="adminOfferPrice" placeholder="Offer Price (e.g. 699 টাকা)" required>
+              <input id="adminOfferOldPrice" placeholder="Regular Price (optional)">
+              <input id="adminOfferBadge" placeholder="Badge (e.g. LIMITED OFFER)">
+              <textarea id="adminOfferDetails" placeholder="Offer Details / সুবিধা" style="min-height:100px"></textarea>
+              <label style="font-weight:800">🖼️ Offer Image / Poster</label>
+              <input id="adminOfferImage" type="file" accept="image/png,image/jpeg,image/webp,image/gif" onchange="previewOfferImage(this)">
+              <div class="offer-upload-note">একটি poster/image দিলে সেটি visitor Offer popup-এ দেখাবে।</div>
+              <img id="adminOfferImagePreview" class="offer-image-preview" alt="Offer preview">
+              <div class="admin-grid-2" style="margin-top:4px">
+                <div><label>⏰ Start Date & Time</label><input id="adminOfferStartAt" type="datetime-local"></div>
+                <div><label>⏳ End Date & Time</label><input id="adminOfferEndAt" type="datetime-local"></div>
+              </div>
+              <select id="adminOfferStatus"><option value="Active">Active</option><option value="Inactive">Inactive</option></select>
+              <div class="admin-btns"><button class="admin-btn" type="submit">💾 Save Offer</button><button class="admin-btn alt" type="button" onclick="clearAdminOfferForm()">Clear</button></div>
+              <div id="adminOfferMsg" class="admin-msg"></div>
+            </form>
+          </div>
+          <div class="admin-box">
+            <h3>🎁 Offer Package List <button class="admin-mini-btn" onclick="loadAdminOffers()">🔄 Refresh</button></h3>
+            <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Poster</th><th>Title</th><th>Package</th><th>Offer Price</th><th>Time</th><th>Status</th><th>Action</th></tr></thead><tbody id="adminOfferTable"><tr><td colspan="7">Loading...</td></tr></tbody></table></div>
           </div>
         </div>
       </div>
@@ -3528,7 +3607,7 @@ function closeAdminPanel(){document.getElementById("adminOverlay").classList.rem
 function adminLogout(){const token=sessionStorage.getItem("mapsAdminToken")||"";if(token){fetch(GOOGLE_SCRIPT_URL+"?"+new URLSearchParams({action:"adminLogout",adminToken:token}).toString()).catch(()=>{});}sessionStorage.removeItem("mapsAdminLoggedIn");sessionStorage.removeItem("mapsAdminToken");sessionStorage.removeItem("mapsAdminUser");closeAdminPanel();}
 
 
-function switchAdminTab(tab,btn){document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={customers:'adminCustomersSection',payments:'adminPaymentsSection',messages:'adminMessagesSection',reports:'adminReportsSection',website:'adminWebsiteSection',admins:'adminAdminsSection',control:'adminControlSection'};const target=document.getElementById(map[tab]||'adminCustomersSection');if(target)target.classList.add('active');if(tab==='customers')loadAdminCustomers();if(tab==='payments')loadAdminPayments();if(tab==='messages')loadAdminMessages();if(tab==='reports')loadAdminReports();if(tab==='website')loadWebsiteSettings();if(tab==='admins')loadAdminUsers();if(tab==='control')loadControlCenter();}
+function switchAdminTab(tab,btn){document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));const map={customers:'adminCustomersSection',payments:'adminPaymentsSection',messages:'adminMessagesSection',reports:'adminReportsSection',website:'adminWebsiteSection',offers:'adminOffersSection',admins:'adminAdminsSection',control:'adminControlSection'};const target=document.getElementById(map[tab]||'adminCustomersSection');if(target)target.classList.add('active');if(tab==='customers')loadAdminCustomers();if(tab==='payments')loadAdminPayments();if(tab==='messages')loadAdminMessages();if(tab==='reports')loadAdminReports();if(tab==='website')loadWebsiteSettings();if(tab==='offers')loadAdminOffers();if(tab==='admins')loadAdminUsers();if(tab==='control')loadControlCenter();}
 function apiGet(params){const q=Object.assign({},params);const token=sessionStorage.getItem('mapsAdminToken')||'';if(token)q.adminToken=token;return fetch(GOOGLE_SCRIPT_URL+'?'+new URLSearchParams(q).toString()).then(r=>r.json());}
 function loadAdminDashboard(){loadAdminCustomers();loadAdminPayments();loadAdminMessages();loadAdminReports();loadWebsiteSettings();const u=JSON.parse(sessionStorage.getItem('mapsAdminUser')||'{}');if(String(u.role||'')==='Super Admin')loadAdminUsers();}
 function loadAdminCustomers(){apiGet({action:'adminCustomers'}).then(data=>{if(!data.success)throw new Error(data.message||'Customer load failed');const customers=data.customers||[];document.getElementById('adminTotalCustomers').innerText=customers.length;document.getElementById('adminActiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()==='active').length;document.getElementById('adminInactiveCustomers').innerText=customers.filter(c=>String(c.status).toLowerCase()!=='active').length;const tbody=document.getElementById('adminCustomerTable');if(!customers.length){tbody.innerHTML='<tr><td colspan="8" style="text-align:center">No customers found.</td></tr>';return;}tbody.innerHTML=customers.map(c=>`<tr><td>${escAdmin(c.customerId)}</td><td>${escAdmin(c.name)}</td><td>${escAdmin(c.phone)}</td><td>${escAdmin(c.package)}</td><td>${escAdmin(c.bill)}</td><td>${escAdmin(c.dueDate)}</td><td>${escAdmin(c.status)}</td><td><button class="admin-mini-btn" onclick='editAdminCustomer(${JSON.stringify(c)})'>Edit</button><button class="admin-mini-btn" onclick="deleteAdminCustomer('${escAttr(c.customerId)}')">Delete</button></td></tr>`).join('');}).catch(err=>{document.getElementById('adminCustomerMsg').style.color='#f87171';document.getElementById('adminCustomerMsg').innerText='⚠️ '+err.message;});}
@@ -3554,6 +3633,23 @@ function readAdminPackages(){return Array.from(document.querySelectorAll('.admin
 function addAdminPackageRow(){window.adminPackages=readAdminPackages();window.adminPackages.push({speed:'',price:'',features:[]});renderAdminPackageEditor();}
 function removeAdminPackageRow(i){window.adminPackages=readAdminPackages();window.adminPackages.splice(i,1);renderAdminPackageEditor();}
 function savePackagesOnly(){window.adminPackages=readAdminPackages();saveWebsiteSettingsCore();}
+function openOffers(){const p=document.getElementById('offersPopup');if(!p)return;p.style.display='flex';loadPublicOffers();}
+function closeOffers(){const p=document.getElementById('offersPopup');if(p)p.style.display='none';}
+function offerStatusClass(status){const s=String(status||'').toLowerCase();if(s==='active')return 'offer-status-glow offer-status-active';if(s==='expired')return 'offer-status-glow offer-status-expired';if(s==='scheduled')return 'offer-status-glow offer-status-scheduled';return 'offer-status-glow';}
+function offerStatusLabel(status){const s=String(status||'').toLowerCase();return s==='active'?'🟢 ACTIVE':s==='expired'?'🔴 EXPIRED':s==='scheduled'?'🟡 SCHEDULED':'⚪ INACTIVE';}
+function offerTimeText(o){const a=o.startAt?new Date(o.startAt).toLocaleString('en-GB',{dateStyle:'medium',timeStyle:'short'}):'';const b=o.endAt?new Date(o.endAt).toLocaleString('en-GB',{dateStyle:'medium',timeStyle:'short'}):'';if(a&&b)return a+' → '+b;if(b)return 'Ends: '+b;if(a)return 'Starts: '+a;return 'No time limit';}
+function openOffers(){const p=document.getElementById('offersPopup');if(!p)return;p.style.display='flex';loadPublicOffers();}
+function closeOffers(){const p=document.getElementById('offersPopup');if(p)p.style.display='none';}
+function loadPublicOffers(){const box=document.getElementById('publicOfferList');if(!box)return;box.innerHTML='<div class="offer-empty">⏳ অফার লোড হচ্ছে...</div>';fetch(GOOGLE_SCRIPT_URL+'?action=offers').then(r=>r.json()).then(data=>{const list=(data.offers||[]).filter(x=>String(x.status||'').toLowerCase()==='active');if(!list.length){box.innerHTML='<div class="offer-empty">এই মুহূর্তে কোনো active offer নেই।</div>';return;}box.innerHTML=list.map(o=>`<div class="offer-card">${o.imageUrl?`<img class="offer-poster" src="${escAttr(o.imageUrl)}" alt="Offer Poster" loading="lazy">`:''}<div class="offer-status-glow offer-status-active">🟢 ACTIVE</div><div class="offer-badge">${escAdmin(o.badge||'SPECIAL OFFER')}</div><div style="font-weight:800;margin-bottom:6px">${escAdmin(o.title||'MAPS INTERNET Offer')}</div><div class="offer-speed">${escAdmin(o.speed)}</div><div class="offer-price">${escAdmin(o.price)}${o.oldPrice?` <span class="offer-old">${escAdmin(o.oldPrice)}</span>`:''}</div><div class="offer-details">${escAdmin(o.details||'')}</div><div style="font-size:11px;color:#94a3b8;margin-top:9px">⏳ ${escAdmin(offerTimeText(o))}</div><button class="offer-apply-btn" onclick="selectOfferPackage('${escAttr(o.speed||'')}');closeOffers();">🎯 অফারটি নিন</button></div>`).join('');}).catch(()=>{box.innerHTML='<div class="offer-empty">⚠️ অফার লোড করা যায়নি।</div>';});}
+function selectOfferPackage(speed){const sel=document.getElementById('mainPackage');if(sel){let found=Array.from(sel.options).find(o=>String(o.value).trim()===String(speed).trim()||String(o.textContent).trim()===String(speed).trim());if(found)sel.value=found.value;}document.getElementById('connection')?.scrollIntoView({behavior:'smooth'});}
+function previewOfferImage(input){const f=input&&input.files&&input.files[0],img=document.getElementById('adminOfferImagePreview');if(!img)return;if(!f){img.style.display='none';img.removeAttribute('src');return;}if(f.size>6*1024*1024){alert('Image size 6MB-এর মধ্যে রাখুন।');input.value='';img.style.display='none';return;}const r=new FileReader();r.onload=()=>{img.src=r.result;img.style.display='block';};r.readAsDataURL(f);}
+function toDatetimeLocal(v){if(!v)return '';const d=new Date(v);if(isNaN(d))return '';const pad=n=>String(n).padStart(2,'0');return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;}
+function loadAdminOffers(){apiGet({action:'adminOffers'}).then(data=>{if(!data.success)throw new Error(data.message||'Offer load failed');const list=data.offers||[];const tb=document.getElementById('adminOfferTable');if(!tb)return;tb.innerHTML=list.length?list.map(o=>`<tr><td>${o.imageUrl?`<img src="${escAttr(o.imageUrl)}" style="width:74px;height:44px;object-fit:cover;border-radius:8px" alt="Poster">`:'—'}</td><td>${escAdmin(o.title)}</td><td>${escAdmin(o.speed)}</td><td>${escAdmin(o.price)}</td><td style="font-size:11px">${escAdmin(offerTimeText(o))}</td><td><span class="${offerStatusClass(o.status)}">${offerStatusLabel(o.status)}</span></td><td><button class="admin-mini-btn" onclick='editAdminOffer(${JSON.stringify(o)})'>Edit</button><button class="admin-mini-btn" onclick="deleteAdminOffer('${escAttr(o.id)}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="7" style="text-align:center">No offers found.</td></tr>';}).catch(err=>{const m=document.getElementById('adminOfferMsg');if(m){m.style.color='#f87171';m.innerText='⚠️ '+err.message;}});}
+function saveAdminOffer(e){e.preventDefault();const msg=document.getElementById('adminOfferMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';const f=document.getElementById('adminOfferImage');const send=async()=>{let imageData='',imageName='',imageMime='';if(f&&f.files&&f.files[0]){const file=f.files[0];if(file.size>6*1024*1024)throw new Error('Image size 6MB-এর মধ্যে রাখুন।');imageData=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(String(r.result||''));r.onerror=reject;r.readAsDataURL(file);});imageName=file.name;imageMime=file.type;}const params=new URLSearchParams({action:'saveOffer',id:document.getElementById('adminOfferId').value.trim(),title:document.getElementById('adminOfferTitle').value.trim(),speed:document.getElementById('adminOfferSpeed').value.trim(),price:document.getElementById('adminOfferPrice').value.trim(),oldPrice:document.getElementById('adminOfferOldPrice').value.trim(),badge:document.getElementById('adminOfferBadge').value.trim(),details:document.getElementById('adminOfferDetails').value.trim(),status:document.getElementById('adminOfferStatus').value,startAt:document.getElementById('adminOfferStartAt').value,endAt:document.getElementById('adminOfferEndAt').value,imageUrl:document.getElementById('adminOfferImageUrl').value.trim(),imageData,imageName,imageMime});const token=sessionStorage.getItem('mapsAdminToken')||'';if(token)params.set('adminToken',token);const res=await fetch(GOOGLE_SCRIPT_URL,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'},body:params.toString()});return res.json();};send().then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=(data.success?'✅ ':'❌ ')+data.message;if(data.success){clearAdminOfferForm();loadAdminOffers();}}).catch(err=>{msg.style.color='#f87171';msg.innerText='⚠️ '+err.message;});}
+function editAdminOffer(o){document.getElementById('adminOfferId').value=o.id||'';document.getElementById('adminOfferTitle').value=o.title||'';document.getElementById('adminOfferSpeed').value=o.speed||'';document.getElementById('adminOfferPrice').value=o.price||'';document.getElementById('adminOfferOldPrice').value=o.oldPrice||'';document.getElementById('adminOfferBadge').value=o.badge||'';document.getElementById('adminOfferDetails').value=o.details||'';document.getElementById('adminOfferStatus').value=o.status==='Inactive'?'Inactive':'Active';document.getElementById('adminOfferStartAt').value=toDatetimeLocal(o.startAt);document.getElementById('adminOfferEndAt').value=toDatetimeLocal(o.endAt);document.getElementById('adminOfferImageUrl').value=o.imageUrl||'';const img=document.getElementById('adminOfferImagePreview');const file=document.getElementById('adminOfferImage');if(file)file.value='';if(img){if(o.imageUrl){img.src=o.imageUrl;img.style.display='block';}else{img.style.display='none';img.removeAttribute('src');}}}
+function clearAdminOfferForm(){['adminOfferId','adminOfferTitle','adminOfferSpeed','adminOfferPrice','adminOfferOldPrice','adminOfferBadge','adminOfferDetails','adminOfferImageUrl','adminOfferStartAt','adminOfferEndAt'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});const file=document.getElementById('adminOfferImage');if(file)file.value='';const img=document.getElementById('adminOfferImagePreview');if(img){img.style.display='none';img.removeAttribute('src');}document.getElementById('adminOfferStatus').value='Active';}
+function deleteAdminOffer(id){if(!confirm('এই offer delete করতে চান?'))return;apiGet({action:'deleteOffer',id:id}).then(data=>{if(data.success)loadAdminOffers();else alert(data.message||'Delete failed');});}
+
 function loadAdminUsers(){apiGet({action:'adminUsers'}).then(data=>{if(!data.success)throw new Error(data.message||'Admin users load failed');const users=data.users||[];document.getElementById('adminUsersTable').innerHTML=users.map(u=>`<tr><td>${escAdmin(u.username)}</td><td>${escAdmin(u.name)}</td><td>${escAdmin(u.role)}</td><td>${escAdmin(u.status)}</td><td><button class="admin-mini-btn" onclick='editAdminUser(${JSON.stringify(u)})'>Edit</button><button class="admin-mini-btn" onclick="deleteAdminUser('${escAttr(u.username)}')">Delete</button></td></tr>`).join('')||'<tr><td colspan="5">No admins found.</td></tr>';}).catch(err=>{document.getElementById('adminUserMsg').style.color='#f87171';document.getElementById('adminUserMsg').innerText='⚠️ '+err.message;});}
 function saveAdminUser(e){e.preventDefault();const msg=document.getElementById('adminUserMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';apiGet({action:'saveAdminUser',username:document.getElementById('adminUserUsername').value.trim(),password:document.getElementById('adminUserPassword').value.trim(),name:document.getElementById('adminUserName').value.trim(),role:document.getElementById('adminUserRole').value,status:document.getElementById('adminUserStatus').value}).then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=(data.success?'✅ ':'❌ ')+data.message;if(data.success){clearAdminUserForm();loadAdminUsers();}}).catch(err=>{msg.style.color='#f87171';msg.innerText='⚠️ '+err.message;});}
 function editAdminUser(u){document.getElementById('adminUserUsername').value=u.username||'';document.getElementById('adminUserPassword').value=u.password||'';document.getElementById('adminUserName').value=u.name||'';document.getElementById('adminUserRole').value=u.role||'Viewer';document.getElementById('adminUserStatus').value=u.status||'Active';}
