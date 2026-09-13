@@ -1530,6 +1530,17 @@ MAPS CONTROL CENTER PRO
 </style>
 <style>
 .sms-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:16px;margin-top:16px}.sms-card{padding:18px;border-radius:18px;background:rgba(255,255,255,.045);border:1px solid rgba(71,231,255,.12)}.sms-card h3{margin:0 0 12px}.sms-card input,.sms-card select,.sms-card textarea{width:100%;box-sizing:border-box;padding:11px 12px;margin-bottom:9px;border-radius:10px;border:1px solid rgba(255,255,255,.13);background:rgba(0,0,0,.25);color:#fff;outline:none}.sms-card textarea{min-height:130px;resize:vertical}.sms-info{font-size:12px;color:#94a3b8;line-height:1.6}.sms-balance{font-size:28px;font-weight:900;color:#47e7ff}.sms-status{min-height:22px;font-size:12px;margin-top:8px}.sms-templates{display:flex;gap:7px;flex-wrap:wrap;margin:7px 0 12px}.sms-template{border:1px solid rgba(71,231,255,.22);background:rgba(255,255,255,.05);color:#fff;border-radius:8px;padding:7px 9px;cursor:pointer;font-size:11px}.sms-table{max-height:360px;overflow:auto}.sms-table table{width:100%;border-collapse:collapse;font-size:11px}.sms-table th,.sms-table td{padding:9px 7px;border-bottom:1px solid rgba(255,255,255,.08);text-align:left;vertical-align:top}.sms-table th{color:#94a3b8}.sms-count{font-size:11px;color:#94a3b8;margin:-3px 0 9px}.sms-full{grid-column:1/-1}@media(max-width:900px){.sms-grid{grid-template-columns:1fr}.sms-full{grid-column:auto}}
+
+/* =========================
+ANIMATION CONTROL
+========================= */
+body.maps-anim-off *, body.maps-anim-off *::before, body.maps-anim-off *::after{animation-play-state:paused !important;}
+body.maps-anim-router-off .router-scene *, body.maps-anim-router-off .router-scene *::before, body.maps-anim-router-off .router-scene *::after{animation:none !important;}
+body.maps-anim-orbit-off .orbit, body.maps-anim-orbit-off .orbit *{animation:none !important;}
+body.maps-anim-glow-off .scene-glow, body.maps-anim-glow-off .city-glow, body.maps-anim-glow-off .wifi-symbol, body.maps-anim-glow-off .network-dot{box-shadow:none !important;filter:none !important;}
+
+body:not(.maps-anim-router-off) .router-scene .wifi-arc, body:not(.maps-anim-router-off) .router-scene .wifi-dot{animation-duration:calc(2s * var(--maps-animation-speed,1)) !important;}
+body:not(.maps-anim-orbit-off) .orbit{animation-duration:calc(10s * var(--maps-animation-speed,1)) !important;}
 </style>
 </head>
 
@@ -1557,11 +1568,11 @@ NAVBAR
 
 <a id="navConnectionBtn" href="#connection" onclick="toggleMenu()">নতুন সংযোগ</a>
 
-<a href="#" onclick="openBkash();toggleMenu();return false;">
+<a id="navBkashLink" href="#" onclick="openBkash();toggleMenu();return false;">
 💳 bKash Payment
 </a>
 
-<a href="#" onclick="openLogin();toggleMenu();return false;">
+<a id="navCustomerLoginLink" href="#" onclick="openLogin();toggleMenu();return false;">
 👤 Customer Login
 </a>
 
@@ -1570,13 +1581,14 @@ NAVBAR
 <div class="nav-buttons">
 
 <a
+id="navFtpLink"
 class="btn"
 href="http://192.168.100.100/"
 target="_blank">
 🎬 FTP Server
 </a>
 
-<a class="btn" href="#connection">
+<a id="navConnectionBtn" class="btn" href="#connection">
 সংযোগ নিন
 </a>
 
@@ -2213,6 +2225,20 @@ style="text-align:center;margin-top:15px;">
           </div>
 
           <div class="cc-card">
+            <h4>🎬 Website Animation Control</h4>
+            <p>Website-এর animation আলাদা আলাদা ON/OFF এবং speed control করুন। Save করলে live website-এ apply হবে।</p>
+            <div class="cc-row"><label>✨ Master Animation</label><label class="cc-switch"><input id="ccAnimMaster" type="checkbox" checked><span class="cc-slider"></span></label></div>
+            <div class="cc-row"><label>🌌 Particles / Network</label><label class="cc-switch"><input id="ccAnimParticles" type="checkbox" checked><span class="cc-slider"></span></label></div>
+            <div class="cc-row"><label>📡 Router / WiFi</label><label class="cc-switch"><input id="ccAnimRouter" type="checkbox" checked><span class="cc-slider"></span></label></div>
+            <div class="cc-row"><label>🌀 Orbit Rings</label><label class="cc-switch"><input id="ccAnimOrbit" type="checkbox" checked><span class="cc-slider"></span></label></div>
+            <div class="cc-row"><label>💫 Glow Effects</label><label class="cc-switch"><input id="ccAnimGlow" type="checkbox" checked><span class="cc-slider"></span></label></div>
+            <div class="cc-row"><label>🖱️ Mouse Interaction</label><label class="cc-switch"><input id="ccAnimMouse" type="checkbox" checked><span class="cc-slider"></span></label></div>
+            <select id="ccAnimSpeed" class="cc-input"><option value="0.5">0.5× Slow</option><option value="1" selected>1× Normal</option><option value="1.5">1.5× Fast</option><option value="2">2× Very Fast</option></select>
+            <div class="cc-actions"><button class="admin-btn alt" type="button" onclick="ccPreviewAnimations()">👁 Preview</button><button class="admin-btn" type="button" onclick="ccSaveAnimationControls()">💾 Save Animation</button><button class="admin-btn alt" type="button" onclick="ccResetAnimations()">↩ Reset</button></div>
+            <div id="ccAnimationMsg" class="admin-msg"></div>
+          </div>
+
+          <div class="cc-card">
             <h4>🎨 Live Website Designer</h4>
             <p>Website-এর text, color, logo ও visual settings এখান থেকেই control করুন। বিস্তারিত text/package edit-এর জন্য Website Edit tab-ও থাকবে।</p>
             <input class="cc-input" id="ccLogoText" placeholder="Logo Text (e.g. MAPS INTERNET)">
@@ -2669,7 +2695,7 @@ onclick="closeSupportPanel();openBkash();">
 FLOATING SERVICE BUTTON
 ================================================= -->
 
-<div class="service-float">
+<div id="serviceFloat" class="service-float">
 
 <button
 class="service-main-btn"
@@ -2756,8 +2782,7 @@ this.baseSize;
 
 update(){
 
-this.x += this.vx;
-this.y += this.vy;
+if(window.mapsAnimationControls.master!==false && window.mapsAnimationControls.particles!==false){const sp=Number(window.mapsAnimationControls.speed)||1;this.x += this.vx*sp;this.y += this.vy*sp;}
 
 if(
 this.x < 0 ||
@@ -2773,10 +2798,7 @@ this.y > canvas.height
 this.vy = -this.vy;
 }
 
-if(
-mouse.x !== null &&
-mouse.y !== null
-){
+if(window.mapsAnimationControls.mouse!==false && window.mapsAnimationControls.master!==false && mouse.x !== null && mouse.y !== null){
 
 let dx =
 mouse.x - this.x;
@@ -2822,10 +2844,7 @@ draw(){
 
 let isTouching = false;
 
-if(
-mouse.x !== null &&
-mouse.y !== null
-){
+if(window.mapsAnimationControls.mouse!==false && window.mapsAnimationControls.master!==false && mouse.x !== null && mouse.y !== null){
 
 let dx =
 mouse.x - this.x;
@@ -2974,10 +2993,7 @@ ctx.stroke();
 }
 
 
-if(
-mouse.x !== null &&
-mouse.y !== null
-){
+if(window.mapsAnimationControls.mouse!==false && window.mapsAnimationControls.master!==false && mouse.x !== null && mouse.y !== null){
 
 let mdx =
 particlesArray[i].x -
@@ -3291,28 +3307,29 @@ function applyEventMode(settings){
   if(mode==='emergency')document.body.classList.add('maps-event-emergency');
 }
 
+let visitorNoticeTimer=null;
 function applyVisitorNotice(settings){
-  const enabled = settings && settings.noticeEnabled !== undefined && settings.noticeEnabled !== null ? String(settings.noticeEnabled) === 'true' : true;
+  const hasSetting = settings && settings.noticeEnabled !== undefined && settings.noticeEnabled !== null;
+  const enabled = hasSetting ? (settings.noticeEnabled === true || String(settings.noticeEnabled).toLowerCase() === 'true' || String(settings.noticeEnabled) === '1') : false;
   const icon = settings && settings.noticeIcon ? String(settings.noticeIcon) : '📢';
   const title = settings && settings.noticeTitle ? String(settings.noticeTitle) : 'গুরুত্বপূর্ণ নোটিশ';
   const message = settings && settings.noticeMessage ? String(settings.noticeMessage) : 'MAPS INTERNET-এর পক্ষ থেকে গুরুত্বপূর্ণ ঘোষণা।';
   const button = settings && settings.noticeButton ? String(settings.noticeButton) : 'ঠিক আছে';
   const iconEl=document.getElementById('visitorNoticeIcon'), titleEl=document.getElementById('visitorNoticeTitle'), msgEl=document.getElementById('visitorNoticeMessage'), btnEl=document.getElementById('visitorNoticeButton');
   if(iconEl) iconEl.textContent=icon; if(titleEl) titleEl.textContent=title; if(msgEl) msgEl.textContent=message; if(btnEl) btnEl.textContent=button;
-  if(enabled) setTimeout(showVisitorNotice,700); else closeVisitorNotice();
+  if(visitorNoticeTimer){clearTimeout(visitorNoticeTimer);visitorNoticeTimer=null;}
+  if(enabled){visitorNoticeTimer=setTimeout(()=>{visitorNoticeTimer=null;showVisitorNotice();},700);}else closeVisitorNotice();
 }
 function showVisitorNotice(){const el=document.getElementById('visitorNoticePopup');if(el){el.classList.add('show');el.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}}
-function closeVisitorNotice(){const el=document.getElementById('visitorNoticePopup');if(el){el.classList.remove('show');el.setAttribute('aria-hidden','true');document.body.style.overflow='';}}
+function closeVisitorNotice(){if(visitorNoticeTimer){clearTimeout(visitorNoticeTimer);visitorNoticeTimer=null;}const el=document.getElementById('visitorNoticePopup');if(el){el.classList.remove('show');el.setAttribute('aria-hidden','true');}if(!document.querySelector('.popup-overlay.show,.support-panel.active,.admin-overlay.active'))document.body.style.overflow='';}
 function loadSiteSettings(){
-  // Show the notice by default immediately; server settings will override it.
-  // This keeps the popup working even if the Google Apps Script request is slow/blocked.
-  applyVisitorNotice({noticeEnabled:true});
+  // Never show the notice before server settings are loaded. If the saved value is OFF, it stays OFF.
+  applyVisitorNotice({noticeEnabled:false});
   apiGet({action:'siteSettings'}).then(data=>{
-    if(data && data.success){
-      applySiteSettings(data.settings||{});
-    }
+    if(data && data.success){applySiteSettings(data.settings||{});}
   }).catch(()=>{
-    // Keep the default popup visible if the settings request fails.
+    // On API failure, keep notice OFF rather than unexpectedly showing it.
+    applyVisitorNotice({noticeEnabled:false});
   });
 }
 /* =================================================
@@ -3494,16 +3511,38 @@ window.ccButtons=[];window.ccCurrentSettings={};
 function setCC(id,v){const e=document.getElementById(id);if(e&&v!==undefined&&v!==null)e.value=String(v);}
 function ccBool(id,v){const e=document.getElementById(id);if(e)e.checked=String(v)!=='false'&&v!==false;}
 function controlSettingsFromForm(){return {bkash:!!document.getElementById('ccBkash')?.checked,customerLogin:!!document.getElementById('ccCustomerLogin')?.checked,ftp:!!document.getElementById('ccFtp')?.checked,connection:!!document.getElementById('ccConnection')?.checked,support:!!document.getElementById('ccSupport')?.checked,notice:!!document.getElementById('ccNotice')?.checked};}
-function applyControlSettings(settings){const c=settings?.featureControls||{};ccBool('ccBkash',c.bkash===undefined?true:c.bkash);ccBool('ccCustomerLogin',c.customerLogin===undefined?true:c.customerLogin);ccBool('ccFtp',c.ftp===undefined?true:c.ftp);ccBool('ccConnection',c.connection===undefined?true:c.connection);ccBool('ccSupport',c.support===undefined?true:c.support);ccBool('ccNotice',c.notice===undefined?(settings.noticeEnabled===undefined?true:settings.noticeEnabled):c.notice);
+function applyControlSettings(settings){
+ const c=settings?.featureControls||{};
+ const state={bkash:c.bkash===undefined?true:c.bkash===true||String(c.bkash)==='true',customerLogin:c.customerLogin===undefined?true:c.customerLogin===true||String(c.customerLogin)==='true',ftp:c.ftp===undefined?true:c.ftp===true||String(c.ftp)==='true',connection:c.connection===undefined?true:c.connection===true||String(c.connection)==='true',support:c.support===undefined?true:c.support===true||String(c.support)==='true',notice:c.notice===undefined?(settings.noticeEnabled===undefined?false:(settings.noticeEnabled===true||String(settings.noticeEnabled)==='true')):(c.notice===true||String(c.notice)==='true')};
+ ccBool('ccBkash',state.bkash);ccBool('ccCustomerLogin',state.customerLogin);ccBool('ccFtp',state.ftp);ccBool('ccConnection',state.connection);ccBool('ccSupport',state.support);ccBool('ccNotice',state.notice);
  const hide=(id,on)=>{const e=document.getElementById(id);if(e)e.style.display=on?'':'none';};
- hide('navBkashLink',c.bkash!==false);hide('navCustomerLoginLink',c.customerLogin!==false);hide('navFtpLink',c.ftp!==false);hide('navConnectionBtn',c.connection!==false);hide('serviceFloat',c.support!==false);
+ hide('navBkashLink',state.bkash);hide('navCustomerLoginLink',state.customerLogin);hide('navFtpLink',state.ftp);hide('navConnectionBtn',state.connection);hide('serviceFloat',state.support);
+ hide('bkashPopup',state.bkash);hide('loginPopup',state.customerLogin);hide('connection',state.connection);hide('supportPanel',state.support);hide('supportOverlay',state.support);
+ applyVisitorNotice(Object.assign({},settings,{noticeEnabled:state.notice}));
  if(settings.logoText){const l=document.getElementById('siteLogoText');if(l)l.innerHTML='<b>'+escapeSite(settings.logoText.split(' ')[0]||'MAPS')+'</b> '+escapeSite(settings.logoText.split(' ').slice(1).join(' ')||'INTERNET');}
- if(settings.bgUrl){document.querySelector('.hero')?.style.setProperty('background-image',`linear-gradient(rgba(4,7,20,.72),rgba(4,7,20,.88)),url("${String(settings.bgUrl).replace(/"/g,'')} ")`);document.querySelector('.hero')?.style.setProperty('background-size','cover');document.querySelector('.hero')?.style.setProperty('background-position','center');}
+ if(settings.bgUrl){document.querySelector('.hero')?.style.setProperty('background-image',`linear-gradient(rgba(4,7,20,.72),rgba(4,7,20,.88)),url("${String(settings.bgUrl).replace(/"/g,'')}")`);document.querySelector('.hero')?.style.setProperty('background-size','cover');document.querySelector('.hero')?.style.setProperty('background-position','center');}
  if(settings.bannerText){let b=document.getElementById('ccLiveBanner');if(!b){b=document.createElement('div');b.id='ccLiveBanner';b.style.cssText='position:fixed;top:0;left:0;right:0;z-index:9998;text-align:center;padding:7px 12px;background:linear-gradient(90deg,#111827,#0b3b55,#111827);color:#fff;font-weight:800;font-size:12px;box-shadow:0 4px 18px rgba(0,0,0,.25)';document.body.appendChild(b);}b.textContent=settings.bannerText;}else document.getElementById('ccLiveBanner')?.remove();
- renderCustomButtons(settings.customButtons||window.ccButtons||[]);}
-function ccSaveFeatures(){const settings=controlSettingsFromForm();settings.notice=!!document.getElementById('ccNotice')?.checked;ccApiSave({featureControls:settings,noticeEnabled:settings.notice}).then(()=>{applyControlSettings({featureControls:settings,noticeEnabled:settings.notice});ccMsg('ccFeatureMsg','✅ Features saved','#4ade80');});}
+ renderCustomButtons(settings.customButtons||window.ccButtons||[]);
+ applyAnimationControls(settings.animationControls||{});
+}
+
+window.mapsAnimationControls={master:true,particles:true,router:true,orbit:true,glow:true,mouse:true,speed:1};
+function animationControlsFromForm(){return {master:!!document.getElementById('ccAnimMaster')?.checked,particles:!!document.getElementById('ccAnimParticles')?.checked,router:!!document.getElementById('ccAnimRouter')?.checked,orbit:!!document.getElementById('ccAnimOrbit')?.checked,glow:!!document.getElementById('ccAnimGlow')?.checked,mouse:!!document.getElementById('ccAnimMouse')?.checked,speed:Number(document.getElementById('ccAnimSpeed')?.value||1)};}
+function applyAnimationControls(v){
+ const a=Object.assign({master:true,particles:true,router:true,orbit:true,glow:true,mouse:true,speed:1},v||{});window.mapsAnimationControls=a;
+ const root=document.documentElement, body=document.body;
+ body.classList.toggle('maps-anim-off',a.master===false);body.classList.toggle('maps-anim-router-off',a.master===false||a.router===false);body.classList.toggle('maps-anim-orbit-off',a.master===false||a.orbit===false);body.classList.toggle('maps-anim-glow-off',a.master===false||a.glow===false);
+ root.style.setProperty('--maps-animation-speed',String(Math.max(.25,Number(a.speed)||1)));
+ const canvasEl=document.getElementById('bgCanvas');if(canvasEl)canvasEl.style.display=(a.master===false||a.particles===false)?'none':'';
+ const ids={ccAnimMaster:a.master,ccAnimParticles:a.particles,ccAnimRouter:a.router,ccAnimOrbit:a.orbit,ccAnimGlow:a.glow,ccAnimMouse:a.mouse};Object.keys(ids).forEach(id=>{const e=document.getElementById(id);if(e)e.checked=!!ids[id];});const sp=document.getElementById('ccAnimSpeed');if(sp)sp.value=String(a.speed||1);
+}
+function ccSaveAnimationControls(){const a=animationControlsFromForm();ccApiSave({animationControls:a}).then(()=>{applyAnimationControls(a);ccMsg('ccAnimationMsg','✅ Animation settings saved','#4ade80');}).catch(e=>ccMsg('ccAnimationMsg','❌ '+e.message,'#f87171'));}
+function ccPreviewAnimations(){const a=animationControlsFromForm();applyAnimationControls(a);ccMsg('ccAnimationMsg','👁 Preview applied','#38bdf8');}
+function ccResetAnimations(){const a={master:true,particles:true,router:true,orbit:true,glow:true,mouse:true,speed:1};applyAnimationControls(a);ccMsg('ccAnimationMsg','↩ Animation reset','#38bdf8');}
+
+function ccSaveFeatures(){const settings=controlSettingsFromForm();settings.notice=!!document.getElementById('ccNotice')?.checked;ccApiSave({featureControls:settings,noticeEnabled:settings.notice}).then(()=>{applyControlSettings({featureControls:settings,noticeEnabled:settings.notice});ccMsg('ccFeatureMsg','✅ Features saved','#4ade80');}).catch(e=>ccMsg('ccFeatureMsg','❌ '+e.message,'#f87171'));}
 function ccApiSave(partial){const base=Object.assign({},window.ccCurrentSettings||{},partial);if(!base.packages)base.packages=window.adminPackages||packages;return apiGet({action:'saveSiteSettings',settings:JSON.stringify(base)}).then(d=>{if(!d.success)throw new Error(d.message||'Save failed');window.ccCurrentSettings=base;return d;});}
-function loadControlCenter(){apiGet({action:'siteSettings'}).then(d=>{const s=d.settings||d.data||{};window.ccCurrentSettings=s;setCC('ccLogoText',s.logoText||'MAPS INTERNET');setCC('ccHeroTag',s.heroTag||'');setCC('ccHeroTitle',s.heroHeading1||'');setCC('ccHeroSub',s.heroHeading2||'');setCC('ccHeroDesc',s.heroDesc||'');setCC('ccBgUrl',s.bgUrl||'');setCC('ccBannerText',s.bannerText||'');setCC('ccLogoUrl',s.logoUrl||'');setCC('ccHeroImageUrl',s.heroImageUrl||'');setCC('ccBannerImageUrl',s.bannerImageUrl||'');applyControlSettings(s);window.ccButtons=Array.isArray(s.customButtons)?s.customButtons:[];renderCCButtons();renderCCVersions();renderScheduleStatus();}).catch(()=>{applyControlSettings({});renderCCButtons();renderCCVersions();renderScheduleStatus();});}
+function loadControlCenter(){apiGet({action:'siteSettings'}).then(d=>{const s=d.settings||d.data||{};window.ccCurrentSettings=s;setCC('ccLogoText',s.logoText||'MAPS INTERNET');setCC('ccHeroTag',s.heroTag||'');setCC('ccHeroTitle',s.heroHeading1||'');setCC('ccHeroSub',s.heroHeading2||'');setCC('ccHeroDesc',s.heroDesc||'');setCC('ccBgUrl',s.bgUrl||'');setCC('ccBannerText',s.bannerText||'');setCC('ccLogoUrl',s.logoUrl||'');setCC('ccHeroImageUrl',s.heroImageUrl||'');setCC('ccBannerImageUrl',s.bannerImageUrl||'');applyControlSettings(s);applyAnimationControls(s.animationControls||{});window.ccButtons=Array.isArray(s.customButtons)?s.customButtons:[];renderCCButtons();renderCCVersions();renderScheduleStatus();}).catch(()=>{applyControlSettings({});renderCCButtons();renderCCVersions();renderScheduleStatus();});}
 function ccLoadAll(){loadControlCenter();ccMsg('ccFeatureMsg','🔄 Reloaded','#38bdf8');}
 function ccMsg(id,text,color){const e=document.getElementById(id);if(e){e.style.color=color||'#38bdf8';e.innerText=text;setTimeout(()=>{e.innerText='';},3500);}}
 function ccPreviewDesigner(){const title=document.getElementById('ccHeroTitle')?.value||'ইন্টারনেটের নতুন গতি';const sub=document.getElementById('ccHeroSub')?.value||'নতুন অভিজ্ঞতা';const d=document.getElementById('ccDesignerPreview');if(d){d.style.display='block';d.innerHTML='<b style="color:#47e7ff">'+escapeSite(document.getElementById('ccHeroTag')?.value||'NEXT GENERATION BROADBAND')+'</b><h2 style="margin:8px 0">'+escapeSite(title)+'<br><span style="color:#facc15">'+escapeSite(sub)+'</span></h2><p>'+escapeSite(document.getElementById('ccHeroDesc')?.value||'')+'</p>';} }
@@ -3629,7 +3668,7 @@ function deleteAdminMessage(id){if(!confirm('এই message delete করতে 
 function loadAdminReports(){apiGet({action:'adminReports'}).then(data=>{if(!data.success)throw new Error(data.message||'Report failed');const r=data.report||{};document.getElementById('reportRevenue').innerText=String(r.totalRevenue||0)+' টাকা';document.getElementById('reportPaidCount').innerText=r.paidPayments||0;document.getElementById('reportPendingCount').innerText=r.pendingPayments||0;document.getElementById('reportConnections').innerText=r.newConnections||0;document.getElementById('reportTickets').innerText=r.supportTickets||0;document.getElementById('reportUnread').innerText=r.unreadMessages||0;const tb=document.getElementById('adminMonthlyReport');const rows=r.monthly||[];tb.innerHTML=rows.length?rows.map(x=>`<tr><td>${escAdmin(x.month)}</td><td>${escAdmin(x.count)}</td><td>${escAdmin(x.revenue)} টাকা</td></tr>`).join(''):'<tr><td colspan="3">No report data.</td></tr>';}).catch(err=>{console.error(err);});}
 function loadWebsiteSettings(){apiGet({action:'siteSettings'}).then(data=>{if(!data.success)throw new Error(data.message||'Settings load failed');const s=data.settings||{};const ids={heroTag:'siteSettingHeroTag',heroHeading1:'siteSettingHeroHeading1',heroHeading2:'siteSettingHeroHeading2',heroDesc:'siteSettingHeroDesc',packagesTitle:'siteSettingPackagesTitle',noticeEnabled:'siteSettingNoticeEnabled',noticeIcon:'siteSettingNoticeIcon',noticeTitle:'siteSettingNoticeTitle',noticeMessage:'siteSettingNoticeMessage',noticeButton:'siteSettingNoticeButton',packagesSub:'siteSettingPackagesSub',supportOnlineText:'siteSettingSupportOnline',supportTitle:'siteSettingSupportTitle',supportDirectTitle:'siteSettingSupportDirectTitle',serviceButtonText:'siteSettingServiceButton',phone1:'siteSettingPhone1',phone2:'siteSettingPhone2',whatsapp1:'siteSettingWhatsapp1',whatsapp2:'siteSettingWhatsapp2',bkashMerchant:'siteSettingBkash',themeCyan:'siteSettingCyan',themeBlue:'siteSettingBlue',themeViolet:'siteSettingViolet'};Object.keys(ids).forEach(k=>{const el=document.getElementById(ids[k]);if(el){if(s[k]!==undefined&&s[k]!==null)el.value=String(s[k]);else if(k==='noticeEnabled')el.value='true';else el.value='';}});window.adminPackages=s.packages||packages;renderAdminPackageEditor();applySiteSettings(s);}).catch(err=>{document.getElementById('adminWebsiteMsg').style.color='#f87171';document.getElementById('adminWebsiteMsg').innerText='⚠️ '+err.message;});}
 function saveWebsiteSettings(e){e.preventDefault();saveWebsiteSettingsCore();}
-function collectWebsiteSettings(){return {heroTag:document.getElementById('siteSettingHeroTag').value.trim(),heroHeading1:document.getElementById('siteSettingHeroHeading1').value.trim(),heroHeading2:document.getElementById('siteSettingHeroHeading2').value.trim(),heroDesc:document.getElementById('siteSettingHeroDesc').value.trim(),packagesTitle:document.getElementById('siteSettingPackagesTitle').value.trim(),packagesSub:document.getElementById('siteSettingPackagesSub').value.trim(),supportOnlineText:document.getElementById('siteSettingSupportOnline').value.trim(),supportTitle:document.getElementById('siteSettingSupportTitle').value.trim(),supportDirectTitle:document.getElementById('siteSettingSupportDirectTitle').value.trim(),serviceButtonText:document.getElementById('siteSettingServiceButton').value.trim(),phone1:document.getElementById('siteSettingPhone1').value.trim(),phone2:document.getElementById('siteSettingPhone2').value.trim(),whatsapp1:document.getElementById('siteSettingWhatsapp1').value.trim(),whatsapp2:document.getElementById('siteSettingWhatsapp2').value.trim(),bkashMerchant:document.getElementById('siteSettingBkash').value.trim(),themeCyan:document.getElementById('siteSettingCyan').value.trim(),themeBlue:document.getElementById('siteSettingBlue').value.trim(),themeViolet:document.getElementById('siteSettingViolet').value.trim(),noticeEnabled:document.getElementById('siteSettingNoticeEnabled').value==='true',noticeIcon:document.getElementById('siteSettingNoticeIcon').value.trim(),noticeTitle:document.getElementById('siteSettingNoticeTitle').value.trim(),noticeMessage:document.getElementById('siteSettingNoticeMessage').value.trim(),noticeButton:document.getElementById('siteSettingNoticeButton').value.trim(),featureControls:controlSettingsFromForm(),logoText:document.getElementById('ccLogoText')?.value.trim()||'',bgUrl:document.getElementById('ccBgUrl')?.value.trim()||'',bannerText:document.getElementById('ccBannerText')?.value.trim()||'',logoUrl:document.getElementById('ccLogoUrl')?.value.trim()||'',heroImageUrl:document.getElementById('ccHeroImageUrl')?.value.trim()||'',bannerImageUrl:document.getElementById('ccBannerImageUrl')?.value.trim()||'',customButtons:window.ccButtons||[],scheduledControl:JSON.parse(localStorage.getItem('mapsCCSchedule')||'null')};}
+function collectWebsiteSettings(){return {heroTag:document.getElementById('siteSettingHeroTag').value.trim(),heroHeading1:document.getElementById('siteSettingHeroHeading1').value.trim(),heroHeading2:document.getElementById('siteSettingHeroHeading2').value.trim(),heroDesc:document.getElementById('siteSettingHeroDesc').value.trim(),packagesTitle:document.getElementById('siteSettingPackagesTitle').value.trim(),packagesSub:document.getElementById('siteSettingPackagesSub').value.trim(),supportOnlineText:document.getElementById('siteSettingSupportOnline').value.trim(),supportTitle:document.getElementById('siteSettingSupportTitle').value.trim(),supportDirectTitle:document.getElementById('siteSettingSupportDirectTitle').value.trim(),serviceButtonText:document.getElementById('siteSettingServiceButton').value.trim(),phone1:document.getElementById('siteSettingPhone1').value.trim(),phone2:document.getElementById('siteSettingPhone2').value.trim(),whatsapp1:document.getElementById('siteSettingWhatsapp1').value.trim(),whatsapp2:document.getElementById('siteSettingWhatsapp2').value.trim(),bkashMerchant:document.getElementById('siteSettingBkash').value.trim(),themeCyan:document.getElementById('siteSettingCyan').value.trim(),themeBlue:document.getElementById('siteSettingBlue').value.trim(),themeViolet:document.getElementById('siteSettingViolet').value.trim(),noticeEnabled:document.getElementById('siteSettingNoticeEnabled').value==='true',noticeIcon:document.getElementById('siteSettingNoticeIcon').value.trim(),noticeTitle:document.getElementById('siteSettingNoticeTitle').value.trim(),noticeMessage:document.getElementById('siteSettingNoticeMessage').value.trim(),noticeButton:document.getElementById('siteSettingNoticeButton').value.trim(),featureControls:controlSettingsFromForm(),logoText:document.getElementById('ccLogoText')?.value.trim()||'',bgUrl:document.getElementById('ccBgUrl')?.value.trim()||'',bannerText:document.getElementById('ccBannerText')?.value.trim()||'',logoUrl:document.getElementById('ccLogoUrl')?.value.trim()||'',heroImageUrl:document.getElementById('ccHeroImageUrl')?.value.trim()||'',bannerImageUrl:document.getElementById('ccBannerImageUrl')?.value.trim()||'',customButtons:window.ccButtons||[],scheduledControl:JSON.parse(localStorage.getItem('mapsCCSchedule')||'null'),animationControls:animationControlsFromForm()};}
 function saveWebsiteSettingsCore(){const msg=document.getElementById('adminWebsiteMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';const settings=collectWebsiteSettings();settings.packages=readAdminPackages();window.adminPackages=settings.packages;apiGet({action:'saveSiteSettings',settings:JSON.stringify(settings)}).then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=(data.success?'✅ ':'❌ ')+data.message;if(data.success){applySiteSettings(settings);renderAdminPackageEditor();}}).catch(err=>{msg.style.color='#f87171';msg.innerText='⚠️ '+err.message;});}
 function renderAdminPackageEditor(){const box=document.getElementById('adminPackageEditor');const list=window.adminPackages||packages;box.innerHTML=list.map((p,i)=>`<div class="admin-package-row" data-i="${i}"><input data-field="speed" value="${escAdmin(p.speed)}" placeholder="Speed"><input data-field="price" value="${escAdmin(p.price)}" placeholder="Price"><input data-field="features" value="${escAdmin((p.features||[]).join(' | '))}" placeholder="Feature 1 | Feature 2 | Feature 3"><button type="button" onclick="removeAdminPackageRow(${i})">✕</button></div>`).join('');}
 function readAdminPackages(){return Array.from(document.querySelectorAll('.admin-package-row')).map(row=>{const get=f=>row.querySelector(`[data-field="${f}"]`).value.trim();return {speed:get('speed'),price:get('price'),features:get('features').split('|').map(x=>x.trim()).filter(Boolean)};}).filter(p=>p.speed&&p.price);}
