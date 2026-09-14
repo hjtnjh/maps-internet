@@ -3728,6 +3728,40 @@ function editAdminOffer(o){document.getElementById('adminOfferId').value=o.id||'
 function clearAdminOfferForm(){['adminOfferId','adminOfferTitle','adminOfferSpeed','adminOfferPrice','adminOfferOldPrice','adminOfferBadge','adminOfferDetails','adminOfferImageUrl','adminOfferStartAt','adminOfferEndAt'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});const file=document.getElementById('adminOfferImage');if(file)file.value='';const img=document.getElementById('adminOfferImagePreview');if(img){img.style.display='none';img.removeAttribute('src');}document.getElementById('adminOfferStatus').value='Active';}
 function deleteAdminOffer(id){if(!confirm('এই offer delete করতে চান?'))return;apiGet({action:'deleteOffer',id:id}).then(data=>{if(data.success)loadAdminOffers();else alert(data.message||'Delete failed');});}
 
+let softwareLoading=false, softwareHasMore=false, softwarePage=0, softwareRequestId=0;
+let softwareItemsCache=[];
+function getInstantSoftwareFallback(q){
+  const term=String(q||'').trim().toLowerCase();
+  const items=[
+    ['VLC media player','PC','Media Player','https://www.videolan.org/vlc/'],['7-Zip','PC','Utilities','https://www.7-zip.org/'],['Mozilla Firefox','PC','Web Browser','https://www.mozilla.org/firefox/new/'],['LibreOffice','PC','Office','https://www.libreoffice.org/download/download/'],['GIMP','PC','Graphics','https://www.gimp.org/downloads/'],['OBS Studio','PC','Streaming','https://obsproject.com/download'],['Audacity','PC','Audio','https://www.audacityteam.org/download/'],['Blender','PC','3D / Creative','https://www.blender.org/download/'],['Krita','PC','Graphics','https://krita.org/en/download/'],['Visual Studio Code','PC','Developer Tools','https://code.visualstudio.com/download'],['Git','PC','Developer Tools','https://git-scm.com/downloads'],['HandBrake','PC','Video','https://handbrake.fr/downloads.php'],['Godot Engine','PC','Game Development','https://godotengine.org/download/'],['SuperTuxKart','Game','Racing Game','https://supertuxkart.net/Download'],['Luanti (Minetest)','Game','Sandbox Game','https://www.luanti.org/downloads/'],['The Battle for Wesnoth','Game','Strategy Game','https://www.wesnoth.org/downloads/'],['F-Droid','Android','App Store','https://f-droid.org/'],['Termux','Android','Developer Tools','https://f-droid.org/packages/com.termux/'],['KDE Connect','Android','Connectivity','https://f-droid.org/packages/org.kde.kdeconnect_tp/'],['AntennaPod','Android','Podcast','https://f-droid.org/packages/de.danoeh.antennapod/'],['Organic Maps','Android','Maps','https://f-droid.org/packages/app.organicmaps/'],['NewPipe','Android','Media','https://f-droid.org/packages/org.schabi.newpipe/']
+  ].map((x,i)=>({id:'FAST-'+i,name:x[0],platform:x[1],category:x[2],downloadUrl:x[3],homepage:x[3],details:'Official / Free source',source:'Official'}));
+  return term?items.filter(x=>(x.name+' '+x.category+' '+x.platform).toLowerCase().includes(term)):items;
+}
+async function loadPublicSoftware(type='All',append=false){
+  const q=(document.getElementById('softwareSearch')?.value||'').trim();
+  if(!append){ softwarePage=0; softwareHasMore=false; softwareItemsCache=[]; softwareRequestId++; }
+  const rid=softwareRequestId;
+  if(!append){ const instant=getInstantSoftwareFallback(q); softwareItemsCache=instant; renderSoftwareCards(instant); const more=document.getElementById('softwareMoreBox'); if(more)more.innerHTML='<div style="opacity:.75;font-size:12px">⚡ Fast preview দেখানো হয়েছে — live server catalog background-এ loading হচ্ছে...</div>'; }
+  if(softwareLoading)return;
+  softwareLoading=true;
+  try{
+    const page=append?softwarePage+1:0;
+    const url=GOOGLE_SCRIPT_URL+'?action=software&platform='+encodeURIComponent(type||'All')+'&q='+encodeURIComponent(q)+'&page='+page+'&limit=60&_='+Date.now();
+    const r=await fetch(url,{method:'GET',cache:'no-store'});
+    const text=await r.text(); let data; try{data=JSON.parse(text);}catch(e){throw new Error('Server JSON পাওয়া যায়নি');}
+    if(rid!==softwareRequestId)return;
+    const live=Array.isArray(data.items)?data.items:[];
+    if(append) softwareItemsCache=softwareItemsCache.concat(live); else if(live.length) softwareItemsCache=live;
+    // remove duplicates
+    const seen=new Set(); softwareItemsCache=softwareItemsCache.filter(x=>{const k=String(x.id||x.name||'').toLowerCase();if(!k||seen.has(k))return false;seen.add(k);return true;});
+    softwarePage=page; softwareHasMore=!!data.hasMore;
+    renderSoftwareCards(softwareItemsCache);
+    const more=document.getElementById('softwareMoreBox'); if(more)more.innerHTML=softwareHasMore?'<button type="button" class="software-download" style="display:inline-block;border:0;cursor:pointer" onclick="loadPublicSoftware(softwareCurrentFilter||\'All\',true)">⬇️ Load More</button>':'<div style="opacity:.65;font-size:12px">✅ Live catalog loaded</div>';
+  }catch(err){
+    if(rid!==softwareRequestId)return;
+    const more=document.getElementById('softwareMoreBox'); if(more)more.innerHTML='<div style="color:#fbbf24;font-size:12px">⚠️ Live catalog slow/unavailable — fast preview চালু আছে।</div>';
+  }finally{softwareLoading=false;}
+}
 function openSoftware(){const p=document.getElementById('softwarePopup');if(!p)return;p.style.display='flex';document.getElementById('softwareLoginBox').style.display='none';document.getElementById('softwareLibraryBox').style.display='block';document.getElementById('softwareWelcome')?.remove();loadPublicSoftware('All');}
 function closeSoftware(){const p=document.getElementById('softwarePopup');if(p)p.style.display='none';}
 function softwareLogout(){}
