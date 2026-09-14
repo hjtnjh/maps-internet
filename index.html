@@ -3082,7 +3082,7 @@ animateParticles();
 GOOGLE SCRIPT
 ================================================= */
 
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyBtYHSC7NftfF0p9gjDDbIYtmehXSnyobCzAwgZ9wrwa-JdqERMYfWcnWHFhh226AGHQ/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxp-pXzitadyuyf3lZPFbxnO5C7OEmm5lTeGqyyYSuytILWKI4C21j9QcCtVXQ3nzCyGQ/exec";
 
 
 /* =================================================
@@ -3748,10 +3748,22 @@ function loadPublicSoftware(type){
   const box=document.getElementById('softwareList');
   if(box)box.innerHTML='<div class="software-empty">⏳ Live Apps & Games catalog খোঁজা হচ্ছে...</div>';
   const q=document.getElementById('softwareSearch')?.value?.trim()||'';
-  fetch(GOOGLE_SCRIPT_URL+'?action=software&platform=All&q='+encodeURIComponent(q)+'&_='+Date.now())
-    .then(r=>r.json())
-    .then(data=>{if(!data.success)throw new Error(data.message||'Software load failed');renderSoftwareCards(data.items||[]);})
-    .catch(e=>{if(box)box.innerHTML='<div class="software-empty">⚠️ Live catalog এখন response দিচ্ছে না। আবার Search করুন।</div>';console.error(e);});
+  fetch(GOOGLE_SCRIPT_URL+'?action=software&platform=All&q='+encodeURIComponent(q)+'&_='+Date.now(),{method:'GET',cache:'no-store'})
+    .then(async r=>{
+      const text=await r.text();
+      if(!r.ok) throw new Error('HTTP '+r.status);
+      let data;
+      try{ data=JSON.parse(text); }catch(_){ throw new Error('API JSON response পাওয়া যায়নি'); }
+      return data;
+    })
+    .then(data=>{
+      if(!data.success)throw new Error(data.message||'Software load failed');
+      renderSoftwareCards(data.items||[]);
+    })
+    .catch(e=>{
+      if(box)box.innerHTML='<div class="software-empty">⚠️ Live catalog এখন response দিচ্ছে না।<br><small style="opacity:.75">'+escAdmin(e.message||'Unknown API error')+'</small><br><button class="admin-btn" style="margin-top:10px" onclick="loadPublicSoftware(\'All\')">↻ আবার চেষ্টা করুন</button></div>';
+      console.error('Software API:',e);
+    });
 }
 function autoSoftwareSearch(){clearTimeout(softwareSearchTimer);softwareSearchTimer=setTimeout(()=>loadPublicSoftware('All'),450);}
 
