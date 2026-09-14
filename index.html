@@ -1035,6 +1035,12 @@ OFFER POPUP
 /* =========================
 SOFTWARE LIBRARY
 ========================= */
+.software-ftp-card{width:min(1180px,97vw);background:linear-gradient(145deg,#050b18,#09152b 55%,#070b17);border:1px solid rgba(71,231,255,.32);border-radius:18px;padding:22px;box-shadow:0 30px 120px rgba(0,0,0,.8),0 0 50px rgba(71,231,255,.08)}
+.software-ftp-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;padding:4px 4px 18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.software-ftp-kicker{font-size:10px;letter-spacing:2px;color:#47e7ff;font-weight:900;margin-bottom:6px}.software-server-status{font-size:11px;font-weight:900;color:#86efac;border:1px solid rgba(134,239,172,.25);padding:8px 11px;border-radius:999px;background:rgba(34,197,94,.07);white-space:nowrap}
+.software-serverbar{display:flex;justify-content:space-between;align-items:center;padding:10px 13px;margin:14px 0 10px;background:#020711;border:1px solid rgba(71,231,255,.15);border-radius:9px;color:#9fefff;font-family:monospace;font-size:12px}
+.software-toolbar{padding:4px 0}.software-searchbox{display:flex;gap:8px;background:#020711;border:1px solid rgba(71,231,255,.2);border-radius:10px;padding:6px}.software-searchbox span{padding:8px 3px}.software-searchbox input{flex:1;border:0!important;background:transparent!important;outline:none;color:#fff!important;min-width:0}.software-searchbox button{border:0;border-radius:7px;padding:9px 16px;background:linear-gradient(135deg,#47e7ff,#2563eb);color:#04111f;font-weight:900;cursor:pointer}.software-folder-row{display:flex;gap:8px;overflow-x:auto;padding:10px 0 4px}.software-folder{border:1px solid rgba(255,255,255,.1);background:#0a1222;color:#b8c6e3;border-radius:8px;padding:9px 12px;cursor:pointer;font-weight:900;font-size:11px;white-space:nowrap}.software-folder.active,.software-folder:hover{border-color:rgba(71,231,255,.45);background:rgba(71,231,255,.1);color:#67e8f9}.software-path-note{font-size:11px;color:#7f91b4;margin:9px 0 2px}.software-ftp-grid{grid-template-columns:repeat(auto-fill,minmax(245px,1fr));gap:10px;margin-top:13px}.software-ftp-grid .software-card{border-radius:10px;background:linear-gradient(180deg,rgba(12,24,43,.92),rgba(4,10,20,.96));border-color:rgba(71,231,255,.13);padding:12px}.software-ftp-grid .software-card:hover{transform:translateY(-2px);border-color:rgba(71,231,255,.4);box-shadow:0 12px 30px rgba(0,0,0,.35)}
+@media(max-width:600px){.software-ftp-head{display:block}.software-server-status{display:inline-block;margin-top:10px}.software-ftp-card{padding:14px}.software-searchbox button{padding:9px 11px}}
 .software-popup-card{width:min(1050px,96vw);max-height:90vh;overflow:auto;padding:26px;background:linear-gradient(145deg,#07122b,#0b1026);border:1px solid rgba(71,231,255,.28);border-radius:24px;box-shadow:0 30px 100px rgba(0,0,0,.7);position:relative}
 .software-title{text-align:center;font-size:28px;font-weight:900;margin:0 0 7px;color:#fff}.software-sub{text-align:center;color:#94a3b8;margin:0 0 18px}.software-login-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:600px;margin:0 auto}.software-login-grid input{width:100%;box-sizing:border-box;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.25);color:#fff;outline:none}.software-login-actions{display:flex;gap:10px;justify-content:center;margin-top:10px;flex-wrap:wrap}.software-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:15px;margin-top:20px}.software-card{padding:15px;border:1px solid rgba(71,231,255,.18);border-radius:18px;background:rgba(255,255,255,.035);box-shadow:inset 0 1px rgba(255,255,255,.04)}.software-poster{width:100%;height:145px;object-fit:cover;border-radius:12px;display:block;margin-bottom:11px}.software-logo-wrap{height:145px;border-radius:12px;background:linear-gradient(145deg,rgba(71,231,255,.08),rgba(124,58,237,.10));display:flex;align-items:center;justify-content:center;overflow:hidden;margin-bottom:11px}.software-logo-wrap .software-poster{width:110px;height:110px;object-fit:contain;margin:0;border-radius:22px}.software-publisher{font-size:11px;color:#a8b6d6;margin:6px 0}.software-home{display:block;color:#67e8f9;text-decoration:none;font-size:11px;font-weight:800;margin-top:8px}.software-type{display:inline-block;padding:4px 8px;border-radius:999px;background:rgba(71,231,255,.12);border:1px solid rgba(71,231,255,.3);color:#67e8f9;font-size:10px;font-weight:900}.software-name{font-size:18px;font-weight:900;margin:8px 0 4px}.software-meta{font-size:11px;color:#94a3b8;margin-bottom:8px}.software-details{font-size:12px;color:#cbd5e1;line-height:1.55;white-space:pre-line;min-height:38px}.software-download{display:block;text-align:center;margin-top:12px;padding:10px;border-radius:10px;background:linear-gradient(135deg,#47e7ff,#2563eb,#7c3aed);color:#fff;text-decoration:none;font-weight:900}.software-empty{text-align:center;color:#94a3b8;padding:35px 10px}.software-filter{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0}.software-filter button{border:1px solid rgba(71,231,255,.2);background:rgba(255,255,255,.05);color:#fff;border-radius:999px;padding:8px 13px;cursor:pointer;font-weight:800}.software-filter button.active{background:linear-gradient(135deg,#47e7ff,#2563eb);color:#06111f}.software-admin-poster{width:70px;height:42px;object-fit:cover;border-radius:7px}.software-image-preview{display:none;width:100%;max-height:180px;object-fit:cover;border-radius:12px;margin-top:6px}.software-note{font-size:11px;color:#94a3b8;margin-top:4px}@media(max-width:600px){.software-login-grid{grid-template-columns:1fr}.software-popup-card{padding:18px}.software-title{font-size:24px}}
 
@@ -2439,22 +2445,32 @@ style="text-align:center;margin-top:15px;">
 SOFTWARE LIBRARY
 ========================= -->
 <div id="softwarePopup" class="popup-overlay">
-  <div class="software-popup-card">
+  <div class="software-popup-card software-ftp-card" onscroll="maybeLoadMoreSoftware(event)">
     <span class="close-popup" onclick="closeSoftware()">×</span>
-    <h2 class="software-title">💻 MAPS INTERNET Software</h2>
-    <p class="software-sub">Android + PC Apps & Games — সব একসাথে automatic live catalog</p>
+    <div class="software-ftp-head">
+      <div>
+        <div class="software-ftp-kicker">MAPS INTERNET • SERVER</div>
+        <h2 class="software-title" style="text-align:left;margin-bottom:3px">💻 MAPS FTP / Software Server</h2>
+        <p class="software-sub" style="text-align:left;margin-bottom:0">এক জায়গায় Apps • Games • Tools — FTP/ICC Server-এর মতো folder-style library</p>
+      </div>
+      <div class="software-server-status">🟢 SERVER ONLINE</div>
+    </div>
     <div id="softwareLoginBox" style="display:none"></div>
     <div id="softwareLibraryBox">
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-        <div id="softwareWelcome" style="font-weight:900;color:#67e8f9">⚡ Auto All Apps & Games Library</div>
+      <div class="software-serverbar">
+        <span>📁 /MAPS-SERVER/</span><span id="softwareItemCount">Loading...</span>
       </div>
-      <div class="software-all-note" style="font-size:13px;color:#9fefff;text-align:center;padding:10px 12px;border:1px solid rgba(71,231,255,.18);border-radius:12px;background:rgba(71,231,255,.05);margin:12px 0">🌍 <b>All Apps & Games</b> — PC + Android + Games সব একসাথে automatic দেখাবে। আলাদা করে platform বেছে নিতে হবে না।</div>
-      <div style="display:flex;gap:10px;margin:12px 0">
-        <input id="softwareSearch" placeholder="🔎 কোনো App / Game-এর নাম লিখে Search করুন..." oninput="autoSoftwareSearch()" onkeydown="if(event.key==='Enter')loadPublicSoftware('All')" style="flex:1">
-        <button class="admin-btn" type="button" onclick="loadPublicSoftware('All')">🔎 Search</button>
+      <div class="software-toolbar">
+        <div class="software-searchbox"><span>🔎</span><input id="softwareSearch" placeholder="Search software, app, game..." oninput="autoSoftwareSearch()" onkeydown="if(event.key==='Enter')loadPublicSoftware('All')"><button type="button" onclick="loadPublicSoftware('All')">Search</button></div>
       </div>
-      <div style="font-size:12px;color:#9fb0d0;margin-bottom:12px">🔄 কোনো App/Game প্রথমে না পেলে Search দিলে live catalog-এ আবার খুঁজবে — manually upload করার দরকার নেই।</div>
-      <div id="softwareList" class="software-grid"></div>
+      <div class="software-folder-row">
+        <button class="software-folder active" onclick="softwareFolder('All',this)">📂 ALL</button>
+        <button class="software-folder" onclick="softwareFolder('PC',this)">💻 PC SOFTWARE</button>
+        <button class="software-folder" onclick="softwareFolder('Android',this)">📱 ANDROID</button>
+        <button class="software-folder" onclick="softwareFolder('Game',this)">🎮 GAMES</button>
+      </div>
+      <div class="software-path-note">📌 Public/Free/Official sources only • নতুন কিছু খুঁজলে automatic live catalog-এ search হবে</div>
+      <div id="softwareList" class="software-grid software-ftp-grid"></div><div id="softwareMoreBox" style="margin-top:12px;text-align:center"></div>
     </div>
   </div>
 </div>
@@ -3712,93 +3728,21 @@ function editAdminOffer(o){document.getElementById('adminOfferId').value=o.id||'
 function clearAdminOfferForm(){['adminOfferId','adminOfferTitle','adminOfferSpeed','adminOfferPrice','adminOfferOldPrice','adminOfferBadge','adminOfferDetails','adminOfferImageUrl','adminOfferStartAt','adminOfferEndAt'].forEach(id=>{const e=document.getElementById(id);if(e)e.value='';});const file=document.getElementById('adminOfferImage');if(file)file.value='';const img=document.getElementById('adminOfferImagePreview');if(img){img.style.display='none';img.removeAttribute('src');}document.getElementById('adminOfferStatus').value='Active';}
 function deleteAdminOffer(id){if(!confirm('এই offer delete করতে চান?'))return;apiGet({action:'deleteOffer',id:id}).then(data=>{if(data.success)loadAdminOffers();else alert(data.message||'Delete failed');});}
 
-function openSoftware(){const p=document.getElementById('softwarePopup');if(!p)return;p.style.display='flex';document.getElementById('softwareLoginBox').style.display='none';document.getElementById('softwareLibraryBox').style.display='block';document.getElementById('softwareWelcome').innerText='⚡ Auto All Apps & Games Library';loadPublicSoftware('All');}
+function openSoftware(){const p=document.getElementById('softwarePopup');if(!p)return;p.style.display='flex';document.getElementById('softwareLoginBox').style.display='none';document.getElementById('softwareLibraryBox').style.display='block';document.getElementById('softwareWelcome')?.remove();loadPublicSoftware('All');}
 function closeSoftware(){const p=document.getElementById('softwarePopup');if(p)p.style.display='none';}
 function softwareLogout(){}
 let softwareCurrentFilter='All';
-function filterSoftware(type,btn){softwareCurrentFilter='All';loadPublicSoftware('All');}
+function softwareFolder(type,btn){softwareCurrentFilter=type||'All';document.querySelectorAll('.software-folder').forEach(x=>x.classList.remove('active'));if(btn)btn.classList.add('active');loadPublicSoftware(softwareCurrentFilter);}
 let softwareSearchTimer=null;
-function softwareImageUrl(o){
-  let u=String(o.imageUrl||'').trim();
-  if(u && !/^https?:\/\//i.test(u) && String(o.source||'').toLowerCase()==='f-droid') u='https://f-droid.org/repo/'+u.replace(/^\/+/, '');
-  if(u)return u;
-  const home=String(o.homepage||'').trim();
-  if(home){try{return 'https://www.google.com/s2/favicons?sz=256&domain='+encodeURIComponent(new URL(home).hostname);}catch(e){}}
-  return 'https://www.google.com/s2/favicons?sz=256&domain='+encodeURIComponent(String(o.name||'').replace(/\s+/g,'')+'.com');
-}
-function renderSoftwareCards(list){
-  const box=document.getElementById('softwareList');
-  if(!box)return;
-  if(!list.length){box.innerHTML='<div class="software-empty">🔎 কিছু পাওয়া যায়নি। অন্য নাম দিয়ে search করলে live catalog থেকে আবার খুঁজবে।</div>';return;}
-  box.innerHTML=list.map(o=>{
-    const img=softwareImageUrl(o);
-    return `<div class="software-card">
-      <div class="software-logo-wrap"><img class="software-poster" src="${escAttr(img)}" alt="${escAttr(o.name||'App')} logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&domain=winget.run';"></div>
-      <span class="software-type">${escAdmin(o.platform)} ${o.source?'• '+escAdmin(o.source):''}</span>
-      <div class="software-name">${escAdmin(o.name)}</div>
-      <div class="software-meta">${escAdmin(o.category||'')} ${o.version?'• v'+escAdmin(o.version):''} ${o.size?'• '+escAdmin(o.size):''}</div>
-      ${o.publisher?`<div class="software-publisher">👤 ${escAdmin(o.publisher)}</div>`:''}
-      <div class="software-details">${escAdmin(o.details||'Official / Free source')}</div>
-      ${o.homepage?`<a class="software-home" href="${escAttr(o.homepage)}" target="_blank" rel="noopener noreferrer">🌐 Official Website</a>`:''}
-      <a class="software-download" href="${escAttr(o.downloadUrl)}" target="_blank" rel="noopener noreferrer">📥 Download / View</a>
-    </div>`;
-  }).join('');
-}
-function getLocalSoftwareFallback(q){
-  const list=[
-    ['VLC media player','PC','Media Player','https://www.videolan.org/vlc/'],
-    ['7-Zip','PC','Utilities','https://www.7-zip.org/'],
-    ['Mozilla Firefox','PC','Web Browser','https://www.mozilla.org/firefox/new/'],
-    ['LibreOffice','PC','Office','https://www.libreoffice.org/download/download/'],
-    ['GIMP','PC','Graphics','https://www.gimp.org/downloads/'],
-    ['OBS Studio','PC','Streaming','https://obsproject.com/download'],
-    ['Audacity','PC','Audio','https://www.audacityteam.org/download/'],
-    ['Blender','PC','3D / Creative','https://www.blender.org/download/'],
-    ['Krita','PC','Graphics','https://krita.org/en/download/'],
-    ['Visual Studio Code','PC','Developer Tools','https://code.visualstudio.com/download'],
-    ['Git','PC','Developer Tools','https://git-scm.com/downloads'],
-    ['HandBrake','PC','Video','https://handbrake.fr/downloads.php'],
-    ['Godot Engine','PC','Game Development','https://godotengine.org/download/'],
-    ['SuperTuxKart','Game','Racing Game','https://supertuxkart.net/Download'],
-    ['Luanti (Minetest)','Game','Sandbox Game','https://www.luanti.org/downloads/'],
-    ['The Battle for Wesnoth','Game','Strategy Game','https://www.wesnoth.org/downloads/'],
-    ['F-Droid','Android','App Store','https://f-droid.org/'],
-    ['Termux','Android','Developer Tools','https://f-droid.org/packages/com.termux/'],
-    ['KDE Connect','Android','Connectivity','https://f-droid.org/packages/org.kde.kdeconnect_tp/'],
-    ['AntennaPod','Android','Podcast','https://f-droid.org/packages/de.danoeh.antennapod/'],
-    ['Organic Maps','Android','Maps','https://f-droid.org/packages/app.organicmaps/'],
-    ['NewPipe','Android','Media','https://f-droid.org/packages/org.schabi.newpipe/']
-  ];
-  const t=String(q||'').toLowerCase().trim();
-  return list.filter(x=>!t||(x[0]+' '+x[1]+' '+x[2]).toLowerCase().includes(t)).map((x,i)=>({id:'LOCAL-'+i,name:x[0],platform:x[1],category:x[2],version:'',size:'',imageUrl:'',downloadUrl:x[3],details:'Free / official download source.',homepage:x[3],publisher:'Official source',source:'Official'}));
-}
-function loadPublicSoftware(type){
-  const box=document.getElementById('softwareList');
-  if(box)box.innerHTML='<div class="software-empty">⏳ Live Apps & Games catalog খোঁজা হচ্ছে...</div>';
-  const q=document.getElementById('softwareSearch')?.value?.trim()||'';
-  fetch(GOOGLE_SCRIPT_URL+'?action=software&platform=All&q='+encodeURIComponent(q)+'&_='+Date.now(),{method:'GET',cache:'no-store'})
-    .then(async r=>{
-      const text=await r.text();
-      if(!r.ok) throw new Error('HTTP '+r.status);
-      let data;
-      try{ data=JSON.parse(text); }catch(_){ throw new Error('API JSON response পাওয়া যায়নি'); }
-      return data;
-    })
-    .then(data=>{
-      if(!data.success)throw new Error(data.message||'Software load failed');
-      const items=data.items||[];
-      if(!items.length){
-        renderSoftwareCards(getLocalSoftwareFallback(q));
-      }else{
-        renderSoftwareCards(items);
-      }
-    })
-    .catch(e=>{
-      if(box)box.innerHTML='<div class="software-empty">⚠️ Live catalog এখন response দিচ্ছে না।<br><small style="opacity:.75">'+escAdmin(e.message||'Unknown API error')+'</small><br><button class="admin-btn" style="margin-top:10px" onclick="loadPublicSoftware(\'All\')">↻ আবার চেষ্টা করুন</button></div>';
-      console.error('Software API:',e);
-    });
-}
-function autoSoftwareSearch(){clearTimeout(softwareSearchTimer);softwareSearchTimer=setTimeout(()=>loadPublicSoftware('All'),450);}
+function softwareImageUrl(o){let u=String(o.imageUrl||'').trim();if(u&&!/^https?:\/\//i.test(u)&&String(o.source||'').toLowerCase()==='f-droid')u='https://f-droid.org/repo/'+u.replace(/^\/+/, '');if(u)return u;const home=String(o.homepage||'').trim();if(home){try{return 'https://www.google.com/s2/favicons?sz=256&domain='+encodeURIComponent(new URL(home).hostname);}catch(e){}}return 'https://www.google.com/s2/favicons?sz=256&domain='+encodeURIComponent(String(o.name||'').replace(/\s+/g,'')+'.com');}
+function renderSoftwareCards(list){const box=document.getElementById('softwareList');const count=document.getElementById('softwareItemCount');if(count)count.innerText=(list.length||0)+' ITEMS';if(!box)return;if(!list.length){box.innerHTML='<div class="software-empty">📁 এই folder/search-এ কিছু পাওয়া যায়নি। অন্য নাম দিয়ে search করুন।</div>';return;}box.innerHTML=list.map((o,i)=>{const img=softwareImageUrl(o);const p=String(o.platform||'').toLowerCase();const icon=p.includes('android')?'📱':p.includes('game')?'🎮':'💻';const dl=escAttr(o.downloadUrl||o.homepage||'#');return `<div class="software-card"><div class="software-logo-wrap"><img class="software-poster" src="${escAttr(img)}" alt="${escAttr(o.name||'App')} logo" loading="lazy" onerror="this.onerror=null;this.src='https://www.google.com/s2/favicons?sz=256&domain=winget.run';"></div><span class="software-type">${icon} ${escAdmin(o.platform)} ${o.source?'• '+escAdmin(o.source):''}</span><div class="software-name">${escAdmin(o.name)}</div><div class="software-meta">${escAdmin(o.category||'')} ${o.version?'• v'+escAdmin(o.version):''} ${o.size?'• '+escAdmin(o.size):''}</div>${o.publisher?`<div class="software-publisher">👤 ${escAdmin(o.publisher)}</div>`:''}<div class="software-details">${escAdmin(o.details||'Official / Free source')}</div>${o.homepage?`<a class="software-home" href="${escAttr(o.homepage)}" target="_blank" rel="noopener noreferrer">🌐 Official Website</a>`:''}<a class="software-download" href="${dl}" download onclick="return directSoftwareDownload(this.href,event)">📥 Download</a></div>`;}).join('');}
+async function directSoftwareDownload(url,event){if(!url||url==='#'){event&&event.preventDefault();return false;}try{if(/^https?:\/\//i.test(url)){const r=await fetch(url,{mode:'cors',cache:'no-store'});if(r.ok){const b=await r.blob();const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download=(url.split('/').pop()||'MAPS-Download').split('?')[0];document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1500);event&&event.preventDefault();return false;}}}catch(e){}return true;}
+function getLocalSoftwareFallback(q){const list=[['VLC media player','PC','Media Player','https://www.videolan.org/vlc/'],['7-Zip','PC','Utilities','https://www.7-zip.org/'],['Mozilla Firefox','PC','Web Browser','https://www.mozilla.org/firefox/new/'],['LibreOffice','PC','Office','https://www.libreoffice.org/download/download/'],['GIMP','PC','Graphics','https://www.gimp.org/downloads/'],['OBS Studio','PC','Streaming','https://obsproject.com/download'],['Audacity','PC','Audio','https://www.audacityteam.org/download/'],['Blender','PC','3D / Creative','https://www.blender.org/download/'],['Krita','PC','Graphics','https://krita.org/en/download/'],['Inkscape','PC','Vector Graphics','https://inkscape.org/release/'],['Visual Studio Code','PC','Developer Tools','https://code.visualstudio.com/download'],['Git','PC','Developer Tools','https://git-scm.com/downloads'],['HandBrake','PC','Video','https://handbrake.fr/downloads.php'],['KeePassXC','PC','Security','https://keepassxc.org/download/'],['Godot Engine','PC','Game Development','https://godotengine.org/download/'],['SuperTuxKart','Game','Racing Game','https://supertuxkart.net/Download'],['Luanti','Game','Sandbox Game','https://www.luanti.org/downloads/'],['The Battle for Wesnoth','Game','Strategy Game','https://www.wesnoth.org/downloads/'],['F-Droid','Android','App Store','https://f-droid.org/'],['Termux','Android','Developer Tools','https://f-droid.org/packages/com.termux/'],['KDE Connect','Android','Connectivity','https://f-droid.org/packages/org.kde.kdeconnect_tp/'],['AntennaPod','Android','Podcast','https://f-droid.org/packages/de.danoeh.antennapod/'],['Organic Maps','Android','Maps','https://f-droid.org/packages/app.organicmaps/'],['NewPipe','Android','Media','https://f-droid.org/packages/org.schabi.newpipe/'],['Fossify Gallery','Android','Gallery','https://f-droid.org/packages/org.fossify.gallery/']];const t=String(q||'').toLowerCase().trim();return list.filter(x=>!t||(x[0]+' '+x[1]+' '+x[2]).toLowerCase().includes(t)).filter(x=>softwareCurrentFilter==='All'||(softwareCurrentFilter==='Game'?x[1]==='Game':x[1]===softwareCurrentFilter)).map((x,i)=>({id:'LOCAL-'+i,name:x[0],platform:x[1],category:x[2],version:'',size:'',imageUrl:'',downloadUrl:x[3],details:'Free / official download source.',homepage:x[3],publisher:'Official source',source:'Official'}));}
+let softwareLoadedPages=0,softwareLoading=false,softwareAllItems=[],softwareHasMore=false;
+function mergeSoftwareItems(items,replace){if(replace)softwareAllItems=[];const seen={};softwareAllItems.forEach(x=>seen[String(x.id||x.name).toLowerCase()]=1);(items||[]).forEach(x=>{const k=String(x.id||x.name||'').toLowerCase();if(k&&!seen[k]){seen[k]=1;softwareAllItems.push(x);}});renderSoftwareCards(softwareAllItems);}
+function loadPublicSoftware(type,append=false){softwareCurrentFilter=type||softwareCurrentFilter||'All';const box=document.getElementById('softwareList');if(!append){softwareLoadedPages=0;softwareAllItems=[];if(box)box.innerHTML='<div class="software-empty">⏳ MAPS Server library loading...</div>';}if(softwareLoading)return;softwareLoading=true;const q=document.getElementById('softwareSearch')?.value?.trim()||'';const page=append?softwareLoadedPages:0;fetch(GOOGLE_SCRIPT_URL+'?action=software&platform='+encodeURIComponent(softwareCurrentFilter)+'&q='+encodeURIComponent(q)+'&page='+page+'&limit=120&_='+Date.now(),{method:'GET',cache:'no-store'}).then(async r=>{const text=await r.text();if(!r.ok)throw new Error('HTTP '+r.status);let data;try{data=JSON.parse(text);}catch(_){throw new Error('API JSON response পাওয়া যায়নি');}return data;}).then(data=>{if(!data.success)throw new Error(data.message||'Software load failed');let items=data.items||[];if(!items.length&&!append)items=getLocalSoftwareFallback(q);mergeSoftwareItems(items,!append);softwareLoadedPages=page+1;softwareHasMore=!!data.hasMore;const more=softwareHasMore;const moreBox=document.getElementById('softwareMoreBox');if(moreBox)moreBox.innerHTML=more?'<button class="software-download" style="border:0;cursor:pointer" onclick="loadPublicSoftware(softwareCurrentFilter,true)">⬇️ আরও Apps & Games Load করুন</button>':'<div class="software-note" style="text-align:center;padding:12px">✓ এই catalog-এর বর্তমান ফলাফল শেষ।</div>';}).catch(e=>{if(!append){const local=getLocalSoftwareFallback(q);if(local.length){mergeSoftwareItems(local,true);return;}}if(box)box.innerHTML='<div class="software-empty">⚠️ Server catalog এখন response দিচ্ছে না।<br><small style="opacity:.75">'+escAdmin(e.message||'Unknown API error')+'</small><br><button class="admin-btn" style="margin-top:10px" onclick="loadPublicSoftware(softwareCurrentFilter)">↻ আবার চেষ্টা করুন</button></div>';console.error('Software API:',e);}).finally(()=>{softwareLoading=false;});}
+function autoSoftwareSearch(){clearTimeout(softwareSearchTimer);softwareSearchTimer=setTimeout(()=>loadPublicSoftware(softwareCurrentFilter||'All'),450);}
+function maybeLoadMoreSoftware(ev){const el=ev&&ev.currentTarget;if(!el||softwareLoading||!softwareHasMore)return;if(el.scrollTop+el.clientHeight>=el.scrollHeight-500)loadPublicSoftware(softwareCurrentFilter,true);}
 
 function loadAdminSoftware(){apiGet({action:'adminSoftware'}).then(data=>{if(!data.success)throw new Error(data.message||'Software load failed');const list=data.items||[],tb=document.getElementById('adminSoftwareTable');if(!tb)return;tb.innerHTML=list.length?list.map(o=>`<tr><td>${o.imageUrl?`<img class="software-admin-poster" src="${escAttr(o.imageUrl)}" alt="Poster">`:'—'}</td><td>${escAdmin(o.name)}</td><td>${escAdmin(o.platform)}</td><td>${escAdmin(o.category||'')}</td><td>${escAdmin(o.version||'')}</td><td>${escAdmin(o.status)}</td><td><button class="admin-mini-btn" onclick='editAdminSoftware(${JSON.stringify(o)})'>Edit</button><button class="admin-mini-btn" onclick="deleteAdminSoftware('${escAttr(o.id)}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="7" style="text-align:center">No software/game found.</td></tr>';}).catch(e=>{const m=document.getElementById('adminSoftwareMsg');if(m){m.style.color='#f87171';m.innerText='⚠️ '+e.message;}});}
 function saveAdminSoftware(e){e.preventDefault();const msg=document.getElementById('adminSoftwareMsg');msg.style.color='#38bdf8';msg.innerText='⏳ Saving...';apiGet({action:'saveSoftware',id:document.getElementById('adminSoftwareId').value.trim(),name:document.getElementById('adminSoftwareName').value.trim(),platform:document.getElementById('adminSoftwarePlatform').value,category:document.getElementById('adminSoftwareCategory').value.trim(),version:document.getElementById('adminSoftwareVersion').value.trim(),size:document.getElementById('adminSoftwareSize').value.trim(),imageUrl:document.getElementById('adminSoftwareImageUrl').value.trim(),downloadUrl:document.getElementById('adminSoftwareDownloadUrl').value.trim(),details:document.getElementById('adminSoftwareDetails').value.trim(),status:document.getElementById('adminSoftwareStatus').value}).then(data=>{msg.style.color=data.success?'#4ade80':'#f87171';msg.innerText=(data.success?'✅ ':'❌ ')+data.message;if(data.success){clearAdminSoftwareForm();loadAdminSoftware();}}).catch(e=>{msg.style.color='#f87171';msg.innerText='⚠️ '+e.message;});}
