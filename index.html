@@ -1607,9 +1607,6 @@ NAVBAR
 👤 Customer Login
 </a>
 
-<a href="#" onclick="openSoftware();toggleMenu();return false;">
-💻 Software
-</a>
 
 </div>
 
@@ -2137,7 +2134,7 @@ style="text-align:center;margin-top:15px;">
         <button class="admin-tab" onclick="switchAdminTab('reports',this)">📊 Reports</button>
         <button class="admin-tab" onclick="switchAdminTab('website',this)">🌐 Website Edit</button>
         <button class="admin-tab" onclick="switchAdminTab('offers',this)">🎁 Offers</button>
-        <button class="admin-tab" onclick="switchAdminTab('software',this)">💻 Software</button>
+        
         <button class="admin-tab" id="adminUsersTab" onclick="switchAdminTab('admins',this)">🔐 Admin IDs</button>
         <button class="admin-tab" onclick="switchAdminTab('control',this)">🎛 Control Center</button>
       </div>
@@ -2288,33 +2285,6 @@ style="text-align:center;margin-top:15px;">
         </div>
       </div>
 
-      <div id="adminSoftwareSection" class="admin-section">
-        <div class="admin-layout">
-          <div class="admin-box">
-            <h3>💻 Add / Edit Software or Game</h3>
-            <form class="admin-form" onsubmit="saveAdminSoftware(event)">
-              <input id="adminSoftwareId" placeholder="ID (Edit হলে auto-filled)">
-              <input id="adminSoftwareName" placeholder="Software / Game Name *" required>
-              <select id="adminSoftwarePlatform"><option value="PC">PC</option><option value="Android">Android</option><option value="Game">Game</option></select>
-              <input id="adminSoftwareCategory" placeholder="Category (e.g. Editing, Utility, Racing Game)">
-              <input id="adminSoftwareVersion" placeholder="Version">
-              <input id="adminSoftwareSize" placeholder="Size (e.g. 1.2 GB)">
-              <input id="adminSoftwareImageUrl" placeholder="Poster/Image URL (https://...)" >
-              <input id="adminSoftwareDownloadUrl" placeholder="Official/Free Download URL *" required>
-              <textarea id="adminSoftwareDetails" placeholder="Description / Details" style="min-height:90px"></textarea>
-              <select id="adminSoftwareStatus"><option value="Active">Active</option><option value="Inactive">Inactive</option></select>
-              <div class="admin-btns"><button class="admin-btn" type="submit">💾 Save Software</button><button class="admin-btn alt" type="button" onclick="clearAdminSoftwareForm()">Clear</button></div>
-              <div class="software-note">⚠️ শুধু আইনসম্মত/official/free/open-source download link ব্যবহার করুন।</div>
-              <div id="adminSoftwareMsg" class="admin-msg"></div>
-            </form>
-          </div>
-          <div class="admin-box">
-            <h3>💻 Software / Game Library <button class="admin-mini-btn" onclick="loadAdminSoftware()">🔄 Refresh</button></h3>
-            <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Poster</th><th>Name</th><th>Platform</th><th>Category</th><th>Version</th><th>Status</th><th>Action</th></tr></thead><tbody id="adminSoftwareTable"><tr><td colspan="7">Loading...</td></tr></tbody></table></div>
-          </div>
-        </div>
-      </div>
-
       <div id="adminControlSection" class="admin-section">
         <div class="cc-grid">
           <div class="cc-card">
@@ -2438,40 +2408,6 @@ style="text-align:center;margin-top:15px;">
     <h3 style="color:#47e7ff;margin:8px 0">Website Temporarily Unavailable</h3>
     <p style="color:#c9d1ef">সিস্টেম বর্তমানে maintenance / emergency mode-এ আছে। জরুরি সহায়তার জন্য নিচের নম্বরে যোগাযোগ করুন।</p>
     <p style="color:#fff;font-weight:700">01827700011 • 01827700022</p>
-  </div>
-</div>
-
-<!-- =========================
-SOFTWARE LIBRARY
-========================= -->
-<div id="softwarePopup" class="popup-overlay">
-  <div class="software-popup-card software-ftp-card" onscroll="maybeLoadMoreSoftware(event)">
-    <span class="close-popup" onclick="closeSoftware()">×</span>
-    <div class="software-ftp-head">
-      <div>
-        <div class="software-ftp-kicker">MAPS INTERNET • SERVER</div>
-        <h2 class="software-title" style="text-align:left;margin-bottom:3px">💻 MAPS FTP / Software Server</h2>
-        <p class="software-sub" style="text-align:left;margin-bottom:0">এক জায়গায় Apps • Games • Tools — FTP/ICC Server-এর মতো folder-style library</p>
-      </div>
-      <div class="software-server-status">🟢 SERVER ONLINE</div>
-    </div>
-    <div id="softwareLoginBox" style="display:none"></div>
-    <div id="softwareLibraryBox">
-      <div class="software-serverbar">
-        <span>📁 /MAPS-SERVER/</span><span id="softwareItemCount">Loading...</span>
-      </div>
-      <div class="software-toolbar">
-        <div class="software-searchbox"><span>🔎</span><input id="softwareSearch" placeholder="Search software, app, game..." oninput="autoSoftwareSearch()" onkeydown="if(event.key==='Enter')loadPublicSoftware('All')"><button type="button" onclick="loadPublicSoftware('All')">Search</button></div>
-      </div>
-      <div class="software-folder-row">
-        <button class="software-folder active" onclick="softwareFolder('All',this)">📂 ALL</button>
-        <button class="software-folder" onclick="softwareFolder('PC',this)">💻 PC SOFTWARE</button>
-        <button class="software-folder" onclick="softwareFolder('Android',this)">📱 ANDROID</button>
-        <button class="software-folder" onclick="softwareFolder('Game',this)">🎮 GAMES</button>
-      </div>
-      <div class="software-path-note">📌 Public/Free/Official sources only • নতুন কিছু খুঁজলে automatic live catalog-এ search হবে</div>
-      <div id="softwareList" class="software-grid software-ftp-grid"></div><div id="softwareMoreBox" style="margin-top:12px;text-align:center"></div>
-    </div>
   </div>
 </div>
 
