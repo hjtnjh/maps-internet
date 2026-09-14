@@ -3744,6 +3744,34 @@ function renderSoftwareCards(list){
     </div>`;
   }).join('');
 }
+function getLocalSoftwareFallback(q){
+  const list=[
+    ['VLC media player','PC','Media Player','https://www.videolan.org/vlc/'],
+    ['7-Zip','PC','Utilities','https://www.7-zip.org/'],
+    ['Mozilla Firefox','PC','Web Browser','https://www.mozilla.org/firefox/new/'],
+    ['LibreOffice','PC','Office','https://www.libreoffice.org/download/download/'],
+    ['GIMP','PC','Graphics','https://www.gimp.org/downloads/'],
+    ['OBS Studio','PC','Streaming','https://obsproject.com/download'],
+    ['Audacity','PC','Audio','https://www.audacityteam.org/download/'],
+    ['Blender','PC','3D / Creative','https://www.blender.org/download/'],
+    ['Krita','PC','Graphics','https://krita.org/en/download/'],
+    ['Visual Studio Code','PC','Developer Tools','https://code.visualstudio.com/download'],
+    ['Git','PC','Developer Tools','https://git-scm.com/downloads'],
+    ['HandBrake','PC','Video','https://handbrake.fr/downloads.php'],
+    ['Godot Engine','PC','Game Development','https://godotengine.org/download/'],
+    ['SuperTuxKart','Game','Racing Game','https://supertuxkart.net/Download'],
+    ['Luanti (Minetest)','Game','Sandbox Game','https://www.luanti.org/downloads/'],
+    ['The Battle for Wesnoth','Game','Strategy Game','https://www.wesnoth.org/downloads/'],
+    ['F-Droid','Android','App Store','https://f-droid.org/'],
+    ['Termux','Android','Developer Tools','https://f-droid.org/packages/com.termux/'],
+    ['KDE Connect','Android','Connectivity','https://f-droid.org/packages/org.kde.kdeconnect_tp/'],
+    ['AntennaPod','Android','Podcast','https://f-droid.org/packages/de.danoeh.antennapod/'],
+    ['Organic Maps','Android','Maps','https://f-droid.org/packages/app.organicmaps/'],
+    ['NewPipe','Android','Media','https://f-droid.org/packages/org.schabi.newpipe/']
+  ];
+  const t=String(q||'').toLowerCase().trim();
+  return list.filter(x=>!t||(x[0]+' '+x[1]+' '+x[2]).toLowerCase().includes(t)).map((x,i)=>({id:'LOCAL-'+i,name:x[0],platform:x[1],category:x[2],version:'',size:'',imageUrl:'',downloadUrl:x[3],details:'Free / official download source.',homepage:x[3],publisher:'Official source',source:'Official'}));
+}
 function loadPublicSoftware(type){
   const box=document.getElementById('softwareList');
   if(box)box.innerHTML='<div class="software-empty">⏳ Live Apps & Games catalog খোঁজা হচ্ছে...</div>';
@@ -3758,7 +3786,12 @@ function loadPublicSoftware(type){
     })
     .then(data=>{
       if(!data.success)throw new Error(data.message||'Software load failed');
-      renderSoftwareCards(data.items||[]);
+      const items=data.items||[];
+      if(!items.length){
+        renderSoftwareCards(getLocalSoftwareFallback(q));
+      }else{
+        renderSoftwareCards(items);
+      }
     })
     .catch(e=>{
       if(box)box.innerHTML='<div class="software-empty">⚠️ Live catalog এখন response দিচ্ছে না।<br><small style="opacity:.75">'+escAdmin(e.message||'Unknown API error')+'</small><br><button class="admin-btn" style="margin-top:10px" onclick="loadPublicSoftware(\'All\')">↻ আবার চেষ্টা করুন</button></div>';
